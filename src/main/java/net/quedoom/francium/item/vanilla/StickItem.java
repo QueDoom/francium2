@@ -1,0 +1,174 @@
+package net.quedoom.francium.item.vanilla;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Giant;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+import net.quedoom.francium.Francium;
+import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.init.ModTags;
+import org.jspecify.annotations.Nullable;
+
+public class StickItem extends Item {
+    public static final int ANIMATION_DURATION = 10;
+    private static final int USE_DURATION = 200;
+
+    public StickItem(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    public InteractionResult useOn(final UseOnContext context) {
+        Player player = context.getPlayer();
+        HitResult hitResult = this.calculateHitResult(player);
+        if (player != null && hitResult.getType() == HitResult.Type.BLOCK) {
+            if (hitResult instanceof BlockHitResult blockHitResult) {
+                BlockState state = context.getLevel().getBlockState(blockHitResult.getBlockPos());
+                Francium.LOGGER.info(state.toString());
+
+                if (state.is(ModTags.Blocks.HARD_BLOCKS)) {
+                    player.startUsingItem(context.getHand());
+                }
+            }
+        }
+
+        return InteractionResult.PASS;
+    }
+
+    @Override
+    public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
+        return ItemUseAnimation.BRUSH;
+    }
+
+    @Override
+    public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
+        return USE_DURATION;
+    }
+
+    @Override
+    public void onUseTick(final Level level, final LivingEntity livingEntity, final ItemStack itemStack, final int ticksRemaining) {
+        if (ticksRemaining >= 0 && livingEntity instanceof Player player) {
+            Francium.LOGGER.info("Ticks Remaining: {}", ticksRemaining);
+            HitResult hitResult = this.calculateHitResult(player);
+            if (hitResult instanceof BlockHitResult blockHitResult) {
+                if (hitResult.getType() == HitResult.Type.BLOCK) {
+                    if (level.getBlockState(blockHitResult.getBlockPos()).is(ModTags.Blocks.HARD_BLOCKS)) {
+                        int timeElapsed = this.getUseDuration(itemStack, livingEntity) - ticksRemaining + 1;
+                        boolean isLastTickBeforeBackswing = timeElapsed % 10 == 5;
+                        if (isLastTickBeforeBackswing) {
+                            BlockPos pos = blockHitResult.getBlockPos();
+                            BlockState state = level.getBlockState(pos);
+                            HumanoidArm brushingArm = livingEntity.getUsedItemHand() == InteractionHand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite();
+                            if (state.shouldSpawnTerrainParticles() && state.getRenderShape() != RenderShape.INVISIBLE) {
+                                this.spawnDustParticles(level, blockHitResult, state, livingEntity.getViewVector(0.0F), brushingArm);
+                            }
+
+                            SoundEvent brushSound = SoundEvents.STONE_HIT;
+
+                            level.playSound(player, pos, brushSound, SoundSource.BLOCKS);
+
+                            if (ticksRemaining < 100) {
+                                if (level instanceof ServerLevel) {
+                                    if (!player.hasInfiniteMaterials()) itemStack.shrink(1);
+                                    player.addItem(ModItems.SHARP_STICK.getDefaultInstance());
+                                    livingEntity.releaseUsingItem();
+                                } else {
+                                    level.playSound(player, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS);
+                                }
+                            }
+                        }
+
+                        return;
+                    } else {
+                        livingEntity.releaseUsingItem();
+                    }
+                }
+            }
+
+            livingEntity.releaseUsingItem();
+        } else {
+            livingEntity.releaseUsingItem();
+        }
+    }
+
+    private static @Nullable BlockEntity getBlockEntity(Level level, BlockPos pos) {
+        BlockEntity block = level.getBlockEntity(pos);
+        return block;
+    }
+
+    private HitResult calculateHitResult(final Player player) {
+        return ProjectileUtil.getHitResultOnViewVector(player, EntitySelector.CAN_BE_PICKED, player.blockInteractionRange());
+    }
+
+    private void spawnDustParticles(final Level level, final BlockHitResult hitResult, final BlockState state, final Vec3 viewVector, final HumanoidArm brushingArm) {
+        double deltaScale = (double)3.0F;
+        int flip = brushingArm == HumanoidArm.RIGHT ? 1 : -1;
+        int particles = level.getRandom().nextInt(7, 12);
+        BlockParticleOption particle = new BlockParticleOption(ParticleTypes.BLOCK, state);
+        Direction hitDirection = hitResult.getDirection();
+        DustParticlesDelta dustParticlesDelta = DustParticlesDelta.fromDirection(viewVector, hitDirection);
+        Vec3 hitLocation = hitResult.getLocation();
+
+        for(int i = 0; i < particles; ++i) {
+            level.addParticle(particle, hitLocation.x - (double)(hitDirection == Direction.WEST ? 1.0E-6F : 0.0F), hitLocation.y, hitLocation.z - (double)(hitDirection == Direction.NORTH ? 1.0E-6F : 0.0F), dustParticlesDelta.xd() * (double)flip * (double)3.0F * level.getRandom().nextDouble(), (double)0.0F, dustParticlesDelta.zd() * (double)flip * (double)3.0F * level.getRandom().nextDouble());
+        }
+
+    }
+
+    private static record DustParticlesDelta(double xd, double yd, double zd) {
+        private static final double ALONG_SIDE_DELTA = (double)1.0F;
+        private static final double OUT_FROM_SIDE_DELTA = 0.1;
+
+        public static DustParticlesDelta fromDirection(final Vec3 viewVector, final Direction hitDirection) {
+            double yd = (double)0.0F;
+            DustParticlesDelta var10000;
+            switch (hitDirection) {
+                case DOWN:
+                case UP:
+                    var10000 = new DustParticlesDelta(viewVector.z(), (double)0.0F, -viewVector.x());
+                    break;
+                case NORTH:
+                    var10000 = new DustParticlesDelta((double)1.0F, (double)0.0F, -0.1);
+                    break;
+                case SOUTH:
+                    var10000 = new DustParticlesDelta((double)-1.0F, (double)0.0F, 0.1);
+                    break;
+                case WEST:
+                    var10000 = new DustParticlesDelta(-0.1, (double)0.0F, (double)-1.0F);
+                    break;
+                case EAST:
+                    var10000 = new DustParticlesDelta(0.1, (double)0.0F, (double)1.0F);
+                    break;
+                default:
+                    throw new MatchException((String)null, (Throwable)null);
+            }
+
+            return var10000;
+        }
+    }
+}

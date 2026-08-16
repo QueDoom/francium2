@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "leaves=1": {
+      "model": "francium_2:block/pile_of_leaves_1"
+    },
+    "leaves=2": {
+      "model": "francium_2:block/pile_of_leaves_2"
+    },
+    "leaves=3": {
+      "model": "francium_2:block/pile_of_leaves_3"
+    },
+    "leaves=4": {
+      "model": "francium_2:block/pile_of_leaves_4"
+    },
+    "leaves=5": {
+      "model": "francium_2:block/pile_of_leaves_5"
+    },
+    "leaves=6": {
+      "model": "francium_2:block/pile_of_leaves_6"
+    },
+    "leaves=7": {
+      "model": "francium_2:block/pile_of_leaves_7"
+    },
+    "leaves=8": {
+      "model": "francium_2:block/pile_of_leaves_8"
+    }
+  }
+}

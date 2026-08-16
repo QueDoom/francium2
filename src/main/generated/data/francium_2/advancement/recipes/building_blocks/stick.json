@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_broken_stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "francium_2:broken_stick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "francium_2:stick"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_broken_stick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "francium_2:stick"
+    ]
+  }
+}

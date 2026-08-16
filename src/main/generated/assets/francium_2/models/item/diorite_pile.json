@@ -1,0 +1,6 @@
+{
+  "parent": "francium_2:item/pile_generated",
+  "textures": {
+    "layer0": "francium_2:item/diorite_pile"
+  }
+}

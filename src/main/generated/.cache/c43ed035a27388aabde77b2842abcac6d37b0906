@@ -1,0 +1,10 @@
+// 26.1.2	-999999999-01-01T00:00:00	Francium 2/Tags for minecraft:block
+6dab3245d7af843a15236bcfc62f08b34c5727e3 data/francium_2/tags/block/deepslate_ores.json
+7686a18e58d5e0ef9d6b947086bf423ca5cc9714 data/francium_2/tags/block/force_require_tool.json
+c0c8ef630c958b24c82784ac0a5230c2f8583634 data/francium_2/tags/block/hard_block.json
+66c63c2aea9e2f572dee901056877665b812ae56 data/francium_2/tags/block/nether_ores.json
+3b5164705f02c714b116ba0cd5edf27bb3ca151d data/francium_2/tags/block/sharp_stick_mines_fast.json
+4218ae92132b4a80a0899ad5b73f8130f18cff73 data/francium_2/tags/block/stone_ores.json
+dc23a6c6d4b1d09cd172d32e1c6639a05a70212b data/minecraft/tags/block/mineable/axe.json
+f6e81f49430799dec4acf8d5a66e1a2db799e81e data/minecraft/tags/block/mineable/pickaxe.json
+50c53cbb987907f8d4560a915f192d0813a7d807 data/minecraft/tags/block/needs_diamond_tool.json

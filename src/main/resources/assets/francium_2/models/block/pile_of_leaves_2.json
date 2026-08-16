@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"all": "block/oak_leaves"
+	},
+	"elements": [
+		{
+			"name": "leaf",
+			"from": [1, 0, 1],
+			"to": [15, 4, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 2]},
+			"faces": {
+				"north": {"uv": [1, 12, 15, 16], "texture": "#all", "tintindex": 0},
+				"east": {"uv": [1, 12, 15, 16], "texture": "#all", "tintindex": 0},
+				"south": {"uv": [1, 12, 15, 16], "texture": "#all", "tintindex": 0},
+				"west": {"uv": [1, 12, 15, 16], "texture": "#all", "tintindex": 0},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#all", "tintindex": 0},
+				"down": {"uv": [1, 1, 15, 15], "rotation": 180, "texture": "#all", "tintindex": 0}
+			}
+		}
+	]
+}

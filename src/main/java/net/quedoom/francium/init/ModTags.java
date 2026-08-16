@@ -1,0 +1,35 @@
+package net.quedoom.francium.init;
+
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.quedoom.francium.Francium;
+
+public class ModTags {
+    public static class Blocks {
+
+        public static final TagKey<Block> STONE_ORES = createTag("stone_ores");
+        public static final TagKey<Block> DEEPSLATE_ORES = createTag("deepslate_ores");
+        public static final TagKey<Block> NETHER_ORES = createTag("nether_ores");
+
+        public static final TagKey<Block> FORCE_REQUIRE_TOOL = createTag("force_require_tool");
+        public static final TagKey<Block> FORCE_UNREQUIRE_TOOL = createTag("force_unrequire_tool");
+
+        public static final TagKey<Block> HARD_BLOCKS = createTag("hard_block");
+
+        public static final TagKey<Block> SHARP_STICK_MINES_FAST = createTag("sharp_stick_mines_fast");
+
+        private static TagKey<Block> createTag(String name) {
+            return TagKey.create(Registries.BLOCK, Francium.id(name));
+        }
+    }
+    public static class Items {
+
+        public static final TagKey<Item> NO_HOE_MULTITOOL = createTag("no_hoe_multitool");
+
+        private static TagKey<Item> createTag(String name) {
+            return TagKey.create(Registries.ITEM, Francium.id(name));
+        }
+    }
+}

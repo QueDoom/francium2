@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#minecraft:mineable/pickaxe",
+      "required": false
+    },
+    {
+      "id": "#c:glass_blocks",
+      "required": false
+    }
+  ]
+}

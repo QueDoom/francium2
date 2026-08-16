@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile",
+    "francium_2:gravel_pile"
+  ],
+  "result": {
+    "id": "minecraft:stone"
+  }
+}
