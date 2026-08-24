@@ -23,8 +23,15 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.SHARP_STICK);
               output.accept(ModItems.BARK);
               output.accept(ModItems.LEAF);
+              output.accept(ModItems.GRASS);
 
               output.accept(ModItems.WOODEN_PLATE);
+
+              output.accept(ModBlocks.GLUE_MIXER);
+              output.accept(ModItems.GLUE);
+              output.accept(ModItems.VEGAN_GLUE);
+              output.accept(ModItems.SUPER_GLUE);
+              output.accept(ModItems.ECHO_GLUE);
 
               output.accept(ModItems.ANDESITE_ALLOY);
               output.accept(ModItems.DIORITE_ALLOY);
@@ -33,12 +40,21 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.DRIPSTONE_PASTE);
               output.accept(ModItems.DRIPSTONE_COATED_MINERAL_MIX);
 
+              output.accept(ModItems.SLOT);
+              output.accept(ModItems.STACKED_SLOT);
+              output.accept(ModItems.RAW_SLOT);
+              output.accept(ModItems.STACKED_RAW_SLOT);
+
+              output.accept(ModBlocks.WOODEN_MERGER);
+              output.accept(ModBlocks.DEEP_MERGER);
+
               output.accept(ModItems.CRAFTING_TOKEN);
               output.accept(ModItems.SMELTING_TOKEN);
               output.accept(ModItems.SMITHING_TOKEN);
 
               output.accept(ModBlocks.WOODEN_CASING);
               output.accept(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
+              output.accept(ModBlocks.MINERAL_MIX_BLOCK);
               output.accept(ModBlocks.STONE_CASING);
               output.accept(ModBlocks.OBSIDIAN_CASING);
 
@@ -49,6 +65,7 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.ANDESITE_PILE);
               output.accept(ModItems.DIORITE_PILE );
               output.accept(ModItems.GRANITE_PILE);
+              output.accept(ModItems.COAL_DUST);
               output.accept(ModItems.GOLD_ORE_PILE);
               output.accept(ModItems.DEEPSLATE_GOLD_ORE_PILE);
               output.accept(ModItems.GOLD_DUST);
@@ -64,14 +81,19 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.DEEPSLATE_PILE);
               output.accept(ModItems.TUFF_PILE);
               output.accept(ModItems.CALCITE_PILE);
+              output.accept(ModItems.AMETHYST_PILE);
               output.accept(ModItems.DRIPSTONE_PILE);
               output.accept(ModItems.NETHERRACK_PILE);
               output.accept(ModItems.BLACKSTONE_PILE);
               output.accept(ModItems.SOUL_PILE);
               output.accept(ModItems.BASALT_PILE);
+
+              output.accept(ModItems.BEDROCK_PILE);
+              output.accept(ModItems.BEDROCK_PEBBLES);
+              output.accept(ModItems.BEDROCK_FLAKE);
           })).build();
 
-    public static void registerItemGroups() {
+    public static void registerTabs() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, FRANCIUM_TAB_KEY, FRANCIUM_TAB);
     }
 

@@ -7,9 +7,7 @@ import net.minecraft.resources.Identifier;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.quedoom.francium.init.ModBlocks;
-import net.quedoom.francium.init.ModCreativeModeTabs;
-import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.init.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,16 +26,25 @@ public class Francium implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		ModBlocks.registerModBlocks();
-
 		ModItems.registerItems();
-		ModCreativeModeTabs.registerItemGroups();
+		ModCreativeModeTabs.registerTabs();
 
+		ModBlocks.registerBlocks();
+		ModBlockEntities.registerBlockEntities();
+
+		ModRecipeTypes.registerRecipeTypes();
+
+		ModMenuTypes.registerMenus();
+
+		ModStats.registerStats();
 
 
 	}
 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
+	}
+	public static String jeiId(String path) {
+		return "jei." + MOD_ID + '.' + path;
 	}
 }

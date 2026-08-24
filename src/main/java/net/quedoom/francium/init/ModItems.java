@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.item.LeafItem;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -35,18 +36,30 @@ public class ModItems {
     public static Item DIAMOND_ORE_PILE = register("diamond_ore_pile");
     public static Item DEEPSLATE_DIAMOND_ORE_PILE = register("deepslate_diamond_ore_pile");
     public static Item DIAMOND_DUST = register("diamond_dust");
+    public static Item COAL_DUST = register("coal_dust");
 
     public static Item DEEPSLATE_PILE = register("deepslate_pile");
     public static Item TUFF_PILE = register("tuff_pile");
     public static Item CALCITE_PILE = register("calcite_pile");
+    public static Item AMETHYST_PILE = register("amethyst_pile");
     public static Item DRIPSTONE_PILE = register("dripstone_pile");
     public static Item NETHERRACK_PILE = register("netherrack_pile");
     public static Item BLACKSTONE_PILE = register("blackstone_pile");
     public static Item SOUL_PILE = register("soul_pile");
     public static Item BASALT_PILE = register("basalt_pile");
 
+    public static Item GLUE = register("glue");
+    public static Item VEGAN_GLUE = register("vegan_glue");
+    public static Item SUPER_GLUE = register("super_glue");
+    public static Item ECHO_GLUE = register("echo_glue");
+
+    public static Item BEDROCK_PILE = register("bedrock_pile");
+    public static Item BEDROCK_PEBBLES = register("bedrock_pebbles");
+    public static Item BEDROCK_FLAKE = register("bedrock_flake");
+
     public static Item BARK = register("bark");
-    public static Item LEAF = registerBlock(ModBlocks.PILE_OF_LEAVES);
+    public static Item LEAF = register(create("leaf"), LeafItem::new, new Item.Properties());
+    public static Item GRASS = register(create("grass"));
 
     public static Item WOODEN_PLATE = register("wooden_plate");
 
@@ -58,12 +71,18 @@ public class ModItems {
     public static Item DRIPSTONE_PASTE = register("dripstone_paste");
     public static Item DRIPSTONE_COATED_MINERAL_MIX = register("dripstone_coated_mineral_mix");
 
+    public static Item RAW_SLOT = register("raw_slot");
+    public static Item STACKED_RAW_SLOT = register("stacked_raw_slot");
+    public static Item SLOT = register("slot");
+    public static Item STACKED_SLOT = register("stacked_slot");
+
     public static Item CRAFTING_TOKEN = register("crafting_token");
     public static Item SMELTING_TOKEN = register("smelting_token");
     public static Item SMITHING_TOKEN = register("smithing_token");
 
     public static Item SHARP_STICK = register("sharp_stick", new Item.Properties().tool(ModToolMaterials.SHARP_STICK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 0.5F, 3F, 0F));
 
+    public static Item UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID = register("unused_item", new Item.Properties());
 
 
     public static Item register(String name) {
