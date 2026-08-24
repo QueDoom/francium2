@@ -28,6 +28,12 @@ public class ModTags {
 
         public static final TagKey<Item> NO_HOE_MULTITOOL = createTag("no_hoe_multitool");
 
+        public static final TagKey<Item> WOODEN_MERGER_GLUE = createTag("wooden_merger_glue");
+        public static final TagKey<Item> DEEP_MERGER_GLUE = createTag("deep_merger_glue");
+
+        public static final TagKey<Item> SMALL_VEGETATION = createTag("small_vegetation");
+        public static final TagKey<Item> BIG_VEGETATION = createTag("big_vegetation");
+
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, Francium.id(name));
         }

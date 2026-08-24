@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"net.quedoom.francium.FranciumClient"
+		],
+		"jei_mod_plugin": [
+			"net.quedoom.francium.api.jei.FranciumJeiPlugin"
 		]
 	},
 	"mixins": [

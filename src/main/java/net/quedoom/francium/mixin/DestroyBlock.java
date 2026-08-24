@@ -55,6 +55,47 @@ public class DestroyBlock {
                     state.getValue(BlockStateProperties.AXIS)), 1);
         }
 
+        if (state.is(Blocks.ACACIA_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_ACACIA_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.BIRCH_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_BIRCH_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.CHERRY_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_CHERRY_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.DARK_OAK_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_DARK_OAK_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.JUNGLE_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_JUNGLE_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.MANGROVE_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_MANGROVE_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.OAK_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_OAK_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.PALE_OAK_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_PALE_OAK_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.SPRUCE_WOOD)) {
+            level.setBlock(pos, Blocks.STRIPPED_SPRUCE_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+
+        if (state.is(Blocks.GRASS_BLOCK)) {
+            level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 1);
+        }
+
         if (state.is(ModTags.Blocks.STONE_ORES)) {
             level.setBlock(pos, Blocks.STONE.defaultBlockState(), 1);
         }

@@ -1,19 +1,25 @@
 {
-	"required": true,
-	"package": "net.quedoom.francium.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"mixins": [
-		"CraftingTableNeedsTokenMixin",
-		"DestroyBlock",
-		"OpenFurnacesNeedsTokenMixin",
-		"OpenSmithingTableNeedsTokenMixin",
-		"SharpenSticksMixin",
-		"YouCantEvenStartToBreakWithoutAToolLilBro"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "net.quedoom.francium.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "AnvilCraftingMixing",
+    "CheckStillValidCraftingTokenMixin",
+    "CheckStillValidFurnaceSmeltingTokenMixin",
+    "CraftingTableNeedsTokenMixin",
+    "DestroyBlock",
+    "DissableAxeStripping",
+    "DissableHoeTilling",
+    "OpenFurnacesNeedsTokenMixin",
+    "OpenSmithingTableNeedsTokenMixin",
+    "RegisterBlockMixin",
+    "RegisterItemMixin",
+    "YouCantEvenStartToBreakWithoutAToolLilBro"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }

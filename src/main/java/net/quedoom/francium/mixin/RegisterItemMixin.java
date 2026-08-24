@@ -5,21 +5,18 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.quedoom.francium.item.vanilla.StickItem;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.lang.reflect.Method;
 import java.util.function.Function;
 
 @Mixin(Items.class)
-public class SharpenSticksMixin {
+public class RegisterItemMixin {
 
     @Inject(method = "registerItem(Ljava/lang/String;)Lnet/minecraft/world/item/Item;",
             at = @At(value = "HEAD"), cancellable = true)
