@@ -1,0 +1,10 @@
+{
+  "type": "francium_2:deep_merging",
+  "firstItem": "francium_2:andesite_alloy",
+  "secondItem": "francium_2:diorite_alloy",
+  "thirdItem": "francium_2:granite_alloy",
+  "glue": "slime_block",
+  "result": {
+    "id": "francium_2:mineral_mix"
+  }
+}

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "francium_2:mineral_mixed_wooden_casing"
+          "name": "francium_2:wooden_casing"
         }
       ],
       "rolls": 1.0

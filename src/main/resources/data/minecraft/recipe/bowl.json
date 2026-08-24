@@ -2,13 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "L": "francium_2:leaf"
+    "S": "francium_2:broken_stick",
+    "W": "francium_2:wooden_plate"
   },
   "pattern": [
-    "LL",
-    "LL"
+    "SS",
+    "WW"
   ],
   "result": {
-    "id": "minecraft:oak_leaves"
+    "id": "minecraft:bowl"
   }
 }

@@ -1,7 +1,8 @@
 {
   "values": [
-    "francium_2:mineral_mixed_wooden_casing",
     "francium_2:stone_casing",
-    "francium_2:obsidian_casing"
+    "francium_2:obsidian_casing",
+    "francium_2:deep_merger",
+    "francium_2:mineral_mix_block"
   ]
 }

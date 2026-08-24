@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_pile_of_leaves": {
+    "has_leaf": {
       "conditions": {
         "items": [
           {
-            "items": "francium_2:pile_of_leaves"
+            "items": "francium_2:leaf"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_pile_of_leaves"
+      "has_leaf"
     ]
   ],
   "rewards": {
