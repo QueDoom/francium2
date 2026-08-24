@@ -2,7 +2,8 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"all": "block/oak_leaves"
+		"all": "block/oak_leaves",
+		"particle": "minecraft:block/oak_leaves"
 	},
 	"elements": [
 		{
