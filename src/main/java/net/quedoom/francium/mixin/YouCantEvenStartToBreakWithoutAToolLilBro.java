@@ -23,64 +23,30 @@ public class YouCantEvenStartToBreakWithoutAToolLilBro {
                 at = @At(value = "HEAD"), cancellable = true)
 
         protected void getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
-            ItemStack playerStack100000 = player.getMainHandItem();
-            float returnValue = -1f;
+            ItemStack playerStack = player.getMainHandItem();
+            boolean shouldAllow = !(state.requiresCorrectToolForDrops() && state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL));
 
-            if (playerStack100000.is(ItemTags.AXES)) {
-                if (state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL)) {
-                    if (!state.is(BlockTags.MINEABLE_WITH_AXE)) {
-                        returnValue = 0;
-                    } else {
-                        returnValue = -1;
-                    }
+            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+                if (playerStack.is(ItemTags.PICKAXES)) {
+                    shouldAllow = true;
                 }
             }
-            if (playerStack100000.is(ItemTags.HOES)) {
-                if (state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL)) {
-                    if (!state.is(BlockTags.MINEABLE_WITH_HOE)) {
-                        returnValue = 0;
-                    } else {
-                        returnValue = -1;
-                    }
+            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+                if (playerStack.is(ItemTags.SHOVELS)) {
+                    shouldAllow = true;
                 }
             }
-            if (playerStack100000.is(ItemTags.PICKAXES)) {
-                if (state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL)) {
-                    if (!state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-                        returnValue = 0;
-                    } else {
-                        returnValue = -1;
-                    }
+            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_HOE)) {
+                if (playerStack.is(ItemTags.HOES)) {
+                    shouldAllow = true;
                 }
             }
-            if (playerStack100000.is(ItemTags.SHOVELS)) {
-                if (state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL)) {
-                    if (!state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-                        returnValue = 0;
-                    } else {
-                        returnValue = -1;
-                    }
-                }
-            }
-            if (playerStack100000.is(ModTags.Items.NO_HOE_MULTITOOL)) {
-                if (state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL)) {
-                    if (state.is(BlockTags.MINEABLE_WITH_SHOVEL) ||
-                        state.is(BlockTags.MINEABLE_WITH_PICKAXE) ||
-                        state.is(BlockTags.MINEABLE_WITH_AXE)) {
-                        returnValue = -1;
-                    } else {
-                        returnValue = 0;
-                    }
+            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_AXE)) {
+                if (playerStack.is(ItemTags.AXES)) {
+                    shouldAllow = true;
                 }
             }
 
-            if (!playerStack100000.is(ItemTags.AXES) && !playerStack100000.is(ItemTags.HOES) &&
-                !playerStack100000.is(ItemTags.PICKAXES) && !playerStack100000.is(ItemTags.SHOVELS) &&
-                !playerStack100000.is(ModTags.Items.NO_HOE_MULTITOOL))
-                if (state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL))
-                    returnValue = 0;
-
-
-            if (returnValue >= 0) cir.setReturnValue(returnValue);
+            if (!shouldAllow) cir.setReturnValue(0F);
         }
 }
