@@ -1,0 +1,72 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "francium_2:block/glue_mixer"
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_slime"
+      },
+      "when": {
+        "glue_state": "slime"
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_honey"
+      },
+      "when": {
+        "glue_state": "honey"
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_slime"
+      },
+      "when": {
+        "glue_state": "honey"
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_vegetation_0"
+      },
+      "when": {
+        "vegetation": 1
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_vegetation_1"
+      },
+      "when": {
+        "vegetation": 2
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_vegetation_2"
+      },
+      "when": {
+        "vegetation": 3
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_vegetation_3"
+      },
+      "when": {
+        "vegetation": 4
+      }
+    }
+  ]
+}
