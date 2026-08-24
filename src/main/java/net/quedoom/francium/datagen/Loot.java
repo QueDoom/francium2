@@ -21,8 +21,11 @@ public class Loot extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         dropSelf(ModBlocks.WOODEN_CASING);
-        dropSelf(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
+        dropOther(ModBlocks.MINERAL_MIXED_WOODEN_CASING, ModBlocks.WOODEN_CASING);
+        dropSelf(ModBlocks.MINERAL_MIX_BLOCK);
         dropSelf(ModBlocks.STONE_CASING);
         dropSelf(ModBlocks.OBSIDIAN_CASING);
+        dropSelf(ModBlocks.WOODEN_MERGER);
+        dropSelf(ModBlocks.DEEP_MERGER);
     }
 }

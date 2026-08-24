@@ -24,6 +24,7 @@ public class Lang extends FabricLanguageProvider {
         pileTranslate(translationBuilder, ModItems.GRANITE_PILE, "Granite");
         pileTranslate(translationBuilder, ModItems.ANDESITE_PILE, "Andesite");
         pileTranslate(translationBuilder, ModItems.TUFF_PILE, "Tuff");
+        translationBuilder.add(ModItems.COAL_DUST, "Coal Dust");
         pileTranslate(translationBuilder, ModItems.GOLD_ORE_PILE, "Gold Ore");
         pileTranslate(translationBuilder, ModItems.DEEPSLATE_GOLD_ORE_PILE, "Deepslate Gold Ore");
         translationBuilder.add(ModItems.GOLD_DUST, "Gold Dust");
@@ -38,6 +39,7 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add(ModItems.DIAMOND_DUST, "Diamond Dust");
         pileTranslate(translationBuilder, ModItems.DEEPSLATE_PILE, "Deepslate");
         pileTranslate(translationBuilder, ModItems.CALCITE_PILE, "Calcite");
+        pileTranslate(translationBuilder, ModItems.AMETHYST_PILE, "Amethyst");
         pileTranslate(translationBuilder, ModItems.DRIPSTONE_PILE, "Dripstone");
         pileTranslate(translationBuilder, ModItems.NETHERRACK_PILE, "Netherrack");
         pileTranslate(translationBuilder, ModItems.BLACKSTONE_PILE, "Blackstone");
@@ -47,8 +49,24 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.SHARP_STICK);
         autoTranslate(translationBuilder, ModItems.SAWDUST);
 
+
+
+        pileTranslate(translationBuilder, ModItems.BEDROCK_PILE, "Bedrock");
+        autoTranslate(translationBuilder, ModItems.BEDROCK_PEBBLES);
+        autoTranslate(translationBuilder, ModItems.BEDROCK_FLAKE);
+
         translationBuilder.add(ModItems.BARK, "Tree Bark");
+        translationBuilder.add(ModItems.LEAF, "Leaf");
+        translationBuilder.add(ModItems.GRASS, "Grass");
         translationBuilder.add(ModBlocks.PILE_OF_LEAVES, "Leaf");
+
+        translationBuilder.add(ModBlocks.GLUE_MIXER, "Glue Mixer");
+
+        translationBuilder.add(ModItems.GLUE, "Glue");
+        translationBuilder.add(ModItems.VEGAN_GLUE, "Vegan Glue");
+        translationBuilder.add(ModItems.SUPER_GLUE, "Super-Glue");
+        translationBuilder.add(ModItems.ECHO_GLUE, "Echo Glue");
+
 
         autoTranslate(translationBuilder, ModItems.WOODEN_PLATE);
 
@@ -59,18 +77,30 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.DRIPSTONE_PASTE);
         autoTranslate(translationBuilder, ModItems.DRIPSTONE_COATED_MINERAL_MIX);
 
+        autoTranslate(translationBuilder, ModItems.RAW_SLOT);
+        autoTranslate(translationBuilder, ModItems.STACKED_RAW_SLOT);
+        autoTranslate(translationBuilder, ModItems.SLOT);
+        autoTranslate(translationBuilder, ModItems.STACKED_SLOT);
+
+        autoTranslate(translationBuilder, ModBlocks.WOODEN_MERGER);
+        autoTranslate(translationBuilder, ModBlocks.DEEP_MERGER);
+
         autoTranslate(translationBuilder, ModItems.CRAFTING_TOKEN);
         autoTranslate(translationBuilder, ModItems.SMELTING_TOKEN);
         autoTranslate(translationBuilder, ModItems.SMITHING_TOKEN);
 
         autoTranslate(translationBuilder, ModBlocks.WOODEN_CASING);
         autoTranslate(translationBuilder, ModBlocks.MINERAL_MIXED_WOODEN_CASING);
+        translationBuilder.add(ModBlocks.MINERAL_MIX_BLOCK, "Block of Mineral Mix");
         autoTranslate(translationBuilder, ModBlocks.STONE_CASING);
         autoTranslate(translationBuilder, ModBlocks.OBSIDIAN_CASING);
 
 
+        translationBuilder.add("jei.francium_2.wooden_merging", "Wooden Merging");
+        translationBuilder.add("jei.francium_2.deep_merging", "Deep Merging");
 
         translationBuilder.add("creativeTab.francium", "Francium");
+        translationBuilder.add("menu.francium_2.merging", "Merging");
     }
 
     private void pileTranslate(TranslationBuilder builder, Item item, String material) {

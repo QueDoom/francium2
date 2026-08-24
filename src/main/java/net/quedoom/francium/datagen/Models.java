@@ -7,7 +7,6 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.resources.Identifier;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
@@ -22,7 +21,6 @@ public class Models extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.family(ModBlocks.WOODEN_CASING);
-        blockModelGenerators.family(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
     }
@@ -36,6 +34,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.ANDESITE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DIORITE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRANITE_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.COAL_DUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GOLD_ORE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DEEPSLATE_GOLD_ORE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GOLD_DUST, PILE_FLAT_ITEM);
@@ -51,13 +50,25 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.DEEPSLATE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.TUFF_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.CALCITE_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.AMETHYST_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.NETHERRACK_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BLACKSTONE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SOUL_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BASALT_PILE, PILE_FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PEBBLES, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BEDROCK_FLAKE, FLAKE_FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModItems.BARK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.LEAF, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.GRASS, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.GLUE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.VEGAN_GLUE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SUPER_GLUE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.ECHO_GLUE, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.SHARP_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
 
@@ -68,12 +79,18 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_PASTE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_COATED_MINERAL_MIX, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.RAW_SLOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.STACKED_RAW_SLOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SLOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.STACKED_SLOT, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModItems.CRAFTING_TOKEN, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SMELTING_TOKEN, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SMITHING_TOKEN, ModelTemplates.FLAT_ITEM);
     }
     
     public static final ModelTemplate PILE_FLAT_ITEM = createItem("pile_generated", TextureSlot.LAYER0);
+    public static final ModelTemplate FLAKE_FLAT_ITEM = createItem("flake_generated", TextureSlot.LAYER0);
 
     private static ModelTemplate createItem(final String id, final TextureSlot... slots) {
         return new ModelTemplate(Optional.of(Francium.id("item/" + id)), Optional.empty(), slots);

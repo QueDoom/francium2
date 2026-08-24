@@ -28,6 +28,65 @@ public class RecipeGen extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GLUE_MIXER)
+                        .pattern("PS")
+                        .pattern("WB")
+                        .define('P', ModItems.SAWDUST)
+                        .define('S', Items.STICK)
+                        .define('W', ModBlocks.WOODEN_CASING)
+                        .define('B', Items.BOWL)
+                        .unlockedBy(getHasName(ModItems.BROKEN_STICK), has(ModItems.BROKEN_STICK))
+                        .save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.WOODEN_MERGER)
+                        .pattern("SS")
+                        .pattern("SW")
+                        .define('S', ModItems.SLOT)
+                        .define('W', ModBlocks.WOODEN_CASING)
+                        .unlockedBy(getHasName(ModBlocks.WOODEN_CASING), has(ModBlocks.WOODEN_CASING))
+                        .save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.CRAFTING_TABLE)
+                        .pattern("SS")
+                        .pattern("SW")
+                        .define('S', ModItems.STACKED_RAW_SLOT)
+                        .define('W', ModBlocks.WOODEN_MERGER)
+                        .unlockedBy(getHasName(ModBlocks.WOODEN_CASING), has(ModBlocks.WOODEN_CASING))
+                        .save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.FURNACE)
+                        .pattern("CM")
+                        .pattern("ST")
+                        .define('C', Blocks.CAMPFIRE)
+                        .define('M', ModBlocks.MINERAL_MIX_BLOCK)
+                        .define('S', ModItems.STACKED_RAW_SLOT)
+                        .define('T', ModBlocks.STONE_CASING)
+                        .unlockedBy(getHasName(ModBlocks.STONE_CASING), has(ModBlocks.STONE_CASING))
+                        .save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEP_MERGER)
+                        .pattern("DDD")
+                        .pattern("RGS")
+                        .pattern("EEE")
+                        .define('D', Blocks.POINTED_DRIPSTONE)
+                        .define('R', ModItems.STACKED_RAW_SLOT)
+                        .define('G', Items.GOLD_INGOT)
+                        .define('S', ModItems.STACKED_SLOT)
+                        .define('E', Blocks.DEEPSLATE)
+                        .unlockedBy(getHasName(ModItems.DRIPSTONE_PILE), has(ModItems.DRIPSTONE_PILE))
+                        .save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BLAST_FURNACE)
+                        .pattern("DDD")
+                        .pattern("AFA")
+                        .pattern("MMM")
+                        .define('D', ModItems.DIORITE_ALLOY)
+                        .define('A', ModItems.ANDESITE_ALLOY)
+                        .define('F', Blocks.FURNACE)
+                        .define('M', ModBlocks.MINERAL_MIX_BLOCK)
+                        .unlockedBy(getHasName(Blocks.FURNACE), has(Blocks.FURNACE))
+                        .save(output);
+
                 shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE)
                         .requires(ModItems.GRAVEL_PILE, 9)
                         .unlockedBy(getHasName(ModItems.GRAVEL_PILE), has(ModItems.GRAVEL_PILE))

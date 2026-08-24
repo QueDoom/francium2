@@ -60,14 +60,18 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
 
         valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.WOODEN_CASING)
-                .add(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
+                .add(ModBlocks.MINERAL_MIXED_WOODEN_CASING)
+                .add(ModBlocks.WOODEN_MERGER)
+                .add(ModBlocks.GLUE_MIXER);
 
         valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.OBSIDIAN_CASING);
 
         valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.MINERAL_MIXED_WOODEN_CASING)
                 .add(ModBlocks.STONE_CASING)
-                .add(ModBlocks.OBSIDIAN_CASING);
+                .add(ModBlocks.OBSIDIAN_CASING)
+                .add(ModBlocks.DEEP_MERGER)
+                .add(ModBlocks.MINERAL_MIX_BLOCK)
+        ;
     }
 }
