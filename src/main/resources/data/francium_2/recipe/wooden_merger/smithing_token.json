@@ -1,0 +1,9 @@
+{
+  "type": "francium_2:wooden_merging",
+  "firstItem": "smithing_table",
+  "secondItem": "iron_ingot",
+  "glue": "francium_2:wooden_plate",
+  "result": {
+    "id": "francium_2:smithing_token"
+  }
+}
