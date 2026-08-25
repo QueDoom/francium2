@@ -12,10 +12,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.block.DeepMergerBlock;
-import net.quedoom.francium.block.GlueMixerBlock;
-import net.quedoom.francium.block.TransformWhenBrokenBlock;
-import net.quedoom.francium.block.WoodenMergerBlock;
+import net.quedoom.francium.block.*;
 
 import java.util.function.Function;
 
@@ -54,6 +51,8 @@ public class ModBlocks {
 
     public static final Block PILE_OF_LEAVES = register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 
+    public static final Block BLOCK_CONTAINING_WOODEN_CASING = register("block_containing_wooden_casing", BlockContainingBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion().noLootTable(), false);
 
 
 

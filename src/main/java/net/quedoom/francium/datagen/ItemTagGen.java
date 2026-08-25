@@ -51,5 +51,11 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
 
         valueLookupBuilder(ModTags.Items.BIG_VEGETATION)
                 .addOptionalTag(ItemTags.LEAVES);
+
+        valueLookupBuilder(ModTags.Items.SMALL_ECHO)
+                .add(Items.ECHO_SHARD);
+
+        valueLookupBuilder(ModTags.Items.BIG_ECHO)
+                .addOptionalTag(ItemTags.LEAVES);
     }
 }

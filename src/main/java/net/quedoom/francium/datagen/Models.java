@@ -21,6 +21,7 @@ public class Models extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.family(ModBlocks.WOODEN_CASING);
+        blockModelGenerators.family(ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
     }

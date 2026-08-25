@@ -34,6 +34,9 @@ public class ModTags {
         public static final TagKey<Item> SMALL_VEGETATION = createTag("small_vegetation");
         public static final TagKey<Item> BIG_VEGETATION = createTag("big_vegetation");
 
+        public static final TagKey<Item> SMALL_ECHO = createTag("small_echo");
+        public static final TagKey<Item> BIG_ECHO = createTag("big_echo");
+
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, Francium.id(name));
         }

@@ -90,6 +90,7 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.SMITHING_TOKEN);
 
         autoTranslate(translationBuilder, ModBlocks.WOODEN_CASING);
+        autoTranslate(translationBuilder, ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
         autoTranslate(translationBuilder, ModBlocks.MINERAL_MIXED_WOODEN_CASING);
         translationBuilder.add(ModBlocks.MINERAL_MIX_BLOCK, "Block of Mineral Mix");
         autoTranslate(translationBuilder, ModBlocks.STONE_CASING);

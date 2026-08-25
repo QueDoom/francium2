@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.block.BlockContainingBlock;
+import net.quedoom.francium.block.entity.BlockContainingEntity;
 import net.quedoom.francium.block.entity.DeepMergerEntity;
 import net.quedoom.francium.block.entity.GlueMixerEntity;
 
@@ -18,6 +20,9 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<GlueMixerEntity> GLUE_MIXER_ENTITY =
             register("glue_mixer", GlueMixerEntity::new, ModBlocks.GLUE_MIXER);
+
+    public static final BlockEntityType<BlockContainingEntity> BLOCK_CONTAINING_ENTITY =
+            register("block_containing_block", BlockContainingEntity::new, ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,
