@@ -1,6 +1,7 @@
 {
   "values": [
     "francium_2:wooden_casing",
+    "francium_2:block_containing_wooden_casing",
     "francium_2:mineral_mixed_wooden_casing",
     "francium_2:wooden_merger",
     "francium_2:glue_mixer"
