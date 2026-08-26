@@ -54,6 +54,8 @@ public class ModBlocks {
     public static final Block BLOCK_CONTAINING_WOODEN_CASING = register("block_containing_wooden_casing", BlockContainingBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion().noLootTable(), false);
 
+    public static final Block ECHO_BLOCK = register("echo_block", BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING));
+
 
 
 
@@ -88,6 +90,10 @@ public class ModBlocks {
         Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
 
         return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+    }
+
+    private static Block register(String name, BlockBehaviour.Properties properies) {
+        return register(name, Block::new, properies);
     }
 
     private static ResourceKey<Block> keyOfBlock(String name) {

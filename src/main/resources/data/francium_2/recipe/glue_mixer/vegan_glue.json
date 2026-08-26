@@ -1,0 +1,9 @@
+{
+  "type": "francium_2:glue_mixing",
+  "input": "minecraft:iron_ingot",
+  "gtype": 1,
+  "strength": 1,
+  "result": {
+    "id": "francium_2:vegan_glue"
+  }
+}

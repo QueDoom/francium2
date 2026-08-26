@@ -27,6 +27,8 @@ public class ModCreativeModeTabs {
 
               output.accept(ModItems.WOODEN_PLATE);
 
+              output.accept(ModBlocks.ECHO_BLOCK);
+
               output.accept(ModBlocks.GLUE_MIXER);
               output.accept(ModItems.GLUE);
               output.accept(ModItems.VEGAN_GLUE);
@@ -53,6 +55,7 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.SMITHING_TOKEN);
 
               output.accept(ModBlocks.WOODEN_CASING);
+              output.accept(ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
               output.accept(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
               output.accept(ModBlocks.MINERAL_MIX_BLOCK);
               output.accept(ModBlocks.STONE_CASING);

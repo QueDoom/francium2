@@ -2,14 +2,14 @@ package net.quedoom.francium.init;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.api.jei.custom_recipes.AnvilPressingRecipe;
+import net.quedoom.francium.recipe.AnvilPressingRecipe;
 import net.quedoom.francium.recipe.DeepMergingRecipe;
+import net.quedoom.francium.recipe.GlueMixingRecipe;
 import net.quedoom.francium.recipe.WoodenMergingRecipe;
 
 public class ModRecipeTypes {
@@ -45,6 +45,19 @@ public class ModRecipeTypes {
             BuiltInRegistries.RECIPE_TYPE,
             Francium.id(AnvilPressingRecipe.Type.ID),
             new RecipeType<AnvilPressingRecipe>() { }
+    );
+
+
+    public static final RecipeSerializer<GlueMixingRecipe> GLUE_MIXING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.id(GlueMixingRecipe.Type.ID),
+            new RecipeSerializer<>(GlueMixingRecipe.CODEC, GlueMixingRecipe.STREAM_CODEC)
+    );
+
+    public static final RecipeType<GlueMixingRecipe> GLUE_MIXING = Registry.register(
+            BuiltInRegistries.RECIPE_TYPE,
+            Francium.id(GlueMixingRecipe.Type.ID),
+            new RecipeType<GlueMixingRecipe>() { }
     );
 
 

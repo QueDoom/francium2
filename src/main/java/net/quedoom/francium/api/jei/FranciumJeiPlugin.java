@@ -16,21 +16,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.api.jei.custom_recipes.AnvilPressingCategory;
-import net.quedoom.francium.api.jei.custom_recipes.AnvilPressingRecipe;
+import net.quedoom.francium.recipe.AnvilPressingRecipe;
 import net.quedoom.francium.api.jei.custom_recipes.DeepMergingCategory;
 import net.quedoom.francium.api.jei.custom_recipes.WoodenMergingCategory;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModRecipeTypes;
-import net.quedoom.francium.recipe.DeepMergingRecipe;
-import net.quedoom.francium.recipe.WoodenMergingRecipe;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @JeiPlugin
