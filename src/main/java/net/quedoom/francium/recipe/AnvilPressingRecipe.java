@@ -1,15 +1,17 @@
-package net.quedoom.francium.api.jei.custom_recipes;
+package net.quedoom.francium.recipe;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.quedoom.francium.init.ModRecipeTypes;
-import net.quedoom.francium.recipe.DeepMergingRecipe;
 
 import java.util.List;
 
 public class AnvilPressingRecipe implements Recipe<SingleRecipeInput> {
+
+
+
     ItemStackTemplate result;
     List<Ingredient> ingredients;
 

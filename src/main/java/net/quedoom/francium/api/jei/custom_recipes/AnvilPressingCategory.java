@@ -1,7 +1,6 @@
 package net.quedoom.francium.api.jei.custom_recipes;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -11,7 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
-import net.quedoom.francium.recipe.WoodenMergingRecipe;
+import net.quedoom.francium.recipe.AnvilPressingRecipe;
 
 public class AnvilPressingCategory extends AbstractRecipeCategory<AnvilPressingRecipe> {
     public static final IRecipeType<AnvilPressingRecipe> TYPE =
