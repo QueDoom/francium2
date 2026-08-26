@@ -72,12 +72,20 @@ public class GlueMixerBlock extends BaseEntityBlock {
                 level.setBlockAndUpdate(pos, onState.setValue(STATE, GlueMixerState.HONEY));
                 itemEntity.getItem().shrink(1);
             } else if (itemEntity.getItem().is(ModTags.Items.SMALL_VEGETATION) && glueState == GlueMixerState.SLIME &&
-                    veg < 4) {
+                    veg < 4 && echo == 0) {
                 level.setBlockAndUpdate(pos, onState.setValue(VEGETATION, onState.getValue(VEGETATION) + 1));
                 itemEntity.getItem().shrink(1);
             } else if (itemEntity.getItem().is(ModTags.Items.BIG_VEGETATION) && glueState == GlueMixerState.SLIME &&
-                    veg == 0) {
+                    veg == 0 && echo == 0) {
                 level.setBlockAndUpdate(pos, onState.setValue(VEGETATION, 4));
+                itemEntity.getItem().shrink(1);
+            } else if (itemEntity.getItem().is(ModTags.Items.SMALL_ECHO) && glueState == GlueMixerState.SLIME &&
+                    echo < 4 && veg == 0) {
+                level.setBlockAndUpdate(pos, onState.setValue(ECHO, onState.getValue(ECHO) + 1));
+                itemEntity.getItem().shrink(1);
+            } else if (itemEntity.getItem().is(ModTags.Items.BIG_ECHO) && glueState == GlueMixerState.SLIME &&
+                    echo == 0 && veg == 0) {
+                level.setBlockAndUpdate(pos, onState.setValue(ECHO, 4));
                 itemEntity.getItem().shrink(1);
             }
         }
@@ -97,7 +105,7 @@ public class GlueMixerBlock extends BaseEntityBlock {
     }
 
     private void destroyAndDrop(Level level, BlockPos pos, BlockState state, ItemStack stack) {
-        Containers.dropItemStack(level, pos.getX() + pos.getCenter().x, pos.getY() + pos.getCenter().y, pos.getZ() + pos.getCenter().z, stack);
+        Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), stack);
         level.setBlock(pos, state, 3);
     }
 
@@ -113,9 +121,9 @@ public class GlueMixerBlock extends BaseEntityBlock {
         destroyAndDrop(level, pos, state.setValue(STATE, GlueMixerState.SLIME).setValue(VEGETATION, 0), leafStack);
     }
     private void destroyAndDropEcho(Level level, BlockPos pos, BlockState state, int echo) {
-        ItemStack leafStack = echo == 4 ? Items.OAK_LEAVES.getDefaultInstance() : ModItems.LEAF.getDefaultInstance();
+        ItemStack leafStack = echo == 4 ? ModBlocks.ECHO_BLOCK.asItem().getDefaultInstance() : Items.ECHO_SHARD.getDefaultInstance();
         if (echo != 4) leafStack.setCount(echo);
-        destroyAndDrop(level, pos, state.setValue(STATE, GlueMixerState.SLIME).setValue(VEGETATION, 0), leafStack);
+        destroyAndDrop(level, pos, state.setValue(STATE, GlueMixerState.SLIME).setValue(ECHO, 0), leafStack);
     }
 
 //    @Override
