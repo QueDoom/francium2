@@ -1,6 +1,8 @@
 {
+  "block.francium_2.block_containing_stone_casing": "Block Containing Stone Casing",
   "block.francium_2.block_containing_wooden_casing": "Block Containing Wooden Casing",
   "block.francium_2.deep_merger": "Deep Merger",
+  "block.francium_2.echo_block": "Echo Block",
   "block.francium_2.glue_mixer": "Glue Mixer",
   "block.francium_2.mineral_mix_block": "Block of Mineral Mix",
   "block.francium_2.mineral_mixed_wooden_casing": "Mineral Mixed Wooden Casing",
@@ -64,6 +66,7 @@
   "item.francium_2.tuff_pile": "Pile Of Tuff",
   "item.francium_2.vegan_glue": "Vegan Glue",
   "item.francium_2.wooden_plate": "Wooden Plate",
+  "item.francium_2.wooden_shears": "Wooden Shears",
   "jei.francium_2.deep_merging": "Deep Merging",
   "jei.francium_2.wooden_merging": "Wooden Merging",
   "menu.francium_2.merging": "Merging"

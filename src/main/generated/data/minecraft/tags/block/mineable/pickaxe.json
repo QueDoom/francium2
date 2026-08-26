@@ -3,6 +3,7 @@
     "francium_2:stone_casing",
     "francium_2:obsidian_casing",
     "francium_2:deep_merger",
-    "francium_2:mineral_mix_block"
+    "francium_2:mineral_mix_block",
+    "francium_2:block_containing_stone_casing"
   ]
 }

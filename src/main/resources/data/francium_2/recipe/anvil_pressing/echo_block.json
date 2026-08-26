@@ -1,0 +1,8 @@
+{
+  "type": "francium_2:anvil_pressing",
+  "firstItem": "minecraft:echo_shard",
+  "secondItem": "francium_2:stone_casing",
+  "result": {
+    "id": "francium_2:echo_block"
+  }
+}

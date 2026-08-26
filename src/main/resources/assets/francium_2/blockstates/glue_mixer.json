@@ -67,6 +67,42 @@
       "when": {
         "vegetation": 4
       }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_vegetation_0"
+      },
+      "when": {
+        "echo": 1
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_echo_1"
+      },
+      "when": {
+        "echo": 2
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_echo_2"
+      },
+      "when": {
+        "echo": 3
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_echo_3"
+      },
+      "when": {
+        "echo": 4
+      }
     }
   ]
 }

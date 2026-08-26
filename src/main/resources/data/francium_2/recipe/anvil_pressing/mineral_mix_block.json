@@ -1,0 +1,8 @@
+{
+  "type": "francium_2:anvil_pressing",
+  "firstItem": "francium_2:andesite_coated_mineral_mix",
+  "secondItem": "francium_2:wooden_casing",
+  "result": {
+    "id": "francium_2:mineral_mix_block"
+  }
+}

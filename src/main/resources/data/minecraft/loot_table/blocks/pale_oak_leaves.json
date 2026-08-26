@@ -117,7 +117,7 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 2,
+                "max": 4,
                 "min": 1
               },
               "function": "minecraft:set_count"
@@ -129,7 +129,7 @@
           "name": "francium_2:broken_stick"
         }
       ],
-      "rolls": 5
+      "rolls": 2
     },
     {
       "bonus_rolls": 0,
