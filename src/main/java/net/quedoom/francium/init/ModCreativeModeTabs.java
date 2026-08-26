@@ -21,6 +21,7 @@ public class ModCreativeModeTabs {
           .displayItems(((parameters, output) -> {
               output.accept(ModItems.BROKEN_STICK);
               output.accept(ModItems.SHARP_STICK);
+              output.accept(ModItems.WOODEN_SHEARS);
               output.accept(ModItems.BARK);
               output.accept(ModItems.LEAF);
               output.accept(ModItems.GRASS);
@@ -55,7 +56,6 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.SMITHING_TOKEN);
 
               output.accept(ModBlocks.WOODEN_CASING);
-              output.accept(ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
               output.accept(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
               output.accept(ModBlocks.MINERAL_MIX_BLOCK);
               output.accept(ModBlocks.STONE_CASING);

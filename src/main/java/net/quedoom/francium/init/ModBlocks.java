@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
@@ -46,15 +47,18 @@ public class ModBlocks {
             .strength(1.5F, 6.0F).sound(SoundType.STONE));
 
     public static final Block OBSIDIAN_CASING = register("obsidian_casing", Block::new, BlockBehaviour.Properties.of()
-            .noOcclusion().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+            .noOcclusion().mapColor(Blocks.OBSIDIAN.defaultMapColor()).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
             .strength(50.0F, 1200.0F).sound(SoundType.STONE));
 
     public static final Block PILE_OF_LEAVES = register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 
-    public static final Block BLOCK_CONTAINING_WOODEN_CASING = register("block_containing_wooden_casing", BlockContainingBlock::new,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion().noLootTable(), false);
+    public static final Block BLOCK_CONTAINING_WOODEN_CASING = register("block_containing_wooden_casing", p -> new BlockContainingBlock(p, WOODEN_CASING.defaultBlockState()),
+            BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion().noLootTable(), false);
 
-    public static final Block ECHO_BLOCK = register("echo_block", BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING));
+    public static final Block BLOCK_CONTAINING_STONE_CASING = register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING.defaultBlockState()),
+            BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().noLootTable().requiresCorrectToolForDrops(), false);
+
+    public static final Block ECHO_BLOCK = register("echo_block", BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK));
 
 
 

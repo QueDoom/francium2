@@ -20,6 +20,8 @@ public class ModTags {
 
         public static final TagKey<Block> SHARP_STICK_MINES_FAST = createTag("sharp_stick_mines_fast");
 
+        public static final TagKey<Block> BLOCK_CONTAINING_BLOCK_COMPATIBLE = createTag("block_containing_block_compatible");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Francium.id(name));
         }

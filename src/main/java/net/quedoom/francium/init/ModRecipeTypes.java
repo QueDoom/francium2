@@ -12,6 +12,8 @@ import net.quedoom.francium.recipe.DeepMergingRecipe;
 import net.quedoom.francium.recipe.GlueMixingRecipe;
 import net.quedoom.francium.recipe.WoodenMergingRecipe;
 
+import javax.xml.stream.events.EntityReference;
+
 public class ModRecipeTypes {
 
     public static final RecipeSerializer<WoodenMergingRecipe> WOODEN_MERGING_SERIALIZER = Registry.register(
@@ -40,6 +42,12 @@ public class ModRecipeTypes {
             new RecipeType<DeepMergingRecipe>() { }
     );
 
+
+    public static final RecipeSerializer<AnvilPressingRecipe> ANVIL_PRESSING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.id(AnvilPressingRecipe.Type.ID),
+            new RecipeSerializer<>(AnvilPressingRecipe.CODEC, AnvilPressingRecipe.STREAM_CODEC)
+    );
 
     public static final RecipeType<AnvilPressingRecipe> ANVIL_PRESSING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,

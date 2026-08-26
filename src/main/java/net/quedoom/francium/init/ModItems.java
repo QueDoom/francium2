@@ -1,11 +1,13 @@
 package net.quedoom.francium.init;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
@@ -81,6 +83,7 @@ public class ModItems {
     public static Item SMITHING_TOKEN = register("smithing_token");
 
     public static Item SHARP_STICK = register("sharp_stick", new Item.Properties().tool(ModToolMaterials.SHARP_STICK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 0.5F, 3F, 0F));
+    public static Item WOODEN_SHEARS = register(create("wooden_shears"), ShearsItem::new, new Item.Properties().durability(283).component(DataComponents.TOOL, ShearsItem.createToolProperties()));
 
     public static Item UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID = register("unused_item", new Item.Properties());
 
