@@ -47,6 +47,7 @@ public class Lang extends FabricLanguageProvider {
         pileTranslate(translationBuilder, ModItems.BASALT_PILE, "Basalt");
         autoTranslate(translationBuilder, ModItems.BROKEN_STICK);
         autoTranslate(translationBuilder, ModItems.SHARP_STICK);
+        autoTranslate(translationBuilder, ModItems.WOODEN_SHEARS);
         autoTranslate(translationBuilder, ModItems.SAWDUST);
 
 
@@ -91,10 +92,12 @@ public class Lang extends FabricLanguageProvider {
 
         autoTranslate(translationBuilder, ModBlocks.WOODEN_CASING);
         autoTranslate(translationBuilder, ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
+        autoTranslate(translationBuilder, ModBlocks.BLOCK_CONTAINING_STONE_CASING);
         autoTranslate(translationBuilder, ModBlocks.MINERAL_MIXED_WOODEN_CASING);
         translationBuilder.add(ModBlocks.MINERAL_MIX_BLOCK, "Block of Mineral Mix");
         autoTranslate(translationBuilder, ModBlocks.STONE_CASING);
         autoTranslate(translationBuilder, ModBlocks.OBSIDIAN_CASING);
+        autoTranslate(translationBuilder, ModBlocks.ECHO_BLOCK);
 
 
         translationBuilder.add("jei.francium_2.wooden_merging", "Wooden Merging");

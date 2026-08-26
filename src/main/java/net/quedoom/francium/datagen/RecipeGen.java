@@ -28,6 +28,22 @@ public class RecipeGen extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
+                shaped(RecipeCategory.TOOLS, ModItems.WOODEN_SHEARS)
+                        .pattern("S ")
+                        .pattern("DS")
+                        .define('S', ModItems.SHARP_STICK)
+                        .define('D', ModItems.SAWDUST)
+                        .unlockedBy(getHasName(ModItems.SHARP_STICK), has(ModItems.SHARP_STICK))
+                        .save(output);
+                ;
+
+                shaped(RecipeCategory.TOOLS, ModItems.WOODEN_PLATE)
+                        .pattern("DD")
+                        .define('D', ModItems.SAWDUST)
+                        .unlockedBy(getHasName(ModItems.SAWDUST), has(ModItems.SAWDUST))
+                        .save(output);
+                ;
+
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GLUE_MIXER)
                         .pattern("PS")
                         .pattern("WB")

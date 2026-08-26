@@ -57,7 +57,6 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.MINEABLE_WITH_AXE)
                 .addOptionalTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
-
         valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.WOODEN_CASING)
                 .add(ModBlocks.BLOCK_CONTAINING_WOODEN_CASING)
@@ -73,6 +72,13 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.OBSIDIAN_CASING)
                 .add(ModBlocks.DEEP_MERGER)
                 .add(ModBlocks.MINERAL_MIX_BLOCK)
+                .add(ModBlocks.BLOCK_CONTAINING_STONE_CASING)
+        ;
+
+        valueLookupBuilder(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE)
+                .add(ModBlocks.WOODEN_CASING)
+                .add(ModBlocks.STONE_CASING)
         ;
     }
 }
+

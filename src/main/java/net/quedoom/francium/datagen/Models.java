@@ -21,9 +21,9 @@ public class Models extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.family(ModBlocks.WOODEN_CASING);
-        blockModelGenerators.family(ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
+        blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
     }
 
     @Override
@@ -65,6 +65,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.BARK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.LEAF, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRASS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.WOODEN_SHEARS, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.GLUE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.VEGAN_GLUE, ModelTemplates.FLAT_ITEM);

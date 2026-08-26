@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
 import org.jspecify.annotations.Nullable;
@@ -56,6 +57,6 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
                 .add(Items.ECHO_SHARD);
 
         valueLookupBuilder(ModTags.Items.BIG_ECHO)
-                .addOptionalTag(ItemTags.LEAVES);
+                .add(ModBlocks.ECHO_BLOCK.asItem());
     }
 }
