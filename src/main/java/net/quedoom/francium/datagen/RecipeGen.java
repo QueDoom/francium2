@@ -28,6 +28,14 @@ public class RecipeGen extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
+                shaped(RecipeCategory.MISC, ModItems.TUFF_ZONG)
+                        .pattern("TT")
+                        .pattern("TT")
+                        .define('T', ModItems.TUFF_PILE)
+                        .unlockedBy(getHasName(ModItems.TUFF_PILE), has(ModItems.TUFF_PILE))
+                        .save(output);
+                ;
+
                 shaped(RecipeCategory.TOOLS, ModItems.WOODEN_SHEARS)
                         .pattern("S ")
                         .pattern("DS")

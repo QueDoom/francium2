@@ -25,7 +25,12 @@ public class ModRecipeTypes {
     public static final RecipeType<WoodenMergingRecipe> WOODEN_MERGING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
             Francium.id(WoodenMergingRecipe.Type.ID),
-            new RecipeType<WoodenMergingRecipe>() { }
+            new RecipeType<WoodenMergingRecipe>() {
+                @Override
+                public String toString() {
+                    return WoodenMergingRecipe.Type.ID;
+                }
+            }
     );
 
 //    public static final RecipeType<WoodenMergingRecipe> WOODEN_MERGING = createRecipeType("wooden_merging", WoodenMergingRecipe.Type.INSTANCE);
@@ -39,7 +44,12 @@ public class ModRecipeTypes {
     public static final RecipeType<DeepMergingRecipe> DEEP_MERGING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
             Francium.id(DeepMergingRecipe.Type.ID),
-            new RecipeType<DeepMergingRecipe>() { }
+            new RecipeType<DeepMergingRecipe>() {
+                @Override
+                public String toString() {
+                    return DeepMergingRecipe.Type.ID;
+                }
+            }
     );
 
 
@@ -52,7 +62,12 @@ public class ModRecipeTypes {
     public static final RecipeType<AnvilPressingRecipe> ANVIL_PRESSING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
             Francium.id(AnvilPressingRecipe.Type.ID),
-            new RecipeType<AnvilPressingRecipe>() { }
+            new RecipeType<AnvilPressingRecipe>() {
+                @Override
+                public String toString() {
+                    return AnvilPressingRecipe.Type.ID;
+                }
+            }
     );
 
 
@@ -65,7 +80,12 @@ public class ModRecipeTypes {
     public static final RecipeType<GlueMixingRecipe> GLUE_MIXING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
             Francium.id(GlueMixingRecipe.Type.ID),
-            new RecipeType<GlueMixingRecipe>() { }
+            new RecipeType<GlueMixingRecipe>() {
+                @Override
+                public String toString() {
+                    return GlueMixingRecipe.Type.ID;
+                }
+            }
     );
 
 

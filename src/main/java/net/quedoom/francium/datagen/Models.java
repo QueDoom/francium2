@@ -7,6 +7,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
@@ -24,6 +25,7 @@ public class Models extends FabricModelProvider {
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
+
     }
 
     @Override
@@ -50,6 +52,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.DIAMOND_DUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DEEPSLATE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.TUFF_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.TUFF_ZONG, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.CALCITE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.AMETHYST_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_PILE, PILE_FLAT_ITEM);

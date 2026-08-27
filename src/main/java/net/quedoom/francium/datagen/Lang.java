@@ -24,6 +24,7 @@ public class Lang extends FabricLanguageProvider {
         pileTranslate(translationBuilder, ModItems.GRANITE_PILE, "Granite");
         pileTranslate(translationBuilder, ModItems.ANDESITE_PILE, "Andesite");
         pileTranslate(translationBuilder, ModItems.TUFF_PILE, "Tuff");
+        autoTranslate(translationBuilder, ModItems.TUFF_ZONG);
         translationBuilder.add(ModItems.COAL_DUST, "Coal Dust");
         pileTranslate(translationBuilder, ModItems.GOLD_ORE_PILE, "Gold Ore");
         pileTranslate(translationBuilder, ModItems.DEEPSLATE_GOLD_ORE_PILE, "Deepslate Gold Ore");
@@ -98,6 +99,8 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModBlocks.STONE_CASING);
         autoTranslate(translationBuilder, ModBlocks.OBSIDIAN_CASING);
         autoTranslate(translationBuilder, ModBlocks.ECHO_BLOCK);
+
+
 
 
         translationBuilder.add("jei.francium_2.wooden_merging", "Wooden Merging");
