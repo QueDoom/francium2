@@ -7,6 +7,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -49,27 +51,46 @@ public class BlockContainingBlock extends BaseEntityBlock {
     public void destroy(LevelAccessor level, BlockPos pos, BlockState state) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BlockContainingEntity blockContainingEntity) {
-            ItemStack stack =  blockContainingEntity.getContainer().getItem(0);
-            Containers.dropItemStack(((Level) level), pos.getX(), pos.getY(), pos.getZ(), stack);
+            if (blockContainingEntity.isEmpty()) {
+                Containers.dropItemStack(((Level) level), pos.getX(), pos.getY(), pos.getZ(), this.parent.getBlock().asItem().getDefaultInstance());
+            } else {
+                ItemStack stack =  blockContainingEntity.getItem(0);
+                Containers.dropItemStack(((Level) level), pos.getX(), pos.getY(), pos.getZ(), stack);
+                ((Level) level).setBlockAndUpdate(pos, this.parent);
+            }
         }
-        ((Level) level).setBlockAndUpdate(pos, this.parent);
+    }
+
+    @Override
+    public void stepOn(Level level, BlockPos pos, BlockState onState, Entity entity) {
+        if (!(entity instanceof ItemEntity itemEntity)) return;
+        ItemStack itemStack = itemEntity.getItem();
+        if (!(level.getBlockEntity(pos) instanceof BlockContainingEntity blockEntity)) return;
+        if (!(itemStack.getItem() instanceof BlockItem)) return;
+        if (blockEntity.isEmpty()) {
+            blockEntity.setItem(0, itemStack.copyWithCount(1));
+            itemStack.shrink(1);
+        } else {
+            blockEntity.removeItemNoUpdate(0);
+            if (itemStack.is(blockEntity.getItem(0).getItem())) {
+                itemStack.grow(1);
+            }
+        }
     }
 
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!(level.getBlockEntity(pos) instanceof BlockContainingEntity entity)) return InteractionResult.FAIL;
-        Container container = entity.getContainer();
-        ItemStack stack = container.getItem(0);
-        if (!(stack.getItem() instanceof BlockItem)) return InteractionResult.FAIL;
-        if (stack.isEmpty()) {
-            container.setItem(0, itemStack.copyWithCount(1));
+        if (!(level.getBlockEntity(pos) instanceof BlockContainingEntity blockEntity)) return InteractionResult.FAIL;
+        if (!(itemStack.getItem() instanceof BlockItem)) return InteractionResult.FAIL;
+        if (blockEntity.isEmpty()) {
+            blockEntity.setItem(0, itemStack.copyWithCount(1));
             itemStack.shrink(1);
         } else {
-            container.removeItemNoUpdate(0);
-            if (itemStack.is(stack.getItem())) {
+            blockEntity.removeItemNoUpdate(0);
+            if (itemStack.is(blockEntity.getItem(0).getItem())) {
                 itemStack.grow(1);
             } else {
-                player.addItem(stack.copyWithCount(1));
+                player.addItem(blockEntity.getItem(0).copyWithCount(1));
             }
         }
         return InteractionResult.SUCCESS;

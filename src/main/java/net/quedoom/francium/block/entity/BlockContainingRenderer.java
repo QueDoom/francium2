@@ -38,7 +38,7 @@ public class BlockContainingRenderer implements BlockEntityRenderer<BlockContain
     @Override
     public void submit(BlockContainingRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
         poseStack.pushPose();
-        if (state.containerItem.getItem() instanceof BlockItem) {
+        if (state.containerItem.getItem() instanceof BlockItem && state.containerItem.isEmpty()) {
             blockModelResolver.update(state.blockModelRenderState, ((BlockItem) state.containerItem.getItem()).getBlock().defaultBlockState(), BlockDisplayContext.create());
             state.blockModelRenderState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
         }
