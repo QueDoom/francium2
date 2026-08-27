@@ -1,9 +1,0 @@
-{
-  "type": "francium_2:glue_mixing",
-  "input": "minecraft:iron_ingot",
-  "gtype": 2,
-  "strength": 2,
-  "result": {
-    "id": "francium_2:echo_glue"
-  }
-}

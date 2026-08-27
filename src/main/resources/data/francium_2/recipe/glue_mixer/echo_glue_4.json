@@ -1,10 +1,10 @@
 {
   "type": "francium_2:glue_mixing",
   "input": "minecraft:iron_ingot",
-  "gType": "minecraft:honey_block",
+  "gType": "minecraft:echo_shard",
   "strength": "minecraft:netherite_ingot",
   "result": {
-    "id": "francium_2:super_glue",
-    "count": 4
+    "id": "francium_2:echo_glue",
+    "count": 10
   }
 }

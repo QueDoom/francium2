@@ -17,9 +17,8 @@ public class GlueMixingRecipe implements Recipe<GlueMixerInput> {
             instance.group(
                     ItemStackTemplate.CODEC.fieldOf("result").forGetter(GlueMixingRecipe::getResult),
                     Ingredient.CODEC.fieldOf("input").forGetter(GlueMixingRecipe::getIngredient),
-                    PrimitiveCodec.INT.fieldOf("strength").forGetter(GlueMixingRecipe::getStrength),
-                    PrimitiveCodec.INT.fieldOf("gtype").forGetter(GlueMixingRecipe::getGTypeAsInt)
-
+                    Ingredient.CODEC.fieldOf("strength").forGetter(GlueMixingRecipe::getStrength),
+                    Ingredient.CODEC.fieldOf("gType").forGetter(GlueMixingRecipe::getTypeProperty)
             ).apply(instance, GlueMixingRecipe::new)
     );
 
@@ -28,24 +27,24 @@ public class GlueMixingRecipe implements Recipe<GlueMixerInput> {
             GlueMixingRecipe::getResult,
             Ingredient.CONTENTS_STREAM_CODEC,
             GlueMixingRecipe::getIngredient,
-            ByteBufCodecs.INT,
+            Ingredient.CONTENTS_STREAM_CODEC,
             GlueMixingRecipe::getStrength,
-            ByteBufCodecs.INT,
-            GlueMixingRecipe::getStrength,
+            Ingredient.CONTENTS_STREAM_CODEC,
+            GlueMixingRecipe::getTypeProperty,
             GlueMixingRecipe::new
     );
 
 
 
-    ItemStackTemplate result;
-    Ingredient ingredient;
-    GlueMixerGlueType gtype;
-    int strength;
+    final ItemStackTemplate result;
+    final Ingredient ingredient;
+    final Ingredient gtype;
+    final Ingredient strength;
 
-    public GlueMixingRecipe(ItemStackTemplate result, Ingredient first, int strength, int gtype) {
+    public GlueMixingRecipe(ItemStackTemplate result, Ingredient first, Ingredient strength, Ingredient type) {
         this.result = result;
         this.ingredient = first;
-        this.gtype = GlueMixerGlueType.fromInt(gtype);
+        this.gtype = type;
         this.strength = strength;
     }
 
@@ -55,18 +54,10 @@ public class GlueMixingRecipe implements Recipe<GlueMixerInput> {
     public ItemStackTemplate getResult() {
         return result;
     }
-    public GlueMixerGlueType getTypeProperty() {
+    public Ingredient getTypeProperty() {
         return gtype;
     }
-    public int getGTypeAsInt() {
-        return switch (gtype) {
-            case NORMAL -> 0;
-            case VEGAN -> 1;
-            case ECHO -> 2;
-            case SUPER -> 3;
-        };
-    }
-    public int getStrength() {
+    public Ingredient getStrength() {
         return strength;
     }
 
@@ -75,8 +66,8 @@ public class GlueMixingRecipe implements Recipe<GlueMixerInput> {
         return getMatches(input, ingredient, gtype, strength);
     }
 
-    private boolean getMatches(GlueMixerInput input, Ingredient in, GlueMixerGlueType gtype, int strength) {
-        return in.test(input.input()) && GlueMixerGlueType.test(gtype, input) && strength == this.strength;
+    private boolean getMatches(GlueMixerInput input, Ingredient in, Ingredient type, Ingredient strength) {
+        return in.test(input.input()) && type.test(input.type()) && strength.test(input.strength());
     }
 
     @Override

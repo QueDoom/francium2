@@ -2,9 +2,9 @@
   "type": "francium_2:glue_mixing",
   "input": "minecraft:iron_ingot",
   "gType": "francium_2:leaf",
-  "strength": "minecraft:gold_ingot",
+  "strength": "minecraft:netherite_ingot",
   "result": {
     "id": "francium_2:vegan_glue",
-    "count": 32
+    "count": 16
   }
 }

@@ -1,10 +1,10 @@
 {
   "type": "francium_2:glue_mixing",
   "input": "minecraft:iron_ingot",
-  "gType": "francium_2:leaf",
+  "gType": "minecraft:echo_shard",
   "strength": "minecraft:gold_ingot",
   "result": {
-    "id": "francium_2:vegan_glue",
-    "count": 32
+    "id": "francium_2:echo_glue",
+    "count": 3
   }
 }
