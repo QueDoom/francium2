@@ -8,6 +8,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -59,6 +60,11 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().noLootTable().requiresCorrectToolForDrops(), false);
 
     public static final Block ECHO_BLOCK = register("echo_block", BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK));
+
+
+
+    // Slabs
+
 
 
 

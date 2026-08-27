@@ -83,6 +83,7 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.DIAMOND_DUST);
               output.accept(ModItems.DEEPSLATE_PILE);
               output.accept(ModItems.TUFF_PILE);
+              output.accept(ModItems.TUFF_ZONG);
               output.accept(ModItems.CALCITE_PILE);
               output.accept(ModItems.AMETHYST_PILE);
               output.accept(ModItems.DRIPSTONE_PILE);
@@ -94,6 +95,9 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.BEDROCK_PILE);
               output.accept(ModItems.BEDROCK_PEBBLES);
               output.accept(ModItems.BEDROCK_FLAKE);
+
+
+
           })).build();
 
     public static void registerTabs() {
