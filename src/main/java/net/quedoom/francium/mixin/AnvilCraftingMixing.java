@@ -62,7 +62,7 @@ public class AnvilCraftingMixing {
         foundRecipe.ifPresentOrElse((recipe) -> {
             Francium.LOGGER.info("Found recipe again!!!");
             ItemStack result = (recipe.value()).assemble(input);
-            ((BlockContainingEntity) level.getBlockEntity(pos.below())).getContainer().setItem(0, result);
+            ((BlockContainingEntity) level.getBlockEntity(pos.below())).setItem(0, result);
             stack.grow(32);
         }, ( ) -> { });
         return stack.getCount() > 2;

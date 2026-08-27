@@ -97,7 +97,7 @@ public class WoodenMergerMenu extends ItemCombinerMenu {
         return state.is(ModBlocks.WOODEN_MERGER);
     }
 
-    @Override
+
     public void createResult() {
         WoodenMergerInput input = this.createRecipeInput();
         Level var4 = this.level;
