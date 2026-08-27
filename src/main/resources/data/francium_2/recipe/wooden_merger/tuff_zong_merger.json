@@ -1,0 +1,9 @@
+{
+  "type": "francium_2:wooden_merging",
+  "firstItem": "francium_2:tuff_pile",
+  "secondItem": "francium_2:tuff_pile",
+  "glue": "francium_2:glue",
+  "result": {
+    "id": "francium_2:tuff_zong"
+  }
+}
