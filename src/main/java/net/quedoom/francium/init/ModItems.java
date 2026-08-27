@@ -42,6 +42,7 @@ public class ModItems {
 
     public static Item DEEPSLATE_PILE = register("deepslate_pile");
     public static Item TUFF_PILE = register("tuff_pile");
+    public static Item TUFF_ZONG = register("tuff_zong");
     public static Item CALCITE_PILE = register("calcite_pile");
     public static Item AMETHYST_PILE = register("amethyst_pile");
     public static Item DRIPSTONE_PILE = register("dripstone_pile");
