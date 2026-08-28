@@ -13,7 +13,6 @@
     "DissableHoeTilling",
     "OpenFurnacesNeedsTokenMixin",
     "OpenSmithingTableNeedsTokenMixin",
-    "PlaceSandInCampfireMixin",
     "RegisterBlockMixin",
     "RegisterItemMixin",
     "YouCantEvenStartToBreakWithoutAToolLilBro"

@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 
@@ -27,7 +28,7 @@ public class RecipeGen extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 200);
+                campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 200, this, output);
 
                 shaped(RecipeCategory.MISC, Items.CAMPFIRE)
                         .pattern("CW")
@@ -167,8 +168,11 @@ public class RecipeGen extends FabricRecipeProvider {
         };
     }
 
-    private void campfireSmelting(ItemLike in, ItemLike out, RecipeCategory category, int cookingTime) {
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(in), category, out, 0, cookingTime);
+    private void campfireSmelting(ItemLike in, ItemLike out, RecipeCategory category, int cookingTime, RecipeProvider provider, RecipeOutput output) {
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(in), category, out, 0, cookingTime)
+                .unlockedBy(RecipeProvider.getHasName(in), provider.has(in))
+                .group(Francium.getPath(out.asItem()))
+                .save(output, out + "_from_campfire");
     }
 
     @Override
