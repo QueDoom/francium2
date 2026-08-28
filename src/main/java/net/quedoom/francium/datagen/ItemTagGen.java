@@ -58,5 +58,7 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
 
         valueLookupBuilder(ModTags.Items.BIG_ECHO)
                 .add(ModBlocks.ECHO_BLOCK.asItem());
+
+
     }
 }

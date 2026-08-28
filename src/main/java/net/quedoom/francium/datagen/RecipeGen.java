@@ -29,6 +29,16 @@ public class RecipeGen extends FabricRecipeProvider {
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 200);
 
+                shaped(RecipeCategory.MISC, Items.CAMPFIRE)
+                        .pattern("CW")
+                        .pattern("BB")
+                        .define('B', ModItems.BARK)
+                        .define('C', ModItems.COAL_DUST)
+                        .define('W', ModItems.SAWDUST)
+                        .unlockedBy(getHasName(ModItems.TUFF_PILE), has(ModItems.TUFF_PILE))
+                        .save(output);
+                ;
+
                 shaped(RecipeCategory.MISC, ModItems.TUFF_ZONG)
                         .pattern("TT")
                         .pattern("TT")

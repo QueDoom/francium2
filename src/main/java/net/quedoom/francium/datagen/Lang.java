@@ -20,6 +20,8 @@ public class Lang extends FabricLanguageProvider {
     public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
         pileTranslate(translationBuilder, ModItems.DIRT_PILE, "Dirt");
         pileTranslate(translationBuilder, ModItems.GRAVEL_PILE, "Gravel");
+        pileTranslate(translationBuilder, ModItems.SAND_PILE, "Sand");
+        translationBuilder.add(ModItems.GLASS_SHARDS, "Glass Shards");
         pileTranslate(translationBuilder, ModItems.DIORITE_PILE, "Diorite");
         pileTranslate(translationBuilder, ModItems.GRANITE_PILE, "Granite");
         pileTranslate(translationBuilder, ModItems.ANDESITE_PILE, "Andesite");
@@ -49,6 +51,7 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.BROKEN_STICK);
         autoTranslate(translationBuilder, ModItems.SHARP_STICK);
         autoTranslate(translationBuilder, ModItems.WOODEN_SHEARS);
+        autoTranslate(translationBuilder, ModItems.FIRE_STARTER);
         autoTranslate(translationBuilder, ModItems.SAWDUST);
 
 

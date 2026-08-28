@@ -34,6 +34,8 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.SAWDUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BROKEN_STICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRAVEL_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SAND_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.GLASS_SHARDS, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ANDESITE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DIORITE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRANITE_PILE, PILE_FLAT_ITEM);

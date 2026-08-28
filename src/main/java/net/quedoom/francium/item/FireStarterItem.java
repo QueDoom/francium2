@@ -13,9 +13,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
@@ -36,7 +38,7 @@ import net.quedoom.francium.item.vanilla.StickItem;
 import java.util.Random;
 
 public class FireStarterItem extends Item {
-    private static final int USE_DURATION = 100;
+    private static final int USE_DURATION = 32;
 
     public FireStarterItem(Properties properties) {
         super(properties);
@@ -55,18 +57,14 @@ public class FireStarterItem extends Item {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
-        if (state.is(Blocks.FIRE)) return InteractionResult.FAIL;
-        RandomSource randon = level.getRandom();
-        boolean randBool0 = randon.nextBoolean();
-        boolean randBool1 = randon.nextBoolean();
-        boolean randBool2 = randon.nextBoolean();
-        boolean randBool3 = randon.nextBoolean();
-        if (!(randBool0 && randBool1 && randBool2 && randBool3)) {
-            if (player != null) {
-                context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
-            }
+
+        ItemStack stack = context.getItemInHand();
+
+        if (stack.getDamageValue() % 32 != 0) {
+            stack.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);
             return InteractionResult.PASS;
         }
+
         if (!CampfireBlock.canLight(state) && !CandleBlock.canLight(state) && !CandleCakeBlock.canLight(state)) {
             BlockPos relativePos = pos.relative(context.getClickedFace());
             if (BaseFireBlock.canBePlacedAt(level, relativePos, context.getHorizontalDirection())) {
@@ -86,7 +84,7 @@ public class FireStarterItem extends Item {
             }
         } else {
             level.playSound(player, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-            level.setBlock(pos, (BlockState)state.setValue(BlockStateProperties.LIT, true), 11);
+            level.setBlock(pos, state.setValue(BlockStateProperties.LIT, true), 11);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             if (player != null) {
                 context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
