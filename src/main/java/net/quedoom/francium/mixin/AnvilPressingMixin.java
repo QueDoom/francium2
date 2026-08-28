@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Mixin(AnvilBlock.class)
-public class AnvilCraftingMixing {
+public class AnvilPressingMixin {
     @Inject(method = "onLand",
             at = @At("TAIL"))
 
@@ -52,7 +52,8 @@ public class AnvilCraftingMixing {
         Optional<RecipeHolder<AnvilPressingRecipe>> foundRecipe;
         if (level instanceof ServerLevel serverLevel) {
             foundRecipe = serverLevel.recipeAccess().getRecipeFor(ModRecipeTypes.ANVIL_PRESSING, input, serverLevel);
-            Francium.LOGGER.info("found recipe");
+            Francium.LOGGER.info("found recipe:");
+            Francium.LOGGER.info(foundRecipe.toString());
         } else {
             foundRecipe = Optional.empty();
         }

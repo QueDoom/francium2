@@ -11,6 +11,7 @@ import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.item.FireStarterItem;
 import net.quedoom.francium.item.LeafItem;
 
 import java.util.function.BiFunction;
@@ -22,6 +23,7 @@ public class ModItems {
     public static Item BROKEN_STICK = register("broken_stick");
     public static Item SAWDUST = register("sawdust");
     public static Item GRAVEL_PILE = register("gravel_pile");
+    public static Item SAND_PILE = register("sand_pile");
     public static Item ANDESITE_PILE = register("andesite_pile");
     public static Item DIORITE_PILE = register("diorite_pile");
     public static Item GRANITE_PILE = register("granite_pile");
@@ -85,6 +87,8 @@ public class ModItems {
 
     public static Item SHARP_STICK = register("sharp_stick", new Item.Properties().tool(ModToolMaterials.SHARP_STICK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 0.5F, 3F, 0F));
     public static Item WOODEN_SHEARS = register(create("wooden_shears"), ShearsItem::new, new Item.Properties().durability(283).component(DataComponents.TOOL, ShearsItem.createToolProperties()));
+    public static Item FIRE_STARTER = register(create("fire_starter"), FireStarterItem::new, new Item.Properties().durability(64));
+    public static Item GLASS_SHARDS = register("glass_shards");
 
     public static Item UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID = register("unused_item", new Item.Properties());
 

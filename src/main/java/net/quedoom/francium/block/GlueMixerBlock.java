@@ -79,8 +79,8 @@ public class GlueMixerBlock extends BaseEntityBlock {
 
         if (veg > 0) type = 1;
         if (echo > 0) type = 2;
-        Francium.LOGGER.info("Veg: {}", veg);
-        Francium.LOGGER.info("Echo: {}", echo);
+//      Francium.LOGGER.info("Veg: {}", veg);
+//      Francium.LOGGER.info("Echo: {}", echo);
 
         if (type < 0) return InteractionResult.FAIL;
 
@@ -114,25 +114,25 @@ public class GlueMixerBlock extends BaseEntityBlock {
         Optional<RecipeHolder<GlueMixingRecipe>> foundRecipe;
         if (level instanceof ServerLevel serverLevel) {
             foundRecipe = serverLevel.recipeAccess().getRecipeFor(ModRecipeTypes.GLUE_MIXING, input, serverLevel);
-//            Francium.LOGGER.info("SERVER");
+//          Francium.LOGGER.info("SERVER");
         } else {
-//            Francium.LOGGER.info("CLIENT");
+//          Francium.LOGGER.info("CLIENT");
             return false;
         }
         foundRecipe.ifPresentOrElse((recipe) -> {
-//            Francium.LOGGER.info("craft");
+//          Francium.LOGGER.info("craft");
             ItemStack result = recipe.value().assemble(input);
             Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), result);
             level.setBlockAndUpdate(pos, this.defaultBlockState());
-            player.getItemInHand(InteractionHand.MAIN_HAND).shrink(1);
+            if (!player.hasInfiniteMaterials()) player.getItemInHand(InteractionHand.MAIN_HAND).shrink(1);
         }, () -> { });
         return foundRecipe.isPresent();
     }
 
     private GlueMixerInput createRecipeInput(ItemStack stack, ItemStack strength, ItemStack gType) {
-        Francium.LOGGER.info(stack.toString());
-        Francium.LOGGER.info(strength.toString());
-        Francium.LOGGER.info(gType.toString());
+//      Francium.LOGGER.info(stack.toString());
+//      Francium.LOGGER.info(strength.toString());
+//      Francium.LOGGER.info(gType.toString());
         return new GlueMixerInput(gType, strength, stack);
     }
 

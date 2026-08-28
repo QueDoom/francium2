@@ -4,12 +4,11 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
@@ -28,6 +27,8 @@ public class RecipeGen extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
+                campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 200);
+
                 shaped(RecipeCategory.MISC, ModItems.TUFF_ZONG)
                         .pattern("TT")
                         .pattern("TT")
@@ -41,6 +42,15 @@ public class RecipeGen extends FabricRecipeProvider {
                         .pattern("DS")
                         .define('S', ModItems.SHARP_STICK)
                         .define('D', ModItems.SAWDUST)
+                        .unlockedBy(getHasName(ModItems.SHARP_STICK), has(ModItems.SHARP_STICK))
+                        .save(output);
+                ;
+
+                shaped(RecipeCategory.TOOLS, ModItems.FIRE_STARTER)
+                        .pattern("C ")
+                        .pattern("SS")
+                        .define('S', Items.STICK)
+                        .define('C', ModItems.COAL_DUST)
                         .unlockedBy(getHasName(ModItems.SHARP_STICK), has(ModItems.SHARP_STICK))
                         .save(output);
                 ;
@@ -145,6 +155,10 @@ public class RecipeGen extends FabricRecipeProvider {
                         .save(output);
             }
         };
+    }
+
+    private void campfireSmelting(ItemLike in, ItemLike out, RecipeCategory category, int cookingTime) {
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(in), category, out, 0, cookingTime);
     }
 
     @Override

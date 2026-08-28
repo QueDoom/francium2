@@ -30,26 +30,16 @@ public class ModBlocks {
             .noOcclusion().mapColor(Blocks.DRIPSTONE_BLOCK.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
             .strength(4.5F, 3.5F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops());
 
-    public static final Block WOODEN_CASING = register("wooden_casing", Block::new, BlockBehaviour.Properties.of()
-            .noOcclusion().ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F, 3.0F).sound(SoundType.WOOD));
+public static final Block WOODEN_CASING = register("wooden_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
 
-    public static final Block MINERAL_MIX_BLOCK = register("mineral_mix_block", Block::new, BlockBehaviour.Properties.of()
-            .noOcclusion().mapColor(Blocks.ANDESITE.defaultMapColor()).instrument(NoteBlockInstrument.BASS).requiresCorrectToolForDrops()
-            .strength(3.25F, 6.0F).sound(SoundType.STONE));
+    public static final Block MINERAL_MIX_BLOCK = register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
 
     public static final Block MINERAL_MIXED_WOODEN_CASING = register("mineral_mixed_wooden_casing", properties ->
-            new TransformWhenBrokenBlock(properties, MINERAL_MIX_BLOCK.defaultBlockState()), BlockBehaviour.Properties.of()
-            .mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F, 3.0F).sound(SoundType.WOOD));
+            new TransformWhenBrokenBlock(properties, MINERAL_MIX_BLOCK.defaultBlockState()), BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).mapColor(MINERAL_MIX_BLOCK.defaultMapColor()));
 
-    public static final Block STONE_CASING = register("stone_casing", Block::new, BlockBehaviour.Properties.of()
-            .noOcclusion().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).requiresCorrectToolForDrops()
-            .strength(1.5F, 6.0F).sound(SoundType.STONE));
+    public static final Block STONE_CASING = register("stone_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
 
-    public static final Block OBSIDIAN_CASING = register("obsidian_casing", Block::new, BlockBehaviour.Properties.of()
-            .noOcclusion().mapColor(Blocks.OBSIDIAN.defaultMapColor()).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
-            .strength(50.0F, 1200.0F).sound(SoundType.STONE));
+    public static final Block OBSIDIAN_CASING = register("obsidian_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN));
 
     public static final Block PILE_OF_LEAVES = register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 

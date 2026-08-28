@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.BROKEN_STICK);
               output.accept(ModItems.SHARP_STICK);
               output.accept(ModItems.WOODEN_SHEARS);
+              output.accept(ModItems.FIRE_STARTER);
               output.accept(ModItems.BARK);
               output.accept(ModItems.LEAF);
               output.accept(ModItems.GRASS);
@@ -65,6 +66,8 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.DIRT_PILE);
               output.accept(ModItems.SAWDUST);
               output.accept(ModItems.GRAVEL_PILE);
+              output.accept(ModItems.SAND_PILE);
+              output.accept(ModItems.GLASS_SHARDS);
               output.accept(ModItems.ANDESITE_PILE);
               output.accept(ModItems.DIORITE_PILE );
               output.accept(ModItems.GRANITE_PILE);
