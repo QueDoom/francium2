@@ -24,29 +24,32 @@ public class YouCantEvenStartToBreakWithoutAToolLilBro {
 
         protected void getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
             ItemStack playerStack = player.getMainHandItem();
-            boolean shouldAllow = !(state.requiresCorrectToolForDrops() && state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL));
+            boolean requiresTool = state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL);
+            boolean keepOutput = false;
 
-            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-                if (playerStack.is(ItemTags.PICKAXES)) {
-                    shouldAllow = true;
+            if (requiresTool) {
+                if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+                    if (playerStack.is(ItemTags.PICKAXES)) {
+                        keepOutput = true;
+                    }
                 }
-            }
-            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-                if (playerStack.is(ItemTags.SHOVELS)) {
-                    shouldAllow = true;
+                if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+                    if (playerStack.is(ItemTags.SHOVELS)) {
+                        keepOutput = true;
+                    }
                 }
-            }
-            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_HOE)) {
-                if (playerStack.is(ItemTags.HOES)) {
-                    shouldAllow = true;
+                if (state.is(BlockTags.MINEABLE_WITH_HOE)) {
+                    if (playerStack.is(ItemTags.HOES)) {
+                        keepOutput = true;
+                    }
                 }
-            }
-            if (!shouldAllow && state.is(BlockTags.MINEABLE_WITH_AXE)) {
-                if (playerStack.is(ItemTags.AXES)) {
-                    shouldAllow = true;
+                if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
+                    if (playerStack.is(ItemTags.AXES)) {
+                        keepOutput = true;
+                    }
                 }
-            }
 
-            if (!shouldAllow) cir.setReturnValue(0F);
+                if (!keepOutput) cir.setReturnValue(0F);
+            }
         }
 }
