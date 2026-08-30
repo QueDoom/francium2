@@ -45,8 +45,8 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
         valueLookupBuilder(ModTags.Blocks.FORCE_REQUIRE_TOOL)
                 .addOptionalTag(BlockTags.LOGS)
                 .addOptionalTag(BlockTags.PLANKS)
-                .add(Blocks.DIRT)
-                .add(Blocks.GRASS_BLOCK);
+                .addOptionalTag(ModTags.Blocks.TILLS)
+                .add(Blocks.FARMLAND);
 
         valueLookupBuilder(ModTags.Blocks.HARD_BLOCKS)
                 .addOptionalTag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -68,19 +68,95 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlocks.OBSIDIAN_CASING);
 
         valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.STONE_CASING)
-                .add(ModBlocks.OBSIDIAN_CASING)
-                .add(ModBlocks.DEEP_MERGER)
-                .add(ModBlocks.MINERAL_MIX_BLOCK)
-                .add(ModBlocks.BLOCK_CONTAINING_STONE_CASING)
-
-
-        ;
+                .add(
+                        ModBlocks.STONE_CASING,
+                        ModBlocks.OBSIDIAN_CASING,
+                        ModBlocks.DEEP_MERGER,
+                        ModBlocks.MINERAL_MIX_BLOCK,
+                        ModBlocks.BLOCK_CONTAINING_STONE_CASING,
+                        ModBlocks.ANCIENT_BUNS
+                );
 
         valueLookupBuilder(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE)
                 .add(ModBlocks.WOODEN_CASING)
                 .add(ModBlocks.STONE_CASING)
         ;
+
+//        valueLookupBuilder(ModTags.Blocks.DROPS_FORBIDDEN_DUST);
+
+        valueLookupBuilder(ModTags.Blocks.DROPS_FORBIDDEN_FLAKE)
+                .addOptionalTag(BlockTags.COPPER)
+                .add(
+                        Blocks.CUT_COPPER,
+                        Blocks.CUT_COPPER_SLAB,
+                        Blocks.CUT_COPPER_STAIRS,
+                        Blocks.WAXED_CUT_COPPER,
+                        Blocks.WAXED_CUT_COPPER_SLAB,
+                        Blocks.WAXED_CUT_COPPER_STAIRS,
+                        Blocks.EXPOSED_CUT_COPPER,
+                        Blocks.EXPOSED_CUT_COPPER_SLAB,
+                        Blocks.EXPOSED_CUT_COPPER_STAIRS,
+                        Blocks.WAXED_EXPOSED_CUT_COPPER,
+                        Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB,
+                        Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS,
+                        Blocks.WEATHERED_CUT_COPPER,
+                        Blocks.WEATHERED_CUT_COPPER_SLAB,
+                        Blocks.WEATHERED_CUT_COPPER_STAIRS,
+                        Blocks.WAXED_WEATHERED_CUT_COPPER,
+                        Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB,
+                        Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS,
+                        Blocks.OXIDIZED_CUT_COPPER,
+                        Blocks.OXIDIZED_CUT_COPPER_SLAB,
+                        Blocks.OXIDIZED_CUT_COPPER_STAIRS,
+                        Blocks.WAXED_OXIDIZED_CUT_COPPER,
+                        Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB,
+                        Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS,
+                        Blocks.CHISELED_COPPER,
+                        Blocks.WAXED_CHISELED_COPPER,
+                        Blocks.EXPOSED_CHISELED_COPPER,
+                        Blocks.WAXED_EXPOSED_CHISELED_COPPER,
+                        Blocks.WEATHERED_CHISELED_COPPER,
+                        Blocks.WAXED_WEATHERED_CHISELED_COPPER,
+                        Blocks.OXIDIZED_CHISELED_COPPER,
+                        Blocks.WAXED_OXIDIZED_CHISELED_COPPER
+        );
+
+        valueLookupBuilder(ModTags.Blocks.SMALL_DROPS_FORBIDDEN_FLAKE)
+                .add(
+                        Blocks.COPPER_GRATE,
+                        Blocks.WAXED_COPPER_GRATE,
+                        Blocks.EXPOSED_COPPER_GRATE,
+                        Blocks.WAXED_EXPOSED_COPPER_GRATE,
+                        Blocks.WEATHERED_COPPER_GRATE,
+                        Blocks.WAXED_WEATHERED_COPPER_GRATE,
+                        Blocks.OXIDIZED_COPPER_GRATE,
+                        Blocks.WAXED_OXIDIZED_COPPER_GRATE,
+                        Blocks.COPPER_CHAIN.unaffected(),
+                        Blocks.COPPER_BARS.waxed(),
+                        Blocks.COPPER_CHAIN.exposed(),
+                        Blocks.COPPER_BARS.waxedExposed(),
+                        Blocks.COPPER_CHAIN.weathered(),
+                        Blocks.COPPER_BARS.weathered(),
+                        Blocks.COPPER_CHAIN.oxidized(),
+                        Blocks.COPPER_BARS.waxedOxidized(),
+                        Blocks.COPPER_CHAIN.unaffected(),
+                        Blocks.COPPER_CHAIN.waxed(),
+                        Blocks.COPPER_BARS.exposed(),
+                        Blocks.COPPER_CHAIN.waxedExposed(),
+                        Blocks.COPPER_BARS.weathered(),
+                        Blocks.COPPER_CHAIN.weathered(),
+                        Blocks.COPPER_BARS.oxidized(),
+                        Blocks.COPPER_CHAIN.waxedOxidized()
+                );
+
+        valueLookupBuilder(ModTags.Blocks.TILLS)
+                .add(
+                        Blocks.DIRT,
+                        Blocks.DIRT_PATH,
+                        Blocks.COARSE_DIRT,
+                        Blocks.ROOTED_DIRT,
+                        Blocks.GRASS_BLOCK
+                );
     }
 }
 

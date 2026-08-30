@@ -7,7 +7,6 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
@@ -62,6 +61,11 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.BLACKSTONE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SOUL_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BASALT_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.NETHER_GOLD_ORE_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.NETHER_QUARTZ_ORE_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.NETHER_QUARTZ_DUST, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.NETHERITE_DUST, PILE_FLAT_ITEM);
+
 
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PEBBLES, PILE_FLAT_ITEM);

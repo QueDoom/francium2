@@ -32,7 +32,7 @@ import java.util.function.Function;
 public class PileOfLeavesBlock extends Block {
     int MIN_SEGMENT = 0;
     int MAX_SEGMENT = 7;
-    IntegerProperty AMOUNT = ModProperties.PILE_OF_LEAVES_SEGMENTS;
+    public static final IntegerProperty AMOUNT = ModProperties.PILE_OF_LEAVES_SEGMENTS;
 
     public PileOfLeavesBlock(BlockBehaviour.Properties properties) {
         super(properties);

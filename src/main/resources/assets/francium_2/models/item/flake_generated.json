@@ -4,12 +4,12 @@
     "display": {
 		"firstperson_righthand": {
 			"rotation": [0, -90, 25],
-			"translation": [1.13, 10, 0.63],
+			"translation": [1.13, 5, 0.63],
 			"scale": [0.68, 0.68, 0.68]
 		},
 		"firstperson_lefthand": {
 			"rotation": [0, -90, 25],
-			"translation": [1.13, 10, 0.63],
+			"translation": [1.13, 5, 0.63],
 			"scale": [0.68, 0.68, 0.68]
 		},
         "fixed": {

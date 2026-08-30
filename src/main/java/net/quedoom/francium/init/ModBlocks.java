@@ -51,6 +51,14 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
 
     public static final Block ECHO_BLOCK = register("echo_block", BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK));
 
+    public static final Block FORBIDDEN_DUST = register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
+    public static final Block FORBIDDEN_FLAKE = register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
+
+    public static final Block SPECIAL_FORBIDDEN_DUST = register("special_forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
+    public static final Block SPECIAL_FORBIDDEN_FLAKE = register("special_forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
+    public static final Block SMALL_SPECIAL_FORBIDDEN_FLAKE = register("small_special_forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
+
+    public static final Block ANCIENT_BUNS = register("ancient_buns", AncientBunsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANCIENT_DEBRIS));
 
 
     // Slabs

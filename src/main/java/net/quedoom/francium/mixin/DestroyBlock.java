@@ -6,11 +6,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.quedoom.francium.block.AncientBunsBlock;
+import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 @Mixin(Block.class)
 public class DestroyBlock {
@@ -92,10 +96,6 @@ public class DestroyBlock {
                     state.getValue(BlockStateProperties.AXIS)), 1);
         }
 
-        if (state.is(Blocks.GRASS_BLOCK)) {
-            level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 1);
-        }
-
         if (state.is(ModTags.Blocks.STONE_ORES)) {
             level.setBlock(pos, Blocks.STONE.defaultBlockState(), 1);
         }
@@ -111,6 +111,10 @@ public class DestroyBlock {
         }
         if (state.is(Blocks.DEEPSLATE)) {
             level.setBlock(pos, Blocks.COBBLED_DEEPSLATE.defaultBlockState(), 1);
+        }
+
+        if (state.is(Blocks.ANCIENT_DEBRIS)) {
+            level.setBlock(pos, AncientBunsBlock.placementState(ModBlocks.ANCIENT_BUNS.defaultBlockState()), 1);
         }
 
 

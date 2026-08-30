@@ -1,0 +1,6 @@
+{
+  "parent": "francium_2:item/flake_generated",
+  "textures": {
+    "layer0": "francium_2:item/forbidden_flake"
+  }
+}

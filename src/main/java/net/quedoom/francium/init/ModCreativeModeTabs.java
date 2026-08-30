@@ -94,6 +94,15 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.BLACKSTONE_PILE);
               output.accept(ModItems.SOUL_PILE);
               output.accept(ModItems.BASALT_PILE);
+              output.accept(ModItems.NETHER_GOLD_ORE_PILE);
+              output.accept(ModItems.NETHER_QUARTZ_ORE_PILE);
+              output.accept(ModItems.NETHER_QUARTZ_DUST);
+              output.accept(ModItems.NETHERITE_DUST);
+              output.accept(ModBlocks.ANCIENT_BUNS);
+              output.accept(ModItems.ANCIENT_BUN);
+
+              output.accept(ModBlocks.FORBIDDEN_DUST);
+              output.accept(ModBlocks.FORBIDDEN_FLAKE);
 
               output.accept(ModItems.BEDROCK_PILE);
               output.accept(ModItems.BEDROCK_PEBBLES);

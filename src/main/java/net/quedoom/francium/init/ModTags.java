@@ -22,6 +22,12 @@ public class ModTags {
 
         public static final TagKey<Block> BLOCK_CONTAINING_BLOCK_COMPATIBLE = createTag("block_containing_block_compatible");
 
+        public static final TagKey<Block> DROPS_FORBIDDEN_DUST = createTag("drops_forbidden_dust");
+        public static final TagKey<Block> DROPS_FORBIDDEN_FLAKE = createTag("drops_forbidden_flake");
+        public static final TagKey<Block> SMALL_DROPS_FORBIDDEN_FLAKE = createTag("small_drops_forbidden_flake");
+
+        public static final TagKey<Block> TILLS = createTag("tills");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Francium.id(name));
         }

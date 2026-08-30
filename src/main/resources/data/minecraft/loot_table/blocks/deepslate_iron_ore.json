@@ -2,28 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": {
-        "min": 0,
-        "max": 1
-      },
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "francium_2:deepslate_pile",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
       "bonus_rolls": 0,
       "entries": [
         {

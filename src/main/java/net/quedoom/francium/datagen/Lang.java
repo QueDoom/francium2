@@ -48,11 +48,19 @@ public class Lang extends FabricLanguageProvider {
         pileTranslate(translationBuilder, ModItems.BLACKSTONE_PILE, "Blackstone");
         pileTranslate(translationBuilder, ModItems.SOUL_PILE, "Soul");
         pileTranslate(translationBuilder, ModItems.BASALT_PILE, "Basalt");
+        pileTranslate(translationBuilder, ModItems.NETHER_GOLD_ORE_PILE, "Nether Gold Ore");
+        pileTranslate(translationBuilder, ModItems.NETHER_QUARTZ_ORE_PILE, "Nether Quartz Ore");
+        translationBuilder.add(ModItems.NETHER_QUARTZ_DUST, "Quartz Dust");
+        translationBuilder.add(ModItems.NETHERITE_DUST, "Netherite Dust");
         autoTranslate(translationBuilder, ModItems.BROKEN_STICK);
         autoTranslate(translationBuilder, ModItems.SHARP_STICK);
         autoTranslate(translationBuilder, ModItems.WOODEN_SHEARS);
         autoTranslate(translationBuilder, ModItems.FIRE_STARTER);
         autoTranslate(translationBuilder, ModItems.SAWDUST);
+        autoTranslate(translationBuilder, ModBlocks.FORBIDDEN_DUST);
+        autoTranslate(translationBuilder, ModBlocks.FORBIDDEN_FLAKE);
+        autoTranslate(translationBuilder, ModBlocks.ANCIENT_BUNS);
+        autoTranslate(translationBuilder, ModItems.ANCIENT_BUN);
 
 
 

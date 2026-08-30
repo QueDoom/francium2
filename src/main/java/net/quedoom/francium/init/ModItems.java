@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ShearsItem;
-import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.item.FireStarterItem;
@@ -52,6 +51,12 @@ public class ModItems {
     public static Item BLACKSTONE_PILE = register("blackstone_pile");
     public static Item SOUL_PILE = register("soul_pile");
     public static Item BASALT_PILE = register("basalt_pile");
+    public static Item NETHER_GOLD_ORE_PILE = register("nether_gold_ore_pile");
+    public static Item NETHER_QUARTZ_ORE_PILE = register("nether_quartz_ore_pile");
+    public static Item NETHER_QUARTZ_DUST = register("quartz_dust");
+    public static Item ANCIENT_DUST = register("ancient_dust");
+    public static Item ANCIENT_BUN = register("ancient_bun");
+    public static Item NETHERITE_DUST = register("netherite_dust");
 
     public static Item GLUE = register("glue");
     public static Item VEGAN_GLUE = register("vegan_glue");

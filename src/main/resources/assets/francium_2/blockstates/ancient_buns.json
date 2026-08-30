@@ -1,0 +1,55 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "francium_2:block/ancient_buns"
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/ancient_buns_0"
+      },
+      "when": {
+        "ancient_buns_0": true
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/ancient_buns_1"
+      },
+      "when": {
+        "ancient_buns_1": true
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/ancient_buns_2"
+      },
+      "when": {
+        "ancient_buns_2": true
+      }
+    },
+    {
+
+      "apply":
+      {
+        "model": "francium_2:block/ancient_buns_3"
+      },
+      "when": {
+        "ancient_buns_3": true
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/ancient_buns_4"
+      },
+      "when": {
+        "ancient_buns_4": true
+      }
+    }
+  ]
+}

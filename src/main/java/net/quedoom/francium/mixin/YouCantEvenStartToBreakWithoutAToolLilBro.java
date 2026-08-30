@@ -9,6 +9,7 @@ import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.init.ModTags;
@@ -30,6 +31,11 @@ public class YouCantEvenStartToBreakWithoutAToolLilBro {
             if (requiresTool) {
                 if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
                     if (playerStack.is(ItemTags.PICKAXES)) {
+                        keepOutput = true;
+                    }
+                }
+                if (state.is(ModTags.Blocks.TILLS) && !state.is(Blocks.FARMLAND)) {
+                    if (playerStack.is(ItemTags.HOES)) {
                         keepOutput = true;
                     }
                 }

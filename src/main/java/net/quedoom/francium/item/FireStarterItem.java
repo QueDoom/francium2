@@ -47,7 +47,7 @@ public class FireStarterItem extends Item {
     public static float getAnimationTick(ItemStack stack) {
         int damage = stack.getDamageValue();
         float anim = Math.floorMod(damage, 4) + 1;
-        Francium.LOGGER.info("Fire Starter Anim: {}", anim);
+//        Francium.LOGGER.info("Fire Starter Anim: {}", anim);
         return anim;
     }
 
