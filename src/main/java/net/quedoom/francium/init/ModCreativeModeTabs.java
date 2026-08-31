@@ -31,7 +31,11 @@ public class ModCreativeModeTabs {
 
               output.accept(ModBlocks.ECHO_BLOCK);
 
+              output.accept(ModItems.ROCK);
+              output.accept(ModItems.SHARP_ROCK);
+
               output.accept(ModBlocks.GLUE_MIXER);
+              output.accept(ModItems.GLUE_BOTTLE);
               output.accept(ModItems.GLUE);
               output.accept(ModItems.VEGAN_GLUE);
               output.accept(ModItems.SUPER_GLUE);
@@ -97,6 +101,7 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.NETHER_GOLD_ORE_PILE);
               output.accept(ModItems.NETHER_QUARTZ_ORE_PILE);
               output.accept(ModItems.NETHER_QUARTZ_DUST);
+              output.accept(ModItems.ANCIENT_DUST);
               output.accept(ModItems.NETHERITE_DUST);
               output.accept(ModBlocks.ANCIENT_BUNS);
               output.accept(ModItems.ANCIENT_BUN);

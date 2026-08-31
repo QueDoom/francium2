@@ -22,16 +22,28 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         valueLookupBuilder(ItemTags.SHOVELS)
-                .add(ModItems.SHARP_STICK);
+                .add(
+                        ModItems.SHARP_STICK,
+                        ModItems.SHARP_ROCK
+                );
 
         valueLookupBuilder(ItemTags.PICKAXES)
-                .add(ModItems.SHARP_STICK);
+                .add(
+                        ModItems.SHARP_STICK,
+                        ModItems.SHARP_ROCK
+                );
 
         valueLookupBuilder(ItemTags.AXES)
-                .add(ModItems.SHARP_STICK);
+                .add(
+                        ModItems.SHARP_STICK,
+                        ModItems.SHARP_ROCK
+                );
 
         valueLookupBuilder(ModTags.Items.NO_HOE_MULTITOOL)
-                .add(ModItems.SHARP_STICK);
+                .add(
+                        ModItems.SHARP_STICK,
+                        ModItems.SHARP_ROCK
+                );
 
         valueLookupBuilder(ModTags.Items.WOODEN_MERGER_GLUE)
                 .add(ModItems.GLUE)

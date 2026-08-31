@@ -5,13 +5,12 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ShearsItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.item.FireStarterItem;
 import net.quedoom.francium.item.LeafItem;
+import net.quedoom.francium.item.RockItem;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -58,6 +57,9 @@ public class ModItems {
     public static Item ANCIENT_BUN = register("ancient_bun");
     public static Item NETHERITE_DUST = register("netherite_dust");
 
+    public static Item SHARP_ROCK = register("sharp_rock", new Item.Properties().tool(ModToolMaterials.SHARP_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F).enchantable(2).repairable(Items.COBBLESTONE));
+    public static Item ROCK = register(create("rock"), p -> new RockItem(p, SHARP_ROCK), new Item.Properties());
+
     public static Item GLUE_BOTTLE = register("glue_bottle");
     public static Item GLUE = register("glue");
     public static Item VEGAN_GLUE = register("vegan_glue");
@@ -87,9 +89,9 @@ public class ModItems {
     public static Item SLOT = register("slot");
     public static Item STACKED_SLOT = register("stacked_slot");
 
-    public static Item CRAFTING_TOKEN = register("crafting_token");
-    public static Item SMELTING_TOKEN = register("smelting_token");
-    public static Item SMITHING_TOKEN = register("smithing_token");
+    public static Item CRAFTING_TOKEN = register("crafting_token", new Item.Properties().stacksTo(1));
+    public static Item SMELTING_TOKEN = register("smelting_token", new Item.Properties().stacksTo(1));
+    public static Item SMITHING_TOKEN = register("smithing_token", new Item.Properties().stacksTo(1));
 
     public static Item SHARP_STICK = register("sharp_stick", new Item.Properties().tool(ModToolMaterials.SHARP_STICK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 0.5F, 3F, 0F));
     public static Item WOODEN_SHEARS = register(create("wooden_shears"), ShearsItem::new, new Item.Properties().durability(283).component(DataComponents.TOOL, ShearsItem.createToolProperties()));

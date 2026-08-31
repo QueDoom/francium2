@@ -1,8 +1,7 @@
-package net.quedoom.francium.item.vanilla;
+package net.quedoom.francium.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -14,7 +13,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Giant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
@@ -22,7 +20,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -34,12 +31,13 @@ import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
 import org.jspecify.annotations.Nullable;
 
-public class StickItem extends Item {
-    public static final int ANIMATION_DURATION = 10;
+public class RockItem extends Item {
+    private final Item sharpItem;
     private static final int USE_DURATION = 100;
 
-    public StickItem(Properties properties) {
+    public RockItem(Properties properties, Item sharpItem) {
         super(properties);
+        this.sharpItem = sharpItem;
     }
 
     @Override
@@ -49,7 +47,7 @@ public class StickItem extends Item {
         if (player != null && hitResult.getType() == HitResult.Type.BLOCK) {
             if (hitResult instanceof BlockHitResult blockHitResult) {
                 BlockState state = context.getLevel().getBlockState(blockHitResult.getBlockPos());
-                Francium.LOGGER.info(state.toString());
+//                Francium.LOGGER.info(state.toString());
 
                 if (state.is(ModTags.Blocks.HARD_BLOCKS)) {
                     player.startUsingItem(context.getHand());
@@ -73,7 +71,7 @@ public class StickItem extends Item {
     @Override
     public void onUseTick(final Level level, final LivingEntity livingEntity, final ItemStack itemStack, final int ticksRemaining) {
         if (ticksRemaining >= 0 && livingEntity instanceof Player player) {
-            Francium.LOGGER.info("Ticks Remaining: {}", ticksRemaining);
+//            Francium.LOGGER.info("Ticks Remaining: {}", ticksRemaining);
             HitResult hitResult = this.calculateHitResult(player);
             if (hitResult instanceof BlockHitResult blockHitResult) {
                 if (hitResult.getType() == HitResult.Type.BLOCK) {
@@ -95,10 +93,10 @@ public class StickItem extends Item {
                             if (ticksRemaining < USE_DURATION) {
                                 if (level instanceof ServerLevel) {
                                     if (!player.hasInfiniteMaterials()) itemStack.shrink(1);
-                                    player.addItem(ModItems.SHARP_STICK.getDefaultInstance());
+                                    player.addItem(sharpItem.getDefaultInstance());
                                     livingEntity.releaseUsingItem();
                                 } else {
-                                    level.playSound(player, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS);
+                                    level.playSound(player, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS);
                                 }
                             }
                         }
@@ -116,11 +114,6 @@ public class StickItem extends Item {
         }
     }
 
-    private static @Nullable BlockEntity getBlockEntity(Level level, BlockPos pos) {
-        BlockEntity block = level.getBlockEntity(pos);
-        return block;
-    }
-
     private HitResult calculateHitResult(final Player player) {
         return ProjectileUtil.getHitResultOnViewVector(player, EntitySelector.CAN_BE_PICKED, player.blockInteractionRange());
     }
@@ -131,7 +124,7 @@ public class StickItem extends Item {
         int particles = level.getRandom().nextInt(7, 12);
         BlockParticleOption particle = new BlockParticleOption(ParticleTypes.BLOCK, state);
         Direction hitDirection = hitResult.getDirection();
-        DustParticlesDelta dustParticlesDelta = DustParticlesDelta.fromDirection(viewVector, hitDirection);
+        RockItem.DustParticlesDelta dustParticlesDelta = RockItem.DustParticlesDelta.fromDirection(viewVector, hitDirection);
         Vec3 hitLocation = hitResult.getLocation();
 
         for(int i = 0; i < particles; ++i) {
@@ -144,25 +137,25 @@ public class StickItem extends Item {
         private static final double ALONG_SIDE_DELTA = (double)1.0F;
         private static final double OUT_FROM_SIDE_DELTA = 0.1;
 
-        public static DustParticlesDelta fromDirection(final Vec3 viewVector, final Direction hitDirection) {
+        public static RockItem.DustParticlesDelta fromDirection(final Vec3 viewVector, final Direction hitDirection) {
             double yd = (double)0.0F;
-            DustParticlesDelta var10000;
+            RockItem.DustParticlesDelta var10000;
             switch (hitDirection) {
                 case DOWN:
                 case UP:
-                    var10000 = new DustParticlesDelta(viewVector.z(), (double)0.0F, -viewVector.x());
+                    var10000 = new RockItem.DustParticlesDelta(viewVector.z(), (double)0.0F, -viewVector.x());
                     break;
                 case NORTH:
-                    var10000 = new DustParticlesDelta((double)1.0F, (double)0.0F, -0.1);
+                    var10000 = new RockItem.DustParticlesDelta((double)1.0F, (double)0.0F, -0.1);
                     break;
                 case SOUTH:
-                    var10000 = new DustParticlesDelta((double)-1.0F, (double)0.0F, 0.1);
+                    var10000 = new RockItem.DustParticlesDelta((double)-1.0F, (double)0.0F, 0.1);
                     break;
                 case WEST:
-                    var10000 = new DustParticlesDelta(-0.1, (double)0.0F, (double)-1.0F);
+                    var10000 = new RockItem.DustParticlesDelta(-0.1, (double)0.0F, (double)-1.0F);
                     break;
                 case EAST:
-                    var10000 = new DustParticlesDelta(0.1, (double)0.0F, (double)1.0F);
+                    var10000 = new RockItem.DustParticlesDelta(0.1, (double)0.0F, (double)1.0F);
                     break;
                 default:
                     throw new MatchException((String)null, (Throwable)null);
@@ -171,4 +164,5 @@ public class StickItem extends Item {
             return var10000;
         }
     }
+
 }

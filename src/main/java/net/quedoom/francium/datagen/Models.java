@@ -64,6 +64,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.NETHER_GOLD_ORE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.NETHER_QUARTZ_ORE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.NETHER_QUARTZ_DUST, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.ANCIENT_DUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.NETHERITE_DUST, PILE_FLAT_ITEM);
 
 
@@ -75,6 +76,9 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.LEAF, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRASS, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.WOODEN_SHEARS, ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_ROCK, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.GLUE_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GLUE, ModelTemplates.FLAT_ITEM);

@@ -75,6 +75,9 @@ public class Lang extends FabricLanguageProvider {
 
         translationBuilder.add(ModBlocks.GLUE_MIXER, "Glue Mixer");
 
+        autoTranslate(translationBuilder, ModItems.ROCK);
+        autoTranslate(translationBuilder, ModItems.SHARP_ROCK);
+
         translationBuilder.add(ModItems.GLUE_BOTTLE, "Glue Bottle");
         translationBuilder.add(ModItems.GLUE, "Glue");
         translationBuilder.add(ModItems.VEGAN_GLUE, "Vegan Glue");

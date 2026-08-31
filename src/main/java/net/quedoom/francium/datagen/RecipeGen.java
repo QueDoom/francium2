@@ -140,12 +140,12 @@ public class RecipeGen extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.FURNACE), has(Blocks.FURNACE))
                         .save(output);
 
-                shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.STONE)
+                shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.GRAVEL)
                         .requires(ModItems.GRAVEL_PILE, 9)
                         .unlockedBy(getHasName(ModItems.GRAVEL_PILE), has(ModItems.GRAVEL_PILE))
                         .save(output);
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.GRAVEL)
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.ROCK)
                         .pattern("GG")
                         .pattern("GG")
                         .define('G', ModItems.GRAVEL_PILE)
