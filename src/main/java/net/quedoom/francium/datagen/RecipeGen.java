@@ -30,6 +30,14 @@ public class RecipeGen extends FabricRecipeProvider {
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 200, this, output);
 
+                shaped(RecipeCategory.MISC, ModItems.GLUE_BOTTLE)
+                        .pattern("GG")
+                        .pattern("GG")
+                        .define('G', ModItems.GLASS_SHARDS)
+                        .unlockedBy(getHasName(ModItems.GLASS_SHARDS), has(ModItems.GLASS_SHARDS))
+                        .save(output);
+                ;
+
                 shaped(RecipeCategory.MISC, Items.CAMPFIRE)
                         .pattern("CW")
                         .pattern("BB")

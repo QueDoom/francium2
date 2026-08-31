@@ -58,6 +58,7 @@ public class ModItems {
     public static Item ANCIENT_BUN = register("ancient_bun");
     public static Item NETHERITE_DUST = register("netherite_dust");
 
+    public static Item GLUE_BOTTLE = register("glue_bottle");
     public static Item GLUE = register("glue");
     public static Item VEGAN_GLUE = register("vegan_glue");
     public static Item SUPER_GLUE = register("super_glue");

@@ -76,6 +76,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.GRASS, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.WOODEN_SHEARS, ModelTemplates.FLAT_HANDHELD_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.GLUE_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GLUE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.VEGAN_GLUE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SUPER_GLUE, ModelTemplates.FLAT_ITEM);
