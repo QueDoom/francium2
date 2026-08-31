@@ -2,6 +2,8 @@ package net.quedoom.francium.init;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
@@ -47,6 +49,15 @@ public class ModTags {
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, Francium.id(name));
+        }
+    }
+
+    public static class Entities {
+
+        public static final TagKey<EntityType<?>> DOES_NOT_DROP_SLIME = createTag("does_not_drop_slime");
+
+        private static TagKey<EntityType<?>> createTag(String name) {
+            return TagKey.create(Registries.ENTITY_TYPE, Francium.id(name));
         }
     }
 }

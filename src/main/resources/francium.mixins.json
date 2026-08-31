@@ -11,11 +11,12 @@
     "DestroyBlock",
     "DissableAxeStripping",
     "DissableHoeTilling",
-    "PlayerDestroyBlockMixin",
     "OpenFurnacesNeedsTokenMixin",
     "OpenSmithingTableNeedsTokenMixin",
+    "PlayerDestroyBlockMixin",
     "RegisterBlockMixin",
     "RegisterItemMixin",
+    "SlimeBallDropsFromDEATHMixin",
     "YouCantEvenStartToBreakWithoutAToolLilBro"
   ],
   "injectors": {
