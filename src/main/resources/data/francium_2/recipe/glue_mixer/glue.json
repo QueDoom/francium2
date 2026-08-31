@@ -1,10 +1,10 @@
 {
   "type": "francium_2:glue_mixing",
-  "input": "minecraft:iron_ingot",
+  "input": "francium_2:glue_bottle",
   "gType": "minecraft:slime_block",
   "strength": "minecraft:iron_ingot",
   "result": {
     "id": "francium_2:glue",
-    "count": 64
+    "count": 16
   }
 }

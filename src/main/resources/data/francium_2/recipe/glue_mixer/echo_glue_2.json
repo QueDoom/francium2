@@ -1,6 +1,6 @@
 {
   "type": "francium_2:glue_mixing",
-  "input": "minecraft:iron_ingot",
+  "input": "francium_2:glue_bottle",
   "gType": "minecraft:echo_shard",
   "strength": "minecraft:gold_ingot",
   "result": {

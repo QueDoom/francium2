@@ -1,10 +1,10 @@
 {
   "type": "francium_2:glue_mixing",
-  "input": "minecraft:iron_ingot",
+  "input": "francium_2:glue_bottle",
   "gType": "minecraft:echo_shard",
   "strength": "minecraft:diamond",
   "result": {
     "id": "francium_2:echo_glue",
-    "count": 6
+    "count": 4
   }
 }
