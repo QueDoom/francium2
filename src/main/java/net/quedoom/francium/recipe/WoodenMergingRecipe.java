@@ -18,7 +18,7 @@ import net.quedoom.francium.init.ModRecipeTypes;
 
 import java.util.List;
 
-public class WoodenMergingRecipe implements Recipe<WoodenMergerInput> {
+public class    WoodenMergingRecipe implements Recipe<WoodenMergerInput> {
     public static final MapCodec<WoodenMergingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     ItemStackTemplate.CODEC.fieldOf("result").forGetter(WoodenMergingRecipe::getResult),
@@ -66,7 +66,7 @@ public class WoodenMergingRecipe implements Recipe<WoodenMergerInput> {
     @Override
     public boolean matches(WoodenMergerInput input, Level level) {
         return ((ingredients.get(0).test(input.first()) && ingredients.get(1).test(input.second())) ||
-                (ingredients.get(1).test(input.second()) && ingredients.get(0).test(input.first()))) &&
+                (ingredients.get(0).test(input.second()) && ingredients.get(1).test(input.first()))) &&
         glue.test(input.glue());
     }
 

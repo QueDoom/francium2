@@ -21,7 +21,7 @@ import org.jspecify.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public class DeepMergerMenu extends ItemCombinerMenu {
+public class    DeepMergerMenu extends ItemCombinerMenu {
     public static final int FIRST_SLOT = 0;
     public static final int SECOND_SLOT = 1;
     public static final int THIRD_SLOT = 2;
@@ -67,7 +67,7 @@ public class DeepMergerMenu extends ItemCombinerMenu {
         this.shrinkStackInSlot(2);
         this.shrinkStackInSlot(3);
         this.shrinkStackInSlot(4);
-        this.access.execute((level, pos) -> level.levelEvent(1044, pos, 0));
+//        this.access.execute((level, pos) -> level.levelEvent(1044, pos, 0));
     }
 
     private List<ItemStack> getRelevantItems() {

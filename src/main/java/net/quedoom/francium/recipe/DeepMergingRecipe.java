@@ -105,9 +105,9 @@ public class DeepMergingRecipe implements Recipe<DeepMergerInput>{
     }
 
     private boolean getMatches(DeepMergerInput input, int first, int second, int third) {
-        return ingredients.get(first).test(input.getItem(first)) &&
-            ingredients.get(second).test(input.getItem(second)) &&
-            ingredients.get(third).test(input.getItem(third));
+        return ingredients.get(0).test(input.getItem(first)) &&
+            ingredients.get(1).test(input.getItem(second)) &&
+            ingredients.get(2).test(input.getItem(third));
     }
 
     @Override

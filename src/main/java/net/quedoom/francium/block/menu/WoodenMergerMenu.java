@@ -62,7 +62,7 @@ public class WoodenMergerMenu extends ItemCombinerMenu {
         this.shrinkStackInSlot(0);
         this.shrinkStackInSlot(1);
         this.shrinkStackInSlot(2);
-        this.access.execute((level, pos) -> level.levelEvent(1044, pos, 0));
+//        this.access.execute((level, pos) -> level.levelEvent(1044, pos, 0));
     }
 
     private List<ItemStack> getRelevantItems() {
