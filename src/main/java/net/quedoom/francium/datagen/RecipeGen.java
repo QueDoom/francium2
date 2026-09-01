@@ -5,14 +5,19 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.datagen.recipe.DeepMergerRecipeBuilder;
+import net.quedoom.francium.datagen.recipe.GlueMixerRecipeBuilder;
+import net.quedoom.francium.datagen.recipe.WoodenMergerRecipeBuilder;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.recipe.GlueMixerGlueType;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -28,14 +33,50 @@ public class RecipeGen extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 200, this, output);
+                glueMixing(this, output, GlueMixerGlueType.NORMAL, 0, ModItems.GLUE, 32);
+                glueMixing(this, output, GlueMixerGlueType.SUPER, 0, ModItems.SUPER_GLUE, 4);
+                glueMixing(this, output, GlueMixerGlueType.ECHO, 1, ModItems.ECHO_GLUE, 4, "2");
+                glueMixing(this, output, GlueMixerGlueType.ECHO, 2, ModItems.ECHO_GLUE, 6, "3");
+                glueMixing(this, output, GlueMixerGlueType.ECHO, 3, ModItems.ECHO_GLUE, 8, "4");
+                glueMixing(this, output, GlueMixerGlueType.VEGAN, 1, ModItems.VEGAN_GLUE, 6, "2");
+                glueMixing(this, output, GlueMixerGlueType.VEGAN, 2, ModItems.VEGAN_GLUE, 8, "3");
+                glueMixing(this, output, GlueMixerGlueType.VEGAN, 3, ModItems.VEGAN_GLUE, 16, "4");
+
+                woodenMerging(this, output, Items.CRAFTING_TABLE, Items.IRON_INGOT, ModItems.GLUE, ModItems.CRAFTING_TOKEN, 1);
+                woodenMerging(this, output, Items.FURNACE, Items.IRON_INGOT, ModItems.GLUE, ModItems.SMELTING_TOKEN, 1);
+                woodenMerging(this, output, Items.SMITHING_TABLE, Items.IRON_INGOT, ModItems.GLUE, ModItems.SMITHING_TOKEN, 1);
+                woodenMerging(this, output, ModItems.TUFF_PILE, ModItems.TUFF_PILE, ModItems.GLUE, ModItems.TUFF_ZONG, 1);
+                woodenMerging(this, output, ModItems.SLOT, ModItems.SLOT, ModItems.VEGAN_GLUE, ModItems.STACKED_SLOT, 1);
+
+                deepMerging(this, output, ModItems.ANDESITE_ALLOY, ModItems.DIORITE_ALLOY, ModItems.GRANITE_ALLOY, ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX, 1);
+
+                campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
+
+                shaped(RecipeCategory.MISC, ModBlocks.DRIPSTONE_SPIKES)
+                        .pattern("DDD")
+                        .pattern("DDD")
+                        .pattern("MMM")
+                        .define('D', Blocks.POINTED_DRIPSTONE)
+                        .define('M', ModBlocks.MINERAL_MIX_BLOCK)
+                        .unlockedBy(getHasName(ModBlocks.MINERAL_MIX_BLOCK), has(ModBlocks.MINERAL_MIX_BLOCK))
+                        .save(output)
+                ;
+
+                shaped(RecipeCategory.MISC, ModItems.SLOT)
+                        .pattern("TR")
+                        .pattern("RT")
+                        .define('T', ModItems.TUFF_ZONG)
+                        .define('R', ModItems.ROCK)
+                        .unlockedBy(getHasName(ModItems.ROCK), has(ModItems.ROCK))
+                        .save(output)
+                ;
 
                 shaped(RecipeCategory.MISC, ModItems.GLUE_BOTTLE)
                         .pattern("GG")
                         .pattern("GG")
                         .define('G', ModItems.GLASS_SHARDS)
                         .unlockedBy(getHasName(ModItems.GLASS_SHARDS), has(ModItems.GLASS_SHARDS))
-                        .save(output);
+                        .save(output)
                 ;
 
                 shaped(RecipeCategory.MISC, Items.CAMPFIRE)
@@ -174,6 +215,62 @@ public class RecipeGen extends FabricRecipeProvider {
                         .save(output);
             }
         };
+    }
+
+    private void glueMixing(RecipeProvider provider, RecipeOutput output, GlueMixerGlueType gType, int strength, ItemLike result, int count) {
+        GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
+                .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
+                .save(output, "francium_2:glue_mixer/" + Francium.getPath(result.asItem()) + "_from_wooden_merger")
+        ;
+    }
+
+    private void glueMixing(RecipeProvider provider, RecipeOutput output, GlueMixerGlueType gType, int strength, ItemLike result, int count, String id) {
+        GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
+                .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
+                .save(output, "francium_2:glue_mixer/" + Francium.getPath(result.asItem()) + "_from_wooden_merger_" + id)
+        ;
+    }
+
+    private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count) {
+        WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, "francium_2:wooden_merger/" + Francium.getPath(result.asItem()) + "_from_glue_mixer")
+        ;
+    }
+
+    private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count, String id) {
+        WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, "francium_2:wooden_merger/" + Francium.getPath(result.asItem()) + "_from_glue_mixer_" + id)
+        ;
+    }
+
+    private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike wildcard, ItemLike result, int count) {
+        DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, wildcard, result, count)
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, "francium_2:deep_merging/" + Francium.getPath(result.asItem()) + "_from_deep_merging")
+        ;
+    }
+
+    private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike wildcard, ItemLike result, int count, String id) {
+        DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, wildcard, result, count)
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, "francium_2:deep_merging/" + Francium.getPath(result.asItem()) + "_from_deep_merging_" + id)
+        ;
+    }
+
+    private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike result, int count) {
+        DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, result, count)
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, "francium_2:deep_merging/" + Francium.getPath(result.asItem()) + "_from_deep_merging")
+        ;
+    }
+
+    private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike result, int count, String id) {
+        DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, result, count)
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, "francium_2:deep_merging/" + Francium.getPath(result.asItem()) + "_from_deep_merging_" + id)
+        ;
     }
 
     private void campfireSmelting(ItemLike in, ItemLike out, RecipeCategory category, int cookingTime, RecipeProvider provider, RecipeOutput output) {

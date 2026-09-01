@@ -1,5 +1,6 @@
 package net.quedoom.francium.recipe;
 
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -31,6 +32,15 @@ public enum GlueMixerGlueType {
             case VEGAN -> ModItems.LEAF.getDefaultInstance();
             case ECHO -> Items.ECHO_SHARD.getDefaultInstance();
             case SUPER -> Items.HONEY_BLOCK.getDefaultInstance();
+        };
+    }
+
+    public static Item toItem(GlueMixerGlueType value) {
+        return switch (value) {
+            default -> Items.SLIME_BLOCK;
+            case VEGAN -> ModItems.LEAF;
+            case ECHO -> Items.ECHO_SHARD;
+            case SUPER -> Items.HONEY_BLOCK;
         };
     }
 
