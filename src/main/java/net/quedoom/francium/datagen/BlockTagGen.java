@@ -71,6 +71,7 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                 .add(
                         ModBlocks.STONE_CASING,
                         ModBlocks.OBSIDIAN_CASING,
+                        ModBlocks.DRIPSTONE_SPIKES,
                         ModBlocks.DEEP_MERGER,
                         ModBlocks.MINERAL_MIX_BLOCK,
                         ModBlocks.BLOCK_CONTAINING_STONE_CASING,

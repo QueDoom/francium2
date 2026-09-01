@@ -27,6 +27,7 @@ public class Loot extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.STONE_CASING);
         dropSelf(ModBlocks.OBSIDIAN_CASING);
         dropSelf(ModBlocks.WOODEN_MERGER);
+        dropSelf(ModBlocks.DRIPSTONE_SPIKES);
         dropSelf(ModBlocks.DEEP_MERGER);
         dropSelf(ModBlocks.FORBIDDEN_DUST);
         dropSelf(ModBlocks.FORBIDDEN_FLAKE);
