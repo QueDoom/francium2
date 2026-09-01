@@ -26,6 +26,7 @@ public class ModBlocks {
     public static final Block WOODEN_MERGER = register("wooden_merger", WoodenMergerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
+    public static final Block DRIPSTONE_SPIKES = register("dripstone_spikes", DripstoneSpikesBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DRIPSTONE_BLOCK).noOcclusion());
     public static final Block DEEP_MERGER = register("deep_merger", DeepMergerBlock::new, BlockBehaviour.Properties.of()
             .noOcclusion().mapColor(Blocks.DRIPSTONE_BLOCK.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
             .strength(4.5F, 3.5F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops());

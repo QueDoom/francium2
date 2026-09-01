@@ -54,6 +54,7 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.STACKED_RAW_SLOT);
 
               output.accept(ModBlocks.WOODEN_MERGER);
+              output.accept(ModBlocks.DRIPSTONE_SPIKES);
               output.accept(ModBlocks.DEEP_MERGER);
 
               output.accept(ModItems.CRAFTING_TOKEN);
