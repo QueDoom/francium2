@@ -46,7 +46,8 @@ public class PlayerDestroyBlockMixin {
             } else {
                 Block.dropResources(ModBlocks.SMALL_SPECIAL_FORBIDDEN_FLAKE.defaultBlockState(), level, pos);
             }
-        } else if (state.is(ModTags.Blocks.TILLS)) {
+        }
+        if (state.is(ModTags.Blocks.TILLS)) {
             boolean blocks = state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.ROOTED_DIRT) || state.is(Blocks.COARSE_DIRT);
             if (tool.is(ItemTags.HOES)) {
                 level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState());
