@@ -79,6 +79,14 @@ public class Models extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.ROCK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SHARP_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DEEPSLATE_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_DEEPSLATE_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.AMETHYST_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_AMETHYST_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_OBSIDIAN_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BEDROCK_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_BEDROCK_ROCK, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.GLUE_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GLUE, ModelTemplates.FLAT_ITEM);
@@ -93,7 +101,11 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.GRANITE_ALLOY, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.MINERAL_MIX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_PASTE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_PASTE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_COATED_MINERAL_MIX, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.CACTUS_PAPER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_BOOK, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.RAW_SLOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.STACKED_RAW_SLOT, ModelTemplates.FLAT_ITEM);

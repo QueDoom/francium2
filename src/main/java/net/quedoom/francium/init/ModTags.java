@@ -47,6 +47,10 @@ public class ModTags {
         public static final TagKey<Item> SMALL_ECHO = createTag("small_echo");
         public static final TagKey<Item> BIG_ECHO = createTag("big_echo");
 
+        public static final TagKey<Item> AMETHYST_ROCK_MATERIALS = createTag("amethyst_rock_materials");
+        public static final TagKey<Item> OBSIDIAN_ROCK_MATERIALS = createTag("obsidian_rock_materials");
+        public static final TagKey<Item> BEDROCK_ROCK_MATERIALS = createTag("deepslate_rock_materials");
+
         private static TagKey<Item> createTag(String name) {
             return TagKey.create(Registries.ITEM, Francium.id(name));
         }

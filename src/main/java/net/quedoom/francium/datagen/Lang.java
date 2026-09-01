@@ -77,6 +77,14 @@ public class Lang extends FabricLanguageProvider {
 
         autoTranslate(translationBuilder, ModItems.ROCK);
         autoTranslate(translationBuilder, ModItems.SHARP_ROCK);
+        autoTranslate(translationBuilder, ModItems.DEEPSLATE_ROCK);
+        autoTranslate(translationBuilder, ModItems.SHARP_DEEPSLATE_ROCK);
+        autoTranslate(translationBuilder, ModItems.AMETHYST_ROCK);
+        autoTranslate(translationBuilder, ModItems.SHARP_AMETHYST_ROCK);
+        autoTranslate(translationBuilder, ModItems.OBSIDIAN_ROCK);
+        autoTranslate(translationBuilder, ModItems.SHARP_OBSIDIAN_ROCK);
+        autoTranslate(translationBuilder, ModItems.BEDROCK_ROCK);
+        autoTranslate(translationBuilder, ModItems.SHARP_BEDROCK_ROCK);
 
         translationBuilder.add(ModItems.GLUE_BOTTLE, "Glue Bottle");
         translationBuilder.add(ModItems.GLUE, "Glue");
@@ -84,6 +92,8 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add(ModItems.SUPER_GLUE, "Super-Glue");
         translationBuilder.add(ModItems.ECHO_GLUE, "Echo Glue");
 
+        autoTranslate(translationBuilder, ModItems.CACTUS_PAPER);
+        autoTranslate(translationBuilder, ModItems.OBSIDIAN_BOOK);
 
         autoTranslate(translationBuilder, ModItems.WOODEN_PLATE);
 
@@ -92,6 +102,7 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.GRANITE_ALLOY);
         autoTranslate(translationBuilder, ModItems.MINERAL_MIX);
         autoTranslate(translationBuilder, ModItems.DRIPSTONE_PASTE);
+        autoTranslate(translationBuilder, ModItems.OBSIDIAN_PASTE);
         autoTranslate(translationBuilder, ModItems.DRIPSTONE_COATED_MINERAL_MIX);
 
         autoTranslate(translationBuilder, ModItems.RAW_SLOT);

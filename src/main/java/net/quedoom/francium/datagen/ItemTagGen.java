@@ -70,5 +70,25 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
 
         valueLookupBuilder(ModTags.Items.BIG_ECHO)
                 .add(ModBlocks.ECHO_BLOCK.asItem());
+
+        valueLookupBuilder(ModTags.Items.AMETHYST_ROCK_MATERIALS)
+                .add(
+                        Items.AMETHYST_BLOCK,
+                        Items.AMETHYST_SHARD,
+                        Items.AMETHYST_CLUSTER
+                );
+        valueLookupBuilder(ModTags.Items.OBSIDIAN_ROCK_MATERIALS)
+                .add(
+                        Items.OBSIDIAN
+                );
+
+        valueLookupBuilder(ModTags.Items.BEDROCK_ROCK_MATERIALS)
+                .add(
+                        ModItems.BEDROCK_PEBBLES,
+                        ModItems.BEDROCK_FLAKE
+                );
+
+
+
     }
 }

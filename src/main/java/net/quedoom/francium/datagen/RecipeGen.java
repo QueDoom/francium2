@@ -46,7 +46,10 @@ public class RecipeGen extends FabricRecipeProvider {
                 woodenMerging(this, output, Items.FURNACE, Items.IRON_INGOT, ModItems.GLUE, ModItems.SMELTING_TOKEN, 1);
                 woodenMerging(this, output, Items.SMITHING_TABLE, Items.IRON_INGOT, ModItems.GLUE, ModItems.SMITHING_TOKEN, 1);
                 woodenMerging(this, output, ModItems.TUFF_PILE, ModItems.TUFF_PILE, ModItems.GLUE, ModItems.TUFF_ZONG, 1);
+
                 woodenMerging(this, output, ModItems.SLOT, ModItems.SLOT, ModItems.VEGAN_GLUE, ModItems.STACKED_SLOT, 1);
+                woodenMerging(this, output, ModItems.SLOT, ModItems.IRON_ORE_PILE, ModItems.VEGAN_GLUE, ModItems.GLUE, 1);
+                woodenMerging(this, output, ModItems.RAW_SLOT, ModItems.RAW_SLOT, ModItems.VEGAN_GLUE, ModItems.STACKED_RAW_SLOT, 1);
 
                 deepMerging(this, output, ModItems.ANDESITE_ALLOY, ModItems.DIORITE_ALLOY, ModItems.GRANITE_ALLOY, ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX, 1);
 

@@ -57,8 +57,16 @@ public class ModItems {
     public static Item ANCIENT_BUN = register("ancient_bun");
     public static Item NETHERITE_DUST = register("netherite_dust");
 
-    public static Item SHARP_ROCK = register("sharp_rock", new Item.Properties().tool(ModToolMaterials.SHARP_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F).enchantable(2).repairable(Items.COBBLESTONE));
+    public static Item SHARP_ROCK = register("sharp_rock", new Item.Properties().tool(ModToolMaterials.SHARP_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
     public static Item ROCK = register(create("rock"), p -> new RockItem(p, SHARP_ROCK), new Item.Properties());
+    public static Item SHARP_DEEPSLATE_ROCK = register("sharp_deepslate_rock", new Item.Properties().tool(ModToolMaterials.SHARP_DEEPSLATE_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
+    public static Item DEEPSLATE_ROCK = register(create("deepslate_rock"), p -> new RockItem(p, SHARP_DEEPSLATE_ROCK), new Item.Properties());
+    public static Item SHARP_AMETHYST_ROCK = register("sharp_amethyst_rock", new Item.Properties().tool(ModToolMaterials.SHARP_AMETHYST_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
+    public static Item AMETHYST_ROCK = register(create("amethyst_rock"), p -> new RockItem(p, SHARP_AMETHYST_ROCK), new Item.Properties());
+    public static Item SHARP_OBSIDIAN_ROCK = register("sharp_obsidian_rock", new Item.Properties().tool(ModToolMaterials.SHARP_OBSIDIAN_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
+    public static Item OBSIDIAN_ROCK = register(create("obsidian_rock"), p -> new RockItem(p, SHARP_OBSIDIAN_ROCK), new Item.Properties());
+    public static Item SHARP_BEDROCK_ROCK = register("sharp_bedrock_rock", new Item.Properties().tool(ModToolMaterials.SHARP_BEDROCK_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
+    public static Item BEDROCK_ROCK = register(create("bedrock_rock"), p -> new RockItem(p, SHARP_BEDROCK_ROCK), new Item.Properties());
 
     public static Item GLUE_BOTTLE = register("glue_bottle");
     public static Item GLUE = register("glue");
@@ -82,7 +90,11 @@ public class ModItems {
 
     public static Item MINERAL_MIX = register("mineral_mix");
     public static Item DRIPSTONE_PASTE = register("dripstone_paste");
+    public static Item OBSIDIAN_PASTE = register("obsidian_paste");
     public static Item DRIPSTONE_COATED_MINERAL_MIX = register("dripstone_coated_mineral_mix");
+
+    public static Item CACTUS_PAPER = register("cactus_paper");
+    public static Item OBSIDIAN_BOOK = register("obsidian_book");
 
     public static Item RAW_SLOT = register("raw_slot");
     public static Item STACKED_RAW_SLOT = register("stacked_raw_slot");

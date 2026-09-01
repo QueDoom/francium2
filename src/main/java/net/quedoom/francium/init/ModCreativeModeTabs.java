@@ -33,6 +33,14 @@ public class ModCreativeModeTabs {
 
               output.accept(ModItems.ROCK);
               output.accept(ModItems.SHARP_ROCK);
+              output.accept(ModItems.DEEPSLATE_ROCK);
+              output.accept(ModItems.SHARP_DEEPSLATE_ROCK);
+              output.accept(ModItems.AMETHYST_ROCK);
+              output.accept(ModItems.SHARP_AMETHYST_ROCK);
+              output.accept(ModItems.OBSIDIAN_ROCK);
+              output.accept(ModItems.SHARP_OBSIDIAN_ROCK);
+              output.accept(ModItems.BEDROCK_ROCK);
+              output.accept(ModItems.SHARP_BEDROCK_ROCK);
 
               output.accept(ModBlocks.GLUE_MIXER);
               output.accept(ModItems.GLUE_BOTTLE);
@@ -46,7 +54,11 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.GRANITE_ALLOY);
               output.accept(ModItems.MINERAL_MIX);
               output.accept(ModItems.DRIPSTONE_PASTE);
+              output.accept(ModItems.OBSIDIAN_PASTE);
               output.accept(ModItems.DRIPSTONE_COATED_MINERAL_MIX);
+
+              output.accept(ModItems.CACTUS_PAPER);
+              output.accept(ModItems.OBSIDIAN_BOOK);
 
               output.accept(ModItems.SLOT);
               output.accept(ModItems.STACKED_SLOT);
