@@ -97,13 +97,23 @@ public class Lang extends FabricLanguageProvider {
 
         autoTranslate(translationBuilder, ModItems.WOODEN_PLATE);
 
+        autoTranslate(translationBuilder, ModItems.TOOLBOX);
+
+        autoTranslate(translationBuilder, ModItems.ANDESITE_COATED_ROCK);
+        autoTranslate(translationBuilder, ModItems.DIORITE_COATED_ROCK);
+        autoTranslate(translationBuilder, ModItems.GRANITE_COATED_ROCK);
+
         autoTranslate(translationBuilder, ModItems.ANDESITE_ALLOY);
         autoTranslate(translationBuilder, ModItems.DIORITE_ALLOY);
         autoTranslate(translationBuilder, ModItems.GRANITE_ALLOY);
+
         autoTranslate(translationBuilder, ModItems.MINERAL_MIX);
         autoTranslate(translationBuilder, ModItems.DRIPSTONE_PASTE);
+        autoTranslate(translationBuilder, ModItems.AMETHYST_PASTE);
         autoTranslate(translationBuilder, ModItems.OBSIDIAN_PASTE);
         autoTranslate(translationBuilder, ModItems.DRIPSTONE_COATED_MINERAL_MIX);
+        autoTranslate(translationBuilder, ModItems.AMETHYST_COATED_DIAMOND);
+        autoTranslate(translationBuilder, ModItems.OBSIDIAN_INFUSED_DIAMOND);
 
         autoTranslate(translationBuilder, ModItems.RAW_SLOT);
         autoTranslate(translationBuilder, ModItems.STACKED_RAW_SLOT);

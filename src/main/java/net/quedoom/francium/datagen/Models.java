@@ -78,15 +78,15 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.WOODEN_SHEARS, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.ROCK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.SHARP_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_ROCK, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DEEPSLATE_ROCK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.SHARP_DEEPSLATE_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_DEEPSLATE_ROCK, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.AMETHYST_ROCK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.SHARP_AMETHYST_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_AMETHYST_ROCK, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_ROCK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.SHARP_OBSIDIAN_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_OBSIDIAN_ROCK, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_ROCK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.SHARP_BEDROCK_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHARP_BEDROCK_ROCK, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.GLUE_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GLUE, ModelTemplates.FLAT_ITEM);
@@ -96,13 +96,23 @@ public class Models extends FabricModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.SHARP_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.TOOLBOX, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.ANDESITE_COATED_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DIORITE_COATED_ROCK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.GRANITE_COATED_ROCK, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModItems.ANDESITE_ALLOY, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DIORITE_ALLOY, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRANITE_ALLOY, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModItems.MINERAL_MIX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_PASTE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.AMETHYST_PASTE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_PASTE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_COATED_MINERAL_MIX, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.AMETHYST_COATED_DIAMOND, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_INFUSED_DIAMOND, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.CACTUS_PAPER, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_BOOK, ModelTemplates.FLAT_ITEM);

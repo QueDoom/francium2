@@ -68,6 +68,8 @@ public class ModItems {
     public static Item SHARP_BEDROCK_ROCK = register("sharp_bedrock_rock", new Item.Properties().tool(ModToolMaterials.SHARP_BEDROCK_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
     public static Item BEDROCK_ROCK = register(create("bedrock_rock"), p -> new RockItem(p, SHARP_BEDROCK_ROCK), new Item.Properties());
 
+    public static Item TOOLBOX = register("toolbox");
+
     public static Item GLUE_BOTTLE = register("glue_bottle");
     public static Item GLUE = register("glue");
     public static Item VEGAN_GLUE = register("vegan_glue");
@@ -88,10 +90,17 @@ public class ModItems {
     public static Item DIORITE_ALLOY = register("diorite_alloy");
     public static Item GRANITE_ALLOY = register("granite_alloy");
 
+    public static Item ANDESITE_COATED_ROCK = register("andesite_coated_rock");
+    public static Item DIORITE_COATED_ROCK = register("diorite_coated_rock");
+    public static Item GRANITE_COATED_ROCK = register("granite_coated_rock");
+
     public static Item MINERAL_MIX = register("mineral_mix");
     public static Item DRIPSTONE_PASTE = register("dripstone_paste");
+    public static Item AMETHYST_PASTE = register("amethyst_paste");
     public static Item OBSIDIAN_PASTE = register("obsidian_paste");
     public static Item DRIPSTONE_COATED_MINERAL_MIX = register("dripstone_coated_mineral_mix");
+    public static Item AMETHYST_COATED_DIAMOND = register("amethyst_coated_diamond");
+    public static Item OBSIDIAN_INFUSED_DIAMOND = register("obsidian_infused_diamond");
 
     public static Item CACTUS_PAPER = register("cactus_paper");
     public static Item OBSIDIAN_BOOK = register("obsidian_book");

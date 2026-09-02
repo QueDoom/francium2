@@ -49,13 +49,23 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.SUPER_GLUE);
               output.accept(ModItems.ECHO_GLUE);
 
+              output.accept(ModItems.TOOLBOX);
+
+              output.accept(ModItems.ANDESITE_COATED_ROCK);
+              output.accept(ModItems.DIORITE_COATED_ROCK);
+              output.accept(ModItems.GRANITE_COATED_ROCK);
+
               output.accept(ModItems.ANDESITE_ALLOY);
               output.accept(ModItems.DIORITE_ALLOY);
               output.accept(ModItems.GRANITE_ALLOY);
+
               output.accept(ModItems.MINERAL_MIX);
               output.accept(ModItems.DRIPSTONE_PASTE);
+              output.accept(ModItems.AMETHYST_PASTE);
               output.accept(ModItems.OBSIDIAN_PASTE);
               output.accept(ModItems.DRIPSTONE_COATED_MINERAL_MIX);
+              output.accept(ModItems.AMETHYST_COATED_DIAMOND);
+              output.accept(ModItems.OBSIDIAN_INFUSED_DIAMOND);
 
               output.accept(ModItems.CACTUS_PAPER);
               output.accept(ModItems.OBSIDIAN_BOOK);
