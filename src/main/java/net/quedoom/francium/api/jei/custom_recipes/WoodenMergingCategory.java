@@ -1,12 +1,15 @@
 package net.quedoom.francium.api.jei.custom_recipes;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.recipe.WoodenMergingRecipe;
@@ -15,6 +18,7 @@ public class WoodenMergingCategory extends AbstractRecipeCategory<WoodenMergingR
 
     public static final IRecipeType<WoodenMergingRecipe> TYPE =
             IRecipeType.create(Francium.id("wooden_merging"), WoodenMergingRecipe.class);
+
 
     public WoodenMergingCategory(IGuiHelper guiHelper) {
         super(
