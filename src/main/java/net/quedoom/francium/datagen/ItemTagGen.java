@@ -24,19 +24,31 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
         valueLookupBuilder(ItemTags.SHOVELS)
                 .add(
                         ModItems.SHARP_STICK,
-                        ModItems.SHARP_ROCK
+                        ModItems.SHARP_ROCK,
+                        ModItems.SHARP_AMETHYST_ROCK,
+                        ModItems.SHARP_DEEPSLATE_ROCK,
+                        ModItems.SHARP_OBSIDIAN_ROCK,
+                        ModItems.SHARP_BEDROCK_ROCK
                 );
 
         valueLookupBuilder(ItemTags.PICKAXES)
                 .add(
                         ModItems.SHARP_STICK,
-                        ModItems.SHARP_ROCK
+                        ModItems.SHARP_ROCK,
+                        ModItems.SHARP_AMETHYST_ROCK,
+                        ModItems.SHARP_DEEPSLATE_ROCK,
+                        ModItems.SHARP_OBSIDIAN_ROCK,
+                        ModItems.SHARP_BEDROCK_ROCK
                 );
 
         valueLookupBuilder(ItemTags.AXES)
                 .add(
                         ModItems.SHARP_STICK,
-                        ModItems.SHARP_ROCK
+                        ModItems.SHARP_ROCK,
+                        ModItems.SHARP_AMETHYST_ROCK,
+                        ModItems.SHARP_DEEPSLATE_ROCK,
+                        ModItems.SHARP_OBSIDIAN_ROCK,
+                        ModItems.SHARP_BEDROCK_ROCK
                 );
 
         valueLookupBuilder(ModTags.Items.NO_HOE_MULTITOOL)
