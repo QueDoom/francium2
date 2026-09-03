@@ -74,6 +74,9 @@ public class DeepMergingRecipe implements Recipe<DeepMergerInput>{
     public Ingredient getWildcard() {
         return this.wildcard;
     }
+    public Ingredient getWildcardFixEmpty() {
+        return this.wildcard.test(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID.getDefaultInstance()) ? Ingredient.of(Items.DIRT) : this.wildcard;
+    }
 
     @Override
     public boolean showNotification() {

@@ -2,10 +2,14 @@ package net.quedoom.francium;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.init.*;
 import org.slf4j.Logger;
@@ -23,6 +27,10 @@ public class Francium implements ModInitializer {
 		return BuiltInRegistries.ITEM.getKey(item).getPath();
 	}
 
+	public static String getPath(TagKey<?> tagKey) {
+		return tagKey.location().getPath();
+	}
+
 	@Override
 	public void onInitialize() {
 
@@ -33,6 +41,8 @@ public class Francium implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 
 		ModRecipeTypes.registerRecipeTypes();
+
+		RecipeSynchronization.synchronizeRecipeSerializer(ModRecipeTypes.WOODEN_MERGING_SERIALIZER);
 
 		ModMenuTypes.registerMenus();
 

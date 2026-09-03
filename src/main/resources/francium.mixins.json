@@ -3,6 +3,7 @@
   "package": "net.quedoom.francium.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "AnvilEntityPressingMixin",
     "AnvilPressingMixin",
     "CampfiresBeUnlitWhenByDefaultMixin",
     "CheckStillValidCraftingTokenMixin",

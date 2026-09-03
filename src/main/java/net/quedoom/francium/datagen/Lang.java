@@ -3,11 +3,13 @@ package net.quedoom.francium.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.init.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -136,11 +138,36 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModBlocks.OBSIDIAN_CASING);
         autoTranslate(translationBuilder, ModBlocks.ECHO_BLOCK);
 
+        autoTranslate(translationBuilder, ModTags.Items.AMETHYST_ROCK_MATERIALS);
+        autoTranslate(translationBuilder, ModTags.Items.BEDROCK_ROCK_MATERIALS);
+        autoTranslate(translationBuilder, ModTags.Items.BIG_VEGETATION);
+        autoTranslate(translationBuilder, ModTags.Items.DEEP_MERGER_GLUE);
+        autoTranslate(translationBuilder, ModTags.Items.ECHO_ITEMS);
+        autoTranslate(translationBuilder, ModTags.Items.LEAF_ITEMS);
+        autoTranslate(translationBuilder, ModTags.Items.NO_HOE_MULTITOOL);
+        autoTranslate(translationBuilder, ModTags.Items.OBSIDIAN_ROCK_MATERIALS);
+        autoTranslate(translationBuilder, ModTags.Items.BIG_ECHO);
+        autoTranslate(translationBuilder, ModTags.Items.SMALL_ECHO);
+        autoTranslate(translationBuilder, ModTags.Items.SMALL_VEGETATION);
+        autoTranslate(translationBuilder, ModTags.Items.WOODEN_MERGER_GLUE);
 
+        autoTranslate(translationBuilder, ModTags.Entities.DOES_NOT_DROP_SLIME);
 
+        autoTranslate(translationBuilder, ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE);
+        autoTranslate(translationBuilder, ModTags.Blocks.DEEPSLATE_ORES);
+        autoTranslate(translationBuilder, ModTags.Blocks.DROPS_FORBIDDEN_DUST);
+        autoTranslate(translationBuilder, ModTags.Blocks.DROPS_FORBIDDEN_FLAKE);
+        autoTranslate(translationBuilder, ModTags.Blocks.FORCE_REQUIRE_TOOL);
+        autoTranslate(translationBuilder, ModTags.Blocks.HARD_BLOCKS);
+        autoTranslate(translationBuilder, ModTags.Blocks.NETHER_ORES);
+        autoTranslate(translationBuilder, ModTags.Blocks.SHARP_STICK_MINES_FAST);
+        autoTranslate(translationBuilder, ModTags.Blocks.SMALL_DROPS_FORBIDDEN_FLAKE);
+        autoTranslate(translationBuilder, ModTags.Blocks.STONE_ORES);
+        autoTranslate(translationBuilder, ModTags.Blocks.TILLS);
 
         translationBuilder.add("jei.francium_2.wooden_merging", "Wooden Merging");
         translationBuilder.add("jei.francium_2.deep_merging", "Deep Merging");
+        translationBuilder.add("jei.francium_2.glue_mixing", "Glue Mixing");
 
         translationBuilder.add("creativeTab.francium", "Francium");
         translationBuilder.add("menu.francium_2.merging", "Merging");
@@ -181,5 +208,23 @@ public class Lang extends FabricLanguageProvider {
         String titleCase = result.toString().trim();
 
         builder.add(item, titleCase);
+    }
+    private void autoTranslate(TranslationBuilder builder, TagKey<?> tag) {
+        String translateLeft = tag.getTranslationKey();
+        String snakeCase = Francium.getPath(tag);
+//        String snakeCase = "";
+        String replaceUnderscores = snakeCase.replace('_', ' ');
+        String[] words = replaceUnderscores.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                result.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1))
+                        .append(" ");
+            }
+        }
+        String titleCase = result.toString().trim();
+
+        builder.add(translateLeft, titleCase);
     }
 }

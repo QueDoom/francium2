@@ -38,7 +38,6 @@ public class AnvilPressingMixin {
             Francium.LOGGER.info(itemEntity.toString());
             ItemStack stack = itemEntity.getItem();
             if (stack.getCount() >= 4 && level.getBlockState(pos.below()).is(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE)) {
-                Francium.LOGGER.info("hehe");
                 if (createResult(level, stack, (level.getBlockState(pos.below()).getBlock()).asItem().getDefaultInstance(), pos)) {
                     stack.shrink(4);
                 }
@@ -52,8 +51,8 @@ public class AnvilPressingMixin {
         Optional<RecipeHolder<AnvilPressingRecipe>> foundRecipe;
         if (level instanceof ServerLevel serverLevel) {
             foundRecipe = serverLevel.recipeAccess().getRecipeFor(ModRecipeTypes.ANVIL_PRESSING, input, serverLevel);
-            Francium.LOGGER.info("found recipe:");
-            Francium.LOGGER.info(foundRecipe.toString());
+//            Francium.LOGGER.info("found recipe:");
+//            Francium.LOGGER.info(foundRecipe.toString());
         } else {
             foundRecipe = Optional.empty();
         }
@@ -61,7 +60,7 @@ public class AnvilPressingMixin {
         ItemStack stack = ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID.getDefaultInstance();
 
         foundRecipe.ifPresentOrElse((recipe) -> {
-            Francium.LOGGER.info("Found recipe again!!!");
+//            Francium.LOGGER.info("Found recipe again!!!");
             ItemStack result = (recipe.value()).assemble(input);
             ((BlockContainingEntity) level.getBlockEntity(pos.below())).setItem(0, result);
             stack.grow(32);

@@ -6,11 +6,17 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModRecipeTypes;
+import net.quedoom.francium.init.ModTags;
 
 public class GlueMixingRecipe implements Recipe<GlueMixerInput> {
     public static final MapCodec<GlueMixingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
@@ -55,6 +61,23 @@ public class GlueMixingRecipe implements Recipe<GlueMixerInput> {
         return result;
     }
     public Ingredient getTypeProperty() {
+        return gtype;
+    }
+    public Ingredient getGTypeAsBothBlockAndItem() {
+        if (gtype.test(ModItems.LEAF.getDefaultInstance())) {
+            return Ingredient.of(
+                    ModItems.LEAF,
+                    Items.OAK_LEAVES,
+                    Items.ACACIA_LEAVES,
+                    Items.CHERRY_LEAVES,
+                    Items.PALE_OAK_LEAVES,
+                    Items.DARK_OAK_LEAVES,
+                    Items.MANGROVE_LEAVES,
+                    Items.BIRCH_LEAVES
+                    );
+        } else if (gtype.test(Items.ECHO_SHARD.getDefaultInstance())) {
+            return Ingredient.of(ModBlocks.ECHO_BLOCK.asItem(), Items.ECHO_SHARD);
+        }
         return gtype;
     }
     public Ingredient getStrength() {

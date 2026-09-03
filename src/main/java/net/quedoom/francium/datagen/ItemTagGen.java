@@ -100,6 +100,14 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
                         ModItems.BEDROCK_FLAKE
                 );
 
+        valueLookupBuilder(ModTags.Items.LEAF_ITEMS)
+                .add(ModItems.LEAF)
+                .addOptionalTag(ItemTags.LEAVES);
+
+        valueLookupBuilder(ModTags.Items.ECHO_ITEMS)
+                .add(Items.ECHO_SHARD)
+                .add(ModBlocks.ECHO_BLOCK.asItem());
+
 
 
     }

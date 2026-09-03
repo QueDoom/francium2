@@ -42,7 +42,7 @@ public class DeepMergingCategory extends AbstractRecipeCategory<DeepMergingRecip
                 .add(recipe.getGlue());
         builder.addInputSlot(42, 33)
                 .setStandardSlotBackground()
-                .add(recipe.getWildcard());
+                .add(recipe.getWildcardFixEmpty());
 
         builder.addOutputSlot(95, 21)
                 .setOutputSlotBackground()
