@@ -59,7 +59,7 @@ public class BlockContainingEntity extends BlockEntity implements Container {
             setChanged();
             return containerList.set(slot, getItem(slot).copyWithCount(getItem(slot).getCount() - count));
         }
-        return null;
+        return containerList.get(slot);
     }
 
     @Override
