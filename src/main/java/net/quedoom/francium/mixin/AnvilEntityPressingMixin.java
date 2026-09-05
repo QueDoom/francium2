@@ -93,8 +93,25 @@ public abstract class AnvilEntityPressingMixin extends Entity {
     }
 
     private boolean getOr(boolean original) {
+        Level level = this.level();
+        if (level != null && !level.isClientSide()) return false;
+        BlockPos pos = this.blockPosition();
+        BlockState stateBelow = level.getBlockState(pos.below());
+
+        AABB aabb = AABB.encapsulatingFullBlocks(pos, pos);
+        List<ItemEntity> list = level.getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
+        ItemStack stackedSlot = ItemStack.EMPTY;
+        ItemStack rawStackedSlot = ItemStack.EMPTY;
+        Francium.LOGGER.info(list.toString());
+        for (ItemEntity itemEntity : list) {
+            Francium.LOGGER.info(itemEntity.toString());
+            ItemStack stack = itemEntity.getItem();
+            if (stack.is(ModItems.STACKED_SLOT)) stackedSlot = stack;
+            if (stack.is(ModItems.STACKED_RAW_SLOT)) rawStackedSlot = stack;
+        }
+
         BlockState state = this.level().getBlockState(this.blockPosition());
-        if (this.blockState.is(Blocks.ANVIL) && state.is(ModBlocks.DRIPSTONE_SPIKES)) {
+        if (this.blockState.is(Blocks.ANVIL) && state.is(ModBlocks.DRIPSTONE_SPIKES) && stateBelow.is(Blocks.DEEPSLATE) && !stackedSlot.isEmpty() && !rawStackedSlot.isEmpty()) {
             return true;
         }
         return original;
