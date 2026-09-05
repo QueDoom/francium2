@@ -32,6 +32,8 @@ public class Loot extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.FORBIDDEN_DUST);
         dropSelf(ModBlocks.FORBIDDEN_FLAKE);
         dropOther(ModBlocks.ANCIENT_BUNS, ModItems.ANCIENT_BUN);
+        dropSelf(ModBlocks.BUNDLE_TABLE);
+        dropSelf(ModBlocks.TRADER_BENCH);
 
 
 

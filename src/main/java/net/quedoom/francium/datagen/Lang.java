@@ -3,6 +3,7 @@ package net.quedoom.francium.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -124,6 +125,8 @@ public class Lang extends FabricLanguageProvider {
 
         autoTranslate(translationBuilder, ModBlocks.WOODEN_MERGER);
         autoTranslate(translationBuilder, ModBlocks.DEEP_MERGER);
+        autoTranslate(translationBuilder, ModBlocks.BUNDLE_TABLE);
+        translationBuilder.add(ModBlocks.TRADER_BENCH, "Trader's Bench");
 
         autoTranslate(translationBuilder, ModItems.CRAFTING_TOKEN);
         autoTranslate(translationBuilder, ModItems.SMELTING_TOKEN);
@@ -171,6 +174,8 @@ public class Lang extends FabricLanguageProvider {
 
         translationBuilder.add("creativeTab.francium", "Francium");
         translationBuilder.add("menu.francium_2.merging", "Merging");
+        translationBuilder.add("menu.francium_2.trader_bench", "Trading");
+        translationBuilder.add("menu.francium_2.bundle_table", "Bundle Table");
     }
 
     private void pileTranslate(TranslationBuilder builder, Item item, String material) {
