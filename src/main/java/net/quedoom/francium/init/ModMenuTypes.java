@@ -12,6 +12,7 @@ public class ModMenuTypes {
 
     public static final MenuType<WoodenMergerMenu> WOODEN_MERGER = register("wooden_merger", WoodenMergerMenu::new);
     public static final MenuType<DeepMergerMenu> DEEP_MERGER = register("deep_merger", DeepMergerMenu::new);
+    public static final MenuType<BundleTableMenu> BUNDLE_TABLE = register("bundle_table", (containerId, inventory) -> new BundleTableMenu(containerId, inventory, 2));
 
     public static <T extends AbstractContainerMenu> MenuType<T> register(
             String name,

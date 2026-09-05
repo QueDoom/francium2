@@ -21,6 +21,8 @@ public class ModProperties {
     public static final BooleanProperty ANCIENT_BUNS_3 = BooleanProperty.create("ancient_buns_3");
     public static final BooleanProperty ANCIENT_BUNS_4 = BooleanProperty.create("ancient_buns_4");
 
+    public static final BooleanProperty OPEN = BooleanProperty.create("open");
+
 
 
 

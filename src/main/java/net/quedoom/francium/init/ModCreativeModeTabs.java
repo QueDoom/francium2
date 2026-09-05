@@ -78,6 +78,8 @@ public class ModCreativeModeTabs {
               output.accept(ModBlocks.WOODEN_MERGER);
               output.accept(ModBlocks.DRIPSTONE_SPIKES);
               output.accept(ModBlocks.DEEP_MERGER);
+              output.accept(ModBlocks.TRADER_BENCH);
+              output.accept(ModBlocks.BUNDLE_TABLE);
 
               output.accept(ModItems.CRAFTING_TOKEN);
               output.accept(ModItems.SMELTING_TOKEN);

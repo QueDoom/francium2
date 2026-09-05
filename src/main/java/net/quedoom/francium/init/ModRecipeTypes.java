@@ -7,10 +7,7 @@ import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.recipe.AnvilPressingRecipe;
-import net.quedoom.francium.recipe.DeepMergingRecipe;
-import net.quedoom.francium.recipe.GlueMixingRecipe;
-import net.quedoom.francium.recipe.WoodenMergingRecipe;
+import net.quedoom.francium.recipe.*;
 
 import javax.xml.stream.events.EntityReference;
 
@@ -84,6 +81,23 @@ public class ModRecipeTypes {
                 @Override
                 public String toString() {
                     return GlueMixingRecipe.Type.ID;
+                }
+            }
+    );
+
+    public static final RecipeSerializer<TradingRecipe> TRADING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.id(TradingRecipe.Type.ID),
+            new RecipeSerializer<>(TradingRecipe.CODEC, TradingRecipe.STREAM_CODEC)
+    );
+
+    public static final RecipeType<TradingRecipe> TRADING = Registry.register(
+            BuiltInRegistries.RECIPE_TYPE,
+            Francium.id(TradingRecipe.Type.ID),
+            new RecipeType<TradingRecipe>() {
+                @Override
+                public String toString() {
+                    return TradingRecipe.Type.ID;
                 }
             }
     );
