@@ -13,6 +13,7 @@ import net.quedoom.francium.api.jei.FranciumSyncedRecipes;
 import net.quedoom.francium.block.entity.BlockContainingRenderer;
 import net.quedoom.francium.block.entity.DeepMergerRenderer;
 import net.quedoom.francium.block.entity.GlueMixerRenderer;
+import net.quedoom.francium.block.menu.BundleTableScreen;
 import net.quedoom.francium.block.menu.DeepMergerScreen;
 import net.quedoom.francium.block.menu.WoodenMergerMenu;
 import net.quedoom.francium.block.menu.WoodenMergerScreen;
@@ -30,6 +31,7 @@ public class FranciumClient implements ClientModInitializer {
 
         MenuScreens.register(ModMenuTypes.WOODEN_MERGER, WoodenMergerScreen::new);
         MenuScreens.register(ModMenuTypes.DEEP_MERGER, DeepMergerScreen::new);
+        MenuScreens.register(ModMenuTypes.BUNDLE_TABLE, BundleTableScreen::new);
     }
 
     private static void compareWithLocalServer(Minecraft mc, SynchronizedRecipes synchronizedRecipes) {
