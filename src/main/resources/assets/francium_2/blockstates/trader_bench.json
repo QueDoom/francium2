@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "francium_2:block/trader_bench"
+    },
+    "facing=east": {
+      "model": "francium_2:block/trader_bench",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "francium_2:block/trader_bench",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "francium_2:block/trader_bench",
+      "y": 270
+    }
+  }
+}
