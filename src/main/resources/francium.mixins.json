@@ -18,6 +18,7 @@
     "RegisterBlockMixin",
     "RegisterItemMixin",
     "SlimeBallDropsFromDEATHMixin",
+    "VegetationFeaturesMixin",
     "YouCantEvenStartToBreakWithoutAToolLilBro"
   ],
   "injectors": {

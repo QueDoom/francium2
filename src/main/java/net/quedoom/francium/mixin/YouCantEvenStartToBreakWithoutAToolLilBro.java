@@ -12,6 +12,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,6 +28,13 @@ public class YouCantEvenStartToBreakWithoutAToolLilBro {
             ItemStack playerStack = player.getMainHandItem();
             boolean requiresTool = state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL);
             boolean keepOutput = false;
+
+//            if (state.is(ModBlocks.STRIPPED_SUGAR_CANE) || state.is(Blocks.SUGAR_CANE)) {
+//                BlockState sugarState = level.getBlockState(pos.above());
+//                if (sugarState.is(ModBlocks.STRIPPED_SUGAR_CANE) || sugarState.is(Blocks.SUGAR_CANE)) {
+//                    cir.setReturnValue(0F);
+//                } else keepOutput = true;
+//            }
 
             if (requiresTool) {
                 if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
