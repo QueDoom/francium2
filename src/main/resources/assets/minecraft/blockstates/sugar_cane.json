@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "top=false": {
+      "model": "francium_2:block/sugar_cane"
+    },
+    "top=true": {
+      "model": "francium_2:block/sugar_cane_top"
+    }
+  }
+}
