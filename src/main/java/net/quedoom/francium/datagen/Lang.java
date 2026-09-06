@@ -74,6 +74,7 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add(ModItems.BARK, "Tree Bark");
         translationBuilder.add(ModItems.LEAF, "Leaf");
         translationBuilder.add(ModItems.GRASS, "Grass");
+        translationBuilder.add(ModItems.HUSK, "Husk");
         translationBuilder.add(ModBlocks.PILE_OF_LEAVES, "Leaf");
 
         translationBuilder.add(ModBlocks.GLUE_MIXER, "Glue Mixer");
@@ -140,6 +141,8 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModBlocks.STONE_CASING);
         autoTranslate(translationBuilder, ModBlocks.OBSIDIAN_CASING);
         autoTranslate(translationBuilder, ModBlocks.ECHO_BLOCK);
+        autoTranslate(translationBuilder, ModBlocks.STRIPPED_SUGAR_CANE);
+        autoTranslate(translationBuilder, ModBlocks.STRIPPED_BAMBOO);
 
         autoTranslate(translationBuilder, ModTags.Items.AMETHYST_ROCK_MATERIALS);
         autoTranslate(translationBuilder, ModTags.Items.BEDROCK_ROCK_MATERIALS);

@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.context.ContextKeySet;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
@@ -34,7 +35,7 @@ public class Loot extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.ANCIENT_BUNS, ModItems.ANCIENT_BUN);
         dropSelf(ModBlocks.BUNDLE_TABLE);
         dropSelf(ModBlocks.TRADER_BENCH);
-
+        dropOther(ModBlocks.STRIPPED_SUGAR_CANE, Items.SUGAR);
 
 
     }

@@ -65,8 +65,14 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                         ModBlocks.WOODEN_MERGER,
                         ModBlocks.GLUE_MIXER,
                         ModBlocks.BUNDLE_TABLE,
-                        ModBlocks.TRADER_BENCH
+                        ModBlocks.TRADER_BENCH,
+                        ModBlocks.STRIPPED_SUGAR_CANE,
+                        Blocks.BAMBOO,
+                        ModBlocks.STRIPPED_BAMBOO
                 );
+
+        valueLookupBuilder(BlockTags.SWORD_INSTANTLY_MINES)
+                .remove(Blocks.BAMBOO);
 
         valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.OBSIDIAN_CASING);

@@ -114,6 +114,10 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.AMETHYST_COATED_DIAMOND, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_INFUSED_DIAMOND, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModBlocks.STRIPPED_SUGAR_CANE.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModBlocks.STRIPPED_BAMBOO.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.HUSK, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModItems.CACTUS_PAPER, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_BOOK, ModelTemplates.FLAT_ITEM);
 

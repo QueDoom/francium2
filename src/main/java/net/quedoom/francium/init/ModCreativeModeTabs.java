@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 
 public class ModCreativeModeTabs {
@@ -26,6 +27,7 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.BARK);
               output.accept(ModItems.LEAF);
               output.accept(ModItems.GRASS);
+              output.accept(ModItems.HUSK);
 
               output.accept(ModItems.WOODEN_PLATE);
 
@@ -91,6 +93,10 @@ public class ModCreativeModeTabs {
               output.accept(ModBlocks.STONE_CASING);
               output.accept(ModBlocks.OBSIDIAN_CASING);
 
+              output.accept(Blocks.SUGAR_CANE);
+              output.accept(ModBlocks.STRIPPED_SUGAR_CANE);
+              output.accept(Blocks.BAMBOO);
+              output.accept(ModBlocks.STRIPPED_BAMBOO);
 
               output.accept(ModItems.DIRT_PILE);
               output.accept(ModItems.SAWDUST);
