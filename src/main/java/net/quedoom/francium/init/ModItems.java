@@ -83,6 +83,7 @@ public class ModItems {
     public static Item BARK = register("bark");
     public static Item LEAF = register(create("leaf"), LeafItem::new, new Item.Properties());
     public static Item GRASS = register(create("grass"));
+    public static Item HUSK = register(create("husk"));
 
     public static Item WOODEN_PLATE = register("wooden_plate");
 

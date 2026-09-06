@@ -49,6 +49,8 @@ public class Francium implements ModInitializer {
 		ModStats.registerStats();
 		ModLootTables.registerLootTables();
 
+		ModFeatures.registerFeatures();
+
 
 	}
 

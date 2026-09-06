@@ -23,6 +23,8 @@ public class ModProperties {
 
     public static final BooleanProperty OPEN = BooleanProperty.create("open");
 
+    public static final BooleanProperty TOP = BooleanProperty.create("top");
+
 
 
 
