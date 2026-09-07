@@ -55,13 +55,62 @@ public class RecipeGen extends FabricRecipeProvider {
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 
-                shaped(RecipeCategory.MISC, ModBlocks.DRIPSTONE_SPIKES)
+                shaped(RecipeCategory.MISC, ModItems.PACKED_CALCITE)
                         .pattern("DDD")
                         .pattern("DDD")
-                        .pattern("MMM")
-                        .define('D', Blocks.POINTED_DRIPSTONE)
-                        .define('M', ModBlocks.MINERAL_MIX_BLOCK)
-                        .unlockedBy(getHasName(ModBlocks.MINERAL_MIX_BLOCK), has(ModBlocks.MINERAL_MIX_BLOCK))
+                        .pattern("DDD")
+                        .define('D', ModItems.CALCITE_PILE)
+                        .unlockedBy(getHasName(ModItems.CALCITE_PILE), has(ModItems.CALCITE_PILE))
+                        .save(output)
+                ;
+
+                shaped(RecipeCategory.MISC, ModItems.PACKED_BASALT)
+                        .pattern("DDD")
+                        .pattern("DPD")
+                        .pattern("DDD")
+                        .define('D', ModItems.BASALT_PILE)
+                        .define('P', ModItems.PACKED_CALCITE)
+                        .unlockedBy(getHasName(ModItems.PACKED_CALCITE), has(ModItems.PACKED_CALCITE))
+                        .save(output)
+                ;
+
+                shaped(RecipeCategory.MISC, ModItems.PACKED_DEEPSLATE)
+                        .pattern("DDD")
+                        .pattern("DPD")
+                        .pattern("DDD")
+                        .define('D', ModItems.DEEPSLATE_PILE)
+                        .define('P', ModItems.PACKED_BASALT)
+                        .unlockedBy(getHasName(ModItems.PACKED_BASALT), has(ModItems.PACKED_BASALT))
+                        .save(output)
+                ;
+
+                shaped(RecipeCategory.MISC, ModItems.PACKED_NETHERRACK)
+                        .pattern("DDD")
+                        .pattern("DPD")
+                        .pattern("DDD")
+                        .define('D', ModItems.NETHERRACK_PILE)
+                        .define('P', ModItems.PACKED_DEEPSLATE)
+                        .unlockedBy(getHasName(ModItems.PACKED_DEEPSLATE), has(ModItems.PACKED_DEEPSLATE))
+                        .save(output)
+                ;
+
+                shaped(RecipeCategory.MISC, ModItems.PACKED_DIRT)
+                        .pattern("DDD")
+                        .pattern("DPD")
+                        .pattern("DDD")
+                        .define('D', ModItems.DIRT_PILE)
+                        .define('P', ModItems.PACKED_NETHERRACK)
+                        .unlockedBy(getHasName(ModItems.PACKED_NETHERRACK), has(ModItems.PACKED_NETHERRACK))
+                        .save(output)
+                ;
+
+                shaped(RecipeCategory.MISC, ModItems.PACKED_PLANKS)
+                        .pattern("DDD")
+                        .pattern("DPD")
+                        .pattern("DDD")
+                        .define('D', ModItems.SAWDUST)
+                        .define('P', ModItems.PACKED_NETHERRACK)
+                        .unlockedBy(getHasName(ModItems.PACKED_NETHERRACK), has(ModItems.PACKED_NETHERRACK))
                         .save(output)
                 ;
 

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "lit=false,facing=north": {
+      "model": "francium_2:block/frying_pan_campfire"
+    },
+    "lit=false,facing=east": {
+      "model": "francium_2:block/frying_pan_campfire",
+      "y": 90
+    },
+    "lit=false,facing=south": {
+      "model": "francium_2:block/frying_pan_campfire",
+      "y": 180
+    },
+    "lit=false,facing=west": {
+      "model": "francium_2:block/frying_pan_campfire",
+      "y": 270
+    },
+    "lit=true,facing=north": {
+      "model": "francium_2:block/frying_pan_campfire_on"
+    },
+    "lit=true,facing=east": {
+      "model": "francium_2:block/frying_pan_campfire_on",
+      "y": 90
+    },
+    "lit=true,facing=south": {
+      "model": "francium_2:block/frying_pan_campfire_on",
+      "y": 180
+    },
+    "lit=true,facing=west": {
+      "model": "francium_2:block/frying_pan_campfire_on",
+      "y": 270
+    }
+  }
+}

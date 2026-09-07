@@ -129,6 +129,13 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.CRAFTING_TOKEN, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SMELTING_TOKEN, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SMITHING_TOKEN, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.PACKED_BASALT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PACKED_CALCITE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PACKED_DEEPSLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PACKED_NETHERRACK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PACKED_DIRT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PACKED_PLANKS, ModelTemplates.FLAT_ITEM);
     }
     
     public static final ModelTemplate PILE_FLAT_ITEM = createItem("pile_generated", TextureSlot.LAYER0);

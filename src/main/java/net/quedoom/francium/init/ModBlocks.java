@@ -62,6 +62,9 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block STRIPPED_SUGAR_CANE = register("stripped_sugar_cane", StrippedSugarCaneBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SUGAR_CANE));
     public static final Block STRIPPED_BAMBOO = register("stripped_bamboo", BambooStalkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO));
 
+    public static final Block FRYING_PAN_CAMPFIRE = register("frying_pan_campfire", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE), false);
+    public static final Block POT_CAMPFIRE = register("pot_campfire", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE), false);
+
     // Slabs
 
 

@@ -98,6 +98,13 @@ public class ModCreativeModeTabs {
               output.accept(Blocks.BAMBOO);
               output.accept(ModBlocks.STRIPPED_BAMBOO);
 
+              output.accept(ModItems.PACKED_CALCITE);
+              output.accept(ModItems.PACKED_BASALT);
+              output.accept(ModItems.PACKED_DEEPSLATE);
+              output.accept(ModItems.PACKED_NETHERRACK);
+              output.accept(ModItems.PACKED_DIRT);
+              output.accept(ModItems.PACKED_PLANKS);
+
               output.accept(ModItems.DIRT_PILE);
               output.accept(ModItems.SAWDUST);
               output.accept(ModItems.GRAVEL_PILE);

@@ -133,6 +133,13 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.SMELTING_TOKEN);
         autoTranslate(translationBuilder, ModItems.SMITHING_TOKEN);
 
+        autoTranslate(translationBuilder, ModItems.PACKED_CALCITE);
+        autoTranslate(translationBuilder, ModItems.PACKED_BASALT);
+        autoTranslate(translationBuilder, ModItems.PACKED_DEEPSLATE);
+        autoTranslate(translationBuilder, ModItems.PACKED_NETHERRACK);
+        autoTranslate(translationBuilder, ModItems.PACKED_DIRT);
+        autoTranslate(translationBuilder, ModItems.PACKED_PLANKS);
+
         autoTranslate(translationBuilder, ModBlocks.WOODEN_CASING);
         autoTranslate(translationBuilder, ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
         autoTranslate(translationBuilder, ModBlocks.BLOCK_CONTAINING_STONE_CASING);

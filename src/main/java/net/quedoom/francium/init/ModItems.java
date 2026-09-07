@@ -5,9 +5,11 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.item.DashOrbItem;
 import net.quedoom.francium.item.FireStarterItem;
 import net.quedoom.francium.item.LeafItem;
 import net.quedoom.francium.item.RockItem;
@@ -120,6 +122,17 @@ public class ModItems {
     public static Item FIRE_STARTER = register(create("fire_starter"), FireStarterItem::new, new Item.Properties().durability(127));
     public static Item GLASS_SHARDS = register("glass_shards");
 
+    public static Item DASH_ORB = register("dash_orb", DashOrbItem::new);
+
+    public static Item PACKED_CALCITE = register("packed_calcite");
+    public static Item PACKED_BASALT = register("packed_basalt");
+    public static Item PACKED_DEEPSLATE = register("packed_deepslate");
+    public static Item PACKED_NETHERRACK = register("packed_netherrack");
+    public static Item PACKED_DIRT = register("packed_dirt");
+    public static Item PACKED_PLANKS = register("packed_planks");
+
+    public static Item FRYING_TABLE = register("frying_table", new Item.Properties().tool(ToolMaterial.IRON, BlockTags.MINEABLE_WITH_PICKAXE, attackDamageBaseline, attackSpeedBaseline, 0.0F));
+
     public static Item UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID = register("unused_item", new Item.Properties());
 
 
@@ -128,6 +141,12 @@ public class ModItems {
     }
     public static Item register(String name, Item.Properties properties) {
         return register(create(name), Item::new, properties);
+    }
+    public static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> function) {
+        return register(key, function, new Item.Properties());
+    }
+    public static Item register(String stringKey, Function<Item.Properties, Item> function) {
+        return register(create(stringKey), function, new Item.Properties());
     }
     public static Item register(ResourceKey<Item> key) {
         return register(key, Item::new, new Item.Properties());
