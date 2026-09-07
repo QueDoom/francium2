@@ -9,10 +9,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.item.DashOrbItem;
-import net.quedoom.francium.item.FireStarterItem;
-import net.quedoom.francium.item.LeafItem;
-import net.quedoom.francium.item.RockItem;
+import net.quedoom.francium.block.PotCampfireBlock;
+import net.quedoom.francium.item.*;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -131,7 +129,8 @@ public class ModItems {
     public static Item PACKED_DIRT = register("packed_dirt");
     public static Item PACKED_PLANKS = register("packed_planks");
 
-    public static Item FRYING_TABLE = register("frying_table", new Item.Properties().tool(ToolMaterial.IRON, BlockTags.MINEABLE_WITH_PICKAXE, attackDamageBaseline, attackSpeedBaseline, 0.0F));
+    public static Item FRYING_PAN = register(create("frying_pan"), p -> new RightClickCampfireItem(p, ModBlocks.FRYING_PAN_CAMPFIRE), new Item.Properties().sword(ToolMaterial.IRON, 6, 0.3f));
+    public static Item POT = register(create("pot"), p -> new RightClickCampfireItem(p, ModBlocks.POT_CAMPFIRE), new Item.Properties().sword(ToolMaterial.IRON, 3, 0.25f));
 
     public static Item UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID = register("unused_item", new Item.Properties());
 

@@ -105,6 +105,9 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.PACKED_DIRT);
               output.accept(ModItems.PACKED_PLANKS);
 
+              output.accept(ModItems.FRYING_PAN);
+              output.accept(ModItems.POT);
+
               output.accept(ModItems.DIRT_PILE);
               output.accept(ModItems.SAWDUST);
               output.accept(ModItems.GRAVEL_PILE);
