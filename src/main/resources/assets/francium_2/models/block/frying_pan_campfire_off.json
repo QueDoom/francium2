@@ -4,7 +4,7 @@
 	"parent": "block/block",
 	"textures": {
 		"1": "francium_2:block/steel_block",
-		"particle": "block/campfire_log",
+		"particle": "francium_2:block/steel_block",
 		"log": "block/campfire_log"
 	},
 	"elements": [

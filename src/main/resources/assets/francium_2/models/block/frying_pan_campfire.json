@@ -4,9 +4,9 @@
 	"parent": "block/block",
 	"textures": {
 		"0": "francium_2:block/steel_block",
-		"fire": "francium_2:campfire_fire_pan",
+		"fire": "francium_2:block/campfire_fire_pan",
 		"lit_log": "block/campfire_log_lit",
-		"particle": "block/campfire_log",
+		"particle": "francium_2:block/steel_block",
 		"log": "block/campfire_log"
 	},
 	"elements": [
