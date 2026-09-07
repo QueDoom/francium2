@@ -85,7 +85,9 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                         ModBlocks.DEEP_MERGER,
                         ModBlocks.MINERAL_MIX_BLOCK,
                         ModBlocks.BLOCK_CONTAINING_STONE_CASING,
-                        ModBlocks.ANCIENT_BUNS
+                        ModBlocks.ANCIENT_BUNS,
+                        ModBlocks.FRYING_PAN_CAMPFIRE,
+                        ModBlocks.POT_CAMPFIRE
                 );
 
         valueLookupBuilder(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE)

@@ -36,6 +36,8 @@ public class Loot extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.BUNDLE_TABLE);
         dropSelf(ModBlocks.TRADER_BENCH);
         dropOther(ModBlocks.STRIPPED_SUGAR_CANE, Items.SUGAR);
+        dropOther(ModBlocks.FRYING_PAN_CAMPFIRE, ModItems.FRYING_PAN);
+        dropOther(ModBlocks.POT_CAMPFIRE, ModItems.POT);
 
 
     }

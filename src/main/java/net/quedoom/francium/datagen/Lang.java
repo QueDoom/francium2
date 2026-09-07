@@ -65,6 +65,11 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModBlocks.ANCIENT_BUNS);
         autoTranslate(translationBuilder, ModItems.ANCIENT_BUN);
 
+        autoTranslate(translationBuilder, ModBlocks.POT_CAMPFIRE);
+        autoTranslate(translationBuilder, ModBlocks.FRYING_PAN_CAMPFIRE);
+        autoTranslate(translationBuilder, ModItems.POT);
+        autoTranslate(translationBuilder, ModItems.FRYING_PAN);
+
 
 
         pileTranslate(translationBuilder, ModItems.BEDROCK_PILE, "Bedrock");
