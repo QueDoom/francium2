@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "iron_dust_wooden_mixer",
+		"particle": "iron_dust_wooden_mixer"
+	},
+	"elements": [
+		{
+			"from": [2, 7, 2],
+			"to": [14, 7, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 4, 0]},
+			"faces": {
+				"north": {"uv": [2, 0, 14, 0], "texture": "#missing"},
+				"east": {"uv": [2, 0, 14, 0], "texture": "#missing"},
+				"south": {"uv": [2, 0, 14, 0], "texture": "#missing"},
+				"west": {"uv": [2, 0, 14, 0], "texture": "#missing"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#0"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#0"}
+			}
+		}
+	]
+}
