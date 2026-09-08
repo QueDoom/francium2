@@ -4,12 +4,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
@@ -18,7 +16,7 @@ import java.util.function.Function;
 
 public class ModBlocks {
 
-    public static final Block GLUE_MIXER = register("glue_mixer", GlueMixerBlock::new, BlockBehaviour.Properties.of()
+    public static final Block GLUE_MIXER = register("glue_mixer", WoodenMixerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).noOcclusion()
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
     public static final Block WOODEN_MERGER = register("wooden_merger", WoodenMergerBlock::new, BlockBehaviour.Properties.of()
