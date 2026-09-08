@@ -103,6 +103,60 @@
       "when": {
         "echo": 4
       }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_steel_1"
+      },
+      "when": {
+        "steel": 1
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_steel_2"
+      },
+      "when": {
+        "steel": 2
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_steel_3"
+      },
+      "when": {
+        "steel": 3
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_steel_4"
+      },
+      "when": {
+        "steel": 4
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_steel_5"
+      },
+      "when": {
+        "steel": 5
+      }
+    },
+    {
+      "apply":
+      {
+        "model": "francium_2:block/glue_mixer_steel_6"
+      },
+      "when": {
+        "steel": 6
+      }
     }
   ]
 }

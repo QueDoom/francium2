@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,7 +16,7 @@ import net.quedoom.francium.datagen.recipe.GlueMixerRecipeBuilder;
 import net.quedoom.francium.datagen.recipe.WoodenMergerRecipeBuilder;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
-import net.quedoom.francium.recipe.GlueMixerGlueType;
+import net.quedoom.francium.recipe.WoodenMixerGlueType;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,14 +32,15 @@ public class RecipeGen extends FabricRecipeProvider {
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                glueMixing(this, output, GlueMixerGlueType.NORMAL, 0, ModItems.GLUE, 32);
-                glueMixing(this, output, GlueMixerGlueType.SUPER, 0, ModItems.SUPER_GLUE, 4);
-                glueMixing(this, output, GlueMixerGlueType.ECHO, 1, ModItems.ECHO_GLUE, 4, "2");
-                glueMixing(this, output, GlueMixerGlueType.ECHO, 2, ModItems.ECHO_GLUE, 6, "3");
-                glueMixing(this, output, GlueMixerGlueType.ECHO, 3, ModItems.ECHO_GLUE, 8, "4");
-                glueMixing(this, output, GlueMixerGlueType.VEGAN, 1, ModItems.VEGAN_GLUE, 6, "2");
-                glueMixing(this, output, GlueMixerGlueType.VEGAN, 2, ModItems.VEGAN_GLUE, 8, "3");
-                glueMixing(this, output, GlueMixerGlueType.VEGAN, 3, ModItems.VEGAN_GLUE, 16, "4");
+                glueMixing(this, output, WoodenMixerGlueType.NORMAL, 0, ModItems.GLUE, 32);
+                glueMixing(this, output, WoodenMixerGlueType.SUPER, 0, ModItems.SUPER_GLUE, 4);
+                glueMixing(this, output, WoodenMixerGlueType.ECHO, 1, ModItems.ECHO_GLUE, 4, "2");
+                glueMixing(this, output, WoodenMixerGlueType.ECHO, 2, ModItems.ECHO_GLUE, 6, "3");
+                glueMixing(this, output, WoodenMixerGlueType.ECHO, 3, ModItems.ECHO_GLUE, 8, "4");
+                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 1, ModItems.VEGAN_GLUE, 6, "2");
+                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 2, ModItems.VEGAN_GLUE, 8, "3");
+                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 3, ModItems.VEGAN_GLUE, 16, "4");
+                glueMixing(this, output, WoodenMixerGlueType.STEEL, 0, ModItems.STEEL_IN_A_BOTTLE, 2);
 
                 woodenMerging(this, output, Items.CRAFTING_TABLE, Items.IRON_INGOT, ModItems.GLUE, ModItems.CRAFTING_TOKEN, 1);
                 woodenMerging(this, output, Items.FURNACE, Items.IRON_INGOT, ModItems.GLUE, ModItems.SMELTING_TOKEN, 1);
@@ -269,31 +269,31 @@ public class RecipeGen extends FabricRecipeProvider {
         };
     }
 
-    private void glueMixing(RecipeProvider provider, RecipeOutput output, GlueMixerGlueType gType, int strength, ItemLike result, int count) {
+    private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
                 .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
-                .save(output, "francium_2:glue_mixer/" + Francium.getPath(result.asItem()) + "_from_wooden_merger")
+                .save(output, "francium_2:wooden_mixer/" + Francium.getPath(result.asItem()) + "_from_wooden_merger")
         ;
     }
 
-    private void glueMixing(RecipeProvider provider, RecipeOutput output, GlueMixerGlueType gType, int strength, ItemLike result, int count, String id) {
+    private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count, String id) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
                 .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
-                .save(output, "francium_2:glue_mixer/" + Francium.getPath(result.asItem()) + "_from_wooden_merger_" + id)
+                .save(output, "francium_2:wooden_mixer/" + Francium.getPath(result.asItem()) + "_from_wooden_merger_" + id)
         ;
     }
 
     private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count) {
         WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:wooden_merger/" + Francium.getPath(result.asItem()) + "_from_glue_mixer")
+                .save(output, "francium_2:wooden_merger/" + Francium.getPath(result.asItem()) + "_from_wooden_mixer")
         ;
     }
 
     private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count, String id) {
         WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:wooden_merger/" + Francium.getPath(result.asItem()) + "_from_glue_mixer_" + id)
+                .save(output, "francium_2:wooden_merger/" + Francium.getPath(result.asItem()) + "_from_wooden_mixer_" + id)
         ;
     }
 

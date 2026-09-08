@@ -2,8 +2,7 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"2": "steel_dust_wooden_mixer",
-		"particle": "steel_dust_wooden_mixer"
+		"2": "francium_2:block/steel_dust_wooden_mixer"
 	},
 	"elements": [
 		{

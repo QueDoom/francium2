@@ -1,7 +1,6 @@
 package net.quedoom.francium.datagen.recipe;
 
 import net.minecraft.advancements.Criterion;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -12,33 +11,32 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
-import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModItems;
-import net.quedoom.francium.recipe.GlueMixerGlueType;
+import net.quedoom.francium.recipe.WoodenMixerGlueType;
 import net.quedoom.francium.recipe.GlueMixingRecipe;
 import org.jspecify.annotations.Nullable;
 
 public class GlueMixerRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
     private final int strength;
-    private final GlueMixerGlueType gType;
+    private final WoodenMixerGlueType gType;
     private final ItemStackTemplate result;
     private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
     private @Nullable String group;
 
-    public GlueMixerRecipeBuilder(RecipeCategory category, GlueMixerGlueType gType, int strength, ItemStackTemplate result) {
+    public GlueMixerRecipeBuilder(RecipeCategory category, WoodenMixerGlueType gType, int strength, ItemStackTemplate result) {
         this.category = category;
         this.gType = gType;
         this.strength = strength;
         this.result = result;
     }
 
-    public static GlueMixerRecipeBuilder glueMixerRecipe(RecipeCategory category, GlueMixerGlueType gType, int strength, ItemLike result, int count) {
+    public static GlueMixerRecipeBuilder glueMixerRecipe(RecipeCategory category, WoodenMixerGlueType gType, int strength, ItemLike result, int count) {
         return new GlueMixerRecipeBuilder(category, gType, strength, new ItemStackTemplate(result.asItem(), count));
     }
 
 
-    public static GlueMixerRecipeBuilder glueMixerRecipe(RecipeCategory category, GlueMixerGlueType gType, int strength, ItemLike result) {
+    public static GlueMixerRecipeBuilder glueMixerRecipe(RecipeCategory category, WoodenMixerGlueType gType, int strength, ItemLike result) {
         return new GlueMixerRecipeBuilder(category, gType, strength, new ItemStackTemplate(result.asItem()));
     }
 
@@ -66,7 +64,7 @@ public class GlueMixerRecipeBuilder implements RecipeBuilder {
             case 2 -> Items.DIAMOND;
             case 3 -> Items.NETHERITE_INGOT;
             default -> Items.IRON_INGOT;
-        }), Ingredient.of(GlueMixerGlueType.toItem(this.gType)));
+        }), Ingredient.of(this.gType.toItem()));
         output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
     }
 }
