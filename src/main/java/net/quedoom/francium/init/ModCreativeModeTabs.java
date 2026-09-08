@@ -80,6 +80,8 @@ public class ModCreativeModeTabs {
               output.accept(ModBlocks.WOODEN_MERGER);
               output.accept(ModBlocks.DRIPSTONE_SPIKES);
               output.accept(ModBlocks.DEEP_MERGER);
+              output.accept(ModItems.PLASTIC_SHEET);
+              output.accept(ModItems.PLASTIC_NECKLACE);
               output.accept(ModBlocks.TRADER_BENCH);
               output.accept(ModBlocks.BUNDLE_TABLE);
 
@@ -105,6 +107,11 @@ public class ModCreativeModeTabs {
               output.accept(ModItems.PACKED_DIRT);
               output.accept(ModItems.PACKED_PLANKS);
 
+              output.accept(ModBlocks.HEAVY_SCULK);
+              output.accept(ModItems.DENCHO_SHARD);
+
+
+              output.accept(ModItems.STEEL_BOWL);
               output.accept(ModItems.FRYING_PAN);
               output.accept(ModItems.POT);
 
@@ -149,6 +156,7 @@ public class ModCreativeModeTabs {
 
               output.accept(ModBlocks.FORBIDDEN_DUST);
               output.accept(ModBlocks.FORBIDDEN_FLAKE);
+              output.accept(ModItems.CORRUPTED_MODEL);
 
               output.accept(ModItems.BEDROCK_PILE);
               output.accept(ModItems.BEDROCK_PEBBLES);

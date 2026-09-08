@@ -121,6 +121,7 @@ public class ModItems {
     public static Item GLASS_SHARDS = register("glass_shards");
 
     public static Item DASH_ORB = register("dash_orb", DashOrbItem::new);
+    public static Item STEEL_BOWL = register("steel_bowl");
 
     public static Item PACKED_CALCITE = register("packed_calcite");
     public static Item PACKED_BASALT = register("packed_basalt");
@@ -128,6 +129,13 @@ public class ModItems {
     public static Item PACKED_NETHERRACK = register("packed_netherrack");
     public static Item PACKED_DIRT = register("packed_dirt");
     public static Item PACKED_PLANKS = register("packed_planks");
+
+    public static Item SHEWING_GUM = register("shewing_gum");
+    public static Item MICROPLASTIC = register("microplastic");
+    public static Item PLASTIC_SHEET = register("plastic_sheet");
+    public static Item PLASTIC_NECKLACE = register("plastic_necklace");
+    public static Item DENCHO_SHARD = register("dencho_shard");
+    public static Item CORRUPTED_MODEL = register("corrupted_model");
 
     public static Item FRYING_PAN = register(create("frying_pan"), p -> new RightClickCampfireItem(p, ModBlocks.FRYING_PAN_CAMPFIRE), new Item.Properties().sword(ToolMaterial.IRON, 6, 0.3f));
     public static Item POT = register(create("pot"), p -> new RightClickCampfireItem(p, ModBlocks.POT_CAMPFIRE), new Item.Properties().sword(ToolMaterial.IRON, 3, 0.25f));

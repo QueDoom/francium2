@@ -4,6 +4,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -65,9 +66,11 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block FRYING_PAN_CAMPFIRE = register("frying_pan_campfire", FryingPanCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
     public static final Block POT_CAMPFIRE = register("pot_campfire", PotCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
 
+
+    public static final Block HEAVY_SCULK = register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
+    public static final Block RUBBER_BLOCK = register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
+
     // Slabs
-
-
 
 
 
