@@ -40,6 +40,8 @@ public class Francium implements ModInitializer {
 		ModBlocks.registerBlocks();
 		ModBlockEntities.registerBlockEntities();
 
+		ModEntityTypes.registerEntityTypes();
+
 		ModRecipeTypes.registerRecipeTypes();
 
 		RecipeSynchronization.synchronizeRecipeSerializer(ModRecipeTypes.WOODEN_MERGING_SERIALIZER);

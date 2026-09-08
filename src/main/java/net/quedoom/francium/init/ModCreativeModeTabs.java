@@ -80,6 +80,9 @@ public class ModCreativeModeTabs {
               output.accept(ModBlocks.WOODEN_MERGER);
               output.accept(ModBlocks.DRIPSTONE_SPIKES);
               output.accept(ModBlocks.DEEP_MERGER);
+              output.accept(ModBlocks.RUBBER_BLOCK);
+              output.accept(ModItems.SHEWING_GUM);
+              output.accept(ModItems.MICROPLASTIC);
               output.accept(ModItems.PLASTIC_SHEET);
               output.accept(ModItems.PLASTIC_NECKLACE);
               output.accept(ModBlocks.TRADER_BENCH);
@@ -110,7 +113,8 @@ public class ModCreativeModeTabs {
               output.accept(ModBlocks.HEAVY_SCULK);
               output.accept(ModItems.DENCHO_SHARD);
 
-
+              output.accept(ModItems.STEEL_IN_A_BOTTLE);
+              output.accept(ModItems.STEEL_DUST);
               output.accept(ModItems.STEEL_BOWL);
               output.accept(ModItems.FRYING_PAN);
               output.accept(ModItems.POT);

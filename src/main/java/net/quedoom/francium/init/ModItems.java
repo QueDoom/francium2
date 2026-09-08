@@ -57,6 +57,9 @@ public class ModItems {
     public static Item ANCIENT_BUN = register("ancient_bun");
     public static Item NETHERITE_DUST = register("netherite_dust");
 
+    public static Item STEEL_IN_A_BOTTLE = register("steel_in_a_bottle", SteelInABottleItem::new);
+    public static Item STEEL_DUST = register("steel_dust");
+
     public static Item SHARP_ROCK = register("sharp_rock", new Item.Properties().tool(ModToolMaterials.SHARP_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
     public static Item ROCK = register(create("rock"), p -> new RockItem(p, SHARP_ROCK), new Item.Properties());
     public static Item SHARP_DEEPSLATE_ROCK = register("sharp_deepslate_rock", new Item.Properties().tool(ModToolMaterials.SHARP_DEEPSLATE_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));

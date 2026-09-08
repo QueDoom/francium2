@@ -7,6 +7,8 @@ import net.fabricmc.fabric.api.recipe.v1.sync.SynchronizedRecipes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.quedoom.francium.api.jei.FranciumSyncedRecipes;
@@ -18,6 +20,7 @@ import net.quedoom.francium.block.menu.DeepMergerScreen;
 import net.quedoom.francium.block.menu.WoodenMergerMenu;
 import net.quedoom.francium.block.menu.WoodenMergerScreen;
 import net.quedoom.francium.init.ModBlockEntities;
+import net.quedoom.francium.init.ModEntityTypes;
 import net.quedoom.francium.init.ModMenuTypes;
 
 public class FranciumClient implements ClientModInitializer {
@@ -28,6 +31,8 @@ public class FranciumClient implements ClientModInitializer {
         BlockEntityRenderers.register(ModBlockEntities.DEEP_MERGER_ENTITY, DeepMergerRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.GLUE_MIXER_ENTITY, GlueMixerRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING_ENTITY, BlockContainingRenderer::new);
+
+        EntityRenderers.register(ModEntityTypes.STEEL_IN_A_BOTTLE, ThrownItemRenderer::new);
 
         MenuScreens.register(ModMenuTypes.WOODEN_MERGER, WoodenMergerScreen::new);
         MenuScreens.register(ModMenuTypes.DEEP_MERGER, DeepMergerScreen::new);
