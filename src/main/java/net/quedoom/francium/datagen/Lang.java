@@ -62,6 +62,7 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.SAWDUST);
         autoTranslate(translationBuilder, ModBlocks.FORBIDDEN_DUST);
         autoTranslate(translationBuilder, ModBlocks.FORBIDDEN_FLAKE);
+        autoTranslate(translationBuilder, ModItems.CORRUPTED_MODEL);
         autoTranslate(translationBuilder, ModBlocks.ANCIENT_BUNS);
         autoTranslate(translationBuilder, ModItems.ANCIENT_BUN);
 
@@ -70,7 +71,11 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.POT);
         autoTranslate(translationBuilder, ModItems.FRYING_PAN);
 
-
+        autoTranslate(translationBuilder, ModBlocks.RUBBER_BLOCK);
+        autoTranslate(translationBuilder, ModItems.SHEWING_GUM);
+        autoTranslate(translationBuilder, ModItems.MICROPLASTIC);
+        autoTranslate(translationBuilder, ModItems.PLASTIC_SHEET);
+        autoTranslate(translationBuilder, ModItems.PLASTIC_NECKLACE);
 
         pileTranslate(translationBuilder, ModItems.BEDROCK_PILE, "Bedrock");
         autoTranslate(translationBuilder, ModItems.BEDROCK_PEBBLES);
@@ -144,6 +149,9 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.PACKED_NETHERRACK);
         autoTranslate(translationBuilder, ModItems.PACKED_DIRT);
         autoTranslate(translationBuilder, ModItems.PACKED_PLANKS);
+
+        autoTranslate(translationBuilder, ModBlocks.HEAVY_SCULK);
+        autoTranslate(translationBuilder, ModItems.DENCHO_SHARD);
 
         autoTranslate(translationBuilder, ModBlocks.WOODEN_CASING);
         autoTranslate(translationBuilder, ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);

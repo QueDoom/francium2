@@ -24,6 +24,7 @@ public class Models extends FabricModelProvider {
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
+        blockModelGenerators.family(ModBlocks.RUBBER_BLOCK);
 
     }
 
@@ -136,6 +137,12 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.PACKED_NETHERRACK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.PACKED_DIRT, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.PACKED_PLANKS, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.DENCHO_SHARD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SHEWING_GUM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.MICROPLASTIC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PLASTIC_SHEET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PLASTIC_NECKLACE, ModelTemplates.FLAT_ITEM);
     }
     
     public static final ModelTemplate PILE_FLAT_ITEM = createItem("pile_generated", TextureSlot.LAYER0);

@@ -46,11 +46,19 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.LOGS)
                 .addOptionalTag(BlockTags.PLANKS)
                 .addOptionalTag(ModTags.Blocks.TILLS)
-                .add(Blocks.FARMLAND);
+                .add(
+                        Blocks.FARMLAND,
+                        Blocks.HEAVY_CORE
+                );
 
         valueLookupBuilder(ModTags.Blocks.HARD_BLOCKS)
                 .addOptionalTag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addOptionalTag(ConventionalBlockTags.GLASS_BLOCKS);
+
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE)
+                .add(
+                        ModBlocks.HEAVY_SCULK
+                );
 
         valueLookupBuilder(ModTags.Blocks.SHARP_STICK_MINES_FAST)
                 .addOptionalTag(BlockTags.MINEABLE_WITH_PICKAXE)
