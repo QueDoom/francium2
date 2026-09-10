@@ -3,7 +3,6 @@ package net.quedoom.francium.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -75,7 +74,7 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModItems.FRYING_PAN);
 
         autoTranslate(translationBuilder, ModBlocks.RUBBER_BLOCK);
-        autoTranslate(translationBuilder, ModItems.SHEWING_GUM);
+        autoTranslate(translationBuilder, ModItems.CHEWING_GUM);
         autoTranslate(translationBuilder, ModItems.MICROPLASTIC);
         autoTranslate(translationBuilder, ModItems.PLASTIC_SHEET);
         autoTranslate(translationBuilder, ModItems.PLASTIC_NECKLACE);
@@ -199,9 +198,51 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add("jei.francium_2.glue_mixing", "Glue Mixing");
 
         translationBuilder.add("creativeTab.francium", "Francium");
+        translationBuilder.add("creativeTab.allowed_copper", "Copper");
         translationBuilder.add("menu.francium_2.merging", "Merging");
         translationBuilder.add("menu.francium_2.trader_bench", "Trading");
         translationBuilder.add("menu.francium_2.bundle_table", "Bundle Table");
+
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_COPPER_BLOCK);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_EXPOSED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WEATHERED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_OXIDIZED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WEATHERED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_EXPOSED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_CHISELED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_COPPER_BLOCK);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_WEATHERED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_EXPOSED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_OXIDIZED_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_CUT_COPPER);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_CUT_COPPER_STAIRS);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
     }
 
     private void pileTranslate(TranslationBuilder builder, Item item, String material) {

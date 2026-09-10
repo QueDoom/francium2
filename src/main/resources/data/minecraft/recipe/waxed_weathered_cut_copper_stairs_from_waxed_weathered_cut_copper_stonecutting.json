@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "francium_2:allowed_waxed_weathered_cut_copper",
+  "result": {
+    "id": "francium_2:allowed_waxed_weathered_cut_copper_stairs"
+  }
+}

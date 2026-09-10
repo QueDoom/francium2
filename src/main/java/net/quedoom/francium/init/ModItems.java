@@ -5,11 +5,9 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.block.PotCampfireBlock;
 import net.quedoom.francium.item.*;
 
 import java.util.function.BiFunction;
@@ -133,11 +131,11 @@ public class ModItems {
     public static Item PACKED_DIRT = register("packed_dirt");
     public static Item PACKED_PLANKS = register("packed_planks");
 
-    public static Item SHEWING_GUM = register("shewing_gum");
+    public static Item CHEWING_GUM = register("chewing_gum");
     public static Item MICROPLASTIC = register("microplastic");
     public static Item PLASTIC_SHEET = register("plastic_sheet");
     public static Item PLASTIC_NECKLACE = register("plastic_necklace");
-    public static Item DENCHO_SHARD = register("dencho_shard");
+    public static Item DENCHO_SHARD = register("dencho_shard", new Item.Properties().rarity(Rarity.RARE));
     public static Item CORRUPTED_MODEL = register("corrupted_model");
 
     public static Item FRYING_PAN = register(create("frying_pan"), p -> new RightClickCampfireItem(p, ModBlocks.FRYING_PAN_CAMPFIRE), new Item.Properties().sword(ToolMaterial.IRON, 6, 0.3f));

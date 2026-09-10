@@ -95,7 +95,51 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                         ModBlocks.BLOCK_CONTAINING_STONE_CASING,
                         ModBlocks.ANCIENT_BUNS,
                         ModBlocks.FRYING_PAN_CAMPFIRE,
-                        ModBlocks.POT_CAMPFIRE
+                        ModBlocks.POT_CAMPFIRE,
+
+
+
+
+                        ModBlocks.ALLOWED_COPPER_BLOCK,
+                        ModBlocks.ALLOWED_EXPOSED_COPPER,
+                        ModBlocks.ALLOWED_WEATHERED_COPPER,
+                        ModBlocks.ALLOWED_OXIDIZED_COPPER,
+                        ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER,
+                        ModBlocks.ALLOWED_WEATHERED_CUT_COPPER,
+                        ModBlocks.ALLOWED_EXPOSED_CUT_COPPER,
+                        ModBlocks.ALLOWED_CUT_COPPER,
+                        ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_WAXED_CHISELED_COPPER,
+                        ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_WAXED_COPPER_BLOCK,
+                        ModBlocks.ALLOWED_WAXED_WEATHERED_COPPER,
+                        ModBlocks.ALLOWED_WAXED_EXPOSED_COPPER,
+                        ModBlocks.ALLOWED_WAXED_OXIDIZED_COPPER,
+                        ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER,
+                        ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER,
+                        ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER,
+                        ModBlocks.ALLOWED_WAXED_CUT_COPPER,
+                        ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_WAXED_CUT_COPPER_STAIRS,
+                        ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB
                 );
 
         valueLookupBuilder(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE)

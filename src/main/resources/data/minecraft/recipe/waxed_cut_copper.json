@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "waxed_cut_copper",
+  "key": {
+    "#": "francium_2:allowed_waxed_copper_block"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "francium_2:allowed_waxed_cut_copper"
+  }
+}

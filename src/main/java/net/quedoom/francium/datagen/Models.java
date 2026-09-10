@@ -26,6 +26,52 @@ public class Models extends FabricModelProvider {
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
         blockModelGenerators.family(ModBlocks.RUBBER_BLOCK);
 
+
+        blockModelGenerators.family(ModBlocks.ALLOWED_COPPER_BLOCK)
+                .donateModelTo(ModBlocks.ALLOWED_COPPER_BLOCK, ModBlocks.ALLOWED_WAXED_COPPER_BLOCK);
+        blockModelGenerators.family(ModBlocks.ALLOWED_EXPOSED_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_EXPOSED_COPPER, ModBlocks.ALLOWED_WAXED_EXPOSED_COPPER);
+        blockModelGenerators.family(ModBlocks.ALLOWED_WEATHERED_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_WEATHERED_COPPER, ModBlocks.ALLOWED_WAXED_WEATHERED_COPPER);
+        blockModelGenerators.family(ModBlocks.ALLOWED_OXIDIZED_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_OXIDIZED_COPPER, ModBlocks.ALLOWED_WAXED_OXIDIZED_COPPER);
+
+        blockModelGenerators.family(ModBlocks.ALLOWED_CUT_COPPER)
+                .stairs(ModBlocks.ALLOWED_CUT_COPPER_STAIRS)
+                .slab(ModBlocks.ALLOWED_CUT_COPPER_SLAB)
+                .donateModelTo(ModBlocks.ALLOWED_CUT_COPPER, ModBlocks.ALLOWED_WAXED_CUT_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_CUT_COPPER_STAIRS, ModBlocks.ALLOWED_WAXED_CUT_COPPER_STAIRS)
+                .donateModelTo(ModBlocks.ALLOWED_CUT_COPPER_SLAB, ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
+
+        blockModelGenerators.family(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER)
+                .stairs(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS)
+                .slab(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB)
+                .donateModelTo(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER, ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS, ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS)
+                .donateModelTo(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB, ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB);
+
+        blockModelGenerators.family(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER)
+                .stairs(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS)
+                .slab(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB)
+                .donateModelTo(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER, ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS, ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS)
+                .donateModelTo(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB, ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
+
+        blockModelGenerators.family(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER)
+                .stairs(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS)
+                .slab(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB)
+                .donateModelTo(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER, ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS, ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS)
+                .donateModelTo(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB, ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
+
+        blockModelGenerators.family(ModBlocks.ALLOWED_CHISELED_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_CHISELED_COPPER, ModBlocks.ALLOWED_WAXED_CHISELED_COPPER);
+        blockModelGenerators.family(ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER, ModBlocks.ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER);
+        blockModelGenerators.family(ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER, ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER);
+        blockModelGenerators.family(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER)
+                .donateModelTo(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER, ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
     }
 
     @Override
@@ -143,7 +189,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.PACKED_PLANKS, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.DENCHO_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.SHEWING_GUM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.MICROPLASTIC, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.PLASTIC_SHEET, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.PLASTIC_NECKLACE, ModelTemplates.FLAT_ITEM);

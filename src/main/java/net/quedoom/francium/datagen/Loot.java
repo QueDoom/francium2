@@ -42,5 +42,46 @@ public class Loot extends FabricBlockLootSubProvider {
 
 
 
+        dropSelf(ModBlocks.ALLOWED_COPPER_BLOCK);
+        dropSelf(ModBlocks.ALLOWED_EXPOSED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WEATHERED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_OXIDIZED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_CHISELED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_WAXED_COPPER_BLOCK);
+        dropSelf(ModBlocks.ALLOWED_WAXED_WEATHERED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_EXPOSED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_OXIDIZED_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_CUT_COPPER);
+        dropSelf(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_WAXED_CUT_COPPER_STAIRS);
+        dropSelf(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
+
     }
 }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "francium_2:allowed_copper_block",
+  "result": {
+    "count": 8,
+    "id": "francium_2:allowed_cut_copper_slab"
+  }
+}

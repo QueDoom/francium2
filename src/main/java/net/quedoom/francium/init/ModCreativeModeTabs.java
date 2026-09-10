@@ -81,7 +81,7 @@ public class ModCreativeModeTabs {
               output.accept(ModBlocks.DRIPSTONE_SPIKES);
               output.accept(ModBlocks.DEEP_MERGER);
               output.accept(ModBlocks.RUBBER_BLOCK);
-              output.accept(ModItems.SHEWING_GUM);
+              output.accept(ModItems.CHEWING_GUM);
               output.accept(ModItems.MICROPLASTIC);
               output.accept(ModItems.PLASTIC_SHEET);
               output.accept(ModItems.PLASTIC_NECKLACE);
@@ -170,8 +170,59 @@ public class ModCreativeModeTabs {
 
           })).build();
 
+    public static final ResourceKey<CreativeModeTab> ALLOWED_COPPER_TAB_KEY = ResourceKey.create(
+            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Francium.id("allowed_tab_key_tab")
+    );
+
+    public static final CreativeModeTab ALLOWED_COPPER_TAB = FabricCreativeModeTab.builder()
+            .icon(() -> new ItemStack(ModBlocks.ALLOWED_COPPER_BLOCK))
+            .title(Component.translatable("creativeTab.allowed_copper"))
+            .displayItems(((parameters, output) -> {
+                output.accept(ModBlocks.ALLOWED_COPPER_BLOCK);
+                output.accept(ModBlocks.ALLOWED_EXPOSED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WEATHERED_COPPER);
+                output.accept(ModBlocks.ALLOWED_OXIDIZED_COPPER);
+                output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_CHISELED_COPPER);
+                output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB);
+                output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB);
+                output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB);
+                output.accept(ModBlocks.ALLOWED_CUT_COPPER_SLAB);
+                output.accept(ModBlocks.ALLOWED_WAXED_COPPER_BLOCK);
+                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER);
+                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER_STAIRS);
+                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB);
+                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
+                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
+                output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
+            })).build();
+
     public static void registerTabs() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, FRANCIUM_TAB_KEY, FRANCIUM_TAB);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ALLOWED_COPPER_TAB_KEY, ALLOWED_COPPER_TAB);
     }
 
 }

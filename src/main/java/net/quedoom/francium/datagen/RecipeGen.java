@@ -55,6 +55,7 @@ public class RecipeGen extends FabricRecipeProvider {
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 
+
                 shaped(RecipeCategory.MISC, ModItems.PACKED_CALCITE)
                         .pattern("DDD")
                         .pattern("DDD")

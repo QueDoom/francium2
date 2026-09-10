@@ -6,9 +6,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
 
@@ -48,7 +50,8 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block BLOCK_CONTAINING_STONE_CASING = register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING.defaultBlockState()),
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().noLootTable().requiresCorrectToolForDrops(), false);
 
-    public static final Block ECHO_BLOCK = register("echo_block", BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK));
+    public static final Block ECHO_BLOCK = register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
+    public static final Item ECHO_BLOCK_ITEM = registerItem("echo_block", ECHO_BLOCK, new Item.Properties().rarity(Rarity.RARE));
 
     public static final Block FORBIDDEN_DUST = register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
     public static final Block FORBIDDEN_FLAKE = register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
@@ -69,13 +72,144 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block RUBBER_BLOCK = register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
 
     // FORBIDDEN
+    public static final Block ALLOWED_COPPER_BLOCK = register(
+            "allowed_copper_block",
+            p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p),
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 6.0F)
+                    .instrument(NoteBlockInstrument.TRUMPET)
+                    .sound(SoundType.COPPER)
+    );
+    public static final Block ALLOWED_EXPOSED_COPPER = register(
+            "allowed_exposed_copper",
+            p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.EXPOSED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK).instrument(NoteBlockInstrument.TRUMPET_EXPOSED).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+    );
+    public static final Block ALLOWED_WEATHERED_COPPER = register(
+            "allowed_weathered_copper",
+            p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.WEATHERED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK).instrument(NoteBlockInstrument.TRUMPET_WEATHERED).mapColor(MapColor.WARPED_STEM)
+    );
+    public static final Block ALLOWED_OXIDIZED_COPPER = register(
+            "allowed_oxidized_copper",
+            p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.OXIDIZED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK).instrument(NoteBlockInstrument.TRUMPET_OXIDIZED).mapColor(MapColor.WARPED_NYLIUM)
+    );
+    public static final Block ALLOWED_OXIDIZED_CUT_COPPER = register(
+            "allowed_oxidized_cut_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.OXIDIZED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER)
+    );
+    public static final Block ALLOWED_WEATHERED_CUT_COPPER = register(
+            "allowed_weathered_cut_copper",
+            p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.WEATHERED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER)
+    );
+    public static final Block ALLOWED_EXPOSED_CUT_COPPER = register(
+            "allowed_exposed_cut_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.EXPOSED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER)
+    );
+    public static final Block ALLOWED_CUT_COPPER = register(
+            "allowed_cut_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK)
+    );
+    public static final Block ALLOWED_OXIDIZED_CHISELED_COPPER = register(
+            "allowed_oxidized_chiseled_copper",
+            p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.OXIDIZED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER)
+    );
+    public static final Block ALLOWED_WEATHERED_CHISELED_COPPER = register(
+            "allowed_weathered_chiseled_copper",
+            p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.WEATHERED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER)
+    );
+    public static final Block ALLOWED_EXPOSED_CHISELED_COPPER = register(
+            "allowed_exposed_chiseled_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.EXPOSED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER)
+    );
+    public static final Block ALLOWED_CHISELED_COPPER = register(
+            "allowed_chiseled_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK)
+    );
+    public static final Block ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER = register(
+            "allowed_waxed_oxidized_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_CHISELED_COPPER)
+    );
+    public static final Block ALLOWED_WAXED_WEATHERED_CHISELED_COPPER = register(
+            "allowed_waxed_weathered_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_CHISELED_COPPER)
+    );
+    public static final Block ALLOWED_WAXED_EXPOSED_CHISELED_COPPER = register(
+            "allowed_waxed_exposed_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_CHISELED_COPPER)
+    );
+    public static final Block ALLOWED_WAXED_CHISELED_COPPER = register("allowed_waxed_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_CHISELED_COPPER));
+    public static final Block ALLOWED_OXIDIZED_CUT_COPPER_STAIRS = register(
+            "allowed_oxidized_cut_copper_stairs",
+            p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.OXIDIZED, ALLOWED_OXIDIZED_CUT_COPPER.defaultBlockState(), p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_CUT_COPPER)
+    );
+    public static final Block ALLOWED_WEATHERED_CUT_COPPER_STAIRS = register(
+            "allowed_weathered_cut_copper_stairs",
+            p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.WEATHERED, ALLOWED_WEATHERED_CUT_COPPER.defaultBlockState(), p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER)
+    );
+    public static final Block ALLOWED_EXPOSED_CUT_COPPER_STAIRS = register(
+            "allowed_exposed_cut_copper_stairs",
+            p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.EXPOSED, ALLOWED_EXPOSED_CUT_COPPER.defaultBlockState(), p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER)
+    );
+    public static final Block ALLOWED_CUT_COPPER_STAIRS = register(
+            "allowed_cut_copper_stairs",
+            p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.UNAFFECTED, ALLOWED_CUT_COPPER.defaultBlockState(), p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK)
+    );
+    public static final Block ALLOWED_OXIDIZED_CUT_COPPER_SLAB = register(
+            "allowed_oxidized_cut_copper_slab",
+            p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.OXIDIZED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_CUT_COPPER)
+    );
+    public static final Block ALLOWED_WEATHERED_CUT_COPPER_SLAB = register(
+            "allowed_weathered_cut_copper_slab",
+            p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.WEATHERED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_CUT_COPPER)
+    );
+    public static final Block ALLOWED_EXPOSED_CUT_COPPER_SLAB = register(
+            "allowed_exposed_cut_copper_slab",
+            p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.EXPOSED, p),
+            BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_CUT_COPPER)
+    );
+    public static final Block ALLOWED_CUT_COPPER_SLAB = register(
+            "allowed_cut_copper_slab", p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_CUT_COPPER)
+    );
+    public static final Block ALLOWED_WAXED_COPPER_BLOCK = register("allowed_waxed_copper_block", BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK));
+    public static final Block ALLOWED_WAXED_WEATHERED_COPPER = register("allowed_waxed_weathered_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER));
+    public static final Block ALLOWED_WAXED_EXPOSED_COPPER = register("allowed_waxed_exposed_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER));
+    public static final Block ALLOWED_WAXED_OXIDIZED_COPPER = register("allowed_waxed_oxidized_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER));
+    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER = register("allowed_waxed_oxidized_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER));
+    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER = register("allowed_waxed_weathered_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER));
+    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER = register("allowed_waxed_exposed_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER));
+    public static final Block ALLOWED_WAXED_CUT_COPPER = register("allowed_waxed_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK));
+    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_oxidized_cut_copper_stairs", ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_weathered_cut_copper_stairs", ALLOWED_WAXED_WEATHERED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_exposed_cut_copper_stairs", ALLOWED_WAXED_EXPOSED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_cut_copper_stairs", ALLOWED_WAXED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB = register(
+            "allowed_waxed_oxidized_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_OXIDIZED_CUT_COPPER).requiresCorrectToolForDrops()
+    );
+    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB = register(
+            "allowed_waxed_weathered_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_WEATHERED_CUT_COPPER).requiresCorrectToolForDrops()
+    );
+    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB = register(
+            "allowed_waxed_exposed_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_EXPOSED_CUT_COPPER).requiresCorrectToolForDrops()
+    );
+    public static final Block ALLOWED_WAXED_CUT_COPPER_SLAB = register(
+            "allowed_waxed_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_CUT_COPPER).requiresCorrectToolForDrops()
+    );
 
-//    public static final Block ALLOWED_BLOCK_NAME = register("allowed_block_name", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
-//    public static final Block ALLOWED_BLOCK_NAME_SLAB = register("allowed_block_name_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
-//    public static final Block ALLOWED_BLOCK_NAME_STAIRS = register("allowed_block_name_stairs", p -> new StairBlock(ALLOWED_BLOCK_NAME.defaultBlockState(), p), BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
-//    public static final Block ALLOWED_BLOCK_NAME_CHAIN = register("allowed_block_name_chain", ChainBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
+    private static Block registerStair(String name, Block block) {
+        return register(name, p -> new StairBlock(block.defaultBlockState(), p), BlockBehaviour.Properties.ofFullCopy(block));
+    }
 
+    private static Item registerItem(String name, Block block, Item.Properties properties) {
+        ResourceKey<Item> itemKey = keyOfItem(name);
 
+        BlockItem blockItem = new BlockItem(block, properties);
+        return Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
+    }
 
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties properties, boolean shouldRegisterItem) {
         // Create a registry key for the block

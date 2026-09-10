@@ -66,6 +66,12 @@ public class RegisterBlockMixin {
             cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
         }
 
+        if (name.contains("copper") && !name.contains("chain") && !name.contains("lantern") && !name.contains("door") && !name.contains("bar") && !name.contains("grate") && !name.contains("bulb")) {
+            BlockBehaviour.Properties customProperty = properties.noLootTable();
+            Block block = factory.apply(customProperty.setId(id));
+            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+        }
+
 //        if (name.equals("bedrock")) {
 //            BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops();
 //            Block block = factory.apply(customProperty.setId(id));

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_weathered_cut_copper",
+  "ingredients": [
+    "francium_2:allowed_weathered_cut_copper",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "id": "francium_2:allowed_waxed_weathered_cut_copper"
+  }
+}
