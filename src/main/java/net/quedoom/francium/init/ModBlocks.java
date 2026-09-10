@@ -70,7 +70,12 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block HEAVY_SCULK = register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
     public static final Block RUBBER_BLOCK = register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
 
-    // Slabs
+    // FORBIDDEN
+
+//    public static final Block ALLOWED_BLOCK_NAME = register("allowed_block_name", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
+//    public static final Block ALLOWED_BLOCK_NAME_SLAB = register("allowed_block_name_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
+//    public static final Block ALLOWED_BLOCK_NAME_STAIRS = register("allowed_block_name_stairs", p -> new StairBlock(ALLOWED_BLOCK_NAME.defaultBlockState(), p), BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
+//    public static final Block ALLOWED_BLOCK_NAME_CHAIN = register("allowed_block_name_chain", ChainBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BLOCK_NAME));
 
 
 
