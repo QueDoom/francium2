@@ -15,6 +15,7 @@ public class FranciumDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(Loot::new);
 		pack.addProvider(Models::new);
 		pack.addProvider(RecipeGen::new);
+		pack.addProvider(ModAdvancements::new);
 
 
 	}

@@ -50,8 +50,8 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block BLOCK_CONTAINING_STONE_CASING = register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING.defaultBlockState()),
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().noLootTable().requiresCorrectToolForDrops(), false);
 
-    public static final Block ECHO_BLOCK = register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
-    public static final Item ECHO_BLOCK_ITEM = registerItem("echo_block", ECHO_BLOCK, new Item.Properties().rarity(Rarity.RARE));
+    public static final Block ECHO_BLOCK = register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), true);
+    //public static final Item ECHO_BLOCK_ITEM = registerItem("echo_block", ECHO_BLOCK, new Item.Properties().rarity(Rarity.RARE));
 
     public static final Block FORBIDDEN_DUST = register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
     public static final Block FORBIDDEN_FLAKE = register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));

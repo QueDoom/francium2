@@ -203,6 +203,8 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add("menu.francium_2.trader_bench", "Trading");
         translationBuilder.add("menu.francium_2.bundle_table", "Bundle Table");
 
+        autoTranslateAdvancement(translationBuilder, "get_gravel_pile", "Acquire some gravel.");
+
         autoTranslate(translationBuilder, ModBlocks.ALLOWED_COPPER_BLOCK);
         autoTranslate(translationBuilder, ModBlocks.ALLOWED_EXPOSED_COPPER);
         autoTranslate(translationBuilder, ModBlocks.ALLOWED_WEATHERED_COPPER);
@@ -245,12 +247,29 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
     }
 
+    private void advancementTranslate(TranslationBuilder translationBuilder, String advancementName, String type, String name) {
+        translationBuilder.add(Francium.MOD_ID + "." + type + "." + advancementName, name);
+    }
+
+    private void advancementTitleTranslate(TranslationBuilder translationBuilder, String advancementName, String name) {
+        advancementTranslate(translationBuilder, advancementName, "advancementTitle", name);
+    }
+
+    private void advancementDescriptionTranslate(TranslationBuilder translationBuilder, String advancementName, String name) {
+        advancementTranslate(translationBuilder, advancementName, "advancementDescription", name);
+    }
+
+    private void autoTranslateAdvancement(TranslationBuilder translationBuilder, String advancement, String description) {
+        advancementTitleTranslate(translationBuilder, advancement, snakeToTitleCase(advancement));
+        advancementDescriptionTranslate(translationBuilder, advancement, description);
+    }
+
+
     private void pileTranslate(TranslationBuilder builder, Item item, String material) {
         builder.add(item, "Pile Of " + material);
     }
 
-    private void autoTranslate(TranslationBuilder builder, Block block) {
-        String snakeCase = Francium.getPath(block);
+    private String snakeToTitleCase(String snakeCase) {
         String replaceUnderscores = snakeCase.replace('_', ' ');
         String[] words = replaceUnderscores.split(" ");
         StringBuilder result = new StringBuilder();
@@ -261,42 +280,20 @@ public class Lang extends FabricLanguageProvider {
                         .append(" ");
             }
         }
-        String titleCase = result.toString().trim();
+        return result.toString().trim();
+    }
 
-        builder.add(block, titleCase);
+    private void autoTranslate(TranslationBuilder builder, Block block) {
+        String snakeCase = Francium.getPath(block);
+        builder.add(block, snakeToTitleCase(snakeCase));
     }
     private void autoTranslate(TranslationBuilder builder, Item item) {
         String snakeCase = Francium.getPath(item);
-        String replaceUnderscores = snakeCase.replace('_', ' ');
-        String[] words = replaceUnderscores.split(" ");
-        StringBuilder result = new StringBuilder();
-        for (String word : words) {
-            if (!word.isEmpty()) {
-                result.append(Character.toUpperCase(word.charAt(0)))
-                        .append(word.substring(1))
-                        .append(" ");
-            }
-        }
-        String titleCase = result.toString().trim();
-
-        builder.add(item, titleCase);
+        builder.add(item, snakeToTitleCase(snakeCase));
     }
     private void autoTranslate(TranslationBuilder builder, TagKey<?> tag) {
         String translateLeft = tag.getTranslationKey();
         String snakeCase = Francium.getPath(tag);
-//        String snakeCase = "";
-        String replaceUnderscores = snakeCase.replace('_', ' ');
-        String[] words = replaceUnderscores.split(" ");
-        StringBuilder result = new StringBuilder();
-        for (String word : words) {
-            if (!word.isEmpty()) {
-                result.append(Character.toUpperCase(word.charAt(0)))
-                        .append(word.substring(1))
-                        .append(" ");
-            }
-        }
-        String titleCase = result.toString().trim();
-
-        builder.add(translateLeft, titleCase);
+        builder.add(translateLeft, snakeToTitleCase(snakeCase));
     }
 }
