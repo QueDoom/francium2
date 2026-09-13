@@ -3,6 +3,7 @@ package net.quedoom.francium;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 
@@ -34,6 +35,8 @@ public class Francium implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
+//		boolean isLoaded = FabricLoader.getInstance().isModLoaded("");
+
 		ModItems.registerItems();
 		ModCreativeModeTabs.registerTabs();
 
@@ -50,8 +53,6 @@ public class Francium implements ModInitializer {
 
 		ModStats.registerStats();
 		ModLootTables.registerLootTables();
-
-		ModFeatures.registerFeatures();
 
 
 	}

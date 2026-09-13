@@ -24,6 +24,14 @@ public class ModProperties {
 
     public static final BooleanProperty TOP = BooleanProperty.create("top");
 
+    public static final BooleanProperty NORTH_EAST_DOWN = BooleanProperty.create("north_east_down");
+    public static final BooleanProperty NORTH_WEST_DOWN = BooleanProperty.create("north_west_down");
+    public static final BooleanProperty SOUTH_EAST_DOWN = BooleanProperty.create("south_east_down");
+    public static final BooleanProperty SOUTH_WEST_DOWN = BooleanProperty.create("south_west_down");
+    public static final BooleanProperty NORTH_EAST_UP = BooleanProperty.create("north_east_up");
+    public static final BooleanProperty NORTH_WEST_UP = BooleanProperty.create("north_west_up");
+    public static final BooleanProperty SOUTH_EAST_UP = BooleanProperty.create("south_east_up");
+    public static final BooleanProperty SOUTH_WEST_UP = BooleanProperty.create("south_west_up");
 
 
 

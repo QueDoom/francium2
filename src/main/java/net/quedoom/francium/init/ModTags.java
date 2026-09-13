@@ -30,6 +30,8 @@ public class ModTags {
 
         public static final TagKey<Block> TILLS = createTag("tills");
 
+        public static final TagKey<Block> TUFF_ROCKS_REPLACEABLE = createTag("tuff_rocks_replaceable");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.create(Registries.BLOCK, Francium.id(name));
         }
