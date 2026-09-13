@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "gold_ingot",
+  "ingredients": [
+    "francium_2:allowed_gold_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:gold_ingot"
+  }
+}

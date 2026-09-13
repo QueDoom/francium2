@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
+import net.quedoom.francium.block.supers.EighthsEatableBlock;
+import net.quedoom.francium.block.supers.FallingEighthsEatableBlock;
 
 import java.util.function.Function;
 
@@ -50,8 +52,7 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block BLOCK_CONTAINING_STONE_CASING = register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING.defaultBlockState()),
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().noLootTable().requiresCorrectToolForDrops(), false);
 
-    public static final Block ECHO_BLOCK = register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), true);
-    //public static final Item ECHO_BLOCK_ITEM = registerItem("echo_block", ECHO_BLOCK, new Item.Properties().rarity(Rarity.RARE));
+    public static final Block ECHO_BLOCK = register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 
     public static final Block FORBIDDEN_DUST = register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
     public static final Block FORBIDDEN_FLAKE = register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
@@ -62,16 +63,50 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
 
     public static final Block ANCIENT_BUNS = register("ancient_buns", AncientBunsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANCIENT_DEBRIS));
     public static final Block STRIPPED_SUGAR_CANE = register("stripped_sugar_cane", StrippedSugarCaneBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SUGAR_CANE));
-    public static final Block STRIPPED_BAMBOO = register("stripped_bamboo", BambooStalkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO));
+    public static final Block STRIPPED_BAMBOO = register("stripped_bamboo", BambooStalkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO), false);
+    public static final Item STRIPPED_BAMBOO_ITEM = registerItem(createItem("stripped_bamboo"), Item::new, new Item.Properties());
 
     public static final Block FRYING_PAN_CAMPFIRE = register("frying_pan_campfire", FryingPanCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
     public static final Block POT_CAMPFIRE = register("pot_campfire", PotCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
 
-
     public static final Block HEAVY_SCULK = register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
     public static final Block RUBBER_BLOCK = register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
 
+    public static final Block THICK_POTATO = register("thick_potato", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_CARROT = register("thick_carrot", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_BEETROOT = register("thick_beetroot", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_APPLE = register("thick_apple", FallingEighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+
+    static {
+        registerItem(createItem("echo_block"), p -> new BlockItem(ECHO_BLOCK, p), new Item.Properties().rarity(Rarity.UNCOMMON));
+    }
+
+    public static Item registerItem(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory, Item.Properties properties) {
+        Item item = itemFactory.apply(properties.setId(key));
+        if (item instanceof BlockItem blockItem) {
+            blockItem.registerBlocks(Item.BY_BLOCK, item);
+        }
+
+        return Registry.register(BuiltInRegistries.ITEM, key, item);
+    }
+
+    public static ResourceKey<Item> createItem(String name) {
+        // Create the item key.
+        return ResourceKey.create(Registries.ITEM, Francium.id(name));
+    }
+
+
+    // <editor-fold desc="Allowed Folding">
     // FORBIDDEN
+    public static final Block ALLOWED_GOLD_BLOCK = register(
+            "allowed_gold_block",
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.GOLD)
+                    .instrument(NoteBlockInstrument.BELL)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 6.0F)
+                    .sound(SoundType.METAL)
+    );
     public static final Block ALLOWED_COPPER_BLOCK = register(
             "allowed_copper_block",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p),
@@ -199,6 +234,8 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     public static final Block ALLOWED_WAXED_CUT_COPPER_SLAB = register(
             "allowed_waxed_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_CUT_COPPER).requiresCorrectToolForDrops()
     );
+
+    //</editor-fold>
 
     private static Block registerStair(String name, Block block) {
         return register(name, p -> new StairBlock(block.defaultBlockState(), p), BlockBehaviour.Properties.ofFullCopy(block));

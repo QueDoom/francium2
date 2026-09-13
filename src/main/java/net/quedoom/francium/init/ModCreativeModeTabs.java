@@ -101,7 +101,14 @@ public class ModCreativeModeTabs {
               output.accept(Blocks.SUGAR_CANE);
               output.accept(ModBlocks.STRIPPED_SUGAR_CANE);
               output.accept(Blocks.BAMBOO);
-              output.accept(ModBlocks.STRIPPED_BAMBOO);
+              output.accept(ModBlocks.STRIPPED_BAMBOO_ITEM);
+
+              output.accept(Blocks.MELON);
+              output.accept(Blocks.PUMPKIN);
+              output.accept(ModBlocks.THICK_POTATO);
+              output.accept(ModBlocks.THICK_CARROT);
+              output.accept(ModBlocks.THICK_BEETROOT);
+              output.accept(ModBlocks.THICK_APPLE);
 
               output.accept(ModItems.PACKED_CALCITE);
               output.accept(ModItems.PACKED_BASALT);
@@ -170,14 +177,15 @@ public class ModCreativeModeTabs {
 
           })).build();
 
-    public static final ResourceKey<CreativeModeTab> ALLOWED_COPPER_TAB_KEY = ResourceKey.create(
-            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Francium.id("allowed_tab_key_tab")
+    public static final ResourceKey<CreativeModeTab> ALLOWED_BLOCKS_TAB_KEY = ResourceKey.create(
+            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Francium.id("allowed_blocks_tab_key")
     );
 
-    public static final CreativeModeTab ALLOWED_COPPER_TAB = FabricCreativeModeTab.builder()
+    public static final CreativeModeTab ALLOWED_BLOCKS_TAB = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(ModBlocks.ALLOWED_COPPER_BLOCK))
-            .title(Component.translatable("creativeTab.allowed_copper"))
+            .title(Component.translatable("creativeTab.allowed_blocks"))
             .displayItems(((parameters, output) -> {
+                output.accept(ModBlocks.ALLOWED_GOLD_BLOCK);
                 output.accept(ModBlocks.ALLOWED_COPPER_BLOCK);
                 output.accept(ModBlocks.ALLOWED_EXPOSED_COPPER);
                 output.accept(ModBlocks.ALLOWED_WEATHERED_COPPER);
@@ -222,7 +230,7 @@ public class ModCreativeModeTabs {
 
     public static void registerTabs() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, FRANCIUM_TAB_KEY, FRANCIUM_TAB);
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ALLOWED_COPPER_TAB_KEY, ALLOWED_COPPER_TAB);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ALLOWED_BLOCKS_TAB_KEY, ALLOWED_BLOCKS_TAB);
     }
 
 }
