@@ -29,12 +29,12 @@ public class YouCantEvenStartToBreakWithoutAToolLilBro {
             boolean requiresTool = state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL);
             boolean keepOutput = false;
 
-//            if (state.is(ModBlocks.STRIPPED_SUGAR_CANE) || state.is(Blocks.SUGAR_CANE)) {
-//                BlockState sugarState = level.getBlockState(pos.above());
-//                if (sugarState.is(ModBlocks.STRIPPED_SUGAR_CANE) || sugarState.is(Blocks.SUGAR_CANE)) {
-//                    cir.setReturnValue(0F);
-//                } else keepOutput = true;
-//            }
+            if (state.is(Blocks.BAMBOO)) {
+                BlockState sugarState = level.getBlockState(pos.above());
+                if (sugarState.is(ModBlocks.STRIPPED_BAMBOO) || sugarState.is(Blocks.BAMBOO)) {
+                    cir.setReturnValue(0F);
+                } else keepOutput = true;
+            }
 
             if (requiresTool) {
                 if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
