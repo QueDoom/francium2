@@ -39,6 +39,7 @@ public class Loot extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.FRYING_PAN_CAMPFIRE, ModItems.FRYING_PAN);
         dropOther(ModBlocks.POT_CAMPFIRE, ModItems.POT);
         dropSelf(ModBlocks.RUBBER_BLOCK);
+        dropOther(ModBlocks.STRIPPED_BAMBOO, ModBlocks.STRIPPED_BAMBOO_ITEM);
 
 
 
@@ -82,6 +83,7 @@ public class Loot extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
         dropSelf(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
         dropSelf(ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
+        dropSelf(ModBlocks.ALLOWED_GOLD_BLOCK);
 
     }
 }

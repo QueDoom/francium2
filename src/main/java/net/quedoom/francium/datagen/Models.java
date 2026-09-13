@@ -7,6 +7,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
@@ -26,6 +27,7 @@ public class Models extends FabricModelProvider {
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
         blockModelGenerators.family(ModBlocks.RUBBER_BLOCK);
 
+        blockModelGenerators.family(ModBlocks.ALLOWED_GOLD_BLOCK);
 
         blockModelGenerators.family(ModBlocks.ALLOWED_COPPER_BLOCK)
                 .donateModelTo(ModBlocks.ALLOWED_COPPER_BLOCK, ModBlocks.ALLOWED_WAXED_COPPER_BLOCK);
@@ -166,7 +168,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_INFUSED_DIAMOND, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModBlocks.STRIPPED_SUGAR_CANE.asItem(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModBlocks.STRIPPED_BAMBOO.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModBlocks.STRIPPED_BAMBOO_ITEM, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.HUSK, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.CACTUS_PAPER, ModelTemplates.FLAT_ITEM);

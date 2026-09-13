@@ -57,7 +57,11 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
 
         valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE)
                 .add(
-                        ModBlocks.HEAVY_SCULK
+                        ModBlocks.HEAVY_SCULK,
+                        ModBlocks.THICK_POTATO,
+                        ModBlocks.THICK_CARROT,
+                        ModBlocks.THICK_BEETROOT,
+                        ModBlocks.THICK_APPLE
                 );
 
         valueLookupBuilder(ModTags.Blocks.SHARP_STICK_MINES_FAST)
@@ -139,7 +143,8 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                         ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB,
                         ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB,
                         ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB,
-                        ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB
+                        ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB,
+                        ModBlocks.ALLOWED_GOLD_BLOCK
                 );
 
         valueLookupBuilder(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE)
@@ -183,7 +188,8 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                         Blocks.WEATHERED_CHISELED_COPPER,
                         Blocks.WAXED_WEATHERED_CHISELED_COPPER,
                         Blocks.OXIDIZED_CHISELED_COPPER,
-                        Blocks.WAXED_OXIDIZED_CHISELED_COPPER
+                        Blocks.WAXED_OXIDIZED_CHISELED_COPPER,
+                        Blocks.GOLD_BLOCK
         );
 
         valueLookupBuilder(ModTags.Blocks.SMALL_DROPS_FORBIDDEN_FLAKE)
@@ -220,7 +226,15 @@ public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
                         Blocks.DIRT_PATH,
                         Blocks.COARSE_DIRT,
                         Blocks.ROOTED_DIRT,
-                        Blocks.GRASS_BLOCK
+                        Blocks.GRASS_BLOCK,
+                        Blocks.PODZOL
+                );
+
+        valueLookupBuilder(ModTags.Blocks.TUFF_ROCKS_REPLACEABLE)
+                .add(
+                        Blocks.GRASS_BLOCK,
+                        Blocks.SHORT_GRASS,
+                        Blocks.TALL_GRASS
                 );
     }
 }

@@ -165,6 +165,11 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModBlocks.ECHO_BLOCK);
         autoTranslate(translationBuilder, ModBlocks.STRIPPED_SUGAR_CANE);
         autoTranslate(translationBuilder, ModBlocks.STRIPPED_BAMBOO);
+        autoTranslate(translationBuilder, ModBlocks.STRIPPED_BAMBOO_ITEM);
+        autoTranslate(translationBuilder, ModBlocks.THICK_POTATO);
+        autoTranslate(translationBuilder, ModBlocks.THICK_CARROT);
+        autoTranslate(translationBuilder, ModBlocks.THICK_BEETROOT);
+        autoTranslate(translationBuilder, ModBlocks.THICK_APPLE);
 
         autoTranslate(translationBuilder, ModTags.Items.AMETHYST_ROCK_MATERIALS);
         autoTranslate(translationBuilder, ModTags.Items.BEDROCK_ROCK_MATERIALS);
@@ -198,7 +203,7 @@ public class Lang extends FabricLanguageProvider {
         translationBuilder.add("jei.francium_2.glue_mixing", "Glue Mixing");
 
         translationBuilder.add("creativeTab.francium", "Francium");
-        translationBuilder.add("creativeTab.allowed_copper", "Copper");
+        translationBuilder.add("creativeTab.allowed_blocks", "Alowed Blocks");
         translationBuilder.add("menu.francium_2.merging", "Merging");
         translationBuilder.add("menu.francium_2.trader_bench", "Trading");
         translationBuilder.add("menu.francium_2.bundle_table", "Bundle Table");
@@ -245,6 +250,7 @@ public class Lang extends FabricLanguageProvider {
         autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
         autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
         autoTranslate(translationBuilder, ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
+        autoTranslate(translationBuilder, ModBlocks.ALLOWED_GOLD_BLOCK);
     }
 
     private void advancementTranslate(TranslationBuilder translationBuilder, String advancementName, String type, String name) {
