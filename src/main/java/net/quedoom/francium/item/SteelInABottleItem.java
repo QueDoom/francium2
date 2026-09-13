@@ -10,12 +10,11 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownExperienceBottle;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.level.Level;
-import net.quedoom.francium.util.ThrownSteelInABottle;
+import net.quedoom.francium.entity.ThrownSteelInABottle;
 
 public class SteelInABottleItem extends Item implements ProjectileItem {
     public SteelInABottleItem(Properties properties) {
