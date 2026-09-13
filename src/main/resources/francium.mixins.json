@@ -9,6 +9,7 @@
     "CheckStillValidCraftingTokenMixin",
     "CheckStillValidFurnaceSmeltingTokenMixin",
     "CraftingTableNeedsTokenMixin",
+    "CropBlockMixin",
     "DestroyBlock",
     "DissableAxeStripping",
     "DissableHoeTilling",
@@ -18,7 +19,6 @@
     "RegisterBlockMixin",
     "RegisterItemMixin",
     "SlimeBallDropsFromDEATHMixin",
-    "VegetationFeaturesMixin",
     "YouCantEvenStartToBreakWithoutAToolLilBro"
   ],
   "injectors": {

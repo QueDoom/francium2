@@ -35,87 +35,87 @@ public abstract class AnvilEntityPressingMixin extends Entity {
         super(type, level);
     }
 
-    @Inject(
-            method = "tick",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/level/block/Fallable;onLand(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/item/FallingBlockEntity;)V"
-            )
-    )
-    private void entityCrafting(CallbackInfo ci) {
-        Level level = this.level();
-        if (level != null && !level.isClientSide()) return;
-        BlockPos pos = this.blockPosition();
-        BlockState stateBelow = level.getBlockState(pos.below());
+//    @Inject(
+//            method = "tick",
+//            at = @At(
+//                    value = "INVOKE",
+//                    target = "Lnet/minecraft/world/level/block/Fallable;onLand(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/item/FallingBlockEntity;)V"
+//            )
+//    )
+//    private void entityCrafting(CallbackInfo ci) {
+//        Level level = this.level();
+//        if (level != null && !level.isClientSide()) return;
+//        BlockPos pos = this.blockPosition();
+//        BlockState stateBelow = level.getBlockState(pos.below());
+//
+//        AABB aabb = AABB.encapsulatingFullBlocks(pos, pos);
+//        List<ItemEntity> list = level.getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
+//        ItemStack stackedSlot = ItemStack.EMPTY;
+//        ItemStack rawStackedSlot = ItemStack.EMPTY;
+//        Francium.LOGGER.info(list.toString());
+//        for (ItemEntity itemEntity : list) {
+//            Francium.LOGGER.info(itemEntity.toString());
+//            ItemStack stack = itemEntity.getItem();
+//            if (stack.is(ModItems.STACKED_SLOT)) stackedSlot = stack;
+//            if (stack.is(ModItems.STACKED_RAW_SLOT)) rawStackedSlot = stack;
+//        }
+//        Francium.LOGGER.info(stackedSlot.toString());
+//        Francium.LOGGER.info(rawStackedSlot.toString());
+//        Francium.LOGGER.info("{}", !stackedSlot.isEmpty() && !rawStackedSlot.isEmpty());
+//        if (getOr(false) && stateBelow.is(Blocks.DEEPSLATE) && !stackedSlot.isEmpty() && !rawStackedSlot.isEmpty()) {
+//            Francium.LOGGER.info("nuttah");
+//            stackedSlot.shrink(1);
+//            rawStackedSlot.shrink(1);
+//            level.setBlockAndUpdate(pos.below(), ModBlocks.DEEP_MERGER.defaultBlockState());
+//        }
+//        return;
+//    }
 
-        AABB aabb = AABB.encapsulatingFullBlocks(pos, pos);
-        List<ItemEntity> list = level.getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
-        ItemStack stackedSlot = ItemStack.EMPTY;
-        ItemStack rawStackedSlot = ItemStack.EMPTY;
-        Francium.LOGGER.info(list.toString());
-        for (ItemEntity itemEntity : list) {
-            Francium.LOGGER.info(itemEntity.toString());
-            ItemStack stack = itemEntity.getItem();
-            if (stack.is(ModItems.STACKED_SLOT)) stackedSlot = stack;
-            if (stack.is(ModItems.STACKED_RAW_SLOT)) rawStackedSlot = stack;
-        }
-        Francium.LOGGER.info(stackedSlot.toString());
-        Francium.LOGGER.info(rawStackedSlot.toString());
-        Francium.LOGGER.info("{}", !stackedSlot.isEmpty() && !rawStackedSlot.isEmpty());
-        if (getOr(false) && stateBelow.is(Blocks.DEEPSLATE) && !stackedSlot.isEmpty() && !rawStackedSlot.isEmpty()) {
-            Francium.LOGGER.info("nuttah");
-            stackedSlot.shrink(1);
-            rawStackedSlot.shrink(1);
-            level.setBlockAndUpdate(pos.below(), ModBlocks.DEEP_MERGER.defaultBlockState());
-        }
-        return;
-    }
 
-
-    @ModifyExpressionValue(
-            method = "tick",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/level/block/state/BlockState;canBeReplaced(Lnet/minecraft/world/item/context/BlockPlaceContext;)Z")
-    )
-    private boolean canBeReplacedOr(boolean original) {
-        return getOr(original);
-    }
-
-    @ModifyExpressionValue(
-            method = "tick",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/level/block/state/BlockState;canSurvive(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z")
-    )
-    private boolean canSurviveOr(boolean original) {
-        return getOr(original);
-    }
-
-    private boolean getOr(boolean original) {
-        Level level = this.level();
-        if (level != null && !level.isClientSide()) return false;
-        BlockPos pos = this.blockPosition();
-        BlockState stateBelow = level.getBlockState(pos.below());
-
-        AABB aabb = AABB.encapsulatingFullBlocks(pos, pos);
-        List<ItemEntity> list = level.getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
-        ItemStack stackedSlot = ItemStack.EMPTY;
-        ItemStack rawStackedSlot = ItemStack.EMPTY;
-        Francium.LOGGER.info(list.toString());
-        for (ItemEntity itemEntity : list) {
-            Francium.LOGGER.info(itemEntity.toString());
-            ItemStack stack = itemEntity.getItem();
-            if (stack.is(ModItems.STACKED_SLOT)) stackedSlot = stack;
-            if (stack.is(ModItems.STACKED_RAW_SLOT)) rawStackedSlot = stack;
-        }
-
-        BlockState state = this.level().getBlockState(this.blockPosition());
-        if (this.blockState.is(Blocks.ANVIL) && state.is(ModBlocks.DRIPSTONE_SPIKES) && stateBelow.is(Blocks.DEEPSLATE) && !stackedSlot.isEmpty() && !rawStackedSlot.isEmpty()) {
-            return true;
-        }
-        return original;
-    }
+//    @ModifyExpressionValue(
+//            method = "tick",
+//            at = @At(
+//                    value = "INVOKE",
+//                    target = "Lnet/minecraft/world/level/block/state/BlockState;canBeReplaced(Lnet/minecraft/world/item/context/BlockPlaceContext;)Z")
+//    )
+//    private boolean canBeReplacedOr(boolean original) {
+//        return getOr(original);
+//    }
+//
+//    @ModifyExpressionValue(
+//            method = "tick",
+//            at = @At(
+//                    value = "INVOKE",
+//                    target = "Lnet/minecraft/world/level/block/state/BlockState;canSurvive(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z")
+//    )
+//    private boolean canSurviveOr(boolean original) {
+//        return getOr(original);
+//    }
+//
+//    private boolean getOr(boolean original) {
+//        Level level = this.level();
+//        if (level != null && !level.isClientSide()) return false;
+//        BlockPos pos = this.blockPosition();
+//        BlockState stateBelow = level.getBlockState(pos.below());
+//
+//        AABB aabb = AABB.encapsulatingFullBlocks(pos, pos);
+//        List<ItemEntity> list = level.getEntitiesOfClass(ItemEntity.class, aabb, EntitySelector.ENTITY_STILL_ALIVE);
+//        ItemStack stackedSlot = ItemStack.EMPTY;
+//        ItemStack rawStackedSlot = ItemStack.EMPTY;
+//        Francium.LOGGER.info(list.toString());
+//        for (ItemEntity itemEntity : list) {
+//            Francium.LOGGER.info(itemEntity.toString());
+//            ItemStack stack = itemEntity.getItem();
+//            if (stack.is(ModItems.STACKED_SLOT)) stackedSlot = stack;
+//            if (stack.is(ModItems.STACKED_RAW_SLOT)) rawStackedSlot = stack;
+//        }
+//
+//        BlockState state = this.level().getBlockState(this.blockPosition());
+//        if (this.blockState.is(Blocks.ANVIL) && state.is(ModBlocks.DRIPSTONE_SPIKES) && stateBelow.is(Blocks.DEEPSLATE) && !stackedSlot.isEmpty() && !rawStackedSlot.isEmpty()) {
+//            return true;
+//        }
+//        return original;
+//    }
 
 }
 
