@@ -1,0 +1,68 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "francium_2:block/neu_pumkin"
+      },
+      "when": {
+        "north_east_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/nwu_pumkin"
+      },
+      "when": {
+        "north_west_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/seu_pumkin"
+      },
+      "when": {
+        "south_east_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/swu_pumkin"
+      },
+      "when": {
+        "south_west_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/ned_pumkin"
+      },
+      "when": {
+        "north_east_down": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/nwd_pumkin"
+      },
+      "when": {
+        "north_west_down": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/sed_pumkin"
+      },
+      "when": {
+        "south_east_down": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/swd_pumkin"
+      },
+      "when": {
+        "south_west_down": true
+      }
+    }
+  ]
+}

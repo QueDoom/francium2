@@ -16,6 +16,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.ModdedBambooStalkBlock;
 import net.quedoom.francium.block.SolidSugarCaneBlock;
+import net.quedoom.francium.block.supers.EighthsEatableBlock;
 import net.quedoom.francium.item.vanilla.StickItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -66,7 +67,15 @@ public class RegisterBlockMixin {
             cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
         }
 
-        if (name.contains("copper") && !name.contains("chain") && !name.contains("lantern") && !name.contains("door") && !name.contains("bar") && !name.contains("grate") && !name.contains("bulb")) {
+        if (name.contains("melon") || name.contains("pumpkin")) {
+            BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
+            Function<BlockBehaviour.Properties, Block> newFactory = EighthsEatableBlock::new;
+            Block block = newFactory.apply(customProperty.setId(id));
+            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+        }
+
+        if ((name.contains("copper") && !name.contains("chain") && !name.contains("lantern") && !name.contains("door") && !name.contains("bar") && !name.contains("grate") && !name.contains("bulb")) ||
+             name.contains(string("gold_block"))) {
             BlockBehaviour.Properties customProperty = properties.noLootTable();
             Block block = factory.apply(customProperty.setId(id));
             cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));

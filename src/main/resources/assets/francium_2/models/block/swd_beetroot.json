@@ -1,0 +1,25 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"side": "francium_2:block/thick_beetroot",
+		"top": "francium_2:block/thick_beetroot",
+		"particle": "francium_2:block/thick_beetroot",
+		"in": "francium_2:block/thick_beetroot"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 8],
+			"to": [8, 8, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 8]},
+			"faces": {
+				"north": {"uv": [8, 8, 16, 16], "texture": "#in"},
+				"east": {"uv": [0, 8, 8, 16], "texture": "#in"},
+				"south": {"uv": [0, 8, 8, 16], "texture": "#side"},
+				"west": {"uv": [8, 8, 16, 16], "texture": "#side"},
+				"up": {"uv": [0, 8, 8, 16], "texture": "#in"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#top"}
+			}
+		}
+	]
+}

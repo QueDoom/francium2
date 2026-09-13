@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sticks",
+  "key": {
+    "#": "francium_2:stripped_bamboo"
+  },
+  "pattern": ["#"],
+  "result": {
+    "id": "francium_2:broken_stick"
+  }
+}

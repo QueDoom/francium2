@@ -1,0 +1,68 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "francium_2:block/neu_apple"
+      },
+      "when": {
+        "north_east_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/nwu_apple"
+      },
+      "when": {
+        "north_west_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/seu_apple"
+      },
+      "when": {
+        "south_east_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/swu_apple"
+      },
+      "when": {
+        "south_west_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/ned_apple"
+      },
+      "when": {
+        "north_east_down": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/nwd_apple"
+      },
+      "when": {
+        "north_west_down": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/sed_apple"
+      },
+      "when": {
+        "south_east_down": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/swd_apple"
+      },
+      "when": {
+        "south_west_down": true
+      }
+    }
+  ]
+}
