@@ -24,6 +24,6 @@ public class AddModRangeSelectItemModelPropertiesMixin {
     @Inject(method = "bootstrap",
             at = @At(value = "TAIL"))
     private static void addItemModelProperties(CallbackInfo ci) {
-        ID_MAPPER.put(Identifier.fromNamespaceAndPath("francium_2", "fire_starter_anim"), FireStarterAnimation.MAP_CODEC);
+        ID_MAPPER.put(Identifier.fromNamespaceAndPath(Francium.CONSTANT_MOD_ID, "fire_starter_anim"), FireStarterAnimation.MAP_CODEC);
     }
 }

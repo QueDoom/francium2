@@ -13,12 +13,14 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.init.*;
+import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import net.quedoom.quet.init.ModRegistrator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Francium extends ModRegistrator implements ModInitializer {
 	public static final String MOD_ID = setNamespace("francium_2");
+	public static final String CONSTANT_MOD_ID = "francium_2";
 	public static final Logger LOGGER = logger();
 
 	@Override
@@ -27,6 +29,7 @@ public class Francium extends ModRegistrator implements ModInitializer {
 
 //		boolean isLoaded = FabricLoader.getInstance().isModLoaded("");
 
+		QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
 		ModItems.register();
 		ModCreativeModeTabs.registerTabs();
 

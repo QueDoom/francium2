@@ -7,12 +7,13 @@ import net.quedoom.quet.datagen.QTRegistryBuilder;
 import net.quedoom.quet.datagen.QueTDataGeneratorEntrypoint;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
+import net.quedoom.quet.init.ModRegistrator;
 import net.quedoom.quet.misc.QueTObjectStorage;
 
 public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 	@Override
 	protected void doDatagen(FabricDataGenerator fabricDataGenerator, FabricDataGenerator.Pack pack) {
-		QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
+		ModRegistrator.setNamespace(Francium.CONSTANT_MOD_ID);
 
 		pack.addProvider(BlockTagGen::new);
 		pack.addProvider(ItemTagGen::new);
