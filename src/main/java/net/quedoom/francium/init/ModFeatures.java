@@ -32,7 +32,7 @@ public class ModFeatures {
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> create(String string) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Francium.id(string));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Francium.of(string));
     }
 
     private static <C extends FeatureConfiguration, F extends Feature<C>> F register(final String name, final F feature) {

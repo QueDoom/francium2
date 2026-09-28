@@ -3,20 +3,28 @@ package net.quedoom.francium;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.quedoom.francium.datagen.*;
+import net.quedoom.quet.datagen.QTRegistryBuilder;
+import net.quedoom.quet.datagen.QueTDataGeneratorEntrypoint;
+import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
+import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
+import net.quedoom.quet.misc.QueTObjectStorage;
 
-public class FranciumDataGenerator implements DataGeneratorEntrypoint {
+public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 	@Override
-	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+	protected void doDatagen(FabricDataGenerator fabricDataGenerator, FabricDataGenerator.Pack pack) {
+		QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
 
 		pack.addProvider(BlockTagGen::new);
 		pack.addProvider(ItemTagGen::new);
-		pack.addProvider(Lang::new);
+		pack.addProvider(Francium2LanguageProvider::new);
 		pack.addProvider(Loot::new);
 		pack.addProvider(Models::new);
 		pack.addProvider(RecipeGen::new);
 		pack.addProvider(ModAdvancements::new);
+	}
 
+	@Override
+	protected void buildRegistry(QTRegistryBuilder qtRegistryBuilder) {
 
 	}
 }

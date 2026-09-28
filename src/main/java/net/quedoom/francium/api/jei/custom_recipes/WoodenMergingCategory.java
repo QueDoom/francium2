@@ -17,7 +17,7 @@ import net.quedoom.francium.recipe.WoodenMergingRecipe;
 public class WoodenMergingCategory extends AbstractRecipeCategory<WoodenMergingRecipe> {
 
     public static final IRecipeType<WoodenMergingRecipe> TYPE =
-            IRecipeType.create(Francium.id("wooden_merging"), WoodenMergingRecipe.class);
+            IRecipeType.create(Francium.of("wooden_merging"), WoodenMergingRecipe.class);
 
 
     public WoodenMergingCategory(IGuiHelper guiHelper) {

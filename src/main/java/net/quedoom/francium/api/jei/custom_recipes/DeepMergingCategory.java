@@ -14,7 +14,7 @@ import net.quedoom.francium.recipe.DeepMergingRecipe;
 public class DeepMergingCategory extends AbstractRecipeCategory<DeepMergingRecipe> {
 
     public static final IRecipeType<DeepMergingRecipe> TYPE =
-            IRecipeType.create(Francium.id("deep_merging"), DeepMergingRecipe.class);
+            IRecipeType.create(Francium.of("deep_merging"), DeepMergingRecipe.class);
 
     public DeepMergingCategory(IGuiHelper guiHelper) {
         super(

@@ -10,6 +10,7 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
+import net.quedoom.quet.misc.GetPath;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -290,16 +291,16 @@ public class Lang extends FabricLanguageProvider {
     }
 
     private void autoTranslate(TranslationBuilder builder, Block block) {
-        String snakeCase = Francium.getPath(block);
+        String snakeCase = GetPath.get(block);
         builder.add(block, snakeToTitleCase(snakeCase));
     }
     private void autoTranslate(TranslationBuilder builder, Item item) {
-        String snakeCase = Francium.getPath(item);
+        String snakeCase = GetPath.get(item);
         builder.add(item, snakeToTitleCase(snakeCase));
     }
     private void autoTranslate(TranslationBuilder builder, TagKey<?> tag) {
         String translateLeft = tag.getTranslationKey();
-        String snakeCase = Francium.getPath(tag);
+        String snakeCase = GetPath.get(tag);
         builder.add(translateLeft, snakeToTitleCase(snakeCase));
     }
 }

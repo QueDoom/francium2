@@ -9,228 +9,219 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
+import net.quedoom.quet.init.QueTCreativeTab;
 
-public class ModCreativeModeTabs {
+public class ModCreativeModeTabs extends QueTCreativeTab {
 
-    public static final ResourceKey<CreativeModeTab> FRANCIUM_TAB_KEY = ResourceKey.create(
-            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Francium.id("francium_tab")
-    );
+    public static final ResourceKey<CreativeModeTab> FRANCIUM_TAB_KEY = create("francium_tab");
 
-  public static final CreativeModeTab FRANCIUM_TAB = FabricCreativeModeTab.builder()
-          .icon(() -> new ItemStack(ModItems.DIRT_PILE))
-          .title(Component.translatable("creativeTab.francium"))
-          .displayItems(((parameters, output) -> {
-              output.accept(ModItems.BROKEN_STICK);
-              output.accept(ModItems.SHARP_STICK);
-              output.accept(ModItems.WOODEN_SHEARS);
-              output.accept(ModItems.FIRE_STARTER);
-              output.accept(ModItems.BARK);
-              output.accept(ModItems.LEAF);
-              output.accept(ModItems.GRASS);
-              output.accept(ModItems.HUSK);
+  public static final CreativeModeTab FRANCIUM_TAB = register(ModItems.DIRT_PILE, "francium_tab", (parameters, output) -> {
+      output.accept(ModItems.BROKEN_STICK);
+      output.accept(ModItems.SHARP_STICK);
+      output.accept(ModItems.WOODEN_SHEARS);
+      output.accept(ModItems.FIRE_STARTER);
+      output.accept(ModItems.BARK);
+      output.accept(ModItems.LEAF);
+      output.accept(ModItems.GRASS);
+      output.accept(ModItems.HUSK);
 
-              output.accept(ModItems.WOODEN_PLATE);
+      output.accept(ModItems.WOODEN_PLATE);
 
-              output.accept(ModBlocks.ECHO_BLOCK);
+      output.accept(ModBlocks.ECHO_BLOCK);
 
-              output.accept(ModItems.ROCK);
-              output.accept(ModItems.SHARP_ROCK);
-              output.accept(ModItems.DEEPSLATE_ROCK);
-              output.accept(ModItems.SHARP_DEEPSLATE_ROCK);
-              output.accept(ModItems.AMETHYST_ROCK);
-              output.accept(ModItems.SHARP_AMETHYST_ROCK);
-              output.accept(ModItems.OBSIDIAN_ROCK);
-              output.accept(ModItems.SHARP_OBSIDIAN_ROCK);
-              output.accept(ModItems.BEDROCK_ROCK);
-              output.accept(ModItems.SHARP_BEDROCK_ROCK);
+      output.accept(ModItems.ROCK);
+      output.accept(ModItems.SHARP_ROCK);
+      output.accept(ModItems.DEEPSLATE_ROCK);
+      output.accept(ModItems.SHARP_DEEPSLATE_ROCK);
+      output.accept(ModItems.AMETHYST_ROCK);
+      output.accept(ModItems.SHARP_AMETHYST_ROCK);
+      output.accept(ModItems.OBSIDIAN_ROCK);
+      output.accept(ModItems.SHARP_OBSIDIAN_ROCK);
+      output.accept(ModItems.BEDROCK_ROCK);
+      output.accept(ModItems.SHARP_BEDROCK_ROCK);
 
-              output.accept(ModBlocks.GLUE_MIXER);
-              output.accept(ModItems.GLUE_BOTTLE);
-              output.accept(ModItems.GLUE);
-              output.accept(ModItems.VEGAN_GLUE);
-              output.accept(ModItems.SUPER_GLUE);
-              output.accept(ModItems.ECHO_GLUE);
+      output.accept(ModBlocks.GLUE_MIXER);
+      output.accept(ModItems.GLUE_BOTTLE);
+      output.accept(ModItems.GLUE);
+      output.accept(ModItems.VEGAN_GLUE);
+      output.accept(ModItems.SUPER_GLUE);
+      output.accept(ModItems.ECHO_GLUE);
 
-              output.accept(ModItems.TOOLBOX);
+      output.accept(ModItems.TOOLBOX);
 
-              output.accept(ModItems.ANDESITE_COATED_ROCK);
-              output.accept(ModItems.DIORITE_COATED_ROCK);
-              output.accept(ModItems.GRANITE_COATED_ROCK);
+      output.accept(ModItems.ANDESITE_COATED_ROCK);
+      output.accept(ModItems.DIORITE_COATED_ROCK);
+      output.accept(ModItems.GRANITE_COATED_ROCK);
 
-              output.accept(ModItems.ANDESITE_ALLOY);
-              output.accept(ModItems.DIORITE_ALLOY);
-              output.accept(ModItems.GRANITE_ALLOY);
+      output.accept(ModItems.ANDESITE_ALLOY);
+      output.accept(ModItems.DIORITE_ALLOY);
+      output.accept(ModItems.GRANITE_ALLOY);
 
-              output.accept(ModItems.MINERAL_MIX);
-              output.accept(ModItems.DRIPSTONE_PASTE);
-              output.accept(ModItems.AMETHYST_PASTE);
-              output.accept(ModItems.OBSIDIAN_PASTE);
-              output.accept(ModItems.DRIPSTONE_COATED_MINERAL_MIX);
-              output.accept(ModItems.AMETHYST_COATED_DIAMOND);
-              output.accept(ModItems.OBSIDIAN_INFUSED_DIAMOND);
+      output.accept(ModItems.MINERAL_MIX);
+      output.accept(ModItems.DRIPSTONE_PASTE);
+      output.accept(ModItems.AMETHYST_PASTE);
+      output.accept(ModItems.OBSIDIAN_PASTE);
+      output.accept(ModItems.DRIPSTONE_COATED_MINERAL_MIX);
+      output.accept(ModItems.AMETHYST_COATED_DIAMOND);
+      output.accept(ModItems.OBSIDIAN_INFUSED_DIAMOND);
 
-              output.accept(ModItems.CACTUS_PAPER);
-              output.accept(ModItems.OBSIDIAN_BOOK);
+      output.accept(ModItems.CACTUS_PAPER);
+      output.accept(ModItems.OBSIDIAN_BOOK);
 
-              output.accept(ModItems.SLOT);
-              output.accept(ModItems.STACKED_SLOT);
-              output.accept(ModItems.RAW_SLOT);
-              output.accept(ModItems.STACKED_RAW_SLOT);
+      output.accept(ModItems.SLOT);
+      output.accept(ModItems.STACKED_SLOT);
+      output.accept(ModItems.RAW_SLOT);
+      output.accept(ModItems.STACKED_RAW_SLOT);
 
-              output.accept(ModBlocks.WOODEN_MERGER);
-              output.accept(ModBlocks.DRIPSTONE_SPIKES);
-              output.accept(ModBlocks.DEEP_MERGER);
-              output.accept(ModBlocks.RUBBER_BLOCK);
-              output.accept(ModItems.CHEWING_GUM);
-              output.accept(ModItems.MICROPLASTIC);
-              output.accept(ModItems.PLASTIC_SHEET);
-              output.accept(ModItems.PLASTIC_NECKLACE);
-              output.accept(ModBlocks.TRADER_BENCH);
-              output.accept(ModBlocks.BUNDLE_TABLE);
+      output.accept(ModBlocks.WOODEN_MERGER);
+      output.accept(ModBlocks.DRIPSTONE_SPIKES);
+      output.accept(ModBlocks.DEEP_MERGER);
+      output.accept(ModBlocks.RUBBER_BLOCK);
+      output.accept(ModItems.CHEWING_GUM);
+      output.accept(ModItems.MICROPLASTIC);
+      output.accept(ModItems.PLASTIC_SHEET);
+      output.accept(ModItems.PLASTIC_NECKLACE);
+      output.accept(ModBlocks.TRADER_BENCH);
+      output.accept(ModBlocks.BUNDLE_TABLE);
 
-              output.accept(ModItems.CRAFTING_TOKEN);
-              output.accept(ModItems.SMELTING_TOKEN);
-              output.accept(ModItems.SMITHING_TOKEN);
+      output.accept(ModItems.CRAFTING_TOKEN);
+      output.accept(ModItems.SMELTING_TOKEN);
+      output.accept(ModItems.SMITHING_TOKEN);
 
-              output.accept(ModBlocks.WOODEN_CASING);
-              output.accept(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
-              output.accept(ModBlocks.MINERAL_MIX_BLOCK);
-              output.accept(ModBlocks.STONE_CASING);
-              output.accept(ModBlocks.OBSIDIAN_CASING);
+      output.accept(ModBlocks.WOODEN_CASING);
+      output.accept(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
+      output.accept(ModBlocks.MINERAL_MIX_BLOCK);
+      output.accept(ModBlocks.STONE_CASING);
+      output.accept(ModBlocks.OBSIDIAN_CASING);
 
-              output.accept(Blocks.SUGAR_CANE);
-              output.accept(ModBlocks.STRIPPED_SUGAR_CANE);
-              output.accept(Blocks.BAMBOO);
-              output.accept(ModBlocks.STRIPPED_BAMBOO_ITEM);
+      output.accept(Blocks.SUGAR_CANE);
+      output.accept(ModBlocks.STRIPPED_SUGAR_CANE);
+      output.accept(Blocks.BAMBOO);
+      output.accept(ModBlocks.STRIPPED_BAMBOO_ITEM);
 
-              output.accept(Blocks.MELON);
-              output.accept(Blocks.PUMPKIN);
-              output.accept(ModBlocks.THICK_POTATO);
-              output.accept(ModBlocks.THICK_CARROT);
-              output.accept(ModBlocks.THICK_BEETROOT);
-              output.accept(ModBlocks.THICK_APPLE);
+      output.accept(Blocks.MELON);
+      output.accept(Blocks.PUMPKIN);
+      output.accept(ModBlocks.THICK_POTATO);
+      output.accept(ModBlocks.THICK_CARROT);
+      output.accept(ModBlocks.THICK_BEETROOT);
+      output.accept(ModBlocks.THICK_APPLE);
 
-              output.accept(ModItems.PACKED_CALCITE);
-              output.accept(ModItems.PACKED_BASALT);
-              output.accept(ModItems.PACKED_DEEPSLATE);
-              output.accept(ModItems.PACKED_NETHERRACK);
-              output.accept(ModItems.PACKED_DIRT);
-              output.accept(ModItems.PACKED_PLANKS);
+      output.accept(ModItems.PACKED_CALCITE);
+      output.accept(ModItems.PACKED_BASALT);
+      output.accept(ModItems.PACKED_DEEPSLATE);
+      output.accept(ModItems.PACKED_NETHERRACK);
+      output.accept(ModItems.PACKED_DIRT);
+      output.accept(ModItems.PACKED_PLANKS);
 
-              output.accept(ModBlocks.HEAVY_SCULK);
-              output.accept(ModItems.DENCHO_SHARD);
+      output.accept(ModBlocks.HEAVY_SCULK);
+      output.accept(ModItems.DENCHO_SHARD);
 
-              output.accept(ModItems.STEEL_IN_A_BOTTLE);
-              output.accept(ModItems.STEEL_DUST);
-              output.accept(ModItems.STEEL_BOWL);
-              output.accept(ModItems.FRYING_PAN);
-              output.accept(ModItems.POT);
+      output.accept(ModItems.STEEL_IN_A_BOTTLE);
+      output.accept(ModItems.STEEL_DUST);
+      output.accept(ModItems.STEEL_BOWL);
+      output.accept(ModItems.FRYING_PAN);
+      output.accept(ModItems.POT);
 
-              output.accept(ModItems.DIRT_PILE);
-              output.accept(ModItems.SAWDUST);
-              output.accept(ModItems.GRAVEL_PILE);
-              output.accept(ModItems.SAND_PILE);
-              output.accept(ModItems.GLASS_SHARDS);
-              output.accept(ModItems.ANDESITE_PILE);
-              output.accept(ModItems.DIORITE_PILE );
-              output.accept(ModItems.GRANITE_PILE);
-              output.accept(ModItems.COAL_DUST);
-              output.accept(ModItems.GOLD_ORE_PILE);
-              output.accept(ModItems.DEEPSLATE_GOLD_ORE_PILE);
-              output.accept(ModItems.GOLD_DUST);
-              output.accept(ModItems.COPPER_ORE_PILE);
-              output.accept(ModItems.DEEPSLATE_COPPER_ORE_PILE);
-              output.accept(ModItems.COPPER_DUST);
-              output.accept(ModItems.IRON_ORE_PILE);
-              output.accept(ModItems.DEEPSLATE_IRON_ORE_PILE);
-              output.accept(ModItems.IRON_DUST);
-              output.accept(ModItems.DIAMOND_ORE_PILE);
-              output.accept(ModItems.DEEPSLATE_DIAMOND_ORE_PILE);
-              output.accept(ModItems.DIAMOND_DUST);
-              output.accept(ModItems.DEEPSLATE_PILE);
-              output.accept(ModItems.TUFF_PILE);
-              output.accept(ModItems.TUFF_ZONG);
-              output.accept(ModItems.CALCITE_PILE);
-              output.accept(ModItems.AMETHYST_PILE);
-              output.accept(ModItems.DRIPSTONE_PILE);
-              output.accept(ModItems.NETHERRACK_PILE);
-              output.accept(ModItems.BLACKSTONE_PILE);
-              output.accept(ModItems.SOUL_PILE);
-              output.accept(ModItems.BASALT_PILE);
-              output.accept(ModItems.NETHER_GOLD_ORE_PILE);
-              output.accept(ModItems.NETHER_QUARTZ_ORE_PILE);
-              output.accept(ModItems.NETHER_QUARTZ_DUST);
-              output.accept(ModItems.ANCIENT_DUST);
-              output.accept(ModItems.NETHERITE_DUST);
-              output.accept(ModBlocks.ANCIENT_BUNS);
-              output.accept(ModItems.ANCIENT_BUN);
+      output.accept(ModItems.DIRT_PILE);
+      output.accept(ModItems.SAWDUST);
+      output.accept(ModItems.GRAVEL_PILE);
+      output.accept(ModItems.SAND_PILE);
+      output.accept(ModItems.GLASS_SHARDS);
+      output.accept(ModItems.ANDESITE_PILE);
+      output.accept(ModItems.DIORITE_PILE );
+      output.accept(ModItems.GRANITE_PILE);
+      output.accept(ModItems.COAL_DUST);
+      output.accept(ModItems.GOLD_ORE_PILE);
+      output.accept(ModItems.DEEPSLATE_GOLD_ORE_PILE);
+      output.accept(ModItems.GOLD_DUST);
+      output.accept(ModItems.COPPER_ORE_PILE);
+      output.accept(ModItems.DEEPSLATE_COPPER_ORE_PILE);
+      output.accept(ModItems.COPPER_DUST);
+      output.accept(ModItems.IRON_ORE_PILE);
+      output.accept(ModItems.DEEPSLATE_IRON_ORE_PILE);
+      output.accept(ModItems.IRON_DUST);
+      output.accept(ModItems.DIAMOND_ORE_PILE);
+      output.accept(ModItems.DEEPSLATE_DIAMOND_ORE_PILE);
+      output.accept(ModItems.DIAMOND_DUST);
+      output.accept(ModItems.DEEPSLATE_PILE);
+      output.accept(ModItems.TUFF_PILE);
+      output.accept(ModItems.TUFF_ZONG);
+      output.accept(ModItems.CALCITE_PILE);
+      output.accept(ModItems.AMETHYST_PILE);
+      output.accept(ModItems.DRIPSTONE_PILE);
+      output.accept(ModItems.NETHERRACK_PILE);
+      output.accept(ModItems.BLACKSTONE_PILE);
+      output.accept(ModItems.SOUL_PILE);
+      output.accept(ModItems.BASALT_PILE);
+      output.accept(ModItems.NETHER_GOLD_ORE_PILE);
+      output.accept(ModItems.NETHER_QUARTZ_ORE_PILE);
+      output.accept(ModItems.NETHER_QUARTZ_DUST);
+      output.accept(ModItems.ANCIENT_DUST);
+      output.accept(ModItems.NETHERITE_DUST);
+      output.accept(ModBlocks.ANCIENT_BUNS);
+      output.accept(ModItems.ANCIENT_BUN);
 
-              output.accept(ModBlocks.FORBIDDEN_DUST);
-              output.accept(ModBlocks.FORBIDDEN_FLAKE);
-              output.accept(ModItems.CORRUPTED_MODEL);
+      output.accept(ModBlocks.FORBIDDEN_DUST);
+      output.accept(ModBlocks.FORBIDDEN_FLAKE);
+      output.accept(ModItems.CORRUPTED_MODEL);
 
-              output.accept(ModItems.BEDROCK_PILE);
-              output.accept(ModItems.BEDROCK_PEBBLES);
-              output.accept(ModItems.BEDROCK_FLAKE);
+      output.accept(ModItems.BEDROCK_PILE);
+      output.accept(ModItems.BEDROCK_PEBBLES);
+      output.accept(ModItems.BEDROCK_FLAKE);
 
 
 
-          })).build();
+  });
 
-    public static final ResourceKey<CreativeModeTab> ALLOWED_BLOCKS_TAB_KEY = ResourceKey.create(
-            BuiltInRegistries.CREATIVE_MODE_TAB.key(), Francium.id("allowed_blocks_tab_key")
-    );
+    public static final ResourceKey<CreativeModeTab> ALLOWED_BLOCKS_TAB_KEY = create("allowed_blocks_tab_key");
 
-    public static final CreativeModeTab ALLOWED_BLOCKS_TAB = FabricCreativeModeTab.builder()
-            .icon(() -> new ItemStack(ModBlocks.ALLOWED_COPPER_BLOCK))
-            .title(Component.translatable("creativeTab.allowed_blocks"))
-            .displayItems(((parameters, output) -> {
-                output.accept(ModBlocks.ALLOWED_GOLD_BLOCK);
-                output.accept(ModBlocks.ALLOWED_COPPER_BLOCK);
-                output.accept(ModBlocks.ALLOWED_EXPOSED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WEATHERED_COPPER);
-                output.accept(ModBlocks.ALLOWED_OXIDIZED_COPPER);
-                output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_CHISELED_COPPER);
-                output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB);
-                output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB);
-                output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB);
-                output.accept(ModBlocks.ALLOWED_CUT_COPPER_SLAB);
-                output.accept(ModBlocks.ALLOWED_WAXED_COPPER_BLOCK);
-                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER);
-                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER_STAIRS);
-                output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB);
-                output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
-                output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
-                output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
-            })).build();
+    public static final CreativeModeTab ALLOWED_BLOCKS_TAB = register(ModBlocks.ALLOWED_COPPER_BLOCK.asItem(), "allowed_blocks", (parameters, output) -> {
+        output.accept(ModBlocks.ALLOWED_GOLD_BLOCK);
+        output.accept(ModBlocks.ALLOWED_COPPER_BLOCK);
+        output.accept(ModBlocks.ALLOWED_EXPOSED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WEATHERED_COPPER);
+        output.accept(ModBlocks.ALLOWED_OXIDIZED_COPPER);
+        output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_OXIDIZED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_CHISELED_COPPER);
+        output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_OXIDIZED_CUT_COPPER_SLAB);
+        output.accept(ModBlocks.ALLOWED_WEATHERED_CUT_COPPER_SLAB);
+        output.accept(ModBlocks.ALLOWED_EXPOSED_CUT_COPPER_SLAB);
+        output.accept(ModBlocks.ALLOWED_CUT_COPPER_SLAB);
+        output.accept(ModBlocks.ALLOWED_WAXED_COPPER_BLOCK);
+        output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER);
+        output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER_STAIRS);
+        output.accept(ModBlocks.ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        output.accept(ModBlocks.ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB);
+        output.accept(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
+        output.accept(ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
+    });
 
     public static void registerTabs() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, FRANCIUM_TAB_KEY, FRANCIUM_TAB);
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ALLOWED_BLOCKS_TAB_KEY, ALLOWED_BLOCKS_TAB);
+        connectEntries(FRANCIUM_TAB, FRANCIUM_TAB_KEY);
+        connectEntries(ALLOWED_BLOCKS_TAB, ALLOWED_BLOCKS_TAB_KEY);
     }
 
 }

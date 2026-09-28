@@ -9,7 +9,7 @@ import net.quedoom.francium.Francium;
 
 public class WoodenMergerScreen extends ItemCombinerScreen<WoodenMergerMenu> {
     public WoodenMergerScreen(WoodenMergerMenu menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, Francium.id("textures/gui/wooden_merger.png"));
+        super(menu, inventory, title, Francium.of("textures/gui/wooden_merger.png"));
     }
 
     @Override

@@ -42,7 +42,7 @@ public class ModAdvancements extends FabricAdvancementProvider {
                         false
                 )
                 .rewards(rewards)
-                .addCriterion(name, trigger).save(consumer, Francium.id(name));
+                .addCriterion(name, trigger).save(consumer, Francium.of(name));
     }
 
     private static AdvancementHolder newRewardsHolder(Consumer<AdvancementHolder> consumer, Item item, String name,
@@ -60,7 +60,7 @@ public class ModAdvancements extends FabricAdvancementProvider {
                         false
                 )
                 .rewards(rewards)
-                .addCriterion(name, trigger).save(consumer, Francium.id(name));
+                .addCriterion(name, trigger).save(consumer, Francium.of(name));
     }
 
     private static AdvancementHolder newItemPickupHolder(Consumer<AdvancementHolder> consumer, Item item, String name,
@@ -87,7 +87,7 @@ public class ModAdvancements extends FabricAdvancementProvider {
                         true,
                         true,
                         false
-                ).addCriterion(name, trigger).save(consumer, Francium.id(name));
+                ).addCriterion(name, trigger).save(consumer, Francium.of(name));
     }
     private static AdvancementHolder newHolder(Consumer<AdvancementHolder> consumer, Item item, String name,
                                                AdvancementType type, Criterion<?> trigger, AdvancementHolder parent) {
@@ -102,7 +102,7 @@ public class ModAdvancements extends FabricAdvancementProvider {
                         true,
                         true,
                         false
-                ).addCriterion(name, trigger).save(consumer, Francium.id(name));
+                ).addCriterion(name, trigger).save(consumer, Francium.of(name));
     }
 
 }

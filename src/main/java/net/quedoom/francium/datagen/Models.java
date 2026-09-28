@@ -201,7 +201,7 @@ public class Models extends FabricModelProvider {
     public static final ModelTemplate FLAKE_FLAT_ITEM = createItem("flake_generated", TextureSlot.LAYER0);
 
     private static ModelTemplate createItem(final String id, final TextureSlot... slots) {
-        return new ModelTemplate(Optional.of(Francium.id("item/" + id)), Optional.empty(), slots);
+        return new ModelTemplate(Optional.of(Francium.of("item/" + id)), Optional.empty(), slots);
     }
     
     

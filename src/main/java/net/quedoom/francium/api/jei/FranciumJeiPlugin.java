@@ -26,7 +26,7 @@ import java.util.List;
 @JeiPlugin
 public class FranciumJeiPlugin implements IModPlugin {
     @Override public Identifier getPluginUid() {
-        return Francium.id("jei_plugin");
+        return Francium.of("jei_plugin");
     }
 
     @Override

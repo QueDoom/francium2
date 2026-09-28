@@ -13,34 +13,24 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.init.*;
+import net.quedoom.quet.init.ModRegistrator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Francium implements ModInitializer {
-	public static final String MOD_ID = "francium_2";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-	public static String getPath(Block block) {
-		return BuiltInRegistries.BLOCK.getKey(block).getPath();
-	}
-
-	public static String getPath(Item item) {
-		return BuiltInRegistries.ITEM.getKey(item).getPath();
-	}
-
-	public static String getPath(TagKey<?> tagKey) {
-		return tagKey.location().getPath();
-	}
+public class Francium extends ModRegistrator implements ModInitializer {
+	public static final String MOD_ID = setNamespace("francium_2");
+	public static final Logger LOGGER = logger();
 
 	@Override
 	public void onInitialize() {
+		LOGGER.info(namespace());
 
 //		boolean isLoaded = FabricLoader.getInstance().isModLoaded("");
 
-		ModItems.registerItems();
+		ModItems.register();
 		ModCreativeModeTabs.registerTabs();
 
-		ModBlocks.registerBlocks();
+		ModBlocks.register();
 		ModBlockEntities.registerBlockEntities();
 
 		ModEntityTypes.registerEntityTypes();
@@ -51,16 +41,9 @@ public class Francium implements ModInitializer {
 
 		ModMenuTypes.registerMenus();
 
-		ModStats.registerStats();
+		ModStats.register();
 		ModLootTables.registerLootTables();
 
 
-	}
-
-	public static Identifier id(String path) {
-		return Identifier.fromNamespaceAndPath(MOD_ID, path);
-	}
-	public static String jeiId(String path) {
-		return "jei." + MOD_ID + '.' + path;
 	}
 }

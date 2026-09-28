@@ -71,7 +71,7 @@ public class RockItem extends Item {
     @Override
     public void onUseTick(final Level level, final LivingEntity livingEntity, final ItemStack itemStack, final int ticksRemaining) {
         if (ticksRemaining >= 0 && livingEntity instanceof Player player) {
-//            Francium.LOGGER.info("Ticks Remaining: {}", ticksRemaining);
+            //Francium.LOGGER.info("Ticks Remaining: {}", ticksRemaining);
             HitResult hitResult = this.calculateHitResult(player);
             if (hitResult instanceof BlockHitResult blockHitResult) {
                 if (hitResult.getType() == HitResult.Type.BLOCK) {
@@ -91,6 +91,8 @@ public class RockItem extends Item {
                             level.playSound(player, pos, brushSound, SoundSource.BLOCKS);
 
                             if (ticksRemaining < USE_DURATION) {
+                                Francium.LOGGER.info("oh ballss");
+                                Francium.LOGGER.info("Ticks Remaining Again: {}", ticksRemaining);
                                 if (level instanceof ServerLevel) {
                                     if (!player.hasInfiniteMaterials()) itemStack.shrink(1);
                                     player.addItem(sharpItem.getDefaultInstance());
