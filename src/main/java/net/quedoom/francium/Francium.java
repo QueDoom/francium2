@@ -60,9 +60,6 @@ public class Francium implements ModInitializer {
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
-	public static Component translateable(String translate) {
-		return Component.translatable(MOD_ID + translate);
-	}
 	public static String jeiId(String path) {
 		return "jei." + MOD_ID + '.' + path;
 	}

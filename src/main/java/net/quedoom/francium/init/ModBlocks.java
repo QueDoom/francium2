@@ -15,10 +15,11 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
 import net.quedoom.francium.block.supers.EighthsEatableBlock;
 import net.quedoom.francium.block.supers.FallingEighthsEatableBlock;
+import net.quedoom.quet.init.QueTBlock;
 
 import java.util.function.Function;
 
-public class ModBlocks {
+public class ModBlocks extends QueTBlock {
 
     public static final Block GLUE_MIXER = register("glue_mixer", WoodenMixerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).noOcclusion()
@@ -92,7 +93,7 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
 
     public static ResourceKey<Item> createItem(String name) {
         // Create the item key.
-        return ResourceKey.create(Registries.ITEM, Francium.id(name));
+        return ResourceKey.create(Registries.ITEM, Francium.of(name));
     }
 
 
@@ -236,65 +237,5 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
     );
 
     //</editor-fold>
-
-    private static Block registerStair(String name, Block block) {
-        return register(name, p -> new StairBlock(block.defaultBlockState(), p), BlockBehaviour.Properties.ofFullCopy(block));
-    }
-
-    private static Item registerItem(String name, Block block, Item.Properties properties) {
-        ResourceKey<Item> itemKey = keyOfItem(name);
-
-        BlockItem blockItem = new BlockItem(block, properties);
-        return Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
-    }
-
-    private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties properties, boolean shouldRegisterItem) {
-        // Create a registry key for the block
-        ResourceKey<Block> blockKey = keyOfBlock(name);
-        // Create the block instance
-        Block block = blockFactory.apply(properties.setId(blockKey));
-
-        // Sometimes, you may not want to register an item for the block.
-        // Eg: if it's a technical block like `minecraft:moving_piston` or `minecraft:end_gateway`
-        if (shouldRegisterItem) {
-            // Items need to be registered with a different type of registry key, but the ID
-            // can be the same.
-            ResourceKey<Item> itemKey = keyOfItem(name);
-
-            BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix());
-            Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
-        }
-
-        return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
-    }
-    private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties properties) {
-        // Create a registry key for the block
-        ResourceKey<Block> blockKey = keyOfBlock(name);
-        // Create the block instance
-        Block block = blockFactory.apply(properties.setId(blockKey));
-
-        ResourceKey<Item> itemKey = keyOfItem(name);
-
-        BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix());
-        Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
-
-        return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
-    }
-
-    private static Block register(String name, BlockBehaviour.Properties properies) {
-        return register(name, Block::new, properies);
-    }
-
-    private static ResourceKey<Block> keyOfBlock(String name) {
-        return ResourceKey.create(Registries.BLOCK, Francium.id(name));
-    }
-
-    private static ResourceKey<Item> keyOfItem(String name) {
-        return ResourceKey.create(Registries.ITEM, Francium.id(name));
-    }
-
-    public static void registerBlocks() {
-
-    }
 
 }

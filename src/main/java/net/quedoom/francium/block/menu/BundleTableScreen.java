@@ -13,7 +13,7 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModMenuTypes;
 
 public class BundleTableScreen extends AbstractContainerScreen<BundleTableMenu> {
-    private static final Identifier CONTAINER_BACKGROUND = Francium.id("textures/gui/bundle_table.png");
+    private static final Identifier CONTAINER_BACKGROUND = Francium.of("textures/gui/bundle_table.png");
     private final int containerRows;
 
     public BundleTableScreen(BundleTableMenu menu, Inventory inventory, Component title) {

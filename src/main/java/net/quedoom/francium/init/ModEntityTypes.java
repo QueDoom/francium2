@@ -21,7 +21,7 @@ public class ModEntityTypes {
 
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
-        ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Francium.id(name));
+        ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Francium.of(name));
         return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
     }
 

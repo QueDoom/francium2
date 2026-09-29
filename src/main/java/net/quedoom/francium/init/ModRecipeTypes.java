@@ -15,13 +15,13 @@ public class ModRecipeTypes {
 
     public static final RecipeSerializer<WoodenMergingRecipe> WOODEN_MERGING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
-            Francium.id(WoodenMergingRecipe.Type.ID),
+            Francium.of(WoodenMergingRecipe.Type.ID),
             new RecipeSerializer<>(WoodenMergingRecipe.CODEC, WoodenMergingRecipe.STREAM_CODEC)
     );
 
     public static final RecipeType<WoodenMergingRecipe> WOODEN_MERGING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
-            Francium.id(WoodenMergingRecipe.Type.ID),
+            Francium.of(WoodenMergingRecipe.Type.ID),
             new RecipeType<WoodenMergingRecipe>() {
                 @Override
                 public String toString() {
@@ -34,13 +34,13 @@ public class ModRecipeTypes {
 
     public static final RecipeSerializer<DeepMergingRecipe> DEEP_MERGING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
-            Francium.id(DeepMergingRecipe.Type.ID),
+            Francium.of(DeepMergingRecipe.Type.ID),
             new RecipeSerializer<>(DeepMergingRecipe.CODEC, DeepMergingRecipe.STREAM_CODEC)
     );
 
     public static final RecipeType<DeepMergingRecipe> DEEP_MERGING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
-            Francium.id(DeepMergingRecipe.Type.ID),
+            Francium.of(DeepMergingRecipe.Type.ID),
             new RecipeType<DeepMergingRecipe>() {
                 @Override
                 public String toString() {
@@ -52,13 +52,13 @@ public class ModRecipeTypes {
 
     public static final RecipeSerializer<AnvilPressingRecipe> ANVIL_PRESSING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
-            Francium.id(AnvilPressingRecipe.Type.ID),
+            Francium.of(AnvilPressingRecipe.Type.ID),
             new RecipeSerializer<>(AnvilPressingRecipe.CODEC, AnvilPressingRecipe.STREAM_CODEC)
     );
 
     public static final RecipeType<AnvilPressingRecipe> ANVIL_PRESSING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
-            Francium.id(AnvilPressingRecipe.Type.ID),
+            Francium.of(AnvilPressingRecipe.Type.ID),
             new RecipeType<AnvilPressingRecipe>() {
                 @Override
                 public String toString() {
@@ -70,13 +70,13 @@ public class ModRecipeTypes {
 
     public static final RecipeSerializer<GlueMixingRecipe> GLUE_MIXING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
-            Francium.id(GlueMixingRecipe.Type.ID),
+            Francium.of(GlueMixingRecipe.Type.ID),
             new RecipeSerializer<>(GlueMixingRecipe.CODEC, GlueMixingRecipe.STREAM_CODEC)
     );
 
     public static final RecipeType<GlueMixingRecipe> GLUE_MIXING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
-            Francium.id(GlueMixingRecipe.Type.ID),
+            Francium.of(GlueMixingRecipe.Type.ID),
             new RecipeType<GlueMixingRecipe>() {
                 @Override
                 public String toString() {
@@ -87,13 +87,13 @@ public class ModRecipeTypes {
 
     public static final RecipeSerializer<TradingRecipe> TRADING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
-            Francium.id(TradingRecipe.Type.ID),
+            Francium.of(TradingRecipe.Type.ID),
             new RecipeSerializer<>(TradingRecipe.CODEC, TradingRecipe.STREAM_CODEC)
     );
 
     public static final RecipeType<TradingRecipe> TRADING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
-            Francium.id(TradingRecipe.Type.ID),
+            Francium.of(TradingRecipe.Type.ID),
             new RecipeType<TradingRecipe>() {
                 @Override
                 public String toString() {
@@ -104,13 +104,13 @@ public class ModRecipeTypes {
 
 
     private static <T extends Recipe<?>> RecipeSerializer<T> createSerializer(String name, RecipeSerializer<T> instance) {
-        return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Francium.id(name), instance);
+        return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Francium.of(name), instance);
     }
     private static <T extends Recipe<?>> RecipeType<T> createRecipeType(String name, RecipeType<T> instance) {
-        return Registry.register(BuiltInRegistries.RECIPE_TYPE, Francium.id(name), instance);
+        return Registry.register(BuiltInRegistries.RECIPE_TYPE, Francium.of(name), instance);
     }
     private static RecipeBookCategory createRecipeCategory(String name) {
-        return Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, Francium.id(name), new RecipeBookCategory());
+        return Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, Francium.of(name), new RecipeBookCategory());
     }
 
 

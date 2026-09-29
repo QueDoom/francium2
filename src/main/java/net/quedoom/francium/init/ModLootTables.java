@@ -10,7 +10,7 @@ public class ModLootTables {
     public static final ResourceKey<LootTable> SMALL_FORBIDDEN = register("blocks/small_forbidden");
 
     private static ResourceKey<LootTable> register(final String location) {
-        return ResourceKey.create(Registries.LOOT_TABLE, Francium.id(location));
+        return ResourceKey.create(Registries.LOOT_TABLE, Francium.of(location));
     }
 
     public static void registerLootTables() { };

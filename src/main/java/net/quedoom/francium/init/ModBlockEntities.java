@@ -13,6 +13,7 @@ import net.quedoom.francium.block.entity.BundleTableEntity;
 import net.quedoom.francium.block.entity.DeepMergerEntity;
 import net.quedoom.francium.block.entity.GlueMixerEntity;
 import net.quedoom.francium.block.entity.TraderBenchEntity;
+import net.quedoom.quet.init.ModRegistrator;
 
 public class ModBlockEntities {
 
@@ -36,7 +37,7 @@ public class ModBlockEntities {
             FabricBlockEntityTypeBuilder.Factory<? extends T> entityFactory,
             Block... blocks
     ) {
-        Identifier id = Francium.id(name);
+        Identifier id = ModRegistrator.of(name);
         return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, id, FabricBlockEntityTypeBuilder.<T>create(entityFactory, blocks).build());
     }
 

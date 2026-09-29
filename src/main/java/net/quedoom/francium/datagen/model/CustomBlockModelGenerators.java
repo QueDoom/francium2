@@ -20,12 +20,12 @@ public class CustomBlockModelGenerators {
 
     // helper method for creating Models
     private static ModelTemplate block(String parent, TextureSlot... requiredTextureKeys) {
-        return new ModelTemplate(Optional.of(Francium.id("block/" + parent)), Optional.empty(), requiredTextureKeys);
+        return new ModelTemplate(Optional.of(Francium.of("block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
     // helper method for creating Models with variants
     private static ModelTemplate block(String parent, String variant, TextureSlot... requiredTextureKeys) {
-        return new ModelTemplate(Optional.of(Francium.id("block/" + parent)), Optional.of(variant), requiredTextureKeys);
+        return new ModelTemplate(Optional.of(Francium.of("block/" + parent)), Optional.of(variant), requiredTextureKeys);
     }
 
 

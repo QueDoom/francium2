@@ -18,7 +18,7 @@ public class ModMenuTypes {
             String name,
             MenuType.MenuSupplier<T> constructor
     ) {
-        return Registry.register(BuiltInRegistries.MENU, Francium.id(name), new MenuType<>(constructor, FeatureFlagSet.of()));
+        return Registry.register(BuiltInRegistries.MENU, Francium.of(name), new MenuType<>(constructor, FeatureFlagSet.of()));
     }
 
     public static void registerMenus() {}

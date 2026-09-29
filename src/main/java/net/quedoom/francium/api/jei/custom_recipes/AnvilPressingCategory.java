@@ -14,7 +14,7 @@ import net.quedoom.francium.recipe.AnvilPressingRecipe;
 
 public class AnvilPressingCategory extends AbstractRecipeCategory<AnvilPressingRecipe> {
     public static final IRecipeType<AnvilPressingRecipe> TYPE =
-            IRecipeType.create(Francium.id("anvil_pressing"), AnvilPressingRecipe.class);
+            IRecipeType.create(Francium.of("anvil_pressing"), AnvilPressingRecipe.class);
 
     public AnvilPressingCategory(IGuiHelper guiHelper) {
         super(

@@ -15,7 +15,7 @@ import net.quedoom.francium.recipe.GlueMixingRecipe;
 
 public class GlueMixingCategory extends AbstractRecipeCategory<GlueMixingRecipe> {
     public static final IRecipeType<GlueMixingRecipe> TYPE =
-            IRecipeType.create(Francium.id("glue_mixing"), GlueMixingRecipe.class);
+            IRecipeType.create(Francium.of("glue_mixing"), GlueMixingRecipe.class);
 
     public GlueMixingCategory(IGuiHelper guiHelper) {
         super(

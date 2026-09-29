@@ -8,7 +8,7 @@ import net.quedoom.francium.Francium;
 
 public class DeepMergerScreen extends ItemCombinerScreen<DeepMergerMenu> {
     public DeepMergerScreen(DeepMergerMenu menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, Francium.id("textures/gui/deep_merger.png"));
+        super(menu, inventory, title, Francium.of("textures/gui/deep_merger.png"));
     }
 
     @Override
