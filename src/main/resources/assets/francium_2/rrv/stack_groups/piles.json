@@ -1,0 +1,15 @@
+{
+  "type": "rrv:group",
+  "contents": [
+    {
+      "type": "rrv:",
+      "regex": "francium_2:.*_pile"
+    },
+    {
+      "type": "rrv:",
+      "regex": "francium_2:.*_dust"
+    }
+  ],
+  "name": "stackgroup.francium_2.piles",
+  "priority": -1
+}

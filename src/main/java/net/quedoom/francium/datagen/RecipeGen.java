@@ -43,9 +43,9 @@ public class RecipeGen extends FabricRecipeProvider {
                 glueMixing(this, output, WoodenMixerGlueType.VEGAN, 3, ModItems.VEGAN_GLUE, 16, "4");
                 glueMixing(this, output, WoodenMixerGlueType.STEEL, 0, ModItems.STEEL_IN_A_BOTTLE, 2);
 
-                woodenMerging(this, output, Items.CRAFTING_TABLE, Items.IRON_INGOT, ModItems.GLUE, ModItems.CRAFTING_TOKEN, 1);
-                woodenMerging(this, output, Items.FURNACE, Items.IRON_INGOT, ModItems.GLUE, ModItems.SMELTING_TOKEN, 1);
-                woodenMerging(this, output, Items.SMITHING_TABLE, Items.IRON_INGOT, ModItems.GLUE, ModItems.SMITHING_TOKEN, 1);
+                woodenMerging(this, output, Items.CRAFTING_TABLE, Items.IRON_INGOT, ModItems.WOODEN_PLATE, ModItems.CRAFTING_TOKEN, 1);
+                woodenMerging(this, output, Items.FURNACE, Items.IRON_INGOT, ModItems.WOODEN_PLATE, ModItems.SMELTING_TOKEN, 1);
+                woodenMerging(this, output, Items.SMITHING_TABLE, Items.IRON_INGOT, ModItems.WOODEN_PLATE, ModItems.SMITHING_TOKEN, 1);
                 woodenMerging(this, output, ModItems.TUFF_PILE, ModItems.TUFF_PILE, ModItems.GLUE, ModItems.TUFF_ZONG, 1);
 
                 woodenMerging(this, output, ModItems.SLOT, ModItems.SLOT, ModItems.VEGAN_GLUE, ModItems.STACKED_SLOT, 1);
@@ -274,56 +274,56 @@ public class RecipeGen extends FabricRecipeProvider {
     private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
                 .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
-                .save(output, "francium_2:wooden_mixer/" + GetPath.get(result.asItem()) + "_from_wooden_merger")
+                .save(output, "francium_2:wooden_mixing/" + GetPath.get(result.asItem()))
         ;
     }
 
     private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count, String id) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
                 .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
-                .save(output, "francium_2:wooden_mixer/" + GetPath.get(result.asItem()) + "_from_wooden_merger_" + id)
+                .save(output, "francium_2:wooden_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
 
     private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count) {
         WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:wooden_merger/" + GetPath.get(result.asItem()) + "_from_wooden_mixer")
+                .save(output, "francium_2:wooden_merging/" + GetPath.get(result.asItem()))
         ;
     }
 
     private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count, String id) {
         WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:wooden_merger/" + GetPath.get(result.asItem()) + "_from_wooden_mixer_" + id)
+                .save(output, "francium_2:wooden_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
 
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike wildcard, ItemLike result, int count) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, wildcard, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_from_deep_merging")
+                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()))
         ;
     }
 
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike wildcard, ItemLike result, int count, String id) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, wildcard, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_from_deep_merging_" + id)
+                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
 
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike result, int count) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_from_deep_merging")
+                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()))
         ;
     }
 
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike result, int count, String id) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
-                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_from_deep_merging_" + id)
+                .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
 

@@ -122,9 +122,11 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModTags.Blocks.STONE_ORES);
         qtTranslationBuilder.auto(ModTags.Blocks.TILLS);
 
-        translationBuilder.add("jei.francium_2.wooden_merging", "Wooden Merging");
-        translationBuilder.add("jei.francium_2.deep_merging", "Deep Merging");
-        translationBuilder.add("jei.francium_2.glue_mixing", "Glue Mixing");
+        translationBuilder.add(Francium.translationString("rrv", "wooden_merging"), "Wooden Merging");
+        translationBuilder.add(Francium.translationString("rrv", "deep_merging"), "Deep Merging");
+        translationBuilder.add(Francium.translationString("rrv", "glue_mixing"), "Glue Mixing");
+
+        translationBuilder.add(Francium.translationString("stackgroup", "piles"), "Piles");
 
         translationBuilder.add("menu.francium_2.merging", "Merging");
         translationBuilder.add("menu.francium_2.trader_bench", "Trading");

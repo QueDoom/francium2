@@ -24,8 +24,11 @@
 		"client": [
 			"net.quedoom.francium.FranciumClient"
 		],
-		"jei_mod_plugin": [
-			"net.quedoom.francium.api.jei.FranciumJeiPlugin"
+		"rrv": [
+			"net.quedoom.francium.api.rrv.FranciumRRVIntegration"
+		],
+		"rrv_client": [
+			"net.quedoom.francium.api.rrv.FranciumRRVClientIntegration"
 		]
 	},
 	"mixins": [
@@ -36,6 +39,6 @@
 		"minecraft": "~26.1.2",
 		"java": ">=25",
 		"fabric-api": "*",
-		"quet": "2.0.2"
+		"quet": "2.0.3"
 	}
 }

@@ -1,4 +1,4 @@
-package net.quedoom.francium.api.jei;
+package net.quedoom.francium.datagen.recipe;
 
 import net.fabricmc.fabric.api.recipe.v1.sync.SynchronizedRecipes;
 import net.minecraft.world.item.crafting.Recipe;
@@ -8,7 +8,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FranciumSyncedRecipes {
 

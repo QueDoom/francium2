@@ -67,7 +67,7 @@ public class RegisterBlockMixin {
             cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
         }
 
-        if (name.contains("melon") || name.contains("pumpkin")) {
+        if ((name.contains("melon") || name.contains("pumpkin")) && !name.contains("stem")) {
             BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
             Function<BlockBehaviour.Properties, Block> newFactory = EighthsEatableBlock::new;
             Block block = newFactory.apply(customProperty.setId(id));
