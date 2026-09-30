@@ -9,7 +9,7 @@
     "CheckStillValidCraftingTokenMixin",
     "CheckStillValidFurnaceSmeltingTokenMixin",
     "CraftingTableNeedsTokenMixin",
-    "CropBlockMixin",
+    "thicc_farming.CropBlockMixin",
     "DestroyBlock",
     "DissableAxeStripping",
     "DissableHoeTilling",
@@ -19,7 +19,8 @@
     "RegisterBlockMixin",
     "RegisterItemMixin",
     "SlimeBallDropsFromDEATHMixin",
-    "YouCantEvenStartToBreakWithoutAToolLilBro"
+    "YouCantEvenStartToBreakWithoutAToolLilBro",
+    "thicc_farming.ThickCropsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -63,6 +63,38 @@
       "when": {
         "south_west_down": true
       }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/apple_foliage_ne"
+      },
+      "when": {
+        "north_east_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/apple_foliage_nw"
+      },
+      "when": {
+        "north_west_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/apple_foliage_se"
+      },
+      "when": {
+        "south_east_up": true
+      }
+    },
+    {
+      "apply": {
+        "model": "francium_2:block/apple_foliage_sw"
+      },
+      "when": {
+        "south_west_up": true
+      }
     }
   ]
 }

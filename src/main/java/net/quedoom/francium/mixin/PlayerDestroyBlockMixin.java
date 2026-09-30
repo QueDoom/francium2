@@ -50,7 +50,6 @@ public class PlayerDestroyBlockMixin {
             if (randi < 1) {
                 level.setBlockAndUpdate(pos, ModBlocks.THICK_APPLE.defaultBlockState());
             }
-            original.call(state, level, pos, blockEntity, ((Player) breaker), tool);
         }
 
         if (state.is(ModTags.Blocks.DROPS_FORBIDDEN_DUST) || state.is(ModTags.Blocks.DROPS_FORBIDDEN_FLAKE) || state.is(ModTags.Blocks.SMALL_DROPS_FORBIDDEN_FLAKE)) {
@@ -61,6 +60,7 @@ public class PlayerDestroyBlockMixin {
             } else {
                 Block.dropResources(ModBlocks.SMALL_SPECIAL_FORBIDDEN_FLAKE.defaultBlockState(), level, pos);
             }
+            return;
         }
 
         if (state.is(ModTags.Blocks.TILLS)) {
@@ -78,8 +78,9 @@ public class PlayerDestroyBlockMixin {
                     dropResources(Blocks.PODZOL.defaultBlockState(), level, pos);
                 }
             }
+            return;
         }
-        else original.call(state, level, pos, blockEntity, ((Player) breaker), tool);
+        original.call(state, level, pos, blockEntity, ((Player) breaker), tool);
     }
 
 }

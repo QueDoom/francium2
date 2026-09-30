@@ -17,6 +17,10 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.ModdedBambooStalkBlock;
 import net.quedoom.francium.block.SolidSugarCaneBlock;
 import net.quedoom.francium.block.supers.EighthsEatableBlock;
+import net.quedoom.francium.block.supers.RotateableEighthsEatableBlock;
+import net.quedoom.francium.block.supers.ShearableEightsEatableBlock;
+import net.quedoom.francium.block.thicc_crops.ThickableBeetrootBlock;
+import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.item.vanilla.StickItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -35,6 +39,13 @@ public class RegisterBlockMixin {
 
     private static void register(ResourceKey<Block> id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, CallbackInfoReturnable<Block> cir) {
         String name = id.toString();
+        if (name.equals(string("beetroots"))) {
+            BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops();
+            Function<BlockBehaviour.Properties, Block> newFactory = p -> new ThickableBeetrootBlock(ModBlocks.THICK_BEETROOT, p);
+            Block block = newFactory.apply(customProperty.setId(id));
+            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+        }
+
         if (name.equals(string("bedrock"))) {
             BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops();
             Block block = factory.apply(customProperty.setId(id));
@@ -68,10 +79,24 @@ public class RegisterBlockMixin {
         }
 
         if ((name.contains("melon") || name.contains("pumpkin")) && !name.contains("stem")) {
-            BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
-            Function<BlockBehaviour.Properties, Block> newFactory = EighthsEatableBlock::new;
-            Block block = newFactory.apply(customProperty.setId(id));
-            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+            if (name.contains("pumpkin")) {
+                if (name.contains("carved")) {
+                    BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
+                    Function<BlockBehaviour.Properties, Block> newFactory = RotateableEighthsEatableBlock::new;
+                    Block block = newFactory.apply(customProperty.setId(id));
+                    cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+                } else {
+                    BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
+                    Function<BlockBehaviour.Properties, Block> newFactory = p -> new ShearableEightsEatableBlock(Blocks.CARVED_PUMPKIN, p);
+                    Block block = newFactory.apply(customProperty.setId(id));
+                    cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+                }
+            } else {
+                BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
+                Function<BlockBehaviour.Properties, Block> newFactory = p -> new EighthsEatableBlock(1, 0, p);
+                Block block = newFactory.apply(customProperty.setId(id));
+                cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+            }
         }
 
         if ((name.contains("copper") && !name.contains("chain") && !name.contains("lantern") && !name.contains("door") && !name.contains("bar") && !name.contains("grate") && !name.contains("bulb")) ||

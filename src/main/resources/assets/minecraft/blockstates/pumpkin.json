@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "francium_2:block/neu_pumkin"
+        "model": "francium_2:block/neu_pumpkin"
       },
       "when": {
         "north_east_up": true
@@ -10,7 +10,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/nwu_pumkin"
+        "model": "francium_2:block/nwu_pumpkin"
       },
       "when": {
         "north_west_up": true
@@ -18,7 +18,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/seu_pumkin"
+        "model": "francium_2:block/seu_pumpkin"
       },
       "when": {
         "south_east_up": true
@@ -26,7 +26,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/swu_pumkin"
+        "model": "francium_2:block/swu_pumpkin"
       },
       "when": {
         "south_west_up": true
@@ -34,7 +34,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/ned_pumkin"
+        "model": "francium_2:block/ned_pumpkin"
       },
       "when": {
         "north_east_down": true
@@ -42,7 +42,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/nwd_pumkin"
+        "model": "francium_2:block/nwd_pumpkin"
       },
       "when": {
         "north_west_down": true
@@ -50,7 +50,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/sed_pumkin"
+        "model": "francium_2:block/sed_pumpkin"
       },
       "when": {
         "south_east_down": true
@@ -58,7 +58,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/swd_pumkin"
+        "model": "francium_2:block/swd_pumpkin"
       },
       "when": {
         "south_west_down": true

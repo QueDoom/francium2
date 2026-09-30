@@ -2,10 +2,11 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"side": "francium_2:block/thick_apple",
-		"top": "francium_2:block/thick_apple",
-		"particle": "francium_2:block/thick_apple",
-		"in": "francium_2:block/thick_apple"
+		"1": "francium_2:block/thick_apple",
+		"2": "francium_2:block/thick_apple_bottom",
+		"3": "francium_2:block/thick_apple_inner_side",
+		"4": "francium_2:block/thick_apple_inner_top",
+		"particle": "francium_2:block/thick_apple"
 	},
 	"elements": [
 		{
@@ -13,12 +14,12 @@
 			"to": [16, 8, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
-				"north": {"uv": [0, 8, 8, 16], "texture": "#in"},
-				"east": {"uv": [0, 8, 8, 16], "texture": "#side"},
-				"south": {"uv": [8, 8, 16, 16], "texture": "#side"},
-				"west": {"uv": [8, 8, 16, 16], "texture": "#in"},
-				"up": {"uv": [8, 8, 16, 16], "texture": "#in"},
-				"down": {"uv": [8, 0, 16, 8], "texture": "#top"}
+				"north": {"uv": [0, 8, 8, 16], "texture": "#3"},
+				"east": {"uv": [0, 8, 8, 16], "texture": "#1"},
+				"south": {"uv": [8, 8, 16, 16], "texture": "#1"},
+				"west": {"uv": [8, 8, 16, 16], "texture": "#3"},
+				"up": {"uv": [8, 8, 16, 16], "texture": "#4"},
+				"down": {"uv": [8, 0, 16, 8], "texture": "#2"}
 			}
 		}
 	]

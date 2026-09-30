@@ -21,72 +21,72 @@ public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
         return new EighthsEatableOctant(ns == 'n', ew == 'e', ud == 'u');
     }
 
-    public void set(Level level, BlockState state, BlockPos pos, boolean value) {
+    public BlockState getStem(BlockState state) {
         BooleanProperty property;
+        BooleanProperty blockProperty;
+        if (!up) return state;
+        if (north) {
+            if (east) blockProperty = ModProperties.NORTH_EAST_UP;
+                 else blockProperty = ModProperties.NORTH_WEST_UP;
+        } else {
+            if (east) blockProperty = ModProperties.SOUTH_EAST_UP;
+                else blockProperty = ModProperties.SOUTH_WEST_UP;
+        }
+        if (north) {
+            if (east) property = ModProperties.STEM_NE;
+                else property = ModProperties.STEM_NW;
+        } else {
+            if (east) property = ModProperties.STEM_SE;
+                else property = ModProperties.STEM_SW;
+        }
+        return state.setValue(property, state.getValue(blockProperty));
+    }
+
+    public void set(Level level, BlockState state, BlockPos pos, boolean value) {
+        level.setBlockAndUpdate(pos, state.setValue(getProperty(), value));
+    }
+
+    public void setStem(Level level, BlockState state, BlockPos pos, boolean value) {
+        BlockState stateEaten = state.setValue(getProperty(), value);
+        level.setBlockAndUpdate(pos, getStem(stateEaten));
+    }
+
+    public BooleanProperty getProperty() {
+        BooleanProperty blockProperty;
         if (north) {
             if (east) {
                 if (up) {
-                    property = ModProperties.NORTH_EAST_UP;
+                    blockProperty = ModProperties.NORTH_EAST_UP;
                 } else {
-                    property = ModProperties.NORTH_EAST_DOWN;
+                    blockProperty = ModProperties.NORTH_EAST_DOWN;
                 }
             } else {
                 if (up) {
-                    property = ModProperties.NORTH_WEST_UP;
+                    blockProperty = ModProperties.NORTH_WEST_UP;
                 } else {
-                    property = ModProperties.NORTH_WEST_DOWN;
+                    blockProperty = ModProperties.NORTH_WEST_DOWN;
                 }
             }
         } else {
             if (east) {
                 if (up) {
-                    property = ModProperties.SOUTH_EAST_UP;
+                    blockProperty = ModProperties.SOUTH_EAST_UP;
                 } else {
-                    property = ModProperties.SOUTH_EAST_DOWN;
+                    blockProperty = ModProperties.SOUTH_EAST_DOWN;
                 }
             } else {
                 if (up) {
-                    property = ModProperties.SOUTH_WEST_UP;
+                    blockProperty = ModProperties.SOUTH_WEST_UP;
                 } else {
-                    property = ModProperties.SOUTH_WEST_DOWN;
+                    blockProperty = ModProperties.SOUTH_WEST_DOWN;
                 }
             }
         }
-        level.setBlockAndUpdate(pos, state.setValue(property, value));
+        return blockProperty;
     }
 
     public boolean get(BlockState state) {
-        BooleanProperty property;
-        if (north) {
-            if (east) {
-                if (up) {
-                    property = ModProperties.NORTH_EAST_UP;
-                } else {
-                    property = ModProperties.NORTH_EAST_DOWN;
-                }
-            } else {
-                if (up) {
-                    property = ModProperties.NORTH_WEST_UP;
-                } else {
-                    property = ModProperties.NORTH_WEST_DOWN;
-                }
-            }
-        } else {
-            if (east) {
-                if (up) {
-                    property = ModProperties.SOUTH_EAST_UP;
-                } else {
-                    property = ModProperties.SOUTH_EAST_DOWN;
-                }
-            } else {
-                if (up) {
-                    property = ModProperties.SOUTH_WEST_UP;
-                } else {
-                    property = ModProperties.SOUTH_WEST_DOWN;
-                }
-            }
-        }
-        return state.getValue(property);
+        return state.getValue(getProperty());
     }
 
     @Override

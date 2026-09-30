@@ -8,16 +8,24 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModTags;
+import net.quedoom.quet.datagen.tag.QueTBlockTagProvider;
 
 import java.util.concurrent.CompletableFuture;
 
-public class BlockTagGen extends FabricTagsProvider.BlockTagsProvider {
+public class BlockTagGen extends QueTBlockTagProvider {
     public BlockTagGen(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
         super(output, registryLookupFuture);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
+        valueLookupBuilder(ModTags.Blocks.GROWS_INTO_THICK)
+                .add(
+                        Blocks.POTATOES,
+                        Blocks.CARROTS,
+                        Blocks.BEETROOTS
+                );
+
         valueLookupBuilder(ModTags.Blocks.STONE_ORES)
                 .add(Blocks.COAL_ORE)
                 .add(Blocks.IRON_ORE)

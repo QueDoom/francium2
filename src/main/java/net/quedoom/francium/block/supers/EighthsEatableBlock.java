@@ -22,6 +22,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModProperties;
+import net.quedoom.francium.init.ModStats;
 import net.quedoom.francium.util.EighthsEatableOctant;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -36,10 +37,23 @@ public class EighthsEatableBlock extends Block {
     public static final BooleanProperty SOUTH_EAST_UP = ModProperties.SOUTH_EAST_UP;
     public static final BooleanProperty SOUTH_WEST_UP = ModProperties.SOUTH_WEST_UP;
 
-    public EighthsEatableBlock(Properties properties) {
+    protected final int nutrition;
+    protected final float saturation;
+
+    public EighthsEatableBlock(int nutrition, float saturation, Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(NORTH_EAST_DOWN, true).setValue(NORTH_WEST_DOWN, true).setValue(SOUTH_EAST_DOWN, true).setValue(SOUTH_EAST_DOWN, true)
                                                                  .setValue(NORTH_EAST_UP, true).setValue(NORTH_WEST_UP, true).setValue(SOUTH_EAST_UP, true).setValue(SOUTH_WEST_UP, true));
+        this.nutrition = nutrition;
+        this.saturation = saturation;
+    }
+
+    public EighthsEatableBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(NORTH_EAST_DOWN, true).setValue(NORTH_WEST_DOWN, true).setValue(SOUTH_EAST_DOWN, true).setValue(SOUTH_EAST_DOWN, true)
+                .setValue(NORTH_EAST_UP, true).setValue(NORTH_WEST_UP, true).setValue(SOUTH_EAST_UP, true).setValue(SOUTH_WEST_UP, true));
+        this.nutrition = 1;
+        this.saturation = 0.1F;
     }
 
     @Override
@@ -87,16 +101,20 @@ public class EighthsEatableBlock extends Block {
             }
         }
 
-        return eat(level, pos, state, player, hitResult);
+        return this.eat(level, pos, state, player, hitResult);
     }
 
-    protected static InteractionResult eat(final LevelAccessor level, final BlockPos pos, final BlockState state, final Player player, final BlockHitResult hitResult) {
+    protected void set(LevelAccessor level, BlockPos pos, BlockState state, EighthsEatableOctant octant) {
+        octant.set(((Level) level), state, pos, false);
+    }
+
+    protected InteractionResult eat(final LevelAccessor level, final BlockPos pos, final BlockState state, final Player player, final BlockHitResult hitResult) {
         if (!player.canEat(false)) {
             return InteractionResult.PASS;
         }
 
-        player.awardStat(Stats.EAT_CAKE_SLICE);
-        player.getFoodData().eat(2, 0.1F);
+        player.awardStat(ModStats.EAT_EIGHTHS_BLOCK);
+        playerEat(player);
         int bites = getBites(state);
         level.gameEvent(player, GameEvent.EAT, pos);
         if (bites < 7) {
@@ -104,9 +122,9 @@ public class EighthsEatableBlock extends Block {
             BlockPos blockPos = hitResult.getBlockPos();
             Direction side = hitResult.getDirection();
 
-            EighthsEatableOctant octant = getOctant(hitPos, blockPos, side);
+            EighthsEatableOctant octant = this.getOctant(hitPos, blockPos, side, (state.getBlock() instanceof RotateableEighthsEatableBlock ? state.getValue(RotateableEighthsEatableBlock.FACING) : null));
 
-            octant.set(((Level) level), state, pos, false);
+            set(level, pos, state, octant);
             Francium.LOGGER.info(octant.toString());
 
         } else {
@@ -117,10 +135,17 @@ public class EighthsEatableBlock extends Block {
         return InteractionResult.SUCCESS;
     }
 
-    private static @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, Direction side) {
-        double dx = hitPos.x - blockPos.getX(); // 0-1, +X = east
-        double dy = hitPos.y - blockPos.getY(); // 0-1, +Y = up
-        double dz = hitPos.z - blockPos.getZ(); // 0-1, +Z = south
+    protected void playerEat(Player player) {
+        player.getFoodData().eat(nutrition, saturation);
+    }
+
+    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, Direction side) {
+        return getOctant(hitPos, blockPos, side, null);
+    }
+    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, Direction side, @Nullable Direction facing) {
+        double dx = hitPos.x - blockPos.getX() - (side.equals(Direction.EAST) ? 0.01F : -0.01);
+        double dy = hitPos.y - blockPos.getY() - (side.equals(Direction.UP) ? 0.01F : -0.01);
+        double dz = hitPos.z - blockPos.getZ() - (side.equals(Direction.NORTH) ? -0.01F : 0.01);
 
         char ns = dz < 0.5 ? 'n' : 's';
         char ew = dx < 0.5 ? 'w' : 'e';
@@ -129,7 +154,7 @@ public class EighthsEatableBlock extends Block {
         return EighthsEatableOctant.ofChars(ns, ew, ud);
     }
 
-    private static int getBites(BlockState state) {
+    protected static int getBites(BlockState state) {
         int bites = 0;
         if (!state.getValue(NORTH_EAST_DOWN)) {
             bites++;

@@ -2,10 +2,10 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"side": "francium_2:block/thick_potato",
-		"top": "francium_2:block/thick_potato",
-		"particle": "francium_2:block/thick_potato",
-		"in": "francium_2:block/thick_potato"
+		"1": "francium_2:block/thick_potato",
+		"3": "francium_2:block/thick_potato_inner",
+		"4": "francium_2:block/thick_potato_top",
+		"particle": "francium_2:block/thick_potato"
 	},
 	"elements": [
 		{
@@ -13,12 +13,12 @@
 			"to": [8, 16, 8],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 8, 0]},
 			"faces": {
-				"north": {"uv": [8, 0, 16, 8], "texture": "#side"},
-				"east": {"uv": [8, 0, 16, 8], "texture": "#in"},
-				"south": {"uv": [0, 0, 8, 8], "texture": "#in"},
-				"west": {"uv": [0, 0, 8, 8], "texture": "#side"},
-				"up": {"uv": [0, 0, 8, 8], "texture": "#top"},
-				"down": {"uv": [0, 8, 8, 16], "texture": "#in"}
+				"north": {"uv": [8, 0, 16, 8], "texture": "#1"},
+				"east": {"uv": [8, 0, 16, 8], "texture": "#3"},
+				"south": {"uv": [0, 0, 8, 8], "texture": "#3"},
+				"west": {"uv": [0, 0, 8, 8], "texture": "#1"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"down": {"uv": [0, 8, 8, 16], "texture": "#3"}
 			}
 		}
 	]

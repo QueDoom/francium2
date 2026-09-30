@@ -6,77 +6,90 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
 import net.quedoom.francium.block.supers.EighthsEatableBlock;
 import net.quedoom.francium.block.supers.FallingEighthsEatableBlock;
+import net.quedoom.francium.block.supers.ThickFoliageBlock;
 import net.quedoom.quet.init.QueTBlock;
+import org.jspecify.annotations.NonNull;
 
+import java.util.Optional;
 import java.util.function.Function;
 
-public class ModBlocks extends QueTBlock {
+public class ModBlocks  {
+    private static final QueTBlock Q = new QueTBlock(Francium.MOD_ID);
 
-    public static final Block GLUE_MIXER = register("glue_mixer", WoodenMixerBlock::new, BlockBehaviour.Properties.of()
+    public static final Block GLUE_MIXER = Q.register("glue_mixer", WoodenMixerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).noOcclusion()
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
-    public static final Block WOODEN_MERGER = register("wooden_merger", WoodenMergerBlock::new, BlockBehaviour.Properties.of()
+    public static final Block WOODEN_MERGER = Q.register("wooden_merger", WoodenMergerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
-    public static final Block DRIPSTONE_SPIKES = register("dripstone_spikes", DripstoneSpikesBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DRIPSTONE_BLOCK).noOcclusion());
-    public static final Block DEEP_MERGER = register("deep_merger", DeepMergerBlock::new, BlockBehaviour.Properties.of()
+    public static final Block DRIPSTONE_SPIKES = Q.register("dripstone_spikes", DripstoneSpikesBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DRIPSTONE_BLOCK).noOcclusion());
+    public static final Block DEEP_MERGER = Q.register("deep_merger", DeepMergerBlock::new, BlockBehaviour.Properties.of()
             .noOcclusion().mapColor(Blocks.DRIPSTONE_BLOCK.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
             .strength(4.5F, 3.5F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops());
-    public static final Block BUNDLE_TABLE = register("bundle_table", BundleTableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
-    public static final Block TRADER_BENCH = register("trader_bench", TraderBenchBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
+    public static final Block BUNDLE_TABLE = Q.register("bundle_table", BundleTableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
+    public static final Block TRADER_BENCH = Q.register("trader_bench", TraderBenchBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
 
-public static final Block WOODEN_CASING = register("wooden_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
+public static final Block WOODEN_CASING = Q.register("wooden_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
 
-    public static final Block MINERAL_MIX_BLOCK = register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
+    public static final Block MINERAL_MIX_BLOCK = Q.register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
 
-    public static final Block MINERAL_MIXED_WOODEN_CASING = register("mineral_mixed_wooden_casing", properties ->
+    public static final Block MINERAL_MIXED_WOODEN_CASING = Q.register("mineral_mixed_wooden_casing", properties ->
             new TransformWhenBrokenBlock(properties, MINERAL_MIX_BLOCK.defaultBlockState()), BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).mapColor(MINERAL_MIX_BLOCK.defaultMapColor()));
 
-    public static final Block STONE_CASING = register("stone_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
+    public static final Block STONE_CASING = Q.register("stone_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
 
-    public static final Block OBSIDIAN_CASING = register("obsidian_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN));
+    public static final Block OBSIDIAN_CASING = Q.register("obsidian_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN));
 
-    public static final Block PILE_OF_LEAVES = register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
+    public static final Block PILE_OF_LEAVES = Q.register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 
-    public static final Block BLOCK_CONTAINING_WOODEN_CASING = register("block_containing_wooden_casing", p -> new BlockContainingBlock(p, WOODEN_CASING.defaultBlockState()),
+    public static final Block BLOCK_CONTAINING_WOODEN_CASING = Q.register("block_containing_wooden_casing", p -> new BlockContainingBlock(p, WOODEN_CASING.defaultBlockState()),
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion().noLootTable(), false);
 
-    public static final Block BLOCK_CONTAINING_STONE_CASING = register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING.defaultBlockState()),
+    public static final Block BLOCK_CONTAINING_STONE_CASING = Q.register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING.defaultBlockState()),
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().noLootTable().requiresCorrectToolForDrops(), false);
 
-    public static final Block ECHO_BLOCK = register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
+    public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 
-    public static final Block FORBIDDEN_DUST = register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
-    public static final Block FORBIDDEN_FLAKE = register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
+    public static final Block FORBIDDEN_DUST = Q.register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
+    public static final Block FORBIDDEN_FLAKE = Q.register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
 
-    public static final Block SPECIAL_FORBIDDEN_DUST = register("special_forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
-    public static final Block SPECIAL_FORBIDDEN_FLAKE = register("special_forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
-    public static final Block SMALL_SPECIAL_FORBIDDEN_FLAKE = register("small_special_forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
+    public static final Block SPECIAL_FORBIDDEN_DUST = Q.register("special_forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
+    public static final Block SPECIAL_FORBIDDEN_FLAKE = Q.register("special_forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
+    public static final Block SMALL_SPECIAL_FORBIDDEN_FLAKE = Q.register("small_special_forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE), false);
 
-    public static final Block ANCIENT_BUNS = register("ancient_buns", AncientBunsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANCIENT_DEBRIS));
-    public static final Block STRIPPED_SUGAR_CANE = register("stripped_sugar_cane", StrippedSugarCaneBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SUGAR_CANE));
-    public static final Block STRIPPED_BAMBOO = register("stripped_bamboo", BambooStalkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO), false);
+    public static final Block ANCIENT_BUNS = Q.register("ancient_buns", AncientBunsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANCIENT_DEBRIS));
+    public static final Block STRIPPED_SUGAR_CANE = Q.register("stripped_sugar_cane", StrippedSugarCaneBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SUGAR_CANE));
+    public static final Block STRIPPED_BAMBOO = Q.register("stripped_bamboo", BambooStalkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO), false);
     public static final Item STRIPPED_BAMBOO_ITEM = registerItem(createItem("stripped_bamboo"), Item::new, new Item.Properties());
 
-    public static final Block FRYING_PAN_CAMPFIRE = register("frying_pan_campfire", FryingPanCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
-    public static final Block POT_CAMPFIRE = register("pot_campfire", PotCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
+    public static final Block FRYING_PAN_CAMPFIRE = Q.register("frying_pan_campfire", FryingPanCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
+    public static final Block POT_CAMPFIRE = Q.register("pot_campfire", PotCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
 
-    public static final Block HEAVY_SCULK = register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
-    public static final Block RUBBER_BLOCK = register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
+    public static final Block HEAVY_SCULK = Q.register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
+    public static final Block RUBBER_BLOCK = Q.register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
 
-    public static final Block THICK_POTATO = register("thick_potato", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
-    public static final Block THICK_CARROT = register("thick_carrot", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
-    public static final Block THICK_BEETROOT = register("thick_beetroot", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
-    public static final Block THICK_APPLE = register("thick_apple", FallingEighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_POTATO = Q.register("thick_potato", p -> new EighthsEatableBlock(1, 0.15F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_POTATO_FOLIAGE = Q.register("thick_potato_foliage", p -> new ThickFoliageBlock(THICK_POTATO, Optional.of(Items.POTATO), p), thickFoliage(), false);
+    public static final Block THICK_CARROT = Q.register("thick_carrot", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_CARROT_FOLIAGE = Q.register("thick_carrot_foliage", p -> new ThickFoliageBlock(THICK_CARROT, Optional.of(Items.CARROT), p), thickFoliage(), false);
+    public static final Block THICK_BEETROOT = Q.register("thick_beetroot", p -> new EighthsEatableBlock(1, 0.05F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_BEETROOT_FOLIAGE = Q.register("thick_beetroot_foliage", p -> new ThickFoliageBlock(THICK_BEETROOT, Optional.of(Items.BEETROOT_SEEDS), p), thickFoliage(), false);
+    public static final Block THICK_APPLE = Q.register("thick_apple", FallingEighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+
+    private static BlockBehaviour.Properties thickFoliage() {
+        return BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().strength(-1).noLootTable().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY);
+    }
 
     static {
         registerItem(createItem("echo_block"), p -> new BlockItem(ECHO_BLOCK, p), new Item.Properties().rarity(Rarity.UNCOMMON));
@@ -93,13 +106,13 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
 
     public static ResourceKey<Item> createItem(String name) {
         // Create the item key.
-        return ResourceKey.create(Registries.ITEM, Francium.of(name));
+        return ResourceKey.create(Registries.ITEM, Q.of(name));
     }
 
 
     // <editor-fold desc="Allowed Folding">
     // FORBIDDEN
-    public static final Block ALLOWED_GOLD_BLOCK = register(
+    public static final Block ALLOWED_GOLD_BLOCK = Q.register(
             "allowed_gold_block",
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.GOLD)
@@ -108,7 +121,7 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)
     );
-    public static final Block ALLOWED_COPPER_BLOCK = register(
+    public static final Block ALLOWED_COPPER_BLOCK = Q.register(
             "allowed_copper_block",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p),
             BlockBehaviour.Properties.of()
@@ -118,124 +131,126 @@ public static final Block WOODEN_CASING = register("wooden_casing", Block::new, 
                     .instrument(NoteBlockInstrument.TRUMPET)
                     .sound(SoundType.COPPER)
     );
-    public static final Block ALLOWED_EXPOSED_COPPER = register(
+    public static final Block ALLOWED_EXPOSED_COPPER = Q.register(
             "allowed_exposed_copper",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.EXPOSED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK).instrument(NoteBlockInstrument.TRUMPET_EXPOSED).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
     );
-    public static final Block ALLOWED_WEATHERED_COPPER = register(
+    public static final Block ALLOWED_WEATHERED_COPPER = Q.register(
             "allowed_weathered_copper",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.WEATHERED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK).instrument(NoteBlockInstrument.TRUMPET_WEATHERED).mapColor(MapColor.WARPED_STEM)
     );
-    public static final Block ALLOWED_OXIDIZED_COPPER = register(
+    public static final Block ALLOWED_OXIDIZED_COPPER = Q.register(
             "allowed_oxidized_copper",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.OXIDIZED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK).instrument(NoteBlockInstrument.TRUMPET_OXIDIZED).mapColor(MapColor.WARPED_NYLIUM)
     );
-    public static final Block ALLOWED_OXIDIZED_CUT_COPPER = register(
+    public static final Block ALLOWED_OXIDIZED_CUT_COPPER = Q.register(
             "allowed_oxidized_cut_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.OXIDIZED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER)
     );
-    public static final Block ALLOWED_WEATHERED_CUT_COPPER = register(
+    public static final Block ALLOWED_WEATHERED_CUT_COPPER = Q.register(
             "allowed_weathered_cut_copper",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.WEATHERED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER)
     );
-    public static final Block ALLOWED_EXPOSED_CUT_COPPER = register(
+    public static final Block ALLOWED_EXPOSED_CUT_COPPER = Q.register(
             "allowed_exposed_cut_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.EXPOSED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER)
     );
-    public static final Block ALLOWED_CUT_COPPER = register(
+    public static final Block ALLOWED_CUT_COPPER = Q.register(
             "allowed_cut_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK)
     );
-    public static final Block ALLOWED_OXIDIZED_CHISELED_COPPER = register(
+    public static final Block ALLOWED_OXIDIZED_CHISELED_COPPER = Q.register(
             "allowed_oxidized_chiseled_copper",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.OXIDIZED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER)
     );
-    public static final Block ALLOWED_WEATHERED_CHISELED_COPPER = register(
+    public static final Block ALLOWED_WEATHERED_CHISELED_COPPER = Q.register(
             "allowed_weathered_chiseled_copper",
             p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.WEATHERED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER)
     );
-    public static final Block ALLOWED_EXPOSED_CHISELED_COPPER = register(
+    public static final Block ALLOWED_EXPOSED_CHISELED_COPPER = Q.register(
             "allowed_exposed_chiseled_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.EXPOSED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER)
     );
-    public static final Block ALLOWED_CHISELED_COPPER = register(
+    public static final Block ALLOWED_CHISELED_COPPER = Q.register(
             "allowed_chiseled_copper", p -> new WeatheringCopperFullBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK)
     );
-    public static final Block ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER = register(
+    public static final Block ALLOWED_WAXED_OXIDIZED_CHISELED_COPPER = Q.register(
             "allowed_waxed_oxidized_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_CHISELED_COPPER)
     );
-    public static final Block ALLOWED_WAXED_WEATHERED_CHISELED_COPPER = register(
+    public static final Block ALLOWED_WAXED_WEATHERED_CHISELED_COPPER = Q.register(
             "allowed_waxed_weathered_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_CHISELED_COPPER)
     );
-    public static final Block ALLOWED_WAXED_EXPOSED_CHISELED_COPPER = register(
+    public static final Block ALLOWED_WAXED_EXPOSED_CHISELED_COPPER = Q.register(
             "allowed_waxed_exposed_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_CHISELED_COPPER)
     );
-    public static final Block ALLOWED_WAXED_CHISELED_COPPER = register("allowed_waxed_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_CHISELED_COPPER));
-    public static final Block ALLOWED_OXIDIZED_CUT_COPPER_STAIRS = register(
+    public static final Block ALLOWED_WAXED_CHISELED_COPPER = Q.register("allowed_waxed_chiseled_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_CHISELED_COPPER));
+    public static final Block ALLOWED_OXIDIZED_CUT_COPPER_STAIRS = Q.register(
             "allowed_oxidized_cut_copper_stairs",
             p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.OXIDIZED, ALLOWED_OXIDIZED_CUT_COPPER.defaultBlockState(), p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_CUT_COPPER)
     );
-    public static final Block ALLOWED_WEATHERED_CUT_COPPER_STAIRS = register(
+    public static final Block ALLOWED_WEATHERED_CUT_COPPER_STAIRS = Q.register(
             "allowed_weathered_cut_copper_stairs",
             p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.WEATHERED, ALLOWED_WEATHERED_CUT_COPPER.defaultBlockState(), p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER)
     );
-    public static final Block ALLOWED_EXPOSED_CUT_COPPER_STAIRS = register(
+    public static final Block ALLOWED_EXPOSED_CUT_COPPER_STAIRS = Q.register(
             "allowed_exposed_cut_copper_stairs",
             p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.EXPOSED, ALLOWED_EXPOSED_CUT_COPPER.defaultBlockState(), p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER)
     );
-    public static final Block ALLOWED_CUT_COPPER_STAIRS = register(
+    public static final Block ALLOWED_CUT_COPPER_STAIRS = Q.register(
             "allowed_cut_copper_stairs",
             p -> new WeatheringCopperStairBlock(WeatheringCopper.WeatherState.UNAFFECTED, ALLOWED_CUT_COPPER.defaultBlockState(), p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK)
     );
-    public static final Block ALLOWED_OXIDIZED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_OXIDIZED_CUT_COPPER_SLAB = Q.register(
             "allowed_oxidized_cut_copper_slab",
             p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.OXIDIZED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_CUT_COPPER)
     );
-    public static final Block ALLOWED_WEATHERED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_WEATHERED_CUT_COPPER_SLAB = Q.register(
             "allowed_weathered_cut_copper_slab",
             p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.WEATHERED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_CUT_COPPER)
     );
-    public static final Block ALLOWED_EXPOSED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_EXPOSED_CUT_COPPER_SLAB = Q.register(
             "allowed_exposed_cut_copper_slab",
             p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.EXPOSED, p),
             BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_CUT_COPPER)
     );
-    public static final Block ALLOWED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_CUT_COPPER_SLAB = Q.register(
             "allowed_cut_copper_slab", p -> new WeatheringCopperSlabBlock(WeatheringCopper.WeatherState.UNAFFECTED, p), BlockBehaviour.Properties.ofFullCopy(ALLOWED_CUT_COPPER)
     );
-    public static final Block ALLOWED_WAXED_COPPER_BLOCK = register("allowed_waxed_copper_block", BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK));
-    public static final Block ALLOWED_WAXED_WEATHERED_COPPER = register("allowed_waxed_weathered_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER));
-    public static final Block ALLOWED_WAXED_EXPOSED_COPPER = register("allowed_waxed_exposed_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER));
-    public static final Block ALLOWED_WAXED_OXIDIZED_COPPER = register("allowed_waxed_oxidized_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER));
-    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER = register("allowed_waxed_oxidized_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER));
-    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER = register("allowed_waxed_weathered_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER));
-    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER = register("allowed_waxed_exposed_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER));
-    public static final Block ALLOWED_WAXED_CUT_COPPER = register("allowed_waxed_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK));
-    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_oxidized_cut_copper_stairs", ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
-    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_weathered_cut_copper_stairs", ALLOWED_WAXED_WEATHERED_CUT_COPPER);
-    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_exposed_cut_copper_stairs", ALLOWED_WAXED_EXPOSED_CUT_COPPER);
-    public static final Block ALLOWED_WAXED_CUT_COPPER_STAIRS = registerStair("allowed_waxed_cut_copper_stairs", ALLOWED_WAXED_CUT_COPPER);
-    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_WAXED_COPPER_BLOCK = Q.register("allowed_waxed_copper_block", BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK));
+    public static final Block ALLOWED_WAXED_WEATHERED_COPPER = Q.register("allowed_waxed_weathered_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER));
+    public static final Block ALLOWED_WAXED_EXPOSED_COPPER = Q.register("allowed_waxed_exposed_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER));
+    public static final Block ALLOWED_WAXED_OXIDIZED_COPPER = Q.register("allowed_waxed_oxidized_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER));
+    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER = Q.register("allowed_waxed_oxidized_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_OXIDIZED_COPPER));
+    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER = Q.register("allowed_waxed_weathered_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_WEATHERED_COPPER));
+    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER = Q.register("allowed_waxed_exposed_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_EXPOSED_COPPER));
+    public static final Block ALLOWED_WAXED_CUT_COPPER = Q.register("allowed_waxed_cut_copper", BlockBehaviour.Properties.ofFullCopy(ALLOWED_COPPER_BLOCK));
+    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER_STAIRS = Q.registerStair("allowed_waxed_oxidized_cut_copper_stairs", ALLOWED_WAXED_OXIDIZED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER_STAIRS = Q.registerStair("allowed_waxed_weathered_cut_copper_stairs", ALLOWED_WAXED_WEATHERED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER_STAIRS = Q.registerStair("allowed_waxed_exposed_cut_copper_stairs", ALLOWED_WAXED_EXPOSED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_CUT_COPPER_STAIRS = Q.registerStair("allowed_waxed_cut_copper_stairs", ALLOWED_WAXED_CUT_COPPER);
+    public static final Block ALLOWED_WAXED_OXIDIZED_CUT_COPPER_SLAB = Q.register(
             "allowed_waxed_oxidized_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_OXIDIZED_CUT_COPPER).requiresCorrectToolForDrops()
     );
-    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_WAXED_WEATHERED_CUT_COPPER_SLAB = Q.register(
             "allowed_waxed_weathered_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_WEATHERED_CUT_COPPER).requiresCorrectToolForDrops()
     );
-    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB = Q.register(
             "allowed_waxed_exposed_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_EXPOSED_CUT_COPPER).requiresCorrectToolForDrops()
     );
-    public static final Block ALLOWED_WAXED_CUT_COPPER_SLAB = register(
+    public static final Block ALLOWED_WAXED_CUT_COPPER_SLAB = Q.register(
             "allowed_waxed_cut_copper_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ALLOWED_WAXED_CUT_COPPER).requiresCorrectToolForDrops()
     );
 
     //</editor-fold>
+
+    public static void registerBlock() {}
 
 }

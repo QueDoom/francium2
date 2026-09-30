@@ -21,8 +21,6 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder, QTTranslationBuilder qtTranslationBuilder) {
-        qtTranslationBuilder.translateAllTabs();
-
         pileTranslate(qtTranslationBuilder, ModItems.DIRT_PILE, "Dirt");
         pileTranslate(qtTranslationBuilder, ModItems.GRAVEL_PILE, "Gravel");
         pileTranslate(qtTranslationBuilder, ModItems.SAND_PILE, "Sand");
@@ -48,8 +46,6 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         pileTranslate(qtTranslationBuilder, ModItems.BASALT_PILE, "Basalt");
         pileTranslate(qtTranslationBuilder, ModItems.NETHER_GOLD_ORE_PILE, "Nether Gold Ore");
         pileTranslate(qtTranslationBuilder, ModItems.NETHER_QUARTZ_ORE_PILE, "Nether Quartz Ore");
-        translationBuilder.add(ModItems.NETHER_QUARTZ_DUST, "Quartz Dust");
-        translationBuilder.add(ModItems.NETHERITE_DUST, "Netherite Dust");
 
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_DUST);
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_FLAKE);
@@ -65,12 +61,6 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add(ModBlocks.PILE_OF_LEAVES, "Leaf");
 
         translationBuilder.add(ModBlocks.GLUE_MIXER, "Glue Mixer");
-
-        translationBuilder.add(ModItems.GLUE_BOTTLE, "Glue Bottle");
-        translationBuilder.add(ModItems.GLUE, "Glue");
-        translationBuilder.add(ModItems.VEGAN_GLUE, "Vegan Glue");
-        translationBuilder.add(ModItems.SUPER_GLUE, "Super-Glue");
-        translationBuilder.add(ModItems.ECHO_GLUE, "Echo Glue");
 
         qtTranslationBuilder.auto(ModBlocks.WOODEN_MERGER);
         qtTranslationBuilder.auto(ModBlocks.DEEP_MERGER);
@@ -91,8 +81,11 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO_ITEM);
         qtTranslationBuilder.auto(ModBlocks.THICK_POTATO);
+        qtTranslationBuilder.auto(ModBlocks.THICK_POTATO_FOLIAGE);
         qtTranslationBuilder.auto(ModBlocks.THICK_CARROT);
+        qtTranslationBuilder.auto(ModBlocks.THICK_CARROT_FOLIAGE);
         qtTranslationBuilder.auto(ModBlocks.THICK_BEETROOT);
+        qtTranslationBuilder.auto(ModBlocks.THICK_BEETROOT_FOLIAGE);
         qtTranslationBuilder.auto(ModBlocks.THICK_APPLE);
 
         qtTranslationBuilder.auto(ModTags.Items.AMETHYST_ROCK_MATERIALS);

@@ -11,5 +11,6 @@ public class FranciumRRVIntegration implements ReliableRecipeViewerPlugin {
     public void onIntegrationInitialize() {
         ModRegistrator.setNamespace(Francium.CONSTANT_MOD_ID);
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.WOODEN_MERGING_SERIALIZER, ModRecipeTypes.WOODEN_MERGING);
+        ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.DEEP_MERGING_SERIALIZER, ModRecipeTypes.DEEP_MERGING);
     }
 }

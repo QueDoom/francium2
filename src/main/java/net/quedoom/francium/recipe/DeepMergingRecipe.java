@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModRecipeTypes;
 
@@ -75,7 +76,7 @@ public class DeepMergingRecipe implements Recipe<DeepMergerInput>{
         return this.wildcard;
     }
     public Ingredient getWildcardFixEmpty() {
-        return this.wildcard.test(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID.getDefaultInstance()) ? Ingredient.of(Items.DIRT) : this.wildcard;
+        return this.wildcard.test(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID.getDefaultInstance()) ? Ingredient.of(Blocks.AIR) : this.wildcard;
     }
 
     @Override

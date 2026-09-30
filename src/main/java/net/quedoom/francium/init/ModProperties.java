@@ -33,6 +33,16 @@ public class ModProperties {
     public static final BooleanProperty SOUTH_EAST_UP = BooleanProperty.create("south_east_up");
     public static final BooleanProperty SOUTH_WEST_UP = BooleanProperty.create("south_west_up");
 
+    public static final BooleanProperty STEM_NE = BooleanProperty.create("stem_ne");
+    public static final BooleanProperty STEM_NW = BooleanProperty.create("stem_nw");
+    public static final BooleanProperty STEM_SE = BooleanProperty.create("stem_se");
+    public static final BooleanProperty STEM_SW = BooleanProperty.create("stem_sw");
+
+    public static final BooleanProperty THICK_FOLIAGE_NE = BooleanProperty.create("thick_foliage_ne");
+    public static final BooleanProperty THICK_FOLIAGE_NW = BooleanProperty.create("thick_foliage_nw");
+    public static final BooleanProperty THICK_FOLIAGE_SE = BooleanProperty.create("thick_foliage_se");
+    public static final BooleanProperty THICK_FOLIAGE_SW = BooleanProperty.create("thick_foliage_sw");
+
 
 
 }

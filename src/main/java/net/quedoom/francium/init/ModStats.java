@@ -14,6 +14,8 @@ public class ModStats {
     public static final Identifier INTERACTION_WITH_WOODEN_MERGER = makeCustomStat("interaction_with_wooden_merger", StatFormatter.DEFAULT);
     public static final Identifier INTERACTION_WITH_DEEP_MERGER = makeCustomStat("interaction_with_deep_merger", StatFormatter.DEFAULT);
     public static final Identifier INTERACTION_WITH_BUNDLE_TABLE = makeCustomStat("interaction_with_bundle_table", StatFormatter.DEFAULT);
+    public static final Identifier EAT_EIGHTHS_BLOCK = makeCustomStat("eat_eighths_block", StatFormatter.DEFAULT);
+
 
     private static Identifier makeCustomStat(final String id, final StatFormatter formatter) {
         Identifier location = Identifier.withDefaultNamespace(id);

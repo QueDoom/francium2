@@ -1,0 +1,43 @@
+{
+  "multipart": [
+    { "when": { "AND": [{ "facing": "north" }, { "north_east_up": true }] }, "apply": { "model": "francium_2:block/neu_carved_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "north_east_up": true }] }, "apply": { "model": "francium_2:block/neu_carved_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "north_east_up": true }] }, "apply": { "model": "francium_2:block/neu_carved_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "north_east_up": true }] }, "apply": { "model": "francium_2:block/neu_carved_pumpkin", "y": 270 } },
+
+    { "when": { "AND": [{ "facing": "north" }, { "north_west_up": true }] }, "apply": { "model": "francium_2:block/nwu_carved_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "north_west_up": true }] }, "apply": { "model": "francium_2:block/nwu_carved_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "north_west_up": true }] }, "apply": { "model": "francium_2:block/nwu_carved_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "north_west_up": true }] }, "apply": { "model": "francium_2:block/nwu_carved_pumpkin", "y": 270 } },
+
+    { "when": { "AND": [{ "facing": "north" }, { "south_east_up": true }] }, "apply": { "model": "francium_2:block/seu_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "south_east_up": true }] }, "apply": { "model": "francium_2:block/seu_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "south_east_up": true }] }, "apply": { "model": "francium_2:block/seu_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "south_east_up": true }] }, "apply": { "model": "francium_2:block/seu_pumpkin", "y": 270 } },
+
+    { "when": { "AND": [{ "facing": "north" }, { "south_west_up": true }] }, "apply": { "model": "francium_2:block/swu_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "south_west_up": true }] }, "apply": { "model": "francium_2:block/swu_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "south_west_up": true }] }, "apply": { "model": "francium_2:block/swu_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "south_west_up": true }] }, "apply": { "model": "francium_2:block/swu_pumpkin", "y": 270 } },
+
+    { "when": { "AND": [{ "facing": "north" }, { "north_east_down": true }] }, "apply": { "model": "francium_2:block/ned_carved_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "north_east_down": true }] }, "apply": { "model": "francium_2:block/ned_carved_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "north_east_down": true }] }, "apply": { "model": "francium_2:block/ned_carved_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "north_east_down": true }] }, "apply": { "model": "francium_2:block/ned_carved_pumpkin", "y": 270 } },
+
+    { "when": { "AND": [{ "facing": "north" }, { "north_west_down": true }] }, "apply": { "model": "francium_2:block/nwd_carved_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "north_west_down": true }] }, "apply": { "model": "francium_2:block/nwd_carved_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "north_west_down": true }] }, "apply": { "model": "francium_2:block/nwd_carved_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "north_west_down": true }] }, "apply": { "model": "francium_2:block/nwd_carved_pumpkin", "y": 270 } },
+
+    { "when": { "AND": [{ "facing": "north" }, { "south_east_down": true }] }, "apply": { "model": "francium_2:block/sed_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "south_east_down": true }] }, "apply": { "model": "francium_2:block/sed_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "south_east_down": true }] }, "apply": { "model": "francium_2:block/sed_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "south_east_down": true }] }, "apply": { "model": "francium_2:block/sed_pumpkin", "y": 270 } },
+
+    { "when": { "AND": [{ "facing": "north" }, { "south_west_down": true }] }, "apply": { "model": "francium_2:block/swd_pumpkin" } },
+    { "when": { "AND": [{ "facing": "east" },  { "south_west_down": true }] }, "apply": { "model": "francium_2:block/swd_pumpkin", "y": 90 } },
+    { "when": { "AND": [{ "facing": "south" }, { "south_west_down": true }] }, "apply": { "model": "francium_2:block/swd_pumpkin", "y": 180 } },
+    { "when": { "AND": [{ "facing": "west" },  { "south_west_down": true }] }, "apply": { "model": "francium_2:block/swd_pumpkin", "y": 270 } }
+  ]
+}

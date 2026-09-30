@@ -20,10 +20,9 @@ import net.quedoom.quet.misc.QueTObjectStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Francium extends ModRegistrator implements ModInitializer {
-	public static final String CONSTANT_MOD_ID = "francium_2";
-	public static final String MOD_ID = setNamespace(CONSTANT_MOD_ID);
-	public static final Logger LOGGER = logger();
+public class Francium implements ModInitializer {
+	public static final String MOD_ID = "francium_2";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 
 	@Override
@@ -32,10 +31,10 @@ public class Francium extends ModRegistrator implements ModInitializer {
 //		boolean isLoaded = FabricLoader.getInstance().isModLoaded("");
 
 		QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
-		ModItems.register();
+		ModItems.registerItem();
 		ModCreativeModeTabs.registerTabs();
 
-		ModBlocks.register();
+		ModBlocks.registerBlock();
 		ModBlockEntities.registerBlockEntities();
 
 		ModEntityTypes.registerEntityTypes();

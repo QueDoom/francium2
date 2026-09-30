@@ -3,6 +3,8 @@ package net.quedoom.francium;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.quedoom.francium.datagen.*;
+import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.init.ModItems;
 import net.quedoom.quet.datagen.QTRegistryBuilder;
 import net.quedoom.quet.datagen.QueTDataGeneratorEntrypoint;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
@@ -14,6 +16,11 @@ public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 	@Override
 	protected void doDatagen(FabricDataGenerator fabricDataGenerator, FabricDataGenerator.Pack pack) {
 		ModRegistrator.setNamespace(Francium.CONSTANT_MOD_ID);
+		ModRegistrator.logInfo("Blocks: " + QueTObjectStorage.autotranslateBlocks().toString());
+		ModRegistrator.logInfo("Items: " + QueTObjectStorage.autotranslateItems().toString());
+
+		ModItems.registerItem();
+		ModBlocks.registerBlock();
 
 		pack.addProvider(BlockTagGen::new);
 		pack.addProvider(ItemTagGen::new);
