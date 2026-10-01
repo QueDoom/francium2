@@ -7,22 +7,26 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.menu.DeepMergerScreen;
+import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.recipe.DeepMergingRecipe;
 
 import java.util.List;
 
 public class DeepMergingClientRecipe extends ReliableClientRecipeWithTransfer {
-    private final Identifier id;
     private final SlotContent firstSlot, secondSlot, thirdSlot, glueSlot, wildcardSlot, resultSlot;
 
-    protected DeepMergingClientRecipe(Identifier id, Ingredient firstItem, Ingredient secondItem, Ingredient thirdItem, Ingredient glueItem, Ingredient wildcardItem, ItemStackTemplate resultItem) {
+    protected DeepMergingClientRecipe(Ingredient firstItem, Ingredient secondItem, Ingredient thirdItem, Ingredient glueItem, Ingredient wildcardItem, ItemStackTemplate resultItem) {
         super(List.of(DeepMergerScreen.class));
-        this.id = id;
         this.firstSlot = SlotContent.of(firstItem);
         this.secondSlot = SlotContent.of(secondItem);
         this.thirdSlot = SlotContent.of(thirdItem);
         this.glueSlot = SlotContent.of(glueItem);
-        this.wildcardSlot = SlotContent.of(wildcardItem);
+        if (wildcardItem.equals(Ingredient.of(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID)))
+            this.wildcardSlot = SlotContent.of();
+            else this.wildcardSlot = SlotContent.of(wildcardItem);
+
         this.resultSlot = SlotContent.of(resultItem);
     }
 
@@ -37,8 +41,18 @@ public class DeepMergingClientRecipe extends ReliableClientRecipeWithTransfer {
     }
 
     @Override
+    public Identifier identifier() {
+        return Francium.of(DeepMergingRecipe.Type.ID);
+    }
+
+    @Override
     public ReliableClientRecipeType getType() {
         return DeepMergingClientRecipeType.INSTANCE;
+    }
+
+    @Override
+    protected ReliableClientRecipeType zeType() {
+        return new DeepMergingClientRecipeType();
     }
 
     @Override

@@ -8,24 +8,24 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.menu.WoodenMergerScreen;
+import net.quedoom.francium.recipe.WoodenMergingRecipe;
 
 import java.util.List;
 
 public class WoodenMergingClientRecipe extends ReliableClientRecipeWithTransfer {
 
-    private final Identifier id;
     private final SlotContent firstItem, secondItem, glueItem, resultItem;
 
 
     //You can design your constructor to suit your needs
-    public WoodenMergingClientRecipe(Identifier id, Ingredient firstItem, Ingredient secondItem, Ingredient glueItem, ItemStackTemplate resultItem) {
+    public WoodenMergingClientRecipe(Ingredient firstItem, Ingredient secondItem, Ingredient glueItem, ItemStackTemplate resultItem) {
         super(List.of(WoodenMergerScreen.class));
         this.firstItem = SlotContent.of(firstItem);
         this.secondItem = SlotContent.of(secondItem);
         this.glueItem = SlotContent.of(glueItem);
         this.resultItem = SlotContent.of(resultItem);
-        this.id = id;
     }
 
     @Override
@@ -34,8 +34,13 @@ public class WoodenMergingClientRecipe extends ReliableClientRecipeWithTransfer 
     }
 
     @Override
-    public Identifier getId() {
-        return id;
+    protected ReliableClientRecipeType zeType() {
+        return new WoodenMergingClientRecipeType();
+    }
+
+    @Override
+    public Identifier identifier() {
+        return Francium.of(WoodenMergingRecipe.Type.ID);
     }
 
     @Override

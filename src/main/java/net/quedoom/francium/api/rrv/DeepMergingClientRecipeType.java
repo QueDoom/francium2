@@ -5,6 +5,7 @@ import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.recipe.DeepMergingRecipe;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class DeepMergingClientRecipeType extends ReliableClientRecipeTypeHelper 
 
     protected DeepMergingClientRecipeType() {
         super(
-                "deep_merging",
+                DeepMergingRecipe.Type.ID,
                 List.of(new ItemStack(ModBlocks.DEEP_MERGER)),
                 116, 58
         );

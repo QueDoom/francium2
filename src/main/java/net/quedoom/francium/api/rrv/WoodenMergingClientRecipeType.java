@@ -5,6 +5,7 @@ import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.recipe.WoodenMergingRecipe;
 import net.quedoom.quet.init.ModRegistrator;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class WoodenMergingClientRecipeType extends ReliableClientRecipeTypeHelpe
 
     protected WoodenMergingClientRecipeType() {
         super(
-                "wooden_merging",
+                WoodenMergingRecipe.Type.ID,
                 List.of(new ItemStack(ModBlocks.WOODEN_MERGER)),
                 116, 44
         );

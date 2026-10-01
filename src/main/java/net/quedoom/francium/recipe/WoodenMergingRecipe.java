@@ -87,7 +87,7 @@ public class    WoodenMergingRecipe implements Recipe<WoodenMergerInput> {
 
     @Override
     public String group() {
-        return "wooden_merging";
+        return Type.ID;
     }
 
     @Override

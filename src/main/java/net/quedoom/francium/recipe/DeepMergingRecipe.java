@@ -23,7 +23,7 @@ public class DeepMergingRecipe implements Recipe<DeepMergerInput>{
                     ItemStackTemplate.CODEC.fieldOf("result").forGetter(DeepMergingRecipe::getResult),
                     Ingredient.CODEC.fieldOf("firstItem").forGetter(DeepMergingRecipe::getFirstIngredient),
                     Ingredient.CODEC.fieldOf("secondItem").forGetter(DeepMergingRecipe::getSecondIngredient),
-                    Ingredient.CODEC.fieldOf("thirdItem").forGetter(DeepMergingRecipe::getFirstIngredient),
+                    Ingredient.CODEC.fieldOf("thirdItem").forGetter(DeepMergingRecipe::getThirdIngredient),
                     Ingredient.CODEC.fieldOf("glue").forGetter(DeepMergingRecipe::getGlue),
                     Ingredient.CODEC.optionalFieldOf("wildcard", Ingredient.of(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID)).forGetter(DeepMergingRecipe::getWildcard)
             ).apply(instance, DeepMergingRecipe::new)
@@ -126,7 +126,7 @@ public class DeepMergingRecipe implements Recipe<DeepMergerInput>{
 
     @Override 
     public String group() {
-        return "deep_merging";
+        return Type.ID;
     }
 
     @Override

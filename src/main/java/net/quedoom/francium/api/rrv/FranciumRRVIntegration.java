@@ -9,8 +9,8 @@ import net.quedoom.quet.init.ModRegistrator;
 public class FranciumRRVIntegration implements ReliableRecipeViewerPlugin {
     @Override
     public void onIntegrationInitialize() {
-        ModRegistrator.setNamespace(Francium.CONSTANT_MOD_ID);
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.WOODEN_MERGING_SERIALIZER, ModRecipeTypes.WOODEN_MERGING);
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.DEEP_MERGING_SERIALIZER, ModRecipeTypes.DEEP_MERGING);
+        ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.GLUE_MIXING_SERIALIZER, ModRecipeTypes.GLUE_MIXING);
     }
 }

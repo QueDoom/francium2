@@ -4,6 +4,7 @@ import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.quedoom.francium.Francium;
 import net.quedoom.quet.init.ModRegistrator;
 import org.jspecify.annotations.Nullable;
 
@@ -27,7 +28,7 @@ public abstract class ReliableClientRecipeTypeHelper implements ReliableClientRe
     }
 
     protected ReliableClientRecipeTypeHelper(String name, List<ItemStack> displayAndWorkstation, int width, int height) {
-        this.display = ModRegistrator.translatable("rrv", name);
+        this.display = Francium.translatable("rrv", name);
         this.name = name;
         this.displayAndWorkstation = displayAndWorkstation;
         this.width = width;
@@ -51,12 +52,12 @@ public abstract class ReliableClientRecipeTypeHelper implements ReliableClientRe
 
     @Override
     public @Nullable Identifier getGuiTexture() {
-        return ModRegistrator.of("textures/rrv/" + this.name + ".png");
+        return Francium.of("textures/rrv/" + this.name + ".png");
     }
 
     @Override
     public Identifier getId() {
-        return ModRegistrator.of(name);
+        return Francium.of(name);
     }
 
     @Override
