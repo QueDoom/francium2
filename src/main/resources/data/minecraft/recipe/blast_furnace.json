@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": "francium_2:andesite_alloy",
+    "D": "francium_2:diorite_alloy",
+    "F": "minecraft:furnace",
+    "M": "francium_2:mineral_mix_block"
+  },
+  "pattern": [
+    "DDD",
+    "AFA",
+    "MMM"
+  ],
+  "result": {
+    "id": "minecraft:blast_furnace"
+  }
+}
