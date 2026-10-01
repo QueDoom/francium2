@@ -11,8 +11,10 @@ import net.quedoom.quet.init.ModRegistrator;
 import net.quedoom.quet.init.QueTTag;
 
 public class ModTags {
+    private static final QueTTag BUILDER = QueTTag.builder(Francium.MOD_ID);
+
     public static class Blocks {
-        private static final QueTTag.QTBlockTags Q = new QueTTag.QTBlockTags(Francium.MOD_ID);
+        private static final QueTTag.QTBlockTags Q = BUILDER.block();
 
         public static final TagKey<Block> STONE_ORES = Q.create("stone_ores");
         public static final TagKey<Block> DEEPSLATE_ORES = Q.create("deepslate_ores");
@@ -37,10 +39,8 @@ public class ModTags {
 
         public static final TagKey<Block> GROWS_INTO_THICK = Q.create("grows_into_thick");
     }
-    public static class Items extends QueTTag.QTItemTags {
-        static {
-            ModRegistrator.setNamespace(Francium.CONSTANT_MOD_ID);
-        }
+    public static class Items {
+        private static final QueTTag.QTItemTags Q = BUILDER.item();
 
         public static final TagKey<Item> NO_HOE_MULTITOOL = Q.create("no_hoe_multitool");
 
@@ -64,7 +64,8 @@ public class ModTags {
         public static final TagKey<Item> LEAF_ITEMS = Q.create("glue_mixer_jei_leaf_items");
     }
 
-    public static class Entities extends QueTTag.QTEntityTags {
+    public static class Entities {
+        private static final QueTTag.QTEntityTags Q = BUILDER.entity();
 
         public static final TagKey<EntityType<?>> DOES_NOT_DROP_SLIME = Q.create("does_not_drop_slime");
 

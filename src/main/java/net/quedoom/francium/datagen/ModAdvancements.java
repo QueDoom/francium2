@@ -23,6 +23,11 @@ public class ModAdvancements extends QueTAdvancementProvider {
     }
 
     @Override
+    protected String namespace() {
+        return Francium.MOD_ID;
+    }
+
+    @Override
     public void generateAdvancement(HolderLookup.Provider registryLookup, Consumer<AdvancementHolder> consumer) {
 
     }

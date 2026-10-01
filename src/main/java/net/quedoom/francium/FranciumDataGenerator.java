@@ -15,13 +15,6 @@ import net.quedoom.quet.misc.QueTObjectStorage;
 public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 	@Override
 	protected void doDatagen(FabricDataGenerator fabricDataGenerator, FabricDataGenerator.Pack pack) {
-		ModRegistrator.setNamespace(Francium.CONSTANT_MOD_ID);
-		ModRegistrator.logInfo("Blocks: " + QueTObjectStorage.autotranslateBlocks().toString());
-		ModRegistrator.logInfo("Items: " + QueTObjectStorage.autotranslateItems().toString());
-
-		ModItems.registerItem();
-		ModBlocks.registerBlock();
-
 		pack.addProvider(BlockTagGen::new);
 		pack.addProvider(ItemTagGen::new);
 		pack.addProvider(Francium2LanguageProvider::new);

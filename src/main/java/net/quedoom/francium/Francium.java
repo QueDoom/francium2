@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
 import net.minecraft.tags.TagKey;
@@ -24,6 +25,17 @@ public class Francium implements ModInitializer {
 	public static final String MOD_ID = "francium_2";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static Identifier of(String path) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, path);
+	}
+
+	public static Component translatable(String suffix, String prefix) {
+		return Component.translatable(translationString(suffix, prefix));
+	}
+
+	public static String translationString(String prefix, String suffix) {
+		return prefix + '.' + MOD_ID + '.' + suffix;
+	}
 
 	@Override
 	public void onInitialize() {

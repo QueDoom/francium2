@@ -9,12 +9,18 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.item.*;
+import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
+import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
 import net.quedoom.quet.init.QueTItem;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ModItems {
+    static {
+        QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
+    }
+
     public static QueTItem Q = new QueTItem(Francium.MOD_ID);
     
     public static Item DIRT_PILE = Q.register("dirt_pile", false);
@@ -59,6 +65,7 @@ public class ModItems {
 
     public static Item STEEL_IN_A_BOTTLE = Q.register("steel_in_a_bottle", SteelInABottleItem::new);
     public static Item STEEL_DUST = Q.register("steel_dust");
+    public static Item STEEL_INGOT = Q.register("steel_ingot");
 
     public static Item SHARP_ROCK = Q.register("sharp_rock", new Item.Properties().tool(ModToolMaterials.SHARP_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
     public static Item ROCK = Q.register(Q.create("rock"), p -> new RockItem(p, SHARP_ROCK), new Item.Properties());
@@ -143,8 +150,9 @@ public class ModItems {
     public static Item FRYING_PAN = Q.register(Q.create("frying_pan"), p -> new RightClickCampfireItem(p, ModBlocks.FRYING_PAN_CAMPFIRE), new Item.Properties().sword(ToolMaterial.IRON, 6, 0.3f));
     public static Item POT = Q.register(Q.create("pot"), p -> new RightClickCampfireItem(p, ModBlocks.POT_CAMPFIRE), new Item.Properties().sword(ToolMaterial.IRON, 3, 0.25f));
 
-    public static Item UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID = Q.register("unused_item", new Item.Properties());
+    public static Item UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID = Q.register("unused_item", new Item.Properties(), false);
 
-    public static void registerItem() {}
+    public static void registerItem() {
+    }
 
 }

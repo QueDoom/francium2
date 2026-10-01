@@ -11,11 +11,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.quet.init.QueTCreativeTab;
 
-public class ModCreativeModeTabs extends QueTCreativeTab {
+public class  ModCreativeModeTabs {
+    private static final QueTCreativeTab Q = new QueTCreativeTab(Francium.MOD_ID);
 
-    public static final ResourceKey<CreativeModeTab> FRANCIUM_TAB_KEY = create("francium_tab");
+    public static final ResourceKey<CreativeModeTab> FRANCIUM_TAB_KEY = Q.create("francium_tab");
 
-  public static final CreativeModeTab FRANCIUM_TAB = register(ModItems.DIRT_PILE, "francium_tab", (parameters, output) -> {
+  public static final CreativeModeTab FRANCIUM_TAB = Q.register(ModItems.DIRT_PILE, "francium_tab", (parameters, output) -> {
       output.accept(ModItems.BROKEN_STICK);
       output.accept(ModItems.SHARP_STICK);
       output.accept(ModItems.WOODEN_SHEARS);
@@ -118,6 +119,7 @@ public class ModCreativeModeTabs extends QueTCreativeTab {
 
       output.accept(ModItems.STEEL_IN_A_BOTTLE);
       output.accept(ModItems.STEEL_DUST);
+      output.accept(ModItems.STEEL_INGOT);
       output.accept(ModItems.STEEL_BOWL);
       output.accept(ModItems.FRYING_PAN);
       output.accept(ModItems.POT);
@@ -173,9 +175,9 @@ public class ModCreativeModeTabs extends QueTCreativeTab {
 
   });
 
-    public static final ResourceKey<CreativeModeTab> ALLOWED_BLOCKS_TAB_KEY = create("allowed_blocks_tab_key");
+    public static final ResourceKey<CreativeModeTab> ALLOWED_BLOCKS_TAB_KEY = Q.create("allowed_blocks_tab_key");
 
-    public static final CreativeModeTab ALLOWED_BLOCKS_TAB = register(ModBlocks.ALLOWED_COPPER_BLOCK.asItem(), "allowed_blocks", (parameters, output) -> {
+    public static final CreativeModeTab ALLOWED_BLOCKS_TAB = Q.register(ModBlocks.ALLOWED_COPPER_BLOCK.asItem(), "allowed_blocks", (parameters, output) -> {
         output.accept(ModBlocks.ALLOWED_GOLD_BLOCK);
         output.accept(ModBlocks.ALLOWED_COPPER_BLOCK);
         output.accept(ModBlocks.ALLOWED_EXPOSED_COPPER);
@@ -220,8 +222,8 @@ public class ModCreativeModeTabs extends QueTCreativeTab {
     });
 
     public static void registerTabs() {
-        connectEntries(FRANCIUM_TAB, FRANCIUM_TAB_KEY);
-        connectEntries(ALLOWED_BLOCKS_TAB, ALLOWED_BLOCKS_TAB_KEY);
+        QueTCreativeTab.connectEntries(FRANCIUM_TAB, FRANCIUM_TAB_KEY);
+        QueTCreativeTab.connectEntries(ALLOWED_BLOCKS_TAB, ALLOWED_BLOCKS_TAB_KEY);
     }
 
 }

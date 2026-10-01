@@ -1,7 +1,6 @@
 package net.quedoom.francium.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
@@ -80,7 +79,7 @@ public class BlockTagGen extends QueTBlockTagProvider {
         valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(
                         ModBlocks.WOODEN_CASING,
-                        ModBlocks.BLOCK_CONTAINING_WOODEN_CASING,
+                        ModBlocks.WOODEN_CASING_CONTAINING_BLOCK,
                         ModBlocks.MINERAL_MIXED_WOODEN_CASING,
                         ModBlocks.WOODEN_MERGER,
                         ModBlocks.GLUE_MIXER,
@@ -104,7 +103,7 @@ public class BlockTagGen extends QueTBlockTagProvider {
                         ModBlocks.DRIPSTONE_SPIKES,
                         ModBlocks.DEEP_MERGER,
                         ModBlocks.MINERAL_MIX_BLOCK,
-                        ModBlocks.BLOCK_CONTAINING_STONE_CASING,
+                        ModBlocks.STONE_CASING_CONTAINING_BLOCK,
                         ModBlocks.ANCIENT_BUNS,
                         ModBlocks.FRYING_PAN_CAMPFIRE,
                         ModBlocks.POT_CAMPFIRE,

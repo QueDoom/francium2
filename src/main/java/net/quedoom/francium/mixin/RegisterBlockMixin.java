@@ -2,10 +2,8 @@ package net.quedoom.francium.mixin;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -13,15 +11,14 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.ModdedBambooStalkBlock;
 import net.quedoom.francium.block.SolidSugarCaneBlock;
 import net.quedoom.francium.block.supers.EighthsEatableBlock;
 import net.quedoom.francium.block.supers.RotateableEighthsEatableBlock;
 import net.quedoom.francium.block.supers.ShearableEightsEatableBlock;
 import net.quedoom.francium.block.thicc_crops.ThickableBeetrootBlock;
-import net.quedoom.francium.init.ModBlocks;
-import net.quedoom.francium.item.vanilla.StickItem;
+import net.quedoom.francium.block.thicc_crops.ThickableCarrotBlock;
+import net.quedoom.francium.block.thicc_crops.ThickablePotatoBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,44 +36,33 @@ public class RegisterBlockMixin {
 
     private static void register(ResourceKey<Block> id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, CallbackInfoReturnable<Block> cir) {
         String name = id.toString();
-        if (name.equals(string("beetroots"))) {
-            BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops();
-            Function<BlockBehaviour.Properties, Block> newFactory = p -> new ThickableBeetrootBlock(ModBlocks.THICK_BEETROOT, p);
-            Block block = newFactory.apply(customProperty.setId(id));
-            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
-        }
 
-        if (name.equals(string("bedrock"))) {
-            BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops();
-            Block block = factory.apply(customProperty.setId(id));
-            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
-        }
+        reRegister(name.equals(string("potatoes")), id, cir, ThickablePotatoBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+        reRegister(name.equals(string("carrots")), id, cir, ThickableCarrotBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+        reRegister(name.equals(string("beetroots")), id, cir, ThickableBeetrootBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
 
-        if (name.equals(string("sugar_cane"))) {
-            BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks().sound(SoundType.BAMBOO).pushReaction(PushReaction.DESTROY).strength(2f);
-            Function<BlockBehaviour.Properties, Block> newFactory = SolidSugarCaneBlock::new;
-            Block block = newFactory.apply(customProperty.setId(id));
-            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
-        }
+        reRegister(name.equals(string("bedrock")), id, cir, factory, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops());
 
-        if (name.equals(string("bamboo"))) {
-            BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.PLANT)
-                    .forceSolidOn()
-                    .randomTicks()
-                    .strength(1.0F)
-                    .sound(SoundType.BAMBOO)
-                    .noOcclusion()
-                    .dynamicShape()
-                    .offsetType(BlockBehaviour.OffsetType.XZ)
-                    .ignitedByLava()
-                    .pushReaction(PushReaction.DESTROY)
-                    .isRedstoneConductor(Blocks::never);
+        reRegister(name.equals(string("sugar_cane")), id, cir,
+                SolidSugarCaneBlock::new,
+                BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks()
+                        .sound(SoundType.BAMBOO).pushReaction(PushReaction.DESTROY).strength(2f));
 
-            Function<BlockBehaviour.Properties, Block> newFactory = ModdedBambooStalkBlock::new;
-            Block block = newFactory.apply(customProperty.setId(id));
-            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
-        }
+        reRegister(name.equals(string("bamboo")), id, cir,
+                ModdedBambooStalkBlock::new,
+                BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.PLANT)
+                        .forceSolidOn()
+                        .randomTicks()
+                        .strength(1.0F)
+                        .sound(SoundType.BAMBOO)
+                        .noOcclusion()
+                        .dynamicShape()
+                        .offsetType(BlockBehaviour.OffsetType.XZ)
+                        .ignitedByLava()
+                        .pushReaction(PushReaction.DESTROY)
+                        .isRedstoneConductor(Blocks::never)
+        );
 
         if ((name.contains("melon") || name.contains("pumpkin")) && !name.contains("stem")) {
             if (name.contains("pumpkin")) {
@@ -99,18 +85,10 @@ public class RegisterBlockMixin {
             }
         }
 
-        if ((name.contains("copper") && !name.contains("chain") && !name.contains("lantern") && !name.contains("door") && !name.contains("bar") && !name.contains("grate") && !name.contains("bulb")) ||
-             name.contains(string("gold_block"))) {
-            BlockBehaviour.Properties customProperty = properties.noLootTable();
-            Block block = factory.apply(customProperty.setId(id));
-            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
+        boolean forbiddenCopperCheck = name.contains("copper") && !name.contains("chain") && !name.contains("lantern") && !name.contains("door") && !name.contains("bar") && !name.contains("grate") && !name.contains("bulb");
+        if (forbiddenCopperCheck || name.equals(string("gold_block"))) {
+            reRegister(true, id, cir, factory, properties.noLootTable());
         }
-
-//        if (name.equals("bedrock")) {
-//            BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops();
-//            Block block = factory.apply(customProperty.setId(id));
-//            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
-//        }
     }
 
     @Unique
@@ -124,5 +102,13 @@ public class RegisterBlockMixin {
     @Unique
     private static String string(Identifier identifier) {
         return "ResourceKey[minecraft:block / " + identifier.getNamespace() + ":" +  identifier.getPath() + "]";
+    }
+
+    @Unique
+    private static void reRegister(boolean shouldReRegisterForThisBlock, ResourceKey<Block> key, CallbackInfoReturnable<Block> cir, Function<BlockBehaviour.Properties, Block> newFactory, BlockBehaviour.Properties properties) {
+        if (shouldReRegisterForThisBlock) {
+            Block block = newFactory.apply(properties.setId(key));
+            cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, key, block));
+        }
     }
 }

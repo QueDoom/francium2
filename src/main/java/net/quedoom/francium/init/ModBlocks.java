@@ -15,11 +15,10 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
-import net.quedoom.francium.block.supers.EighthsEatableBlock;
+import net.quedoom.francium.block.supers.EighthsEatableBlockWithStem;
 import net.quedoom.francium.block.supers.FallingEighthsEatableBlock;
 import net.quedoom.francium.block.supers.ThickFoliageBlock;
 import net.quedoom.quet.init.QueTBlock;
-import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -53,11 +52,11 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", Block::new
 
     public static final Block PILE_OF_LEAVES = Q.register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 
-    public static final Block BLOCK_CONTAINING_WOODEN_CASING = Q.register("block_containing_wooden_casing", p -> new BlockContainingBlock(p, WOODEN_CASING.defaultBlockState()),
-            BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion().noLootTable(), false);
+    public static final Block WOODEN_CASING_CONTAINING_BLOCK = Q.register("block_containing_wooden_casing", p -> new BlockContainingBlock(p, WOODEN_CASING),
+            BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
 
-    public static final Block BLOCK_CONTAINING_STONE_CASING = Q.register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING.defaultBlockState()),
-            BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().noLootTable().requiresCorrectToolForDrops(), false);
+    public static final Block STONE_CASING_CONTAINING_BLOCK = Q.register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING),
+            BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
 
     public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 
@@ -79,11 +78,11 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", Block::new
     public static final Block HEAVY_SCULK = Q.register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
     public static final Block RUBBER_BLOCK = Q.register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
 
-    public static final Block THICK_POTATO = Q.register("thick_potato", p -> new EighthsEatableBlock(1, 0.15F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_POTATO = Q.register("thick_potato", p -> new EighthsEatableBlockWithStem(1, 0.15F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
     public static final Block THICK_POTATO_FOLIAGE = Q.register("thick_potato_foliage", p -> new ThickFoliageBlock(THICK_POTATO, Optional.of(Items.POTATO), p), thickFoliage(), false);
-    public static final Block THICK_CARROT = Q.register("thick_carrot", EighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_CARROT = Q.register("thick_carrot", EighthsEatableBlockWithStem::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
     public static final Block THICK_CARROT_FOLIAGE = Q.register("thick_carrot_foliage", p -> new ThickFoliageBlock(THICK_CARROT, Optional.of(Items.CARROT), p), thickFoliage(), false);
-    public static final Block THICK_BEETROOT = Q.register("thick_beetroot", p -> new EighthsEatableBlock(1, 0.05F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_BEETROOT = Q.register("thick_beetroot", p -> new EighthsEatableBlockWithStem(1, 0.05F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
     public static final Block THICK_BEETROOT_FOLIAGE = Q.register("thick_beetroot_foliage", p -> new ThickFoliageBlock(THICK_BEETROOT, Optional.of(Items.BEETROOT_SEEDS), p), thickFoliage(), false);
     public static final Block THICK_APPLE = Q.register("thick_apple", FallingEighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
 

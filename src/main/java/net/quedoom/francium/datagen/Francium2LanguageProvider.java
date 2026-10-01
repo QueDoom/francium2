@@ -7,16 +7,19 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
-import net.quedoom.quet.QueT;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
-import net.quedoom.quet.misc.QueTObjectStorage;
 
 import java.util.concurrent.CompletableFuture;
 
 public class Francium2LanguageProvider extends QueTLanguageProvider {
     public Francium2LanguageProvider(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(packOutput, registryLookup);
+    }
+
+    @Override
+    protected String getNamespace() {
+        return Francium.MOD_ID;
     }
 
     @Override
@@ -70,13 +73,14 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModBlocks.HEAVY_SCULK);
 
         qtTranslationBuilder.auto(ModBlocks.WOODEN_CASING);
-        qtTranslationBuilder.auto(ModBlocks.BLOCK_CONTAINING_WOODEN_CASING);
-        qtTranslationBuilder.auto(ModBlocks.BLOCK_CONTAINING_STONE_CASING);
+        qtTranslationBuilder.auto(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK);
+        qtTranslationBuilder.auto(ModBlocks.STONE_CASING_CONTAINING_BLOCK);
         qtTranslationBuilder.auto(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
         translationBuilder.add(ModBlocks.MINERAL_MIX_BLOCK, "Block of Mineral Mix");
         qtTranslationBuilder.auto(ModBlocks.STONE_CASING);
         qtTranslationBuilder.auto(ModBlocks.OBSIDIAN_CASING);
         qtTranslationBuilder.auto(ModBlocks.ECHO_BLOCK);
+        qtTranslationBuilder.auto(ModBlocks.ECHO_BLOCK.asItem());
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_SUGAR_CANE);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO_ITEM);
@@ -126,6 +130,8 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add("menu.francium_2.bundle_table", "Bundle Table");
 
         autoTranslateAdvancement(translationBuilder, "get_gravel_pile", "Acquire some gravel.");
+
+        translationBuilder.add(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, "No item");
 
         qtTranslationBuilder.auto(ModBlocks.ALLOWED_COPPER_BLOCK);
         qtTranslationBuilder.auto(ModBlocks.ALLOWED_EXPOSED_COPPER);

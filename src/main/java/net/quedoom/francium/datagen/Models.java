@@ -120,6 +120,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.STEEL_IN_A_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.STEEL_DUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.STEEL_BOWL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.STEEL_INGOT, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PEBBLES, PILE_FLAT_ITEM);
