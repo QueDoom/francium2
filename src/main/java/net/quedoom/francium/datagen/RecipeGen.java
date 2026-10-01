@@ -6,22 +6,26 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.datagen.recipe.DeepMergerRecipeBuilder;
-import net.quedoom.francium.datagen.recipe.GlueMixerRecipeBuilder;
-import net.quedoom.francium.datagen.recipe.WoodenMergerRecipeBuilder;
+import net.quedoom.francium.datagen.recipe.*;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
 import net.quedoom.francium.recipe.WoodenMixerGlueType;
+import net.quedoom.quet.datagen.recipe.QueTRecipeProvider;
 import net.quedoom.quet.misc.GetPath;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class RecipeGen extends FabricRecipeProvider {
+public class RecipeGen extends QueTRecipeProvider {
     public RecipeGen(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
@@ -31,6 +35,7 @@ public class RecipeGen extends FabricRecipeProvider {
         return new RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
+                FranciumRecipeHelper recipes = new FranciumRecipeHelper(this, output);
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
                 glueMixing(this, output, WoodenMixerGlueType.NORMAL, 0, ModItems.GLUE, 32);
@@ -54,8 +59,15 @@ public class RecipeGen extends FabricRecipeProvider {
 
                 deepMerging(this, output, ModItems.ANDESITE_ALLOY, ModItems.DIORITE_ALLOY, ModItems.GRANITE_ALLOY, ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX, 1);
 
+                basicAnvilPressing(this, output, ModItems.DRIPSTONE_COATED_MINERAL_MIX, 4, ModBlocks.WOODEN_CASING, ModBlocks.MINERAL_MIXED_WOODEN_CASING);
+                recipes.anvilWoodenCompacting2x2(Items.SLIME_BALL, Items.SLIME_BLOCK);
+
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 
+                oreSmelting(List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, CookingBookCategory.MISC,
+                        ModItems.STEEL_INGOT, 2, 200, "steel_dust");
+                oreBlasting(List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, CookingBookCategory.MISC,
+                        ModItems.STEEL_INGOT, 2, 100, "steel_dust");
 
                 shaped(RecipeCategory.MISC, ModItems.PACKED_CALCITE)
                         .pattern("DDD")
@@ -224,17 +236,6 @@ public class RecipeGen extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.DRIPSTONE_PILE), has(ModItems.DRIPSTONE_PILE))
                         .save(output);
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BLAST_FURNACE)
-                        .pattern("DDD")
-                        .pattern("AFA")
-                        .pattern("MMM")
-                        .define('D', ModItems.DIORITE_ALLOY)
-                        .define('A', ModItems.ANDESITE_ALLOY)
-                        .define('F', Blocks.FURNACE)
-                        .define('M', ModBlocks.MINERAL_MIX_BLOCK)
-                        .unlockedBy(getHasName(Blocks.FURNACE), has(Blocks.FURNACE))
-                        .save(output);
-
                 shapeless(RecipeCategory.BUILDING_BLOCKS, Blocks.GRAVEL)
                         .requires(ModItems.GRAVEL_PILE, 9)
                         .unlockedBy(getHasName(ModItems.GRAVEL_PILE), has(ModItems.GRAVEL_PILE))
@@ -325,6 +326,18 @@ public class RecipeGen extends FabricRecipeProvider {
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
                 .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
+    }
+
+    private void basicAnvilPressing(RecipeProvider provider, RecipeOutput output, ItemLike item, int count, Block block, ItemLike result, String id) {
+        new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, block, new ItemStackTemplate(result.asItem()))
+                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + '_' + id);
+    }
+
+    private void basicAnvilPressing(RecipeProvider provider, RecipeOutput output, ItemLike item, int count, Block block, ItemLike result) {
+        new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, block, new ItemStackTemplate(result.asItem()))
+                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()));
     }
 
     private void campfireSmelting(ItemLike in, ItemLike out, RecipeCategory category, int cookingTime, RecipeProvider provider, RecipeOutput output) {

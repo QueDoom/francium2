@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,16 +31,13 @@ import org.jspecify.annotations.Nullable;
 import java.util.Optional;
 
 public class BlockContainingBlock extends BaseEntityBlock {
-    private final BlockState parent;
-
-    public BlockContainingBlock(Properties properties, BlockState parent) {
-        super(properties);
-        this.parent = parent;
+    public BlockContainingBlock(Properties properties, Block parent) {
+        super(properties.overrideLootTable(parent.getLootTable()));
     }
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec((properties1 -> new BlockContainingBlock(properties1, parent)));
+        return simpleCodec(p -> new BlockContainingBlock(p, null));
     }
 
     @Override
@@ -51,48 +49,11 @@ public class BlockContainingBlock extends BaseEntityBlock {
     public void destroy(LevelAccessor level, BlockPos pos, BlockState state) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BlockContainingEntity blockContainingEntity) {
-            if (blockContainingEntity.isEmpty()) {
-                Containers.dropItemStack(((Level) level), pos.getX(), pos.getY(), pos.getZ(), this.parent.getBlock().asItem().getDefaultInstance());
-            } else {
-                ItemStack stack =  blockContainingEntity.getItem(0);
-                Containers.dropItemStack(((Level) level), pos.getX(), pos.getY(), pos.getZ(), stack);
-                ((Level) level).setBlockAndUpdate(pos, this.parent);
+            if (!blockContainingEntity.isEmpty()) {
+                if (blockContainingEntity.getItem(0).getItem() instanceof BlockItem blockItem) {
+                    level.setBlock(pos, blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
+                }
             }
         }
-    }
-
-    @Override
-    public void stepOn(Level level, BlockPos pos, BlockState onState, Entity entity) {
-        if (!(entity instanceof ItemEntity itemEntity)) return;
-        ItemStack itemStack = itemEntity.getItem();
-        if (!(level.getBlockEntity(pos) instanceof BlockContainingEntity blockEntity)) return;
-        if (!(itemStack.getItem() instanceof BlockItem)) return;
-        if (blockEntity.isEmpty()) {
-            blockEntity.setItem(0, itemStack.copyWithCount(1));
-            itemStack.shrink(1);
-        } else {
-            blockEntity.removeItemNoUpdate(0);
-            if (itemStack.is(blockEntity.getItem(0).getItem())) {
-                itemStack.grow(1);
-            }
-        }
-    }
-
-    @Override
-    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!(level.getBlockEntity(pos) instanceof BlockContainingEntity blockEntity)) return InteractionResult.FAIL;
-        if (!(itemStack.getItem() instanceof BlockItem)) return InteractionResult.FAIL;
-        if (blockEntity.isEmpty()) {
-            blockEntity.setItem(0, itemStack.copyWithCount(1));
-            itemStack.shrink(1);
-        } else {
-            blockEntity.removeItemNoUpdate(0);
-            if (itemStack.is(blockEntity.getItem(0).getItem())) {
-                itemStack.grow(1);
-            } else {
-                player.addItem(blockEntity.getItem(0).copyWithCount(1));
-            }
-        }
-        return InteractionResult.SUCCESS;
     }
 }

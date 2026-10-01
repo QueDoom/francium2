@@ -49,20 +49,19 @@ public class ModRecipeTypes {
             }
     );
 
-
-    public static final RecipeSerializer<AnvilPressingRecipe> ANVIL_PRESSING_SERIALIZER = Registry.register(
+    public static final RecipeSerializer<BasicAnvilPressingRecipe> BASIC_ANVIL_PRESSING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
-            Francium.of(AnvilPressingRecipe.Type.ID),
-            new RecipeSerializer<>(AnvilPressingRecipe.CODEC, AnvilPressingRecipe.STREAM_CODEC)
+            Francium.of(BasicAnvilPressingRecipe.Type.ID),
+            new RecipeSerializer<>(BasicAnvilPressingRecipe.CODEC, BasicAnvilPressingRecipe.STREAM_CODEC)
     );
 
-    public static final RecipeType<AnvilPressingRecipe> ANVIL_PRESSING = Registry.register(
+    public static final RecipeType<BasicAnvilPressingRecipe> BASIC_ANVIL_PRESSING = Registry.register(
             BuiltInRegistries.RECIPE_TYPE,
-            Francium.of(AnvilPressingRecipe.Type.ID),
-            new RecipeType<AnvilPressingRecipe>() {
+            Francium.of(BasicAnvilPressingRecipe.Type.ID),
+            new RecipeType<BasicAnvilPressingRecipe>() {
                 @Override
                 public String toString() {
-                    return AnvilPressingRecipe.Type.ID;
+                    return BasicAnvilPressingRecipe.Type.ID;
                 }
             }
     );
