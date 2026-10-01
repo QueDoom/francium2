@@ -30,9 +30,11 @@ public class EighthsEatableBlockWithStem extends EighthsEatableBlock{
 
     @Override
     protected void set(LevelAccessor level, BlockPos pos, BlockState state, EighthsEatableOctant octant) {
-
-
-
+        BlockState above = level.getBlockState(pos.above());
+        if (above.getBlock() instanceof ThickFoliageBlock foliageBlock) {
+            octant.getStemProperty().ifPresent(booleanProperty ->
+                    foliageBlock.updateFromCrop(above, ((Level) level), pos.above(), booleanProperty));
+        }
         super.set(level, pos, state, octant);
     }
 }

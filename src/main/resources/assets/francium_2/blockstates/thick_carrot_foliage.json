@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "francium_2:block/thick_potato_foliage_ne"
+        "model": "francium_2:block/thick_carrot_foliage_ne"
       },
       "when": {
         "thick_foliage_ne": true
@@ -10,7 +10,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/thick_potato_foliage_nw"
+        "model": "francium_2:block/thick_carrot_foliage_nw"
       },
       "when": {
         "thick_foliage_nw": true
@@ -18,7 +18,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/thick_potato_foliage_se"
+        "model": "francium_2:block/thick_carrot_foliage_se"
       },
       "when": {
         "thick_foliage_se": true
@@ -26,7 +26,7 @@
     },
     {
       "apply": {
-        "model": "francium_2:block/thick_potato_foliage_sw"
+        "model": "francium_2:block/thick_carrot_foliage_sw"
       },
       "when": {
         "thick_foliage_sw": true

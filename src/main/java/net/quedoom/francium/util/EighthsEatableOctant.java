@@ -7,6 +7,8 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.quedoom.francium.init.ModProperties;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
     public static final EighthsEatableOctant neu = new EighthsEatableOctant(true, true, true);
     public static final EighthsEatableOctant nwu = new EighthsEatableOctant(true, false, true);
@@ -19,6 +21,31 @@ public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
 
     public static EighthsEatableOctant ofChars(char ns, char ew, char ud) {
         return new EighthsEatableOctant(ns == 'n', ew == 'e', ud == 'u');
+    }
+
+    public boolean isUpper() {
+        return up;
+    }
+
+    public Optional<BooleanProperty> getStemProperty() {
+        if (isUpper()) {
+            BooleanProperty property;
+            if (north) {
+                if (east) {
+                    property = ModProperties.THICK_FOLIAGE_NE;
+                } else {
+                    property = ModProperties.THICK_FOLIAGE_NW;
+                }
+            } else {
+                if (east) {
+                    property = ModProperties.THICK_FOLIAGE_SE;
+                } else {
+                    property = ModProperties.THICK_FOLIAGE_SW;
+                }
+            }
+            return Optional.of(property);
+        }
+        return Optional.empty();
     }
 
     public BlockState getStem(BlockState state) {
