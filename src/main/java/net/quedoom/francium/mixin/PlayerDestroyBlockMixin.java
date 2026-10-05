@@ -33,23 +33,16 @@ import java.util.Random;
 
 @Mixin(Block.class)
 public class PlayerDestroyBlockMixin {
-    @Shadow
-    public static void dropResources(BlockState state, Level level, BlockPos pos) {
-        throw new UnsupportedOperationException("Implemented via mixin");
-    }
-
-    @WrapOperation(
+    @Inject(
             method = "playerDestroy",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;dropResources(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)V")
-    )
-    private void dropDust(BlockState state, Level level, BlockPos pos, BlockEntity blockEntity, Entity breaker, ItemStack tool, Operation<Void> original) {
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;dropResources(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)V"),
+            cancellable = true)
+    private void dropDust(Level level, Player player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack destroyedWith, CallbackInfo ci) {
         if (state.is(Blocks.OAK_LEAVES) || state.is(Blocks.DARK_OAK_LEAVES)) {
-            RandomSource random = level.getRandom();
-            int randi = random.nextInt(0, 100);
-            Francium.LOGGER.info("{}", randi);
-            if (randi < 1) {
+            if (level.getRandom().nextInt(100) < 1) {
                 level.setBlockAndUpdate(pos, ModBlocks.THICK_APPLE.defaultBlockState());
             }
+            return;
         }
 
         if (state.is(ModTags.Blocks.DROPS_FORBIDDEN_DUST) || state.is(ModTags.Blocks.DROPS_FORBIDDEN_FLAKE) || state.is(ModTags.Blocks.SMALL_DROPS_FORBIDDEN_FLAKE)) {
@@ -60,27 +53,22 @@ public class PlayerDestroyBlockMixin {
             } else {
                 Block.dropResources(ModBlocks.SMALL_SPECIAL_FORBIDDEN_FLAKE.defaultBlockState(), level, pos);
             }
+            ci.cancel();
             return;
         }
 
         if (state.is(ModTags.Blocks.TILLS)) {
             boolean blocks = state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.ROOTED_DIRT) || state.is(Blocks.COARSE_DIRT) || state.is(Blocks.PODZOL);
-            if (tool.is(ItemTags.HOES)) {
+            if (destroyedWith.is(ItemTags.HOES)) {
                 level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState());
+                ci.cancel();
             } else {
                 if (blocks) {
                     level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
-                }
-                if (state.is(Blocks.GRASS_BLOCK)) {
-                    dropResources(Blocks.GRASS_BLOCK.defaultBlockState(), level, pos);
-                }
-                if (state.is(Blocks.PODZOL)) {
-                    dropResources(Blocks.PODZOL.defaultBlockState(), level, pos);
+                    ci.cancel();
                 }
             }
-            return;
         }
-        original.call(state, level, pos, blockEntity, ((Player) breaker), tool);
     }
 
 }
