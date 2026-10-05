@@ -31,22 +31,32 @@ public class BlockContainingRenderer implements BlockEntityRenderer<BlockContain
     }
 
     @Override
-    public void extractRenderState(BlockContainingEntity blockEntity, BlockContainingRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
+    public void extractRenderState(BlockContainingEntity be, BlockContainingRenderState state, float partialTicks,
+                                   Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
+        BlockEntityRenderer.super.extractRenderState(be, state, partialTicks, cameraPosition, breakProgress);
+
+        ItemStack stack = be.getTheItem();
+        state.hasBlock = stack.getItem() instanceof BlockItem;
+        if (state.hasBlock) {
+            BlockState inner = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
+            blockModelResolver.update(state.blockModelRenderState, inner, BlockDisplayContext.create());
+        }
     }
 
     @Override
-    public void submit(BlockContainingRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+    public void submit(BlockContainingRenderState state, PoseStack poseStack,
+                       SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+        if (!state.hasBlock) return;
         poseStack.pushPose();
-        if (state.containerItem.getItem() instanceof BlockItem && state.containerItem.isEmpty()) {
-            blockModelResolver.update(state.blockModelRenderState, ((BlockItem) state.containerItem.getItem()).getBlock().defaultBlockState(), BlockDisplayContext.create());
-            state.blockModelRenderState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-        }
+        poseStack.translate(0.5, 0.5, 0.5);
+        poseStack.scale(0.98f, 0.98f, 0.98f);
+        poseStack.translate(-0.5, -0.5, -0.5);
+        state.blockModelRenderState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
         poseStack.popPose();
     }
 
-    public class BlockContainingRenderState extends BlockEntityRenderState {
-        BlockModelRenderState blockModelRenderState = new BlockModelRenderState();
-        ItemStack containerItem = ItemStack.EMPTY;
+    public static class BlockContainingRenderState extends BlockEntityRenderState {
+        public final BlockModelRenderState blockModelRenderState = new BlockModelRenderState();
+        public boolean hasBlock;
     }
 }

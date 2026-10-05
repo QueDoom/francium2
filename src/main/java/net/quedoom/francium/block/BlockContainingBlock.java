@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -31,29 +32,17 @@ import org.jspecify.annotations.Nullable;
 import java.util.Optional;
 
 public class BlockContainingBlock extends BaseEntityBlock {
-    public BlockContainingBlock(Properties properties, Block parent) {
-        super(properties.overrideLootTable(parent.getLootTable()));
+    public BlockContainingBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return simpleCodec(p -> new BlockContainingBlock(p, null));
+        return simpleCodec(BlockContainingBlock::new);
     }
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {
         return new BlockContainingEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public void destroy(LevelAccessor level, BlockPos pos, BlockState state) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof BlockContainingEntity blockContainingEntity) {
-            if (!blockContainingEntity.isEmpty()) {
-                if (blockContainingEntity.getItem(0).getItem() instanceof BlockItem blockItem) {
-                    level.setBlock(pos, blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
-                }
-            }
-        }
     }
 }

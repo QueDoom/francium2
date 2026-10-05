@@ -2,11 +2,7 @@ package net.quedoom.francium.init;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.block.entity.BlockContainingEntity;
-import net.quedoom.francium.block.entity.BundleTableEntity;
-import net.quedoom.francium.block.entity.DeepMergerEntity;
-import net.quedoom.francium.block.entity.GlueMixerEntity;
-import net.quedoom.francium.block.entity.TraderBenchEntity;
+import net.quedoom.francium.block.entity.*;
 import net.quedoom.quet.init.QueTBlockEntity;
 
 public class ModBlockEntities {
@@ -19,7 +15,9 @@ public class ModBlockEntities {
             Q.register("glue_mixer", GlueMixerEntity::new, ModBlocks.GLUE_MIXER);
 
     public static final BlockEntityType<BlockContainingEntity> BLOCK_CONTAINING_ENTITY =
-            Q.register("block_containing_block", BlockContainingEntity::new, ModBlocks.WOODEN_CASING_CONTAINING_BLOCK);
+            Q.register("block_containing_block", BlockContainingEntity::new, ModBlocks.WOODEN_CASING_CONTAINING_BLOCK, ModBlocks.STONE_CASING_CONTAINING_BLOCK, ModBlocks.OBSIDIAN_CASING_CONTAINING_BLOCK);
+    public static final BlockEntityType<BlockContainingItemsEntity> BLOCK_CONTAINING_ITEMS_ENTITY =
+            Q.register("block_containing_items", BlockContainingItemsEntity::new, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS);
 
     public static final BlockEntityType<BundleTableEntity> BUNDLE_TABLE_ENTITY =
             Q.register("bundle_table", BundleTableEntity::new, ModBlocks.BUNDLE_TABLE);

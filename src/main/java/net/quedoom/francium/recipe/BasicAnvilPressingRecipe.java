@@ -18,7 +18,7 @@ import net.quedoom.francium.init.ModRecipeTypes;
 public record BasicAnvilPressingRecipe(Ingredient ingredient, int countReq, Block block, ItemStackTemplate result) implements Recipe<BasicAnvilPressingRecipeInput> {
     public static final MapCodec<BasicAnvilPressingRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
             Ingredient.CODEC.fieldOf("ingredient").forGetter(BasicAnvilPressingRecipe::ingredient),
-            PrimitiveCodec.INT.fieldOf("count").forGetter(BasicAnvilPressingRecipe::countReq),
+            PrimitiveCodec.INT.optionalFieldOf("count", 1).forGetter(BasicAnvilPressingRecipe::countReq),
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(BasicAnvilPressingRecipe::block),
             ItemStackTemplate.CODEC.fieldOf("result").forGetter(BasicAnvilPressingRecipe::result)
     ).apply(i, BasicAnvilPressingRecipe::new));
@@ -61,7 +61,7 @@ public record BasicAnvilPressingRecipe(Ingredient ingredient, int countReq, Bloc
 
     @Override
     public String group() {
-        return Type.ID;
+        return "anvil_pressing_basic";
     }
 
     @Override
@@ -88,6 +88,6 @@ public record BasicAnvilPressingRecipe(Ingredient ingredient, int countReq, Bloc
         private Type() {}
 
         public static final BasicAnvilPressingRecipe.Type INSTANCE = new BasicAnvilPressingRecipe.Type();
-        public static final String ID = "anvil_pressing";
+        public static final String ID = "anvil_pressing/basic";
     }
 }

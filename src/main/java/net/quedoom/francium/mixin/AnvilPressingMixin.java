@@ -2,7 +2,6 @@ package net.quedoom.francium.mixin;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
@@ -12,13 +11,15 @@ import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.quedoom.francium.block.BlockContainingBlock;
-import net.quedoom.francium.block.entity.BlockContainingEntity;
-import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.block.entity.BlockContainingItemsEntity;
+import net.quedoom.francium.block.CasingWithPotentialContainer;
 import net.quedoom.francium.init.ModRecipeTypes;
+import net.quedoom.francium.recipe.AnvilPressing;
 import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
 import net.quedoom.francium.recipe.BasicAnvilPressingRecipeInput;
+import net.quedoom.francium.recipe.TwoBlockAnvilPressingRecipe;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -45,27 +46,75 @@ public class AnvilPressingMixin {
                 .getRecipeFor(ModRecipeTypes.BASIC_ANVIL_PRESSING, input, server)
                 .ifPresent(holder -> {
                     BasicAnvilPressingRecipe recipe = holder.value();
-                    items.forEach(Entity::discard);
                     ItemStack itemResult = recipe.result().create();
+                    boolean done;
+
                     if (itemResult.getItem() instanceof BlockItem blockItem) {
-                        if (below.getBlock() instanceof BlockContainingBlock blockContainingBlock) {
-
-                            server.setBlock(pos.below(), below.is(ModBlocks.STONE_CASING) ?
-                                    ModBlocks.STONE_CASING_CONTAINING_BLOCK.defaultBlockState() :
-                                    ModBlocks.WOODEN_CASING_CONTAINING_BLOCK.defaultBlockState(), Block.UPDATE_ALL);
-
-                            if (level.getBlockEntity(pos.below()) instanceof BlockContainingEntity container) {
-                                if (container.isEmpty()) {
-                                    container.setItem(0, itemResult);
-                                    return;
-                                }
-                            }
+                        if (!(below.getBlock() instanceof CasingWithPotentialContainer potentialContainer
+                                && potentialContainer.placeContainingBlock(level, pos, input.block(), itemResult))) {
+                            server.setBlock(pos.below(), blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
                         }
-                        server.setBlock(pos.below(), blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
+                        done = true;
                     } else {
-                        throw new IllegalArgumentException("The result must be a block sorry :(. Recipe to change: " + recipe);
+                        if (below.getBlock() instanceof CasingWithPotentialContainer potentialContainer) {
+                            done = potentialContainer.placeContainingItems(level, pos, input.block(), itemResult);
+                        } else if (level.getBlockEntity(pos.below()) instanceof BlockContainingItemsEntity containingItems) {
+                            done = containingItems.placeInAvailableSlots(itemResult);
+                        } else done = false;
                     }
+
+                    if (done) consume(items, recipe);
                 });
+    }
+
+    @Unique
+    private static void consume(List<ItemEntity> items, BasicAnvilPressingRecipe recipe) {
+        int left = recipe.countReq();
+        for (ItemEntity e : items) {
+            if (left <= 0) break;
+            ItemStack s = e.getItem();
+            if (!recipe.ingredient().test(s)) continue;
+            int take = Math.min(left, s.getCount());
+            left -= take;
+            if (take == s.getCount()) {
+                e.discard();
+            } else {
+                e.setItem(s.copyWithCount(s.getCount() - take));
+            }
+        }
+    }
+
+    @Inject(method = "onLand", at = @At("TAIL"))
+    private void francium$press(Level level, BlockPos pos, BlockState state, BlockState replacedBlock,
+                                FallingBlockEntity entity, CallbackInfo ci) {
+        if (!(level instanceof ServerLevel server)) return;
+
+        AnvilPressing.find(server, pos, replacedBlock).ifPresent(holder -> {
+            TwoBlockAnvilPressingRecipe recipe = holder.value();
+
+            int left = recipe.count();
+            for (ItemEntity e : AnvilPressing.items(server, pos)) {
+                ItemStack s = e.getItem();
+                if (left <= 0 || !recipe.ingredient().test(s)) continue;
+                int take = Math.min(left, s.getCount());
+                left -= take;
+                if (take == s.getCount()) {
+                    e.discard();
+                } else {
+                    ItemStack c = s.copy();
+                    c.shrink(take);
+                    e.setItem(c);
+                }
+            }
+
+            ItemStack result = recipe.result().create();
+            BlockPos bottom = pos.below();
+            if (result.getItem() instanceof BlockItem bi) {
+                server.setBlock(bottom, bi.getBlock().defaultBlockState(), Block.UPDATE_ALL);
+            } else {
+                server.addFreshEntity(new ItemEntity(server, bottom.getX() + 0.5, bottom.getY() + 1.1, bottom.getZ() + 0.5, result));
+            }
+        });
     }
 
 

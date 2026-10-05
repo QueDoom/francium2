@@ -15,9 +15,9 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.*;
-import net.quedoom.francium.block.supers.EighthsEatableBlockWithStem;
-import net.quedoom.francium.block.supers.FallingEighthsEatableBlock;
-import net.quedoom.francium.block.supers.ThickFoliageBlock;
+import net.quedoom.francium.block.thicc_farming.EighthsEatableBlockWithStem;
+import net.quedoom.francium.block.thicc_farming.FallingEighthsEatableBlock;
+import net.quedoom.francium.block.thicc_farming.ThickFoliageBlock;
 import net.quedoom.quet.init.QueTBlock;
 
 import java.util.Optional;
@@ -39,24 +39,29 @@ public class ModBlocks  {
     public static final Block BUNDLE_TABLE = Q.register("bundle_table", BundleTableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
     public static final Block TRADER_BENCH = Q.register("trader_bench", TraderBenchBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
 
-public static final Block WOODEN_CASING = Q.register("wooden_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
+public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
 
     public static final Block MINERAL_MIX_BLOCK = Q.register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
 
-    public static final Block MINERAL_MIXED_WOODEN_CASING = Q.register("mineral_mixed_wooden_casing", properties ->
-            new TransformWhenBrokenBlock(properties, MINERAL_MIX_BLOCK.defaultBlockState()), BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).mapColor(MINERAL_MIX_BLOCK.defaultMapColor()));
+    public static final Block STONE_CASING = Q.register("stone_casing", StoneCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
 
-    public static final Block STONE_CASING = Q.register("stone_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
-
-    public static final Block OBSIDIAN_CASING = Q.register("obsidian_casing", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN));
+    public static final Block OBSIDIAN_CASING = Q.register("obsidian_casing", ObsidianCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN));
 
     public static final Block PILE_OF_LEAVES = Q.register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 
-    public static final Block WOODEN_CASING_CONTAINING_BLOCK = Q.register("block_containing_wooden_casing", p -> new BlockContainingBlock(p, WOODEN_CASING),
+    public static final Block WOODEN_CASING_CONTAINING_BLOCK = Q.register("wooden_casing_containing_block", BlockContainingBlock::new,
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
-
-    public static final Block STONE_CASING_CONTAINING_BLOCK = Q.register("block_containing_stone_casing", p -> new BlockContainingBlock(p, STONE_CASING),
+    public static final Block STONE_CASING_CONTAINING_BLOCK = Q.register("stone_casing_containing_block", BlockContainingBlock::new,
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
+    public static final Block OBSIDIAN_CASING_CONTAINING_BLOCK = Q.register("obsidian_casing_containing_block", BlockContainingBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(OBSIDIAN_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
+
+    public static final Block WOODEN_CASING_CONTAINING_ITEMS = Q.register("wooden_casing_containing_items", BlockContainingItems::new,
+            BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
+    public static final Block STONE_CASING_CONTAINING_ITEMS = Q.register("stone_casing_containing_items", BlockContainingItems::new,
+            BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
+    public static final Block OBSIDIAN_CASING_CONTAINING_ITEMS = Q.register("obsidian_casing_containing_items", BlockContainingItems::new,
+            BlockBehaviour.Properties.ofFullCopy(OBSIDIAN_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
 
     public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 
