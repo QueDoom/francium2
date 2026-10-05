@@ -90,7 +90,6 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.SMITHING_TOKEN);
 
       output.accept(ModBlocks.WOODEN_CASING);
-      output.accept(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
       output.accept(ModBlocks.MINERAL_MIX_BLOCK);
       output.accept(ModBlocks.STONE_CASING);
       output.accept(ModBlocks.OBSIDIAN_CASING);
