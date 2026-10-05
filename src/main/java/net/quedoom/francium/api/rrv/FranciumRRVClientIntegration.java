@@ -3,12 +3,12 @@ package net.quedoom.francium.api.rrv;
 import cc.cassian.rrv.api.ReliableRecipeViewerClientPlugin;
 import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.client.recipe.ClientRecipeManager;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModRecipeTypes;
-import net.quedoom.francium.recipe.DeepMergingRecipe;
-import net.quedoom.francium.recipe.GlueMixingRecipe;
-import net.quedoom.francium.recipe.WoodenMergingRecipe;
-import net.quedoom.francium.recipe.WoodenMixerGlueType;
+import net.quedoom.francium.recipe.*;
 import net.quedoom.quet.init.ModRegistrator;
 
 public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientPlugin {
@@ -26,6 +26,17 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
             ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.GLUE_MIXING).forEach(glueMixingRecipeRecipeHolder -> {
                 GlueMixingRecipe recipe = glueMixingRecipeRecipeHolder.value();
                 recipeList.add(WoodenMixingClientRecipe.of(WoodenMixerGlueType.fromIngredient(recipe.getTypeProperty()), recipe.getResult()));
+            });
+            ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.TWO_BLOCK_ANVIL_PRESSING).forEach(twoBlockAnvilPressingRecipeRecipeHolder -> {
+                TwoBlockAnvilPressingRecipe recipe = twoBlockAnvilPressingRecipeRecipeHolder.value();
+                recipeList.add(new TwoBlockPressingClientRecipe(recipe.ingredient(), recipe.count(), recipe.topBlock(), recipe.bottomBlock(), recipe.result()));
+            });
+            ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.BASIC_ANVIL_PRESSING).forEach(basicAnvilPressingRecipeRecipeHolder -> {
+                BasicAnvilPressingRecipe recipe = basicAnvilPressingRecipeRecipeHolder.value();
+                Block block = recipe.block();
+                if (block.asItem() != Items.AIR) {
+                    recipeList.add(new BasicAnvilPressingClientRecipe(recipe.ingredient(), recipe.countReq(), recipe.block(), recipe.result()));
+                }
             });
         });
     }
