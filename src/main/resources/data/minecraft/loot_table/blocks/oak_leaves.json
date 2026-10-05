@@ -61,7 +61,7 @@
           ]
         }
       ],
-      "rolls": 1
+      "rolls": 5
     },
     {
       "bonus_rolls": 0,
@@ -117,7 +117,7 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4,
+                "max": 2,
                 "min": 1
               },
               "function": "minecraft:set_count"
@@ -129,42 +129,7 @@
           "name": "francium_2:broken_stick"
         }
       ],
-      "rolls": 2
-    },
-    {
-      "bonus_rolls": 0,
-      "conditions": [
-        {
-          "condition": "minecraft:inverted",
-          "term": {
-            "condition": "minecraft:any_of",
-            "terms": [
-              {
-                "condition": "minecraft:match_tool",
-                "predicate": {
-                  "items": "minecraft:shears"
-                }
-              },
-              {
-                "condition": "minecraft:match_tool",
-                "predicate": {
-                  "predicates": {
-                    "minecraft:enchantments": [
-                      {
-                        "enchantments": "minecraft:silk_touch",
-                        "levels": {
-                          "min": 1
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "rolls": 1
+      "rolls": 5
     }
   ],
   "random_sequence": "minecraft:blocks/oak_leaves"
