@@ -3,12 +3,14 @@ package net.quedoom.francium.api.rrv;
 import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import net.minecraft.world.item.ItemStack;
+import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.recipe.GlueMixingRecipe;
+import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 
 import java.util.List;
 
-public class WoodenMixingClientRecipeType extends ReliableClientRecipeTypeHelper{
+public class WoodenMixingClientRecipeType extends ReliableClientRecipeTypeHelper {
     protected static final ReliableClientRecipeType INSTANCE = new WoodenMixingClientRecipeType();
 
     protected WoodenMixingClientRecipeType() {
@@ -31,5 +33,10 @@ public class WoodenMixingClientRecipeType extends ReliableClientRecipeTypeHelper
         slotDefinition.addItemSlot(1, 26, 18);
         slotDefinition.addItemSlot(2, 59, 18);
         slotDefinition.addItemSlot(3, 99, 18);
+    }
+
+    @Override
+    protected String namespace() {
+        return Francium.MOD_ID;
     }
 }

@@ -11,6 +11,7 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.menu.DeepMergerScreen;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.recipe.DeepMergingRecipe;
+import net.quedoom.quet.api.rrv.ReliableClientRecipeWithTransfer;
 
 import java.util.List;
 

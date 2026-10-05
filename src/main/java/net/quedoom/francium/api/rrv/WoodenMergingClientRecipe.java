@@ -11,6 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.menu.WoodenMergerScreen;
 import net.quedoom.francium.recipe.WoodenMergingRecipe;
+import net.quedoom.quet.api.rrv.ReliableClientRecipeWithTransfer;
 
 import java.util.List;
 

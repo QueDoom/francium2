@@ -4,6 +4,8 @@ import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.quedoom.francium.Francium;
+import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 
 import java.util.List;
 
@@ -28,6 +30,11 @@ public class TwoBlockPressingClientRecipeType extends ReliableClientRecipeTypeHe
         slotDefinition.addItemSlot(0, 4, 49);
         slotDefinition.addItemSlot(1, 24, 49);
         slotDefinition.addItemSlot(2, 14, 69);
-        slotDefinition.addItemSlot(3, 58, 68);
+        slotDefinition.addItemSlot(3, 57, 68);
+    }
+
+    @Override
+    protected String namespace() {
+        return Francium.MOD_ID;
     }
 }

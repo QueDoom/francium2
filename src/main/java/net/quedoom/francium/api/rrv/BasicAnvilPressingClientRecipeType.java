@@ -6,6 +6,8 @@ import cc.cassian.rrv.common.recipe.inventory.SlotContent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.quedoom.francium.Francium;
+import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 
 import java.util.List;
 
@@ -31,5 +33,10 @@ public class BasicAnvilPressingClientRecipeType extends ReliableClientRecipeType
         slotDefinition.addItemSlot(0, 4, 45);
         slotDefinition.addItemSlot(1, 4, 68);
         slotDefinition.addItemSlot(2, 45, 68);
+    }
+
+    @Override
+    protected String namespace() {
+        return Francium.MOD_ID;
     }
 }

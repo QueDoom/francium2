@@ -18,6 +18,7 @@ import net.quedoom.francium.init.ModTags;
 import net.quedoom.francium.recipe.GlueMixingRecipe;
 import net.quedoom.francium.recipe.WoodenMergingRecipe;
 import net.quedoom.francium.recipe.WoodenMixerGlueType;
+import net.quedoom.quet.api.rrv.ReliableClientRecipeWithoutTransfer;
 
 import java.util.List;
 

@@ -21,7 +21,7 @@ import org.jspecify.annotations.Nullable;
 import java.util.List;
 
 public class BlockContainingItemsRenderer implements BlockEntityRenderer<BlockContainingItemsEntity, BlockContainingItemsRenderer.BlockContainingRenderState> {
-    private static final float INSET = 0.03f;
+    private static final float INSET = 0.04f;
 
     private final ItemModelResolver itemModelResolver;
 
@@ -72,7 +72,7 @@ public class BlockContainingItemsRenderer implements BlockEntityRenderer<BlockCo
                 default -> poseStack.mulPose(Axis.YP.rotationDegrees(-dir.toYRot()));
             }
             poseStack.translate(0, 0, 0.5f - INSET);
-            poseStack.scale(1, 1, 1 );
+            poseStack.scale(0.95f, 0.95f, 0.95f);
             item.submit(poseStack, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
             poseStack.popPose();
         }
