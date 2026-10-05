@@ -109,10 +109,29 @@ public class AnvilPressingMixin {
 
             ItemStack result = recipe.result().create();
             BlockPos bottom = pos.below();
-            if (result.getItem() instanceof BlockItem bi) {
-                server.setBlock(bottom, bi.getBlock().defaultBlockState(), Block.UPDATE_ALL);
+            BlockState bottomState = level.getBlockState(bottom);
+            boolean done;
+
+            if (result.getItem() instanceof BlockItem blockItem) {
+                if (!(bottomState.getBlock() instanceof CasingWithPotentialContainer potentialContainer
+                        && potentialContainer.placeContainingBlock(level, pos, bottomState, result))) {
+                    server.setBlock(pos.below(), blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
+                }
+                done = true;
             } else {
-                server.addFreshEntity(new ItemEntity(server, bottom.getX() + 0.5, bottom.getY() + 1.1, bottom.getZ() + 0.5, result));
+                if (bottomState.getBlock() instanceof CasingWithPotentialContainer potentialContainer) {
+                    done = potentialContainer.placeContainingItems(level, pos, bottomState, result);
+                } else if (level.getBlockEntity(pos.below()) instanceof BlockContainingItemsEntity containingItems) {
+                    done = containingItems.placeInAvailableSlots(result);
+                } else done = false;
+            }
+
+            if (!done) {
+                if (result.getItem() instanceof BlockItem bi) {
+                    server.setBlock(bottom, bi.getBlock().defaultBlockState(), Block.UPDATE_ALL);
+                } else {
+                    server.addFreshEntity(new ItemEntity(server, bottom.getX() + 0.5, bottom.getY() + 1.1, bottom.getZ() + 0.5, result));
+                }
             }
         });
     }
