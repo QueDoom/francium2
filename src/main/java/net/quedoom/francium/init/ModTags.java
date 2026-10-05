@@ -27,8 +27,6 @@ public class ModTags {
 
         public static final TagKey<Block> SHARP_STICK_MINES_FAST = Q.create("sharp_stick_mines_fast");
 
-        public static final TagKey<Block> BLOCK_CONTAINING_BLOCK_COMPATIBLE = Q.create("block_containing_block_compatible");
-
         public static final TagKey<Block> DROPS_FORBIDDEN_DUST = Q.create("drops_forbidden_dust");
         public static final TagKey<Block> DROPS_FORBIDDEN_FLAKE = Q.create("drops_forbidden_flake");
         public static final TagKey<Block> SMALL_DROPS_FORBIDDEN_FLAKE = Q.create("small_drops_forbidden_flake");
