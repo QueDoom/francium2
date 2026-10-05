@@ -17,7 +17,7 @@ public class WoodenMergingClientRecipeType extends ReliableClientRecipeTypeHelpe
         super(
                 WoodenMergingRecipe.Type.ID,
                 List.of(new ItemStack(ModBlocks.WOODEN_MERGER)),
-                116, 44
+                122, 50
         );
     }
 
@@ -28,9 +28,9 @@ public class WoodenMergingClientRecipeType extends ReliableClientRecipeTypeHelpe
 
     @Override
     public void placeSlots(RecipeViewMenu.SlotDefinition slotDefinition) {
-        slotDefinition.addItemSlot(0, 1, 0);
-        slotDefinition.addItemSlot(1, 1, 27);
-        slotDefinition.addItemSlot(2, 42, 14);
-        slotDefinition.addItemSlot(3, 95, 14);
+        slotDefinition.addItemSlot(0, 4, 4);
+        slotDefinition.addItemSlot(1, 4, 30);
+        slotDefinition.addItemSlot(2, 45, 17);
+        slotDefinition.addItemSlot(3, 98, 17);
     }
 }

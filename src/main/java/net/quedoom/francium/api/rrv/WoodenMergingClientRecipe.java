@@ -29,13 +29,8 @@ public class WoodenMergingClientRecipe extends ReliableClientRecipeWithTransfer 
     }
 
     @Override
-    public ReliableClientRecipeType getType() {
-        return WoodenMergingClientRecipeType.INSTANCE;
-    }
-
-    @Override
     protected ReliableClientRecipeType zeType() {
-        return new WoodenMergingClientRecipeType();
+        return WoodenMergingClientRecipeType.INSTANCE;
     }
 
     @Override

@@ -82,7 +82,7 @@ public class WoodenMixingClientRecipe extends ReliableClientRecipeWithoutTransfe
 
     @Override
     protected ReliableClientRecipeType zeType() {
-        return new WoodenMixingClientRecipeType();
+        return WoodenMixingClientRecipeType.INSTANCE;
     }
 
     @Override

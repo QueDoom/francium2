@@ -1,5 +1,6 @@
 package net.quedoom.francium.api.rrv;
 
+import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import net.minecraft.world.item.ItemStack;
 import net.quedoom.francium.init.ModBlocks;
@@ -8,12 +9,14 @@ import net.quedoom.francium.recipe.GlueMixingRecipe;
 import java.util.List;
 
 public class WoodenMixingClientRecipeType extends ReliableClientRecipeTypeHelper{
+    protected static final ReliableClientRecipeType INSTANCE = new WoodenMixingClientRecipeType();
+
     protected WoodenMixingClientRecipeType() {
         super(
                 GlueMixingRecipe.Type.ID,
                 List.of(new ItemStack(ModBlocks.GLUE_MIXER)),
-                118,
-                46
+                124,
+                52
         );
     }
 
@@ -24,9 +27,9 @@ public class WoodenMixingClientRecipeType extends ReliableClientRecipeTypeHelper
 
     @Override
     public void placeSlots(RecipeViewMenu.SlotDefinition slotDefinition) {
-        slotDefinition.addItemSlot(0, 2, 15);
-        slotDefinition.addItemSlot(1, 23, 15);
-        slotDefinition.addItemSlot(2, 56, 15);
-        slotDefinition.addItemSlot(3, 96, 15);
+        slotDefinition.addItemSlot(0, 5, 18);
+        slotDefinition.addItemSlot(1, 26, 18);
+        slotDefinition.addItemSlot(2, 59, 18);
+        slotDefinition.addItemSlot(3, 99, 18);
     }
 }
