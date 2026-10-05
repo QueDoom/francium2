@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.entity.FallingBlockRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.quedoom.francium.block.entity.BlockContainingItemsRenderer;
 import net.quedoom.francium.block.entity.BlockContainingRenderer;
 import net.quedoom.francium.block.entity.DeepMergerRenderer;
 import net.quedoom.francium.block.entity.GlueMixerRenderer;
@@ -32,6 +33,7 @@ public class FranciumClient implements ClientModInitializer {
         BlockEntityRenderers.register(ModBlockEntities.DEEP_MERGER_ENTITY, DeepMergerRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.GLUE_MIXER_ENTITY, GlueMixerRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING_ENTITY, BlockContainingRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING_ITEMS_ENTITY, BlockContainingItemsRenderer::new);
 
         EntityRenderers.register(ModEntityTypes.STEEL_IN_A_BOTTLE, ThrownItemRenderer::new);
 
