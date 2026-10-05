@@ -66,6 +66,22 @@ public class ModRecipeTypes {
             }
     );
 
+    public static final RecipeSerializer<TwoBlockAnvilPressingRecipe> TWO_BLOCK_ANVIL_PRESSING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.of(TwoBlockAnvilPressingRecipe.Type.ID),
+            new RecipeSerializer<>(TwoBlockAnvilPressingRecipe.CODEC, TwoBlockAnvilPressingRecipe.STREAM_CODEC)
+    );
+
+    public static final RecipeType<TwoBlockAnvilPressingRecipe> TWO_BLOCK_ANVIL_PRESSING = Registry.register(
+            BuiltInRegistries.RECIPE_TYPE,
+            Francium.of(TwoBlockAnvilPressingRecipe.Type.ID),
+            new RecipeType<TwoBlockAnvilPressingRecipe>() {
+                @Override
+                public String toString() {
+                    return TwoBlockAnvilPressingRecipe.Type.ID;
+                }
+            }
+    );
 
     public static final RecipeSerializer<GlueMixingRecipe> GLUE_MIXING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
