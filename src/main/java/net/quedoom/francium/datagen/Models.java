@@ -4,28 +4,43 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
+import net.quedoom.quet.datagen.models.QTBlockModelGenerators;
+import net.quedoom.quet.datagen.models.QTItemModelGenerators;
+import net.quedoom.quet.datagen.models.QueTModelProvider;
 
 import java.util.Optional;
 
-public class Models extends FabricModelProvider {
+public class Models extends QueTModelProvider {
     public Models(FabricPackOutput output) {
         super(output);
     }
 
     @Override
-    public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
+    public void generateBlockStateModels(BlockModelGenerators blockModelGenerators, QTBlockModelGenerators qtBlockModelGenerators) {
         blockModelGenerators.family(ModBlocks.WOODEN_CASING);
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
         blockModelGenerators.family(ModBlocks.RUBBER_BLOCK);
+        Identifier woodenCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.WOODEN_CASING);
+        Identifier stoneCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.STONE_CASING);
+        Identifier obsidianCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.OBSIDIAN_CASING);
+
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(woodenCasingModel)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.STONE_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(stoneCasingModel)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.OBSIDIAN_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(obsidianCasingModel)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, BlockModelGenerators.plainVariant(woodenCasingModel)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.STONE_CASING_CONTAINING_ITEMS, BlockModelGenerators.plainVariant(stoneCasingModel)));
+        blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS, BlockModelGenerators.plainVariant(obsidianCasingModel)));
 
         blockModelGenerators.family(ModBlocks.ALLOWED_GOLD_BLOCK);
 
@@ -77,7 +92,7 @@ public class Models extends FabricModelProvider {
     }
 
     @Override
-    public void generateItemModels(ItemModelGenerators itemModelGenerators) {
+    public void generateItemModels(ItemModelGenerators itemModelGenerators, QTItemModelGenerators qtItemModelGenerators) {
         itemModelGenerators.generateFlatItem(ModItems.DIRT_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SAWDUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BROKEN_STICK, ModelTemplates.FLAT_ITEM);
@@ -197,7 +212,7 @@ public class Models extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.PLASTIC_SHEET, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.PLASTIC_NECKLACE, ModelTemplates.FLAT_ITEM);
     }
-    
+
     public static final ModelTemplate PILE_FLAT_ITEM = createItem("pile_generated", TextureSlot.LAYER0);
     public static final ModelTemplate FLAKE_FLAT_ITEM = createItem("flake_generated", TextureSlot.LAYER0);
 

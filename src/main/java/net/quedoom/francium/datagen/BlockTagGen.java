@@ -80,7 +80,7 @@ public class BlockTagGen extends QueTBlockTagProvider {
                 .add(
                         ModBlocks.WOODEN_CASING,
                         ModBlocks.WOODEN_CASING_CONTAINING_BLOCK,
-                        ModBlocks.MINERAL_MIXED_WOODEN_CASING,
+                        ModBlocks.WOODEN_CASING_CONTAINING_ITEMS,
                         ModBlocks.WOODEN_MERGER,
                         ModBlocks.GLUE_MIXER,
                         ModBlocks.BUNDLE_TABLE,
@@ -104,6 +104,9 @@ public class BlockTagGen extends QueTBlockTagProvider {
                         ModBlocks.DEEP_MERGER,
                         ModBlocks.MINERAL_MIX_BLOCK,
                         ModBlocks.STONE_CASING_CONTAINING_BLOCK,
+                        ModBlocks.OBSIDIAN_CASING_CONTAINING_BLOCK,
+                        ModBlocks.STONE_CASING_CONTAINING_ITEMS,
+                        ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS,
                         ModBlocks.ANCIENT_BUNS,
                         ModBlocks.FRYING_PAN_CAMPFIRE,
                         ModBlocks.POT_CAMPFIRE,
@@ -153,11 +156,6 @@ public class BlockTagGen extends QueTBlockTagProvider {
                         ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB,
                         ModBlocks.ALLOWED_GOLD_BLOCK
                 );
-
-        valueLookupBuilder(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE)
-                .add(ModBlocks.WOODEN_CASING)
-                .add(ModBlocks.STONE_CASING)
-        ;
 
 //        valueLookupBuilder(ModTags.Blocks.DROPS_FORBIDDEN_DUST);
 

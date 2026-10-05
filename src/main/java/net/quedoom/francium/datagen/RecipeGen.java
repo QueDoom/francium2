@@ -59,8 +59,11 @@ public class RecipeGen extends QueTRecipeProvider {
 
                 deepMerging(this, output, ModItems.ANDESITE_ALLOY, ModItems.DIORITE_ALLOY, ModItems.GRANITE_ALLOY, ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX, 1);
 
-                basicAnvilPressing(this, output, ModItems.DRIPSTONE_COATED_MINERAL_MIX, 4, ModBlocks.WOODEN_CASING, ModBlocks.MINERAL_MIXED_WOODEN_CASING);
+                basicAnvilPressing(this, output, ModItems.DRIPSTONE_COATED_MINERAL_MIX, 4, ModBlocks.WOODEN_CASING, ModBlocks.MINERAL_MIX_BLOCK);
+                recipes.itemsAnvilPressing(ModItems.CALCITE_PILE, 9, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.PACKED_CALCITE);
                 recipes.anvilWoodenCompacting2x2(Items.SLIME_BALL, Items.SLIME_BLOCK);
+
+                recipes.blocksAnvilPressing(ModItems.STACKED_RAW_SLOT, 2, ModBlocks.DRIPSTONE_SPIKES, Blocks.DEEPSLATE, ModBlocks.DEEP_MERGER);
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 

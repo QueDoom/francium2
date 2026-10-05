@@ -75,7 +75,6 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModBlocks.WOODEN_CASING);
         qtTranslationBuilder.auto(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK);
         qtTranslationBuilder.auto(ModBlocks.STONE_CASING_CONTAINING_BLOCK);
-        qtTranslationBuilder.auto(ModBlocks.MINERAL_MIXED_WOODEN_CASING);
         translationBuilder.add(ModBlocks.MINERAL_MIX_BLOCK, "Block of Mineral Mix");
         qtTranslationBuilder.auto(ModBlocks.STONE_CASING);
         qtTranslationBuilder.auto(ModBlocks.OBSIDIAN_CASING);
@@ -107,7 +106,6 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
 
         qtTranslationBuilder.auto(ModTags.Entities.DOES_NOT_DROP_SLIME);
 
-        qtTranslationBuilder.auto(ModTags.Blocks.BLOCK_CONTAINING_BLOCK_COMPATIBLE);
         qtTranslationBuilder.auto(ModTags.Blocks.DEEPSLATE_ORES);
         qtTranslationBuilder.auto(ModTags.Blocks.DROPS_FORBIDDEN_DUST);
         qtTranslationBuilder.auto(ModTags.Blocks.DROPS_FORBIDDEN_FLAKE);
@@ -122,6 +120,8 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add(Francium.translationString("rrv", "wooden_merging"), "Wooden Merging");
         translationBuilder.add(Francium.translationString("rrv", "deep_merging"), "Deep Merging");
         translationBuilder.add(Francium.translationString("rrv", "glue_mixing"), "Glue Mixing");
+        translationBuilder.add(Francium.translationString("rrv", "anvil_pressing"), "Anvil Pressing");
+        translationBuilder.add(Francium.translationString("rrv", "two_block_anvil_pressing"), "BIIIG Anvil Pressing");
 
         translationBuilder.add(Francium.translationString("stackgroup", "piles"), "Piles");
 

@@ -23,7 +23,6 @@ public class Loot extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         dropSelf(ModBlocks.WOODEN_CASING);
-        dropOther(ModBlocks.MINERAL_MIXED_WOODEN_CASING, ModBlocks.WOODEN_CASING);
         dropSelf(ModBlocks.MINERAL_MIX_BLOCK);
         dropSelf(ModBlocks.STONE_CASING);
         dropSelf(ModBlocks.OBSIDIAN_CASING);
@@ -40,6 +39,13 @@ public class Loot extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.POT_CAMPFIRE, ModItems.POT);
         dropSelf(ModBlocks.RUBBER_BLOCK);
         dropOther(ModBlocks.STRIPPED_BAMBOO, ModBlocks.STRIPPED_BAMBOO_ITEM);
+
+        dropOther(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK, ModBlocks.WOODEN_CASING);
+        dropOther(ModBlocks.STONE_CASING_CONTAINING_BLOCK, ModBlocks.STONE_CASING);
+        dropOther(ModBlocks.OBSIDIAN_CASING_CONTAINING_BLOCK, ModBlocks.OBSIDIAN_CASING);
+        dropOther(ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModBlocks.WOODEN_CASING);
+        dropOther(ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModBlocks.STONE_CASING);
+        dropOther(ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS, ModBlocks.OBSIDIAN_CASING);
 
 
 
