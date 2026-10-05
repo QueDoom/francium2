@@ -13,9 +13,9 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.quedoom.francium.block.ModdedBambooStalkBlock;
 import net.quedoom.francium.block.SolidSugarCaneBlock;
-import net.quedoom.francium.block.supers.EighthsEatableBlock;
-import net.quedoom.francium.block.supers.RotateableEighthsEatableBlock;
-import net.quedoom.francium.block.supers.ShearableEightsEatableBlock;
+import net.quedoom.francium.block.thicc_farming.EighthsDrinkableBlock;
+import net.quedoom.francium.block.thicc_farming.RotateableEighthsEatableBlock;
+import net.quedoom.francium.block.thicc_farming.ShearableEightsEatableBlock;
 import net.quedoom.francium.block.thicc_crops.ThickableBeetrootBlock;
 import net.quedoom.francium.block.thicc_crops.ThickableCarrotBlock;
 import net.quedoom.francium.block.thicc_crops.ThickablePotatoBlock;
@@ -79,7 +79,7 @@ public class RegisterBlockMixin {
                 }
             } else {
                 BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
-                Function<BlockBehaviour.Properties, Block> newFactory = p -> new EighthsEatableBlock(1, 0, p);
+                Function<BlockBehaviour.Properties, Block> newFactory = p -> new EighthsDrinkableBlock(1, 0, 3, 0.5f, p);
                 Block block = newFactory.apply(customProperty.setId(id));
                 cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
             }

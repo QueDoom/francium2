@@ -40,5 +40,8 @@
 		"java": ">=25",
 		"fabric-api": "*",
 		"quet": ">=2.1.5"
+	},
+	"optional": {
+		"toughasnails": "21.11.0.6"
 	}
 }

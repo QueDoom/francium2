@@ -1,8 +1,7 @@
-package net.quedoom.francium.block.supers;
+package net.quedoom.francium.block.thicc_farming;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -11,7 +10,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,11 +19,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.quedoom.francium.init.ModProperties;
-import net.quedoom.francium.util.EighthsEatableOctant;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class ThickFoliageBlock extends VegetationBlock {
     public static final BooleanProperty THICK_FOLIAGE_NE = ModProperties.THICK_FOLIAGE_NE;

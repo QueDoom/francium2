@@ -9,9 +9,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.quedoom.francium.block.supers.EighthsEatableBlock;
-import net.quedoom.francium.init.ModBlocks;
-import net.quedoom.francium.init.ModTags;
 
 import java.util.Optional;
 

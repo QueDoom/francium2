@@ -1,23 +1,10 @@
-package net.quedoom.francium.block.supers;
+package net.quedoom.francium.block.thicc_farming;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.quedoom.francium.init.ModProperties;
-import net.quedoom.francium.init.ModStats;
 import net.quedoom.francium.util.EighthsEatableOctant;
-import org.jspecify.annotations.Nullable;
 
 public class EighthsEatableBlockWithStem extends EighthsEatableBlock{
     public EighthsEatableBlockWithStem(int nutrition, float saturation, Properties properties) {

@@ -20,6 +20,10 @@ repositories {
 
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/francium.classtweaker")
+}
+
 fabricApi {
 	configureDataGeneration {
 		client = true
@@ -35,6 +39,8 @@ dependencies {
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.5.4")))
+
+	implementation "maven.modrinth:tough-as-nails:${tough_as_nails_version}-fabric"
 
 	implementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${rrv_version}+${minecraft_version}")
 	implementation("maven.modrinth:quet:${quet_version}")

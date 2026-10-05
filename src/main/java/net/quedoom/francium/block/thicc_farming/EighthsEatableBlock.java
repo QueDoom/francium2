@@ -1,8 +1,8 @@
-package net.quedoom.francium.block.supers;
+package net.quedoom.francium.block.thicc_farming;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.stats.Stats;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -21,11 +21,14 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.api.LoadedMods;
 import net.quedoom.francium.init.ModProperties;
 import net.quedoom.francium.init.ModStats;
 import net.quedoom.francium.util.EighthsEatableOctant;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
+import toughasnails.api.thirst.IThirst;
+import toughasnails.api.thirst.ThirstHelper;
 
 public class EighthsEatableBlock extends Block {
     public static final BooleanProperty NORTH_EAST_DOWN = ModProperties.NORTH_EAST_DOWN;
@@ -139,6 +142,14 @@ public class EighthsEatableBlock extends Block {
         player.getFoodData().eat(nutrition, saturation);
     }
 
+    protected void playerdrink(Player player, int thirst, float hydration) {
+        if (LoadedMods.toughasnails && player instanceof ServerPlayer) {
+            IThirst thirstHelper = ThirstHelper.getThirst(player);
+            thirstHelper.addThirst(thirst);
+            thirstHelper.addHydration(hydration);
+        }
+    }
+
     protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, Direction side) {
         return getOctant(hitPos, blockPos, side, null);
     }
@@ -183,6 +194,7 @@ public class EighthsEatableBlock extends Block {
         Francium.LOGGER.info("{}", bites);
         return bites;
     }
+
 
 
 }
