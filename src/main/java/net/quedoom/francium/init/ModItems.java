@@ -94,6 +94,7 @@ public class ModItems {
     public static Item LEAF = Q.register(Q.create("leaf"), LeafItem::new, new Item.Properties());
     public static Item GRASS = Q.register(Q.create("grass"));
     public static Item HUSK = Q.register(Q.create("husk"));
+    public static Item PULP = Q.register(Q.create("pulp"));
 
     public static Item WOODEN_PLATE = Q.register("wooden_plate");
 

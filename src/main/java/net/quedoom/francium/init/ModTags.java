@@ -57,6 +57,8 @@ public class ModTags {
 
         public static final TagKey<Item> PACKED_BLOCKS = Q.create("packed_blocks");
 
+        public static final TagKey<Item> MAKES_PAPER = Q.create("makes_paper");
+
         // jei
         public static final TagKey<Item> ECHO_ITEMS = Q.create("glue_mixer_jei_echo_items");
         public static final TagKey<Item> LEAF_ITEMS = Q.create("glue_mixer_jei_leaf_items");

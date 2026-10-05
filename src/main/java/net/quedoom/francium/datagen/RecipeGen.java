@@ -17,6 +17,7 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.datagen.recipe.*;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.init.ModTags;
 import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
 import net.quedoom.francium.recipe.WoodenMixerGlueType;
 import net.quedoom.quet.datagen.recipe.QueTRecipeProvider;
@@ -62,7 +63,9 @@ public class RecipeGen extends QueTRecipeProvider {
                 basicAnvilPressing(this, output, ModItems.DRIPSTONE_COATED_MINERAL_MIX, 4, ModBlocks.WOODEN_CASING, ModBlocks.MINERAL_MIX_BLOCK);
                 recipes.itemsAnvilPressing(ModItems.CALCITE_PILE, 9, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.PACKED_CALCITE);
                 recipes.anvilWoodenCompacting2x2(Items.SLIME_BALL, Items.SLIME_BLOCK);
+                recipes.itemsAnvilPressing(ModItems.PULP, 1, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, Items.PAPER);
 
+                recipes.itemsBlocksAnvilPressing(ModTags.Items.MAKES_PAPER, 4, Blocks.WATER, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.PULP);
                 recipes.blocksAnvilPressing(ModItems.STACKED_RAW_SLOT, 2, ModBlocks.DRIPSTONE_SPIKES, Blocks.DEEPSLATE, ModBlocks.DEEP_MERGER);
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);

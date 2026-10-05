@@ -119,6 +119,12 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
                         ModItems.PACKED_DIRT,
                         ModItems.PACKED_PLANKS
                 );
+        valueLookupBuilder(ModTags.Items.MAKES_PAPER)
+                .add(
+                        ModItems.SAWDUST,
+                        ModItems.BARK,
+                        ModItems.HUSK
+                );
 
 
     }

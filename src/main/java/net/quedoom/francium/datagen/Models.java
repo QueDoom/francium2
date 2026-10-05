@@ -186,6 +186,7 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModBlocks.STRIPPED_SUGAR_CANE.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.STRIPPED_BAMBOO_ITEM, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.HUSK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PULP, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.CACTUS_PAPER, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.OBSIDIAN_BOOK, ModelTemplates.FLAT_ITEM);
