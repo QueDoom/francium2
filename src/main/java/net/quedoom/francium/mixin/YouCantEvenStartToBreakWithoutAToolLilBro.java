@@ -3,6 +3,7 @@ package net.quedoom.francium.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
@@ -13,8 +14,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -28,6 +31,18 @@ public class YouCantEvenStartToBreakWithoutAToolLilBro {
             ItemStack playerStack = player.getMainHandItem();
             boolean requiresTool = state.requiresCorrectToolForDrops() || state.is(ModTags.Blocks.FORCE_REQUIRE_TOOL);
             boolean keepOutput = false;
+
+            if (state.is(Blocks.FURNACE) || state.is(Blocks.SMOKER) || state.is(Blocks.BLAST_FURNACE) || state.is(Blocks.CRAFTING_TABLE) || state.is(Blocks.SMITHING_TABLE)) {
+                if (state.is(Blocks.FURNACE) || state.is(Blocks.SMOKER) || state.is(Blocks.BLAST_FURNACE))
+                    if (!player.getInventory().contains(ModItems.SMELTING_TOKEN.getDefaultInstance()))
+                        cir.setReturnValue(0F);
+                else if (state.is(Blocks.CRAFTING_TABLE))
+                    if (!player.getInventory().contains(ModItems.CRAFTING_TOKEN.getDefaultInstance()))
+                        cir.setReturnValue(0F);
+                else if (state.is(Blocks.SMITHING_TABLE))
+                    if (!player.getInventory().contains(ModItems.SMITHING_TOKEN.getDefaultInstance()))
+                        cir.setReturnValue(0F);
+            }
 
             if (state.is(Blocks.BAMBOO)) {
                 BlockState sugarState = level.getBlockState(pos.above());
