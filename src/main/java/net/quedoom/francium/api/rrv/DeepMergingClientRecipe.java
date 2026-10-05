@@ -45,14 +45,10 @@ public class DeepMergingClientRecipe extends ReliableClientRecipeWithTransfer {
         return Francium.of(DeepMergingRecipe.Type.ID);
     }
 
-    @Override
-    public ReliableClientRecipeType getType() {
-        return DeepMergingClientRecipeType.INSTANCE;
-    }
 
     @Override
     protected ReliableClientRecipeType zeType() {
-        return new DeepMergingClientRecipeType();
+        return DeepMergingClientRecipeType.INSTANCE;
     }
 
     @Override

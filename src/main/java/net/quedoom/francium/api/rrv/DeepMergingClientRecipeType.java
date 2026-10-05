@@ -16,7 +16,7 @@ public class DeepMergingClientRecipeType extends ReliableClientRecipeTypeHelper 
         super(
                 DeepMergingRecipe.Type.ID,
                 List.of(new ItemStack(ModBlocks.DEEP_MERGER)),
-                116, 58
+                122, 64
         );
     }
 
@@ -25,13 +25,15 @@ public class DeepMergingClientRecipeType extends ReliableClientRecipeTypeHelper 
         return 6;
     }
 
+    private final int leftAlign = 4;
+
     @Override
     public void placeSlots(RecipeViewMenu.SlotDefinition slotDefinition) {
-        slotDefinition.addItemSlot(0, 1, 0);
-        slotDefinition.addItemSlot(1, 1, 21);
-        slotDefinition.addItemSlot(2, 1, 41);
-        slotDefinition.addItemSlot(3, 42, 11);
-        slotDefinition.addItemSlot(4, 42, 33);
-        slotDefinition.addItemSlot(5, 95, 21);
+        slotDefinition.addItemSlot(0, leftAlign, 4);
+        slotDefinition.addItemSlot(1, leftAlign, 24);
+        slotDefinition.addItemSlot(2, leftAlign, 44);
+        slotDefinition.addItemSlot(3, 45, 14);
+        slotDefinition.addItemSlot(4, 45, 36);
+        slotDefinition.addItemSlot(5, 98, 24);
     }
 }
