@@ -36,7 +36,7 @@ import org.jspecify.annotations.Nullable;
 
 public class StickItem extends Item {
     public static final int ANIMATION_DURATION = 10;
-    private static final int USE_DURATION = 100;
+    private static final int USE_DURATION = 105;
 
     public StickItem(Properties properties) {
         super(properties);
@@ -92,13 +92,13 @@ public class StickItem extends Item {
 
                             level.playSound(player, pos, brushSound, SoundSource.BLOCKS);
 
-                            if (ticksRemaining < USE_DURATION) {
+                            if (timeElapsed >= USE_DURATION) {
                                 if (level instanceof ServerLevel) {
                                     if (!player.hasInfiniteMaterials()) itemStack.shrink(1);
                                     player.addItem(ModItems.SHARP_STICK.getDefaultInstance());
                                     livingEntity.releaseUsingItem();
                                 } else {
-                                    level.playSound(player, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS);
+                                    level.playSound(player, pos, SoundEvents.STONE_BREAK, SoundSource.BLOCKS);
                                 }
                             }
                         }

@@ -33,7 +33,7 @@ import org.jspecify.annotations.Nullable;
 
 public class RockItem extends Item {
     private final Item sharpItem;
-    private static final int USE_DURATION = 100;
+    private static final int USE_DURATION = 105;
 
     public RockItem(Properties properties, Item sharpItem) {
         super(properties);
@@ -90,9 +90,7 @@ public class RockItem extends Item {
 
                             level.playSound(player, pos, brushSound, SoundSource.BLOCKS);
 
-                            if (ticksRemaining < USE_DURATION) {
-                                Francium.LOGGER.info("oh ballss");
-                                Francium.LOGGER.info("Ticks Remaining Again: {}", ticksRemaining);
+                            if (timeElapsed >= USE_DURATION) {
                                 if (level instanceof ServerLevel) {
                                     if (!player.hasInfiniteMaterials()) itemStack.shrink(1);
                                     player.addItem(sharpItem.getDefaultInstance());
