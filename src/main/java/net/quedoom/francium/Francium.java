@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
+import net.quedoom.francium.api.LoadedMods;
 import net.quedoom.francium.init.*;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
@@ -39,8 +40,7 @@ public class Francium implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
-//		boolean isLoaded = FabricLoader.getInstance().isModLoaded("");
+		LoadedMods.set();
 
 		QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
 		ModItems.registerItem();
