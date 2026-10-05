@@ -29,7 +29,9 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
             });
             ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.TWO_BLOCK_ANVIL_PRESSING).forEach(twoBlockAnvilPressingRecipeRecipeHolder -> {
                 TwoBlockAnvilPressingRecipe recipe = twoBlockAnvilPressingRecipeRecipeHolder.value();
-                recipeList.add(new TwoBlockPressingClientRecipe(recipe.ingredient(), recipe.count(), recipe.topBlock(), recipe.bottomBlock(), recipe.result()));
+                if (recipe.bottomBlock().asItem() != Items.AIR) {
+                    recipeList.add(new TwoBlockPressingClientRecipe(recipe.ingredient(), recipe.count(), recipe.topBlock(), recipe.bottomBlock(), recipe.result()));
+                }
             });
             ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.BASIC_ANVIL_PRESSING).forEach(basicAnvilPressingRecipeRecipeHolder -> {
                 BasicAnvilPressingRecipe recipe = basicAnvilPressingRecipeRecipeHolder.value();
