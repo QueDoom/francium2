@@ -243,14 +243,5 @@ public class WoodenMixerBlock extends BaseEntityBlock {
         }
     }
 
-//    @Override
-//    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-//        switch (state.getValue(STATE)) {
-//            case EMPTY -> level.setBlockAndUpdate(pos, state.setValue(STATE, GlueMixerState.SLIME));
-//            case SLIME -> level.setBlockAndUpdate(pos, state.setValue(STATE, GlueMixerState.HONEY));
-//            case HONEY -> level.setBlockAndUpdate(pos, state.setValue(STATE, GlueMixerState.EMPTY));
-//        }
-//
-//        return InteractionResult.SUCCESS;
-//    }
+
 }
