@@ -82,7 +82,7 @@ public class TradingRecipe implements Recipe<SingleRecipeInput> {
     public RecipeBookCategory recipeBookCategory() {
         return null;
     }
-    public static final class Type implements RecipeType<DeepMergingRecipe> {
+    public static final class Type implements RecipeType<TradingRecipe> {
         private Type() {}
 
         public static final TradingRecipe.Type INSTANCE = new TradingRecipe.Type();
