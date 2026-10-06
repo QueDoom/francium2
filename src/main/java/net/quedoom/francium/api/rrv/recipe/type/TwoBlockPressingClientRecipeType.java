@@ -1,9 +1,7 @@
-package net.quedoom.francium.api.rrv;
+package net.quedoom.francium.api.rrv.recipe.type;
 
 import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
-import cc.cassian.rrv.common.recipe.inventory.SlotContent;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
@@ -11,28 +9,28 @@ import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 
 import java.util.List;
 
-public class BasicAnvilPressingClientRecipeType extends ReliableClientRecipeTypeHelper {
-    protected static final ReliableClientRecipeType INSTANCE = new BasicAnvilPressingClientRecipeType();
+public class TwoBlockPressingClientRecipeType extends ReliableClientRecipeTypeHelper {
+    protected static final ReliableClientRecipeType INSTANCE = new TwoBlockPressingClientRecipeType();
 
-    protected BasicAnvilPressingClientRecipeType() {
+    protected TwoBlockPressingClientRecipeType() {
         super(
-                "anvil_pressing",
+                "two_block_anvil_pressing",
                 List.of(new ItemStack(Blocks.ANVIL), new ItemStack(Blocks.CHIPPED_ANVIL), new ItemStack(Blocks.DAMAGED_ANVIL)),
-                67, 92
+                82, 92
         );
-
     }
 
     @Override
     public int getSlotCount() {
-        return 3;
+        return 4;
     }
 
     @Override
     public void placeSlots(RecipeViewMenu.SlotDefinition slotDefinition) {
-        slotDefinition.addItemSlot(0, 4, 45);
-        slotDefinition.addItemSlot(1, 4, 68);
-        slotDefinition.addItemSlot(2, 45, 68);
+        slotDefinition.addItemSlot(0, 4, 49);
+        slotDefinition.addItemSlot(1, 24, 49);
+        slotDefinition.addItemSlot(2, 14, 69);
+        slotDefinition.addItemSlot(3, 57, 68);
     }
 
     @Override

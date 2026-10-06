@@ -1,8 +1,7 @@
-package net.quedoom.francium.api.rrv;
+package net.quedoom.francium.api.rrv.recipe.type;
 
 import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;

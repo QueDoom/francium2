@@ -1,6 +1,5 @@
-package net.quedoom.francium.api.rrv;
+package net.quedoom.francium.api.rrv.recipe;
 
-import cc.cassian.rrv.api.recipe.ReliableClientRecipe;
 import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import cc.cassian.rrv.common.recipe.inventory.SlotContent;
@@ -9,6 +8,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.api.rrv.recipe.type.WoodenMergingClientRecipeType;
 import net.quedoom.francium.block.menu.WoodenMergerScreen;
 import net.quedoom.francium.recipe.WoodenMergingRecipe;
 import net.quedoom.quet.api.rrv.ReliableClientRecipeWithTransfer;

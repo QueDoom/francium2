@@ -1,22 +1,19 @@
-package net.quedoom.francium.api.rrv;
+package net.quedoom.francium.api.rrv.recipe;
 
 import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import cc.cassian.rrv.common.recipe.inventory.SlotContent;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.api.rrv.recipe.type.WoodenMixingClientRecipeType;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
-import net.quedoom.francium.init.ModTags;
 import net.quedoom.francium.recipe.GlueMixingRecipe;
-import net.quedoom.francium.recipe.WoodenMergingRecipe;
 import net.quedoom.francium.recipe.WoodenMixerGlueType;
 import net.quedoom.quet.api.rrv.ReliableClientRecipeWithoutTransfer;
 

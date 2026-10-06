@@ -1,4 +1,4 @@
-package net.quedoom.francium.api.rrv;
+package net.quedoom.francium.api.rrv.recipe.type;
 
 import cc.cassian.rrv.api.recipe.ReliableClientRecipeType;
 import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;

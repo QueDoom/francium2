@@ -3,13 +3,11 @@ package net.quedoom.francium.api.rrv;
 import cc.cassian.rrv.api.ReliableRecipeViewerClientPlugin;
 import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.client.recipe.ClientRecipeManager;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.quedoom.francium.Francium;
+import net.quedoom.francium.api.rrv.recipe.*;
 import net.quedoom.francium.init.ModRecipeTypes;
 import net.quedoom.francium.recipe.*;
-import net.quedoom.quet.init.ModRegistrator;
 
 public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientPlugin {
     @Override
