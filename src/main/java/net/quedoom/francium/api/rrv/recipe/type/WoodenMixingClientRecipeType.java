@@ -11,7 +11,7 @@ import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 import java.util.List;
 
 public class WoodenMixingClientRecipeType extends ReliableClientRecipeTypeHelper {
-    protected static final ReliableClientRecipeType INSTANCE = new WoodenMixingClientRecipeType();
+    public static final ReliableClientRecipeType INSTANCE = new WoodenMixingClientRecipeType();
 
     protected WoodenMixingClientRecipeType() {
         super(

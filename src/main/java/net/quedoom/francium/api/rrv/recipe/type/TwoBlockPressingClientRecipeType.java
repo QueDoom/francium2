@@ -10,7 +10,7 @@ import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 import java.util.List;
 
 public class TwoBlockPressingClientRecipeType extends ReliableClientRecipeTypeHelper {
-    protected static final ReliableClientRecipeType INSTANCE = new TwoBlockPressingClientRecipeType();
+    public static final ReliableClientRecipeType INSTANCE = new TwoBlockPressingClientRecipeType();
 
     protected TwoBlockPressingClientRecipeType() {
         super(

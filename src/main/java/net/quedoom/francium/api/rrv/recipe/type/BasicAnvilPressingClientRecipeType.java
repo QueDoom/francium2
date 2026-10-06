@@ -10,7 +10,7 @@ import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 import java.util.List;
 
 public class BasicAnvilPressingClientRecipeType extends ReliableClientRecipeTypeHelper {
-    protected static final ReliableClientRecipeType INSTANCE = new BasicAnvilPressingClientRecipeType();
+    public static final ReliableClientRecipeType INSTANCE = new BasicAnvilPressingClientRecipeType();
 
     protected BasicAnvilPressingClientRecipeType() {
         super(

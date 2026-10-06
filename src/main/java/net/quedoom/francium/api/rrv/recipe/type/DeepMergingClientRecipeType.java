@@ -11,7 +11,7 @@ import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 import java.util.List;
 
 public class DeepMergingClientRecipeType extends ReliableClientRecipeTypeHelper {
-    protected static final ReliableClientRecipeType INSTANCE = new DeepMergingClientRecipeType();
+    public static final ReliableClientRecipeType INSTANCE = new DeepMergingClientRecipeType();
 
     protected DeepMergingClientRecipeType() {
         super(
