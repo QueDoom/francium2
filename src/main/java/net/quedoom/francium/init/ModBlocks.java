@@ -63,6 +63,8 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
     public static final Block OBSIDIAN_CASING_CONTAINING_ITEMS = Q.register("obsidian_casing_containing_items", BlockContainingItems::new,
             BlockBehaviour.Properties.ofFullCopy(OBSIDIAN_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
 
+    public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
+
     public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 
     public static final Block FORBIDDEN_DUST = Q.register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
