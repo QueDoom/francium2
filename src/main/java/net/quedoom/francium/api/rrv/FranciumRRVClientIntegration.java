@@ -38,6 +38,13 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
                     recipeList.add(new BasicAnvilPressingClientRecipe(recipe.ingredient(), recipe.countReq(), recipe.block(), recipe.result()));
                 }
             });
+            ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.BURNING).forEach(burningRecipeRecipeHolder -> {
+                BurningRecipe recipe = burningRecipeRecipeHolder.value();
+                Block block = recipe.block();
+                if (block.asItem() != Items.AIR) {
+                    recipeList.add(new BurningClientRecipe(recipe.block(), recipe.chance(), recipe.result()));
+                }
+            });
         });
     }
 }
