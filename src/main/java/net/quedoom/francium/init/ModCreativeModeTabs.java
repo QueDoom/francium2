@@ -66,6 +66,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.AMETHYST_COATED_DIAMOND);
       output.accept(ModItems.OBSIDIAN_INFUSED_DIAMOND);
 
+      output.accept(ModBlocks.SMOOTH_CACTUS);
       output.accept(ModItems.CACTUS_PAPER);
       output.accept(ModItems.OBSIDIAN_BOOK);
 

@@ -71,6 +71,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add(ModBlocks.TRADER_BENCH, "Trader's Bench");
 
         qtTranslationBuilder.auto(ModBlocks.HEAVY_SCULK);
+        qtTranslationBuilder.auto(ModBlocks.SMOOTH_CACTUS);
 
         qtTranslationBuilder.auto(ModBlocks.WOODEN_CASING);
         qtTranslationBuilder.auto(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK);

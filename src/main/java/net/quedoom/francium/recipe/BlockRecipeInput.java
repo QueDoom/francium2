@@ -10,7 +10,7 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public record BlockRecipeInputWithChance(Block block, float chance) implements RecipeInput {
+public record BlockRecipeInput(Block block) implements RecipeInput {
     public static final StreamCodec<RegistryFriendlyByteBuf, Block> BLOCK_STREAM =
             ByteBufCodecs.registry(Registries.BLOCK);
 

@@ -24,6 +24,8 @@ public class BlockTagGen extends QueTBlockTagProvider {
                         Blocks.CARROTS,
                         Blocks.BEETROOTS
                 );
+        valueLookupBuilder(BlockTags.SUPPORTS_CACTUS)
+                .add(ModBlocks.SMOOTH_CACTUS);
 
         valueLookupBuilder(ModTags.Blocks.STONE_ORES)
                 .add(Blocks.COAL_ORE)

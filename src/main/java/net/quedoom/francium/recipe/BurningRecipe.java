@@ -3,13 +3,11 @@ package net.quedoom.francium.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -17,32 +15,32 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.init.ModRecipeTypes;
 import net.quedoom.quet.misc.GetPath;
 
-public record BurningRecipe(Block block, float chance, BlockState result) implements Recipe<BlockRecipeInputWithChance> {
+public record BurningRecipe(Block block, float chance, BlockState result) implements Recipe<BlockRecipeInput> {
     public static final MapCodec<BurningRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-            Block.CODEC.fieldOf("block").forGetter(BurningRecipe::block),
+            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(BurningRecipe::block),
             PrimitiveCodec.FLOAT.optionalFieldOf("chance", 0.5f).forGetter(BurningRecipe::chance),
             BlockState.CODEC.fieldOf("result").forGetter(BurningRecipe::result)
     ).apply(i, BurningRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, BurningRecipe> STREAM_CODEC =
             StreamCodec.composite(
-                    BlockRecipeInputWithChance.BLOCK_STREAM,
+                    BlockRecipeInput.BLOCK_STREAM,
                     BurningRecipe::block,
 
                     ByteBufCodecs.FLOAT,
                     BurningRecipe::chance,
 
-                    BlockRecipeInputWithChance.BLOCKSTATE_STREAM,
+                    BlockRecipeInput.BLOCKSTATE_STREAM,
                     BurningRecipe::result,
                     BurningRecipe::new);
     
     @Override
-    public boolean matches(BlockRecipeInputWithChance input, Level level) {
+    public boolean matches(BlockRecipeInput input, Level level) {
         return block.equals(input.block());
     }
 
     @Override
-    public ItemStack assemble(BlockRecipeInputWithChance input) {
+    public ItemStack assemble(BlockRecipeInput input) {
         return result.getBlock().asItem().getDefaultInstance();
     }
 
@@ -57,12 +55,12 @@ public record BurningRecipe(Block block, float chance, BlockState result) implem
     }
 
     @Override
-    public RecipeSerializer<? extends Recipe<BlockRecipeInputWithChance>> getSerializer() {
+    public RecipeSerializer<? extends Recipe<BlockRecipeInput>> getSerializer() {
         return ModRecipeTypes.BURNING_SERIALIZER;
     }
 
     @Override
-    public RecipeType<? extends Recipe<BlockRecipeInputWithChance>> getType() {
+    public RecipeType<? extends Recipe<BlockRecipeInput>> getType() {
         return ModRecipeTypes.BURNING;
     }
 

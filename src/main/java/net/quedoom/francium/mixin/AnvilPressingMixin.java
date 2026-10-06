@@ -2,13 +2,16 @@ package net.quedoom.francium.mixin;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.quedoom.francium.block.entity.BlockContainingItemsEntity;
@@ -25,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mixin(AnvilBlock.class)
 public class AnvilPressingMixin {
@@ -89,51 +93,58 @@ public class AnvilPressingMixin {
                                 FallingBlockEntity entity, CallbackInfo ci) {
         if (!(level instanceof ServerLevel server)) return;
 
-        AnvilPressing.find(server, pos, replacedBlock).ifPresent(holder -> {
-            TwoBlockAnvilPressingRecipe recipe = holder.value();
+        if (francium_2$tryPress(server, pos, replacedBlock, 2)) return;
 
-            int left = recipe.count();
-            for (ItemEntity e : AnvilPressing.items(server, pos)) {
-                ItemStack s = e.getItem();
-                if (left <= 0 || !recipe.ingredient().test(s)) continue;
-                int take = Math.min(left, s.getCount());
-                left -= take;
-                if (take == s.getCount()) {
-                    e.discard();
-                } else {
-                    ItemStack c = s.copy();
-                    c.shrink(take);
-                    e.setItem(c);
-                }
+        BlockPos topPos = pos.below();
+        francium_2$tryPress(server, topPos, server.getBlockState(topPos), 3);
+    }
+    @Unique
+    private static boolean francium_2$tryPress(ServerLevel server, BlockPos topPos, BlockState topState, int height) {
+        BlockPos bottom = topPos.below();
+        List<ItemEntity> tall = AnvilPressing.itemsTall(server, bottom, height);
+
+        Optional<RecipeHolder<TwoBlockAnvilPressingRecipe>> found =
+                AnvilPressing.find(server, topPos, topState, tall);
+        if (found.isEmpty()) return false;
+
+        TwoBlockAnvilPressingRecipe recipe = found.get().value();
+
+        int left = recipe.count();
+        for (ItemEntity e : tall) {
+            ItemStack s = e.getItem();
+            if (left <= 0 || !recipe.ingredient().test(s)) continue;
+            int take = Math.min(left, s.getCount());
+            left -= take;
+            if (take == s.getCount()) e.discard();
+            else e.setItem(s.copyWithCount(s.getCount() - take));
+        }
+
+        ItemStack result = recipe.result().create();
+        BlockState bottomState = server.getBlockState(bottom);
+        if (!server.getBlockState(topPos).is(BlockTags.ANVIL)) {
+            server.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, topPos, Block.getId(server.getBlockState(topPos)));
+            server.removeBlock(topPos, false);
+        }
+
+        if (result.getItem() instanceof BlockItem blockItem) {
+            if (!(bottomState.getBlock() instanceof CasingWithPotentialContainer c
+                    && c.placeContainingBlock(server, topPos, bottomState, result))) {
+                server.setBlock(bottom, blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
             }
-
-            ItemStack result = recipe.result().create();
-            BlockPos bottom = pos.below();
-            BlockState bottomState = level.getBlockState(bottom);
+        } else {
             boolean done;
-
-            if (result.getItem() instanceof BlockItem blockItem) {
-                if (!(bottomState.getBlock() instanceof CasingWithPotentialContainer potentialContainer
-                        && potentialContainer.placeContainingBlock(level, pos, bottomState, result))) {
-                    server.setBlock(pos.below(), blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
-                }
-                done = true;
-            } else {
-                if (bottomState.getBlock() instanceof CasingWithPotentialContainer potentialContainer) {
-                    done = potentialContainer.placeContainingItems(level, pos, bottomState, result);
-                } else if (level.getBlockEntity(pos.below()) instanceof BlockContainingItemsEntity containingItems) {
-                    done = containingItems.placeInAvailableSlots(result);
-                } else done = false;
-            }
+            if (bottomState.getBlock() instanceof CasingWithPotentialContainer c) {
+                done = c.placeContainingItems(server, topPos, bottomState, result);
+            } else if (server.getBlockEntity(bottom) instanceof BlockContainingItemsEntity items) {
+                done = items.placeInAvailableSlots(result);
+            } else done = false;
 
             if (!done) {
-                if (result.getItem() instanceof BlockItem bi) {
-                    server.setBlock(bottom, bi.getBlock().defaultBlockState(), Block.UPDATE_ALL);
-                } else {
-                    server.addFreshEntity(new ItemEntity(server, bottom.getX() + 0.5, bottom.getY() + 1.1, bottom.getZ() + 0.5, result));
-                }
+                server.addFreshEntity(new ItemEntity(server,
+                        bottom.getX() + 0.5, bottom.getY() + 1.1, bottom.getZ() + 0.5, result));
             }
-        });
+        }
+        return true;
     }
 
 

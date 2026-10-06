@@ -5,6 +5,7 @@
   "mixins": [
     "AnvilEntityPressingMixin",
     "AnvilPressingMixin",
+    "BurningMixin",
     "CampfiresBeUnlitWhenByDefaultMixin",
     "CheckStillValidCraftingTokenMixin",
     "CheckStillValidFurnaceSmeltingTokenMixin",

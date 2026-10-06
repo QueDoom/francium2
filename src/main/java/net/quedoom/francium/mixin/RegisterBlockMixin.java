@@ -42,7 +42,9 @@ public class RegisterBlockMixin {
         reRegister(name.equals(string("beetroots")), id, cir, ThickableBeetrootBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
 
         reRegister(name.equals(string("bedrock")), id, cir, factory, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops());
-
+        if (name.equals(string("cactus"))) {
+            reRegister(true, id, cir, factory, properties.ignitedByLava());
+        }
         reRegister(name.equals(string("sugar_cane")), id, cir,
                 SolidSugarCaneBlock::new,
                 BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks()

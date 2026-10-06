@@ -3,6 +3,7 @@ package net.quedoom.francium;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.api.LoadedMods;
 import net.quedoom.francium.init.*;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
@@ -59,6 +61,8 @@ public class Francium implements ModInitializer {
 
 		ModStats.registerStats();
 		ModLootTables.registerLootTables();
+
+		FlammableBlockRegistry.getDefaultInstance().add(Blocks.CACTUS, 5, 5);
 
 
 	}

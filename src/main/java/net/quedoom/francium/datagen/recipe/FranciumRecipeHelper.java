@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.quet.misc.GetPath;
@@ -138,5 +139,15 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, containerBlock, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
                 .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + "_container_" + suffix);
+    }
+    public void burning(Block block, float chance, BlockState result, String prefix) {
+        new BurningRecipeBuilder(RecipeCategory.MISC, block, chance, result)
+                .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
+                .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()) + '_' + prefix);
+    }
+    public void burning(Block block, float chance, BlockState result) {
+        new BurningRecipeBuilder(RecipeCategory.MISC, block, chance, result)
+                .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
+                .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()));
     }
 }

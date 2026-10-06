@@ -1,12 +1,11 @@
 {
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
-	"parent": "block/block",
 	"textures": {
-		"1": "C:/Users/26noralm/OneDrive - Hitachigymnasiet/Documents/francium2_asst/smooth_cactus_side",
-		"2": "C:/Users/26noralm/OneDrive - Hitachigymnasiet/Documents/francium2_asst/smooth_cactus_top",
-		"bottom": "textures/block/cactus_bottom",
-		"particle": "C:/Users/26noralm/OneDrive - Hitachigymnasiet/Documents/francium2_asst/smooth_cactus_side"
+		"1": "francium_2:block/smooth_cactus_side",
+		"2": "francium_2:block/smooth_cactus_top",
+		"bottom": "block/cactus_bottom",
+		"particle": "francium_2:block/smooth_cactus_side"
 	},
 	"elements": [
 		{

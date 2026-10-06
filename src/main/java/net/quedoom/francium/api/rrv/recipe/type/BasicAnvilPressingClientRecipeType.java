@@ -30,7 +30,7 @@ public class BasicAnvilPressingClientRecipeType extends ReliableClientRecipeType
     public void placeSlots(RecipeViewMenu.SlotDefinition slotDefinition) {
         slotDefinition.addItemSlot(0, 4, 45);
         slotDefinition.addItemSlot(1, 4, 68);
-        slotDefinition.addItemSlot(2, 45, 68);
+        slotDefinition.addItemSlot(2, 44, 68);
     }
 
     @Override

@@ -38,7 +38,7 @@ public abstract class AnvilEntityPressingMixin extends Entity {
         if (!(this.level() instanceof ServerLevel server)) return false;
         if (!this.blockState.is(BlockTags.ANVIL)) return false;
         BlockPos pos = this.blockPosition();
-        return AnvilPressing.find(server, pos, server.getBlockState(pos)).isPresent();
+        return AnvilPressing.find(server, pos, server.getBlockState(pos), AnvilPressing.itemsTall(server, pos.below(), 2)).isPresent();
     }
 }
 
