@@ -18,8 +18,8 @@ import net.quedoom.francium.init.ModRecipeTypes;
 
 public record TwoBlockAnvilPressingRecipe(Ingredient ingredient, int count, Block topBlock, Block bottomBlock, ItemStackTemplate result) implements Recipe<TwoBlockAnvilPressingRecipeInput> {
     public static final MapCodec<TwoBlockAnvilPressingRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-            Ingredient.CODEC.optionalFieldOf("ingredient", Ingredient.of(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID)).forGetter(TwoBlockAnvilPressingRecipe::ingredient),
-            PrimitiveCodec.INT.optionalFieldOf("count", 1).forGetter(TwoBlockAnvilPressingRecipe::count),
+            Ingredient.CODEC.optionalFieldOf("block", Ingredient.of(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID)).forGetter(TwoBlockAnvilPressingRecipe::ingredient),
+            PrimitiveCodec.INT.optionalFieldOf("chance", 1).forGetter(TwoBlockAnvilPressingRecipe::count),
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("top_block").forGetter(TwoBlockAnvilPressingRecipe::topBlock),
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("bottom_block").forGetter(TwoBlockAnvilPressingRecipe::bottomBlock),
             ItemStackTemplate.CODEC.fieldOf("result").forGetter(TwoBlockAnvilPressingRecipe::result)

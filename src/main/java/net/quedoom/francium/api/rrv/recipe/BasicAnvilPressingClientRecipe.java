@@ -47,7 +47,7 @@ public class BasicAnvilPressingClientRecipe extends ReliableClientRecipeWithoutT
         super.renderRecipe(context);
         GuiGraphicsExtractor guiGraphics = context.guiGraphics();
 
-//        guiGraphics.text(Minecraft.getInstance().font, String.valueOf(count), 23, 52, -1, true);
+//        guiGraphics.text(Minecraft.getInstance().font, String.valueOf(chance), 23, 52, -1, true);
     }
 
     @Override

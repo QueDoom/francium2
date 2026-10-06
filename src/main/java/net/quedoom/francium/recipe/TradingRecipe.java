@@ -15,7 +15,7 @@ public record TradingRecipe(ItemStackTemplate result, Ingredient ingredient) imp
     public static final MapCodec<TradingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     ItemStackTemplate.CODEC.fieldOf("result").forGetter(TradingRecipe::result),
-                    Ingredient.CODEC.fieldOf("ingredient").forGetter(TradingRecipe::ingredient)
+                    Ingredient.CODEC.fieldOf("block").forGetter(TradingRecipe::ingredient)
             ).apply(instance, TradingRecipe::new)
     );
 
