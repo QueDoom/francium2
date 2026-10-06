@@ -74,4 +74,11 @@ public record BurningRecipe(Block block, float chance, BlockState result) implem
     public RecipeBookCategory recipeBookCategory() {
         return null;
     }
+
+    public static final class Type implements RecipeType<BurningRecipe> {
+        private Type() {}
+
+        public static final BurningRecipe.Type INSTANCE = new BurningRecipe.Type();
+        public static final String ID = "burning";
+    }
 }
