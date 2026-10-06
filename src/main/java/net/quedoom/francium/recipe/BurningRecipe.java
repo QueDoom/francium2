@@ -14,6 +14,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.quedoom.francium.init.ModRecipeTypes;
 import net.quedoom.quet.misc.GetPath;
 
 public record BurningRecipe(Block block, float chance, BlockState result) implements Recipe<BlockRecipeInputWithChance> {
@@ -57,12 +58,12 @@ public record BurningRecipe(Block block, float chance, BlockState result) implem
 
     @Override
     public RecipeSerializer<? extends Recipe<BlockRecipeInputWithChance>> getSerializer() {
-        return ;
+        return ModRecipeTypes.BURNING_SERIALIZER;
     }
 
     @Override
     public RecipeType<? extends Recipe<BlockRecipeInputWithChance>> getType() {
-        return ;
+        return ModRecipeTypes.BURNING;
     }
 
     @Override
