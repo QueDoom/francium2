@@ -47,7 +47,7 @@ public class RockItem extends Item {
         if (player != null && hitResult.getType() == HitResult.Type.BLOCK) {
             if (hitResult instanceof BlockHitResult blockHitResult) {
                 BlockState state = context.getLevel().getBlockState(blockHitResult.getBlockPos());
-//                Francium.LOGGER.info(state.toString());
+//                Francium.LOGGER.info(result.toString());
 
                 if (state.is(ModTags.Blocks.HARD_BLOCKS)) {
                     player.startUsingItem(context.getHand());
