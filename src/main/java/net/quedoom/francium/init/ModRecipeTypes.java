@@ -117,6 +117,23 @@ public class ModRecipeTypes {
             }
     );
 
+    public static final RecipeSerializer<BurningRecipe> BURNING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.of(BurningRecipe.Type.ID),
+            new RecipeSerializer<>(BurningRecipe.CODEC, BurningRecipe.STREAM_CODEC)
+    );
+
+    public static final RecipeType<BurningRecipe> BURNING = Registry.register(
+            BuiltInRegistries.RECIPE_TYPE,
+            Francium.of(BurningRecipe.Type.ID),
+            new RecipeType<BurningRecipe>() {
+                @Override
+                public String toString() {
+                    return BurningRecipe.Type.ID;
+                }
+            }
+    );
+
 
     private static <T extends Recipe<?>> RecipeSerializer<T> createSerializer(String name, RecipeSerializer<T> instance) {
         return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Francium.of(name), instance);
