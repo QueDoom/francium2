@@ -19,7 +19,7 @@ import java.util.List;
 public class DeepMergingClientRecipe extends ReliableClientRecipeWithTransfer {
     private final SlotContent firstSlot, secondSlot, thirdSlot, glueSlot, wildcardSlot, resultSlot;
 
-    protected DeepMergingClientRecipe(Ingredient firstItem, Ingredient secondItem, Ingredient thirdItem, Ingredient glueItem, Ingredient wildcardItem, ItemStackTemplate resultItem) {
+    public DeepMergingClientRecipe(Ingredient firstItem, Ingredient secondItem, Ingredient thirdItem, Ingredient glueItem, Ingredient wildcardItem, ItemStackTemplate resultItem) {
         super(List.of(DeepMergerScreen.class));
         this.firstSlot = SlotContent.of(firstItem);
         this.secondSlot = SlotContent.of(secondItem);
