@@ -9,39 +9,23 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModRecipeTypes;
 
-public class TradingRecipe implements Recipe<SingleRecipeInput> {
+public record TradingRecipe(ItemStackTemplate result, Ingredient ingredient) implements Recipe<SingleRecipeInput> {
     public static final MapCodec<TradingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    ItemStackTemplate.CODEC.fieldOf("result").forGetter(TradingRecipe::getResult),
-                    Ingredient.CODEC.fieldOf("ingredient").forGetter(TradingRecipe::getIngredient)
+                    ItemStackTemplate.CODEC.fieldOf("result").forGetter(TradingRecipe::result),
+                    Ingredient.CODEC.fieldOf("ingredient").forGetter(TradingRecipe::ingredient)
             ).apply(instance, TradingRecipe::new)
     );
 
     public static final StreamCodec<RegistryFriendlyByteBuf, TradingRecipe> STREAM_CODEC = StreamCodec.composite(
             ItemStackTemplate.STREAM_CODEC,
-            TradingRecipe::getResult,
+            TradingRecipe::result,
             Ingredient.CONTENTS_STREAM_CODEC,
-            TradingRecipe::getIngredient,
+            TradingRecipe::ingredient,
             TradingRecipe::new
     );
-
-    final ItemStackTemplate result;
-    final Ingredient ingredient;
-
-    public TradingRecipe(ItemStackTemplate result, Ingredient ingredient) {
-        this.ingredient = ingredient;
-        this.result = result;
-    }
-
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
-    public ItemStackTemplate getResult() {
-        return result;
-    }
 
     @Override
     public boolean matches(SingleRecipeInput input, Level level) {
@@ -82,10 +66,12 @@ public class TradingRecipe implements Recipe<SingleRecipeInput> {
     public RecipeBookCategory recipeBookCategory() {
         return null;
     }
-    public static final class Type implements RecipeType<TradingRecipe> {
-        private Type() {}
 
-        public static final TradingRecipe.Type INSTANCE = new TradingRecipe.Type();
+    public static final class Type implements RecipeType<TradingRecipe> {
+        private Type() {
+        }
+
+        public static final Type INSTANCE = new Type();
         public static final String ID = "trading";
     }
 
