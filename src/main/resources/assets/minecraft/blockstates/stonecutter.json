@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "facing=up,rotation=false": { "model": "francium_2:block/rotatable_stonecutter" },
+    "facing=up,rotation=true": { "model": "francium_2:block/rotatable_stonecutter", "y": 90 },
+
+    "facing=down,rotation=false": { "model": "francium_2:block/rotatable_stonecutter", "x": 180 },
+    "facing=down,rotation=true": { "model": "francium_2:block/rotatable_stonecutter", "x": 180, "y": 90 },
+
+    "facing=north,rotation=false": { "model": "francium_2:block/rotatable_stonecutter", "x": 90 },
+    "facing=north,rotation=true": { "model": "francium_2:block/rotatable_stonecutter_true", "x": 90 },
+
+    "facing=east,rotation=false": { "model": "francium_2:block/rotatable_stonecutter", "x": 90, "y": 90 },
+    "facing=east,rotation=true": { "model": "francium_2:block/rotatable_stonecutter_true", "x": 90, "y": 90 },
+
+    "facing=south,rotation=false": { "model": "francium_2:block/rotatable_stonecutter", "x": 90, "y": 180 },
+    "facing=south,rotation=true": { "model": "francium_2:block/rotatable_stonecutter_true", "x": 90, "y": 180 },
+
+    "facing=west,rotation=false": { "model": "francium_2:block/rotatable_stonecutter", "x": 90, "y": 270 },
+    "facing=west,rotation=true": { "model": "francium_2:block/rotatable_stonecutter_true", "x": 90, "y": 270 }
+  }
+}
