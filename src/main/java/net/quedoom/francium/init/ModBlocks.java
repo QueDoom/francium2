@@ -85,6 +85,8 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
     public static final Block HEAVY_SCULK = Q.register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
     public static final Block RUBBER_BLOCK = Q.register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
 
+    public static final Block SAWED_BLOCK = Q.register("sawed_block", SawedBlock::new, BlockBehaviour.Properties.of().noLootTable().strength(-1).noOcclusion(), false);
+
     public static final Block THICK_POTATO = Q.register("thick_potato", p -> new EighthsEatableBlockWithStem(1, 0.15F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
     public static final Block THICK_POTATO_FOLIAGE = Q.register("thick_potato_foliage", p -> new ThickFoliageBlock(THICK_POTATO, Optional.of(Items.POTATO), p), thickFoliage(), false);
     public static final Block THICK_CARROT = Q.register("thick_carrot", EighthsEatableBlockWithStem::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());

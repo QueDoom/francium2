@@ -43,14 +43,6 @@ public class BasicAnvilPressingClientRecipe extends ReliableClientRecipeWithoutT
     }
 
     @Override
-    public void renderRecipe(RecipeScreenContext context) {
-        super.renderRecipe(context);
-        GuiGraphicsExtractor guiGraphics = context.guiGraphics();
-
-//        guiGraphics.text(Minecraft.getInstance().font, String.valueOf(chance), 23, 52, -1, true);
-    }
-
-    @Override
     public List<SlotContent> getIngredients() {
         return List.of(this.item, this.block);
     }

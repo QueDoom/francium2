@@ -18,7 +18,7 @@ public class MakeItSoFlintAndSteeelWorksOnPotPanBlockMixin {
 
     private boolean supaCampa(boolean original) {
 //        BlockPos pos = context.getClickedPos();
-//        BlockState state = context.getLevel().getBlockState(pos);
+//        BlockState result = context.getLevel().getBlockState(pos);
         return original;
     }
 }
