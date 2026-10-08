@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.quedoom.francium.block.ModdedBambooStalkBlock;
-import net.quedoom.francium.block.RotatableStonecutter;
+import net.quedoom.francium.block.RotatableStonecutterBlock;
 import net.quedoom.francium.block.SolidSugarCaneBlock;
 import net.quedoom.francium.block.thicc_farming.EighthsDrinkableBlock;
 import net.quedoom.francium.block.thicc_farming.RotateableEighthsEatableBlock;
@@ -43,7 +43,7 @@ public class RegisterBlockMixin {
         reRegister(name.equals(string("potatoes")), id, cir, ThickablePotatoBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
         reRegister(name.equals(string("carrots")), id, cir, ThickableCarrotBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
         reRegister(name.equals(string("beetroots")), id, cir, ThickableBeetrootBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
-        reRegister(name.equals(string("stonecutter")), id, cir, RotatableStonecutter::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion());
+        reRegister(name.equals(string("stonecutter")), id, cir, RotatableStonecutterBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion());
 
         reRegister(name.equals(string("bedrock")), id, cir, factory, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops());
         if (name.equals(string("cactus"))) {

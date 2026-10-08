@@ -1,11 +1,7 @@
 {
-  "mutlipart": {
-    "apply":
-    {
-      "model": "francium_2:block/glue_mixer_slime"
-    },
-    "when": {
-      "glue_state": "slime"
+  "variants": {
+    "": {
+      "model": "francium_2:block/sawed_block"
     }
   }
 }

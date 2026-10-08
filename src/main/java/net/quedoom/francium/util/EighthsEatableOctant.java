@@ -22,6 +22,9 @@ public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
     public static EighthsEatableOctant ofChars(char ns, char ew, char ud) {
         return new EighthsEatableOctant(ns == 'n', ew == 'e', ud == 'u');
     }
+    public static EighthsEatableOctant ofBooleans(boolean ns, boolean ew, boolean ud) {
+        return new EighthsEatableOctant(ns, ew, ud);
+    }
 
     public boolean isUpper() {
         return up;

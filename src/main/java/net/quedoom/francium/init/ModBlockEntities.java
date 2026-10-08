@@ -25,6 +25,9 @@ public class ModBlockEntities {
     public static final BlockEntityType<TraderBenchEntity> TRADER_BENCH_ENTITY =
             Q.register("trader_bench", TraderBenchEntity::new, ModBlocks.TRADER_BENCH);
 
+    public static final BlockEntityType<SawedBlockEntity> SAWED_BLOCK_ENTITY =
+            Q.register("sawed_block", SawedBlockEntity::new, ModBlocks.SAWED_BLOCK);
+
     
     public static void registerBlockEntities() {}
 
