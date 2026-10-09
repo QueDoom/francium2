@@ -67,6 +67,8 @@ public class ModItems {
     public static Item STEEL_DUST = Q.register("steel_dust");
     public static Item STEEL_INGOT = Q.register("steel_ingot");
 
+    public static Item BAT_MEMBRANE = Q.registerFlatItem("bat_membrane");
+
     public static Item SHARP_ROCK = Q.register("sharp_rock", new Item.Properties().tool(ModToolMaterials.SHARP_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));
     public static Item ROCK = Q.register(Q.create("rock"), p -> new RockItem(p, SHARP_ROCK), new Item.Properties());
     public static Item SHARP_DEEPSLATE_ROCK = Q.register("sharp_deepslate_rock", new Item.Properties().tool(ModToolMaterials.SHARP_DEEPSLATE_ROCK, ModTags.Blocks.SHARP_STICK_MINES_FAST, 1.4F, 0.9F, 0F));

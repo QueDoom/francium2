@@ -40,6 +40,7 @@ public class Loot extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.RUBBER_BLOCK);
         dropOther(ModBlocks.STRIPPED_BAMBOO, ModBlocks.STRIPPED_BAMBOO_ITEM);
         dropSelf(ModBlocks.SMOOTH_CACTUS);
+        dropOther(ModBlocks.WOODEN_CASING_WITH_HEAVY_ANVIL, ModBlocks.WOODEN_CASING);
 
         dropOther(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK, ModBlocks.WOODEN_CASING);
         dropOther(ModBlocks.STONE_CASING_CONTAINING_BLOCK, ModBlocks.STONE_CASING);

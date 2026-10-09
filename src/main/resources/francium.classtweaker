@@ -1,5 +1,13 @@
 classTweaker  v1  official
 
 accessible field net/minecraft/world/item/crafting/Ingredient values Lnet/minecraft/core/HolderSet;
+
 accessible field net/minecraft/nbt/CompoundTag tags Ljava/util/Map;
 accessible field net/minecraft/world/level/storage/TagValueOutput output Lnet/minecraft/nbt/CompoundTag;
+
+accessible method net/minecraft/world/inventory/AnvilMenu validateName (Ljava/lang/String;)Ljava/lang/String;
+
+accessible field net/minecraft/world/inventory/AnvilMenu cost Lnet/minecraft/world/inventory/DataSlot;
+accessible field net/minecraft/world/inventory/AnvilMenu onlyRenaming Z
+accessible field net/minecraft/world/inventory/AnvilMenu itemName Ljava/lang/String;
+accessible field net/minecraft/world/inventory/AnvilMenu repairItemCountCost I
