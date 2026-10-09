@@ -26,11 +26,6 @@ public class SawedBlockEntity extends BlockEntity {
         super(ModBlockEntities.SAWED_BLOCK_ENTITY, worldPosition, blockState);
     }
 
-    public VoxelShape getContainingShape() {
-        if (this.level == null) return SawedBlock.FULL_BOX;
-        return stateInside.orElse(Blocks.DIRT.defaultBlockState()).getShape(this.level, this.worldPosition);
-    }
-
     @Override
     protected void saveAdditional(ValueOutput output) {
         super.saveAdditional(output);
