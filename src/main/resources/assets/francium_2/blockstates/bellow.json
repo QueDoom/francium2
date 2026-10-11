@@ -1,0 +1,39 @@
+{
+  "variants": {
+    "facing=north,pressure=0": { "model": "francium_2:block/bellow_0" },
+    "facing=north,pressure=1": { "model": "francium_2:block/bellow_1" },
+    "facing=north,pressure=2": { "model": "francium_2:block/bellow_2" },
+    "facing=north,pressure=3": { "model": "francium_2:block/bellow_3" },
+    "facing=north,pressure=4": { "model": "francium_2:block/bellow_4" },
+    "facing=north,pressure=5": { "model": "francium_2:block/bellow_5" },
+    "facing=north,pressure=6": { "model": "francium_2:block/bellow_6" },
+    "facing=north,pressure=7": { "model": "francium_2:block/bellow_7" },
+
+    "facing=east,pressure=0": { "model": "francium_2:block/bellow_0", "y": 90 },
+    "facing=east,pressure=1": { "model": "francium_2:block/bellow_1", "y": 90 },
+    "facing=east,pressure=2": { "model": "francium_2:block/bellow_2", "y": 90 },
+    "facing=east,pressure=3": { "model": "francium_2:block/bellow_3", "y": 90 },
+    "facing=east,pressure=4": { "model": "francium_2:block/bellow_4", "y": 90 },
+    "facing=east,pressure=5": { "model": "francium_2:block/bellow_5", "y": 90 },
+    "facing=east,pressure=6": { "model": "francium_2:block/bellow_6", "y": 90 },
+    "facing=east,pressure=7": { "model": "francium_2:block/bellow_7", "y": 90 },
+
+    "facing=south,pressure=0": { "model": "francium_2:block/bellow_0", "y": 180 },
+    "facing=south,pressure=1": { "model": "francium_2:block/bellow_1", "y": 180 },
+    "facing=south,pressure=2": { "model": "francium_2:block/bellow_2", "y": 180 },
+    "facing=south,pressure=3": { "model": "francium_2:block/bellow_3", "y": 180 },
+    "facing=south,pressure=4": { "model": "francium_2:block/bellow_4", "y": 180 },
+    "facing=south,pressure=5": { "model": "francium_2:block/bellow_5", "y": 180 },
+    "facing=south,pressure=6": { "model": "francium_2:block/bellow_6", "y": 180 },
+    "facing=south,pressure=7": { "model": "francium_2:block/bellow_7", "y": 180 },
+
+    "facing=west,pressure=0": { "model": "francium_2:block/bellow_0", "y": 270 },
+    "facing=west,pressure=1": { "model": "francium_2:block/bellow_1", "y": 270 },
+    "facing=west,pressure=2": { "model": "francium_2:block/bellow_2", "y": 270 },
+    "facing=west,pressure=3": { "model": "francium_2:block/bellow_3", "y": 270 },
+    "facing=west,pressure=4": { "model": "francium_2:block/bellow_4", "y": 270 },
+    "facing=west,pressure=5": { "model": "francium_2:block/bellow_5", "y": 270 },
+    "facing=west,pressure=6": { "model": "francium_2:block/bellow_6", "y": 270 },
+    "facing=west,pressure=7": { "model": "francium_2:block/bellow_7", "y": 270 }
+  }
+}

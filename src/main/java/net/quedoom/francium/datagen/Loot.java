@@ -46,7 +46,7 @@ public class Loot extends FabricBlockLootSubProvider {
         dropOther(ModBlocks.STONE_CASING_CONTAINING_BLOCK, ModBlocks.STONE_CASING);
         dropOther(ModBlocks.OBSIDIAN_CASING_CONTAINING_BLOCK, ModBlocks.OBSIDIAN_CASING);
 
-
+        dropSelf(ModBlocks.BELLOW);
 
         dropSelf(ModBlocks.ALLOWED_COPPER_BLOCK);
         dropSelf(ModBlocks.ALLOWED_EXPOSED_COPPER);

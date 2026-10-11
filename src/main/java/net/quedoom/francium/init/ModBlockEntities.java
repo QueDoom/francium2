@@ -28,6 +28,9 @@ public class ModBlockEntities {
     public static final BlockEntityType<SawedBlockEntity> SAWED_BLOCK_ENTITY =
             Q.register("sawed_block", SawedBlockEntity::new, ModBlocks.SAWED_BLOCK);
 
+    public static final BlockEntityType<BellowBlockEntity> BELLOW_ENTITY =
+            Q.register("bellow", BellowBlockEntity::new, ModBlocks.BELLOW);
+
     
     public static void registerBlockEntities() {}
 

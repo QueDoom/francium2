@@ -68,6 +68,7 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
 
     public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
+    public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.9F).sound(SoundType.STONE).pushReaction(PushReaction.BLOCK));
 
     public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 

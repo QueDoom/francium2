@@ -50,6 +50,8 @@ public class  ModCreativeModeTabs {
 
       output.accept(ModItems.TOOLBOX);
 
+      output.accept(ModBlocks.BELLOW);
+
       output.accept(ModItems.ANDESITE_COATED_ROCK);
       output.accept(ModItems.DIORITE_COATED_ROCK);
       output.accept(ModItems.GRANITE_COATED_ROCK);
