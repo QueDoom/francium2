@@ -1,6 +1,8 @@
 package net.quedoom.francium.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -39,6 +41,25 @@ public class SolidSugarCaneBlock extends SugarCaneBlock {
         BlockState aboveState = level.getBlockState(pos.above());
         boolean ifelse = aboveState.is(Blocks.SUGAR_CANE) || aboveState.is(ModBlocks.STRIPPED_SUGAR_CANE);
         level.setBlockAndUpdate(pos, state.setValue(TOP, !ifelse));
+    }
+
+    @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (level.isEmptyBlock(pos.above())) {
+            int height;
+            for(height = 1; level.getBlockState(pos.below(height)).is(this); ++height) {
+            }
+
+            if (height < 7) {
+                int age = state.getValue(AGE);
+                if (age == 15) {
+                    level.setBlockAndUpdate(pos.above(), this.defaultBlockState());
+                    level.setBlock(pos, state.setValue(AGE, 0), 260);
+                } else {
+                    level.setBlock(pos, state.setValue(AGE, age + 1), 260);
+                }
+            }
+        }
     }
 
     private VoxelShape shape (BlockState state) {
