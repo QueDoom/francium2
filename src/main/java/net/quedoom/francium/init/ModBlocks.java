@@ -29,6 +29,7 @@ public class ModBlocks  {
     public static final Block GLUE_MIXER = Q.register("glue_mixer", WoodenMixerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).noOcclusion()
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
+    public static final Block OBSIDIAN_MIXER = Q.register("obsidian_mixer", ObsidianMixerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).noOcclusion());
     public static final Block WOODEN_MERGER = Q.register("wooden_merger", WoodenMergerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
@@ -69,6 +70,7 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
 
     public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
     public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.9F).sound(SoundType.STONE).pushReaction(PushReaction.BLOCK));
+    public static final Block STOKED_FIRE = Q.register("stoked_fire", StokedFireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE).randomTicks(), false);
 
     public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 

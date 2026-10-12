@@ -55,8 +55,6 @@ public class Francium implements ModInitializer {
 
 		ModRecipeTypes.registerRecipeTypes();
 
-		RecipeSynchronization.synchronizeRecipeSerializer(ModRecipeTypes.WOODEN_MERGING_SERIALIZER);
-
 		ModMenuTypes.registerMenus();
 
 		ModStats.registerStats();

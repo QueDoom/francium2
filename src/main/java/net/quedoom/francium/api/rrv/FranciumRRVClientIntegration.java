@@ -5,6 +5,7 @@ import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.client.recipe.ClientRecipeManager;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.api.rrv.recipe.*;
 import net.quedoom.francium.init.ModRecipeTypes;
 import net.quedoom.francium.recipe.*;
@@ -41,8 +42,17 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
             ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.BURNING).forEach(burningRecipeRecipeHolder -> {
                 BurningRecipe recipe = burningRecipeRecipeHolder.value();
                 Block block = recipe.block();
-                if (block.asItem() != Items.AIR) {
-                    recipeList.add(new BurningClientRecipe(recipe.block(), recipe.chance(), recipe.result()));
+                BlockState result = recipe.result();
+                if (block.asItem() != Items.AIR && result.getBlock().asItem() != Items.AIR) {
+                    recipeList.add(new BurningClientRecipe(block, recipe.chance(), result));
+                }
+            });
+            ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.BLOWING).forEach(blowingRecipeRecipeHolder -> {
+                BlowingRecipe recipe = blowingRecipeRecipeHolder.value();
+                Block block = recipe.block();
+                BlockState result = recipe.result();
+                if (block.asItem() != Items.AIR && result.getBlock().asItem() != Items.AIR) {
+                    recipeList.add(new BlowingClientRecipe(block, result));
                 }
             });
         });

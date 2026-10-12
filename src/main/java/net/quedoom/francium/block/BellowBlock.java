@@ -1,23 +1,16 @@
 package net.quedoom.francium.block;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.client.particle.DustParticle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,9 +22,13 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.entity.BellowBlockEntity;
 import net.quedoom.francium.init.ModBlockEntities;
+import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.recipe.BlowingRecipe;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
 
 public class BellowBlock extends BaseEntityBlock {
     public static final IntegerProperty PRESSURE = IntegerProperty.create("pressure", 0, 7);
@@ -70,14 +67,14 @@ public class BellowBlock extends BaseEntityBlock {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState onState, Entity entity) {
-         if (!(entity instanceof Player player)) return;
+         if (!(entity instanceof Player)) return;
          int pressure = onState.getValue(PRESSURE);
-         if (pressure == 0) return;
-         level.setBlockAndUpdate(pos, onState.setValue(PRESSURE, pressure - 1));
-         level.scheduleTick(pos, this.asBlock(), 20);
+         if (pressure != 0) {
+             level.setBlockAndUpdate(pos, onState.setValue(PRESSURE, pressure - 1));
+         }
          if (pressure < 3) {
              double relX = 0, relZ = 0;
-             double relY = 0.28125;
+             double relY = pressure == 0 ? 0.25D : 0.28125D;
 
              Direction facing = onState.getValue(FACING);
              BlockPos targetPos = pos.relative(facing);
@@ -96,7 +93,31 @@ public class BellowBlock extends BaseEntityBlock {
              }
 
              blowParticles(level, pos, relX, relY, relZ, facing);
+
+             if (pressure <= 1) {
+                 if (!(level instanceof ServerLevel server)) return;
+                 BlockState targetState = level.getBlockState(targetPos);
+                 Logger LOGGER = Francium.LOGGER;
+                 LOGGER.info("Blowing the block: {}, on pos: {}", targetState, targetPos);
+
+
+                 if (targetState.is(Blocks.FIRE)) {
+                     boolean north = targetState.getValue(FireBlock.NORTH);
+                     boolean east = targetState.getValue(FireBlock.EAST);
+                     boolean south = targetState.getValue(FireBlock.SOUTH);
+                     boolean west = targetState.getValue(FireBlock.WEST);
+                     boolean up = targetState.getValue(FireBlock.UP);
+
+                     if (!north && !east && !south && !west && !up) {
+                         level.setBlockAndUpdate(targetPos, ModBlocks.STOKED_FIRE.defaultBlockState());
+                     }
+                 }
+
+                 BlowingRecipe.find(server, targetState.getBlock()).ifPresent(blowingRecipeRecipeHolder ->
+                         level.setBlockAndUpdate(targetPos, blowingRecipeRecipeHolder.value().result()));
+             }
          }
+
     }
 
     @Override

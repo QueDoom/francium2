@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "short=false": {
+      "model": "francium_2:block/happy_fire"
+    },
+    "short=true": {
+      "model": "francium_2:block/happy_fire_short"
+    }
+  }
+}

@@ -71,6 +71,8 @@ public class RecipeGen extends QueTRecipeProvider {
 
                 recipes.burning(Blocks.CACTUS, 0.25f, ModBlocks.SMOOTH_CACTUS.defaultBlockState());
 
+
+
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 
                 oreSmelting(List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, CookingBookCategory.MISC,

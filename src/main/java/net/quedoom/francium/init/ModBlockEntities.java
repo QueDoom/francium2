@@ -14,6 +14,9 @@ public class ModBlockEntities {
     public static final BlockEntityType<GlueMixerEntity> GLUE_MIXER_ENTITY =
             Q.register("glue_mixer", GlueMixerEntity::new, ModBlocks.GLUE_MIXER);
 
+    public static final BlockEntityType<ObsidianMixerEntity> OBSIDIAN_MIXER_ENTITY =
+            Q.register("obsidian_mixer", ObsidianMixerEntity::new, ModBlocks.OBSIDIAN_MIXER);
+
     public static final BlockEntityType<BlockContainingEntity> BLOCK_CONTAINING_ENTITY =
             Q.register("block_containing_block", BlockContainingEntity::new, ModBlocks.WOODEN_CASING_CONTAINING_BLOCK, ModBlocks.STONE_CASING_CONTAINING_BLOCK, ModBlocks.OBSIDIAN_CASING_CONTAINING_BLOCK);
     public static final BlockEntityType<BlockContainingItemsEntity> BLOCK_CONTAINING_ITEMS_ENTITY =

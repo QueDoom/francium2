@@ -41,6 +41,8 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.BEDROCK_ROCK);
       output.accept(ModItems.SHARP_BEDROCK_ROCK);
 
+
+      output.accept(ModBlocks.OBSIDIAN_MIXER);
       output.accept(ModBlocks.GLUE_MIXER);
       output.accept(ModItems.GLUE_BOTTLE);
       output.accept(ModItems.GLUE);
@@ -68,6 +70,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.AMETHYST_COATED_DIAMOND);
       output.accept(ModItems.OBSIDIAN_INFUSED_DIAMOND);
 
+      output.accept(ModItems.PULP);
       output.accept(ModBlocks.SMOOTH_CACTUS);
       output.accept(ModItems.CACTUS_PAPER);
       output.accept(ModItems.OBSIDIAN_BOOK);

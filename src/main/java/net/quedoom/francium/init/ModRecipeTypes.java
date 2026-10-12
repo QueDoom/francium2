@@ -1,15 +1,19 @@
 package net.quedoom.francium.init;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.recipe.*;
 
 import javax.xml.stream.events.EntityReference;
+import java.util.List;
+import java.util.Optional;
 
 public class ModRecipeTypes {
 
@@ -134,6 +138,22 @@ public class ModRecipeTypes {
             }
     );
 
+    public static final RecipeSerializer<BlowingRecipe> BLOWING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.of(BlowingRecipe.Type.ID),
+            new RecipeSerializer<>(BlowingRecipe.CODEC, BlowingRecipe.STREAM_CODEC)
+    );
+
+    public static final RecipeType<BlowingRecipe> BLOWING = Registry.register(
+            BuiltInRegistries.RECIPE_TYPE,
+            Francium.of(BlowingRecipe.Type.ID),
+            new RecipeType<BlowingRecipe>() {
+                @Override
+                public String toString() {
+                    return BlowingRecipe.Type.ID;
+                }
+            }
+    );
 
     private static <T extends Recipe<?>> RecipeSerializer<T> createSerializer(String name, RecipeSerializer<T> instance) {
         return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Francium.of(name), instance);

@@ -42,8 +42,6 @@ public class SawedBlock extends BaseEntityBlock {
     public static final BooleanProperty SOUTH_EAST_UP = ModProperties.SOUTH_EAST_UP;
     public static final BooleanProperty SOUTH_WEST_UP = ModProperties.SOUTH_WEST_UP;
 
-    public static final VoxelShape FULL_BOX = box(0, 0, 0, 16, 16, 16);
-
     public SawedBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any()
@@ -172,20 +170,21 @@ public class SawedBlock extends BaseEntityBlock {
         double crazyDZ = dz;
 
         double adjust = 0.2;
+        double adjustOdd = 0.02;
 
         if (originalOctant.up()) {
             if (originalOctant.north()) {
                 if (originalOctant.east()) {
                     // north up east
                     switch (side) {
-                        case NORTH -> crazyDZ -= adjust;
+                        case NORTH -> crazyDZ -= adjust + adjustOdd;
                         case UP -> crazyDY += adjust;
-                        case EAST -> crazyDX += adjust;
+                        case EAST -> crazyDX += adjust + adjustOdd;
                     }
                 } else {
                     // north up west
                     switch (side) {
-                        case NORTH -> crazyDZ -= adjust;
+                        case NORTH -> crazyDZ -= adjust + adjustOdd;
                         case UP -> crazyDY += adjust;
                         case WEST -> crazyDX -= adjust;
                     }
@@ -195,7 +194,7 @@ public class SawedBlock extends BaseEntityBlock {
                     switch (side) {
                         // south up east
                         case UP -> crazyDY += adjust;
-                        case EAST -> crazyDX += adjust;
+                        case EAST -> crazyDX += adjust + adjustOdd;
                         case SOUTH -> crazyDZ += adjust;
                     }
                 } else {
@@ -212,32 +211,32 @@ public class SawedBlock extends BaseEntityBlock {
                 if (originalOctant.east()) {
                     // north down east
                     switch (side) {
-                        case NORTH -> crazyDZ -= adjust;
-                        case EAST -> crazyDX += adjust;
-                        case DOWN -> crazyDY -= adjust;
+                        case NORTH -> crazyDZ -= adjust + adjustOdd;
+                        case EAST -> crazyDX += adjust + adjustOdd;
+                        case DOWN -> crazyDY -= adjust + adjustOdd;
                     }
                 } else {
                     // north down west
                     switch (side) {
-                        case NORTH -> crazyDZ -= adjust;
-                        case EAST -> crazyDX += adjust;
-                        case DOWN -> crazyDY -= adjust;
+                        case NORTH -> crazyDZ -= adjust + adjustOdd;
+                        case WEST -> crazyDX -= adjust + adjustOdd;
+                        case DOWN -> crazyDY -= adjust + adjustOdd;
                     }
                 }
             } else {
                 if (originalOctant.east()) {
                     switch (side) {
                         // south down east
-                        case EAST -> crazyDX += adjust;
+                        case EAST -> crazyDX += adjust + adjustOdd;
                         case SOUTH -> crazyDZ += adjust;
-                        case DOWN -> crazyDY -= adjust;
+                        case DOWN -> crazyDY -= adjust + adjustOdd;
                     }
                 } else {
                     switch (side) {
                         // south down west
                         case SOUTH -> crazyDZ += adjust;
                         case WEST -> crazyDX -= adjust;
-                        case DOWN -> crazyDY -= adjust;
+                        case DOWN -> crazyDY -= adjust + adjustOdd;
                     }
                 }
             }

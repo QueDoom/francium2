@@ -150,4 +150,14 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
                 .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()));
     }
+    public void blowing(Block block, BlockState result, String prefix) {
+        new BlowingRecipeBuilder(RecipeCategory.MISC, block, result)
+                .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
+                .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()) + '_' + prefix);
+    }
+    public void blowing(Block block, BlockState result) {
+        new BlowingRecipeBuilder(RecipeCategory.MISC, block, result)
+                .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
+                .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()));
+    }
 }
