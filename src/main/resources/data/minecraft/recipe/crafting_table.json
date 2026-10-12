@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "francium_2:stacked_raw_slot",
+    "W": "francium_2:wooden_merger"
+  },
+  "pattern": [
+    "SS",
+    "SW"
+  ],
+  "result": {
+    "id": "minecraft:crafting_table"
+  }
+}

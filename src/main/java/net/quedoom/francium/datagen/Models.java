@@ -32,7 +32,6 @@ public class Models extends QueTModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators, QTBlockModelGenerators qtBlockModelGenerators) {
-        blockModelGenerators.family(ModBlocks.WOODEN_CASING);
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);

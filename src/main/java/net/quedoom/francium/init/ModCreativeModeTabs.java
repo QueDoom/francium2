@@ -67,6 +67,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.AMETHYST_PASTE);
       output.accept(ModItems.OBSIDIAN_PASTE);
       output.accept(ModItems.DRIPSTONE_COATED_MINERAL_MIX);
+      output.accept(ModBlocks.MINERAL_MIX_BLOCK);
       output.accept(ModItems.AMETHYST_COATED_DIAMOND);
       output.accept(ModItems.OBSIDIAN_INFUSED_DIAMOND);
 
@@ -99,7 +100,6 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.SMITHING_TOKEN);
 
       output.accept(ModBlocks.WOODEN_CASING);
-      output.accept(ModBlocks.MINERAL_MIX_BLOCK);
       output.accept(ModBlocks.STONE_CASING);
       output.accept(ModBlocks.OBSIDIAN_CASING);
 

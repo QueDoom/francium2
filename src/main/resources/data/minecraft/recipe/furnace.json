@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": "minecraft:campfire",
+    "M": "francium_2:mineral_mix_block",
+    "S": "francium_2:stacked_raw_slot",
+    "T": "francium_2:stone_casing"
+  },
+  "pattern": [
+    "CM",
+    "ST"
+  ],
+  "result": {
+    "id": "minecraft:furnace"
+  }
+}

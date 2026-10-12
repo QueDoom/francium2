@@ -44,9 +44,9 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
 
     public static final Block MINERAL_MIX_BLOCK = Q.register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
 
-    public static final Block STONE_CASING = Q.register("stone_casing", StoneCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
+    public static final Block STONE_CASING = Q.register("stone_casing", StoneCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).noOcclusion());
 
-    public static final Block OBSIDIAN_CASING = Q.register("obsidian_casing", ObsidianCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN));
+    public static final Block OBSIDIAN_CASING = Q.register("obsidian_casing", ObsidianCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).noOcclusion());
 
     public static final Block PILE_OF_LEAVES = Q.register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 
