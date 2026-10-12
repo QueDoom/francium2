@@ -7,6 +7,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.api.rrv.recipe.*;
+import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModRecipeTypes;
 import net.quedoom.francium.recipe.*;
 
@@ -55,6 +57,9 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
                     recipeList.add(new BlowingClientRecipe(block, result));
                 }
             });
+
+            recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.DIORITE_COATED_ROCK, ModItems.GRANITE_COATED_ROCK, null, ModBlocks.STONE_CASING));
+            recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.PACKED_DEEPSLATE, ModItems.OBSIDIAN_BOOK, ModItems.OBSIDIAN_BOOK, ModBlocks.OBSIDIAN_CASING));
         });
     }
 }
