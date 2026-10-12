@@ -62,8 +62,13 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noLootTable().noOcclusion().requiresCorrectToolForDrops(), false);
     public static final Block OBSIDIAN_CASING_CONTAINING_ITEMS = Q.register("obsidian_casing_containing_items", BlockContainingItems::new,
             BlockBehaviour.Properties.ofFullCopy(OBSIDIAN_CASING).noLootTable().noOcclusion().requiresCorrectToolForDrops(), false);
+    public static final Block HEAVY_ANVIL = Q.register("heavy_anvil", HeavyAnvilBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL).noOcclusion());
+    public static final Block WOODEN_CASING_WITH_HEAVY_ANVIL = Q.register("wooden_casing_with_heavy_anvil", WoodenCasingWithHeavyAnvilBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
 
     public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
+    public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.9F).sound(SoundType.STONE).pushReaction(PushReaction.BLOCK));
 
     public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 

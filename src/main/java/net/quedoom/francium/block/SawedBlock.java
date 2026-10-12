@@ -137,7 +137,7 @@ public class SawedBlock extends BaseEntityBlock {
             BlockPos blockPos = hitResult.getBlockPos();
             Direction side = hitResult.getDirection();
 
-            EighthsEatableOctant octant = this.getOctant(hitPos, blockPos, hitResult.);
+            EighthsEatableOctant octant = this.getOctant(hitPos, blockPos, side);
 
             set(level, pos, state, octant, !octant.get(state));
 

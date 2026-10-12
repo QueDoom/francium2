@@ -14,8 +14,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.quedoom.francium.block.HeavyAnvilBlock;
 import net.quedoom.francium.block.entity.BlockContainingItemsEntity;
 import net.quedoom.francium.block.CasingWithPotentialContainer;
+import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModRecipeTypes;
 import net.quedoom.francium.recipe.AnvilPressing;
 import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
@@ -32,6 +34,20 @@ import java.util.Optional;
 
 @Mixin(AnvilBlock.class)
 public class AnvilPressingMixin {
+    @Inject(method = "onLand", at = @At("TAIL"))
+    private void francium$heavyAnvilInCasing(Level level, BlockPos pos, BlockState state, BlockState replacedBlock,
+                                             FallingBlockEntity entity, CallbackInfo ci) {
+        if (!(level instanceof ServerLevel server)) return;
+
+        if (
+                !(level.getBlockState(pos)).is(ModBlocks.WOODEN_CASING) ||
+                        !(state.is(ModBlocks.HEAVY_ANVIL))
+        ) return;
+
+        server.setBlockAndUpdate(pos, ModBlocks.WOODEN_CASING_WITH_HEAVY_ANVIL.defaultBlockState()
+                .setValue(HeavyAnvilBlock.FACING, state.getValue(HeavyAnvilBlock.FACING)));
+    }
+
     @Inject(method = "onLand",
             at = @At("TAIL"))
 

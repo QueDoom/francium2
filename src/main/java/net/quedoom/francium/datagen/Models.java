@@ -16,12 +16,18 @@ import net.quedoom.francium.init.ModItems;
 import net.quedoom.quet.datagen.models.QTBlockModelGenerators;
 import net.quedoom.quet.datagen.models.QTItemModelGenerators;
 import net.quedoom.quet.datagen.models.QueTModelProvider;
+import net.quedoom.quet.misc.QueTObjectStorage;
 
 import java.util.Optional;
 
 public class Models extends QueTModelProvider {
     public Models(FabricPackOutput output) {
         super(output);
+    }
+
+    @Override
+    protected String namespace() {
+        return Francium.MOD_ID;
     }
 
     @Override
@@ -93,6 +99,8 @@ public class Models extends QueTModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators, QTItemModelGenerators qtItemModelGenerators) {
+        qtItemModelGenerators.addFlatItems();
+
         itemModelGenerators.generateFlatItem(ModItems.DIRT_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SAWDUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BROKEN_STICK, ModelTemplates.FLAT_ITEM);

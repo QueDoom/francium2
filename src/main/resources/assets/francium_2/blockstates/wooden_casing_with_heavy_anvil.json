@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "francium_2:block/wooden_casing_with_heavy_anvil"
+    },
+    "facing=east": {
+      "model": "francium_2:block/wooden_casing_with_heavy_anvil",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "francium_2:block/wooden_casing_with_heavy_anvil",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "francium_2:block/wooden_casing_with_heavy_anvil",
+      "y": 270
+    }
+  }
+}
