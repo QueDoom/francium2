@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "stone_casing_progress=0,obsidian_casing_progress=0": {
+      "model": "francium_2:block/wooden_casing"
+    },
+    "stone_casing_progress=1,obsidian_casing_progress=0": {
+      "model": "francium_2:block/wooden_casing_1"
+    },
+    "stone_casing_progress=0,obsidian_casing_progress=1": {
+      "model": "francium_2:block/wooden_casing_1"
+    },
+    "stone_casing_progress=1,obsidian_casing_progress=1": {
+      "model": "francium_2:block/wooden_casing_1"
+    },
+    "stone_casing_progress=2,obsidian_casing_progress=1": {
+      "model": "francium_2:block/wooden_casing_stone_2"
+    },
+    "stone_casing_progress=1,obsidian_casing_progress=2": {
+      "model": "francium_2:block/wooden_casing_obsidian_2"
+    },
+    "stone_casing_progress=1,obsidian_casing_progress=3": {
+      "model": "francium_2:block/wooden_casing_obsidian_3"
+    },
+    "stone_casing_progress=2,obsidian_casing_progress=0": {
+      "model": "francium_2:block/wooden_casing"
+    },
+    "stone_casing_progress=0,obsidian_casing_progress=2": {
+      "model": "francium_2:block/wooden_casing"
+    },
+    "stone_casing_progress=2,obsidian_casing_progress=2": {
+      "model": "francium_2:block/wooden_casing"
+    },
+    "stone_casing_progress=0,obsidian_casing_progress=3": {
+      "model": "francium_2:block/wooden_casing"
+    },
+    "stone_casing_progress=2,obsidian_casing_progress=3": {
+      "model": "francium_2:block/wooden_casing"
+    }
+  }
+}

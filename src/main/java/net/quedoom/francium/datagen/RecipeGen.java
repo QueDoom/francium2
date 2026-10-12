@@ -217,24 +217,6 @@ public class RecipeGen extends QueTRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.WOODEN_CASING), has(ModBlocks.WOODEN_CASING))
                         .save(output);
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.CRAFTING_TABLE)
-                        .pattern("SS")
-                        .pattern("SW")
-                        .define('S', ModItems.STACKED_RAW_SLOT)
-                        .define('W', ModBlocks.WOODEN_MERGER)
-                        .unlockedBy(getHasName(ModBlocks.WOODEN_CASING), has(ModBlocks.WOODEN_CASING))
-                        .save(output);
-
-                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.FURNACE)
-                        .pattern("CM")
-                        .pattern("ST")
-                        .define('C', Blocks.CAMPFIRE)
-                        .define('M', ModBlocks.MINERAL_MIX_BLOCK)
-                        .define('S', ModItems.STACKED_RAW_SLOT)
-                        .define('T', ModBlocks.STONE_CASING)
-                        .unlockedBy(getHasName(ModBlocks.STONE_CASING), has(ModBlocks.STONE_CASING))
-                        .save(output);
-
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEP_MERGER)
                         .pattern("DDD")
                         .pattern("RGS")
