@@ -30,6 +30,22 @@
 		"rrv_client": [
 			"net.quedoom.francium.api.rrv.FranciumRRVClientIntegration"
 		]
+
+	},"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/xkdXpApT5r"
+			},
+			"badges": []
+		},
+		"mcb": [
+			{
+				"name": "QueT",
+				"labelColor": -1842205,
+				"fillColor": -15576197,
+				"outlineColor": -7419425
+			}
+		]
 	},
 	"mixins": [
 		"francium.mixins.json"
@@ -39,9 +55,14 @@
 		"minecraft": "~26.1.2",
 		"java": ">=25",
 		"fabric-api": "*",
-		"quet": ">=2.1.5"
+		"quet": ">=2.1.5",
+		"prickle": "26.1.2.6"
 	},
 	"optional": {
 		"toughasnails": "21.11.0.6"
+	},
+	"recommends": {
+		"modmenu-badges-lib": "*",
+		"modmenu": "*"
 	}
 }

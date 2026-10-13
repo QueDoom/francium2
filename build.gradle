@@ -18,6 +18,15 @@ repositories {
 		}
 	}
 
+	maven {
+		url 'https://maven.blamejared.com'
+	}
+
+	maven {
+		name = "Terraformers"
+		url = "https://maven.terraformersmc.com/"
+	}
+
 }
 
 loom {
@@ -44,6 +53,11 @@ dependencies {
 
 	implementation("cc.cassian.rrv:reliable-recipe-viewer-fabric:${rrv_version}+${minecraft_version}")
 	implementation("maven.modrinth:quet:${quet_version}")
+
+	implementation("net.darkhax.pricklemc:prickle-fabric-${minecraft_version}:${minecraft_version}.${prickle_version}")
+
+	implementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+	include(implementation("maven.modrinth:modmenu-badges-lib:2026.3.1"))
 }
 
 processResources {

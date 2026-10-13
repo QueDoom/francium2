@@ -143,7 +143,7 @@ public class EighthsEatableBlock extends Block {
     }
 
     protected void playerdrink(Player player, int thirst, float hydration) {
-        if (LoadedMods.toughasnails && player instanceof ServerPlayer) {
+        if (LoadedMods.TOUGH_AS_NAILS && player instanceof ServerPlayer) {
             IThirst thirstHelper = ThirstHelper.getThirst(player);
             thirstHelper.addThirst(thirst);
             thirstHelper.addHydration(hydration);
