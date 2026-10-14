@@ -48,6 +48,7 @@ public class FallingEighthsEatableBlock extends EighthsEatableBlock implements F
     protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
         if (FallingBlock.isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinY()) {
             FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, state);
+            entity.dropItem = false;
             this.falling(entity);
         }
     }
