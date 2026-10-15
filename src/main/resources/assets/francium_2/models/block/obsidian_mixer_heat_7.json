@@ -2,11 +2,11 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "obsidian",
-		"2": "Projects/francium2_asst/obsidian_mixer_heat_9_side",
-		"3": "Projects/francium2_asst/obsidian_mixer_heat_7_side",
-		"4": "Projects/francium2_asst/hot_obsidian_7",
-		"particle": "Projects/francium2_asst/obsidian_mixer_heat_9_side"
+		"1": "minecraft:block/obsidian",
+		"2": "francium_2:block/obsidian_mixer_heat_9_side",
+		"3": "francium_2:block/obsidian_mixer_heat_7_side",
+		"4": "francium_2:block/hot_obsidian_7",
+		"particle": "francium_2:block/obsidian_mixer_heat_9_side"
 	},
 	"elements": [
 		{

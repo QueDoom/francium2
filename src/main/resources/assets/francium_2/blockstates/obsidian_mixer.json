@@ -1,7 +1,43 @@
 {
   "variants": {
-    "": {
-      "model": "francium_2:block/obsidian_mixer"
+    "heat=0": {
+      "model": "francium_2:block/obsidian_mixer_heat_0"
+    },
+    "heat=1": {
+      "model": "francium_2:block/obsidian_mixer_heat_1"
+    },
+    "heat=2": {
+      "model": "francium_2:block/obsidian_mixer_heat_2"
+    },
+    "heat=3": {
+      "model": "francium_2:block/obsidian_mixer_heat_3"
+    },
+    "heat=4": {
+      "model": "francium_2:block/obsidian_mixer_heat_4"
+    },
+    "heat=5": {
+      "model": "francium_2:block/obsidian_mixer_heat_5"
+    },
+    "heat=6": {
+      "model": "francium_2:block/obsidian_mixer_heat_6"
+    },
+    "heat=7": {
+      "model": "francium_2:block/obsidian_mixer_heat_7"
+    },
+    "heat=8": {
+      "model": "francium_2:block/obsidian_mixer_heat_8"
+    },
+    "heat=9": {
+      "model": "francium_2:block/obsidian_mixer_heat_9"
+    },
+    "heat=10": {
+      "model": "francium_2:block/obsidian_mixer_heat_10"
+    },
+    "heat=11": {
+      "model": "francium_2:block/obsidian_mixer_heat_11"
+    },
+    "heat=12": {
+      "model": "francium_2:block/obsidian_mixer_heat_12"
     }
   }
 }

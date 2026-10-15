@@ -2,9 +2,9 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "obsidian",
-		"2": "Projects/francium2_asst/hot_obsidian_4",
-		"particle": "Projects/francium2_asst/hot_obsidian_4"
+		"1": "minecraft:block/obsidian",
+		"2": "francium_2:block/hot_obsidian_4",
+		"particle": "francium_2:block/hot_obsidian_4"
 	},
 	"elements": [
 		{

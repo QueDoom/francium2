@@ -2,10 +2,10 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"2": "Projects/francium2_asst/obsidian_mixer_heat_11_side",
-		"4": "Projects/francium2_asst/hot_obsidian_7",
-		"5": "Projects/francium2_asst/hot_obsidian_4",
-		"particle": "Projects/francium2_asst/obsidian_mixer_heat_11_side"
+		"2": "francium_2:block/obsidian_mixer_heat_11_side",
+		"4": "francium_2:block/hot_obsidian_7",
+		"5": "francium_2:block/hot_obsidian_4",
+		"particle": "francium_2:block/obsidian_mixer_heat_11_side"
 	},
 	"elements": [
 		{
