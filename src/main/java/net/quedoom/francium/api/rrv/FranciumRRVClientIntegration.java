@@ -4,6 +4,7 @@ import cc.cassian.rrv.api.ReliableRecipeViewerClientPlugin;
 import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.client.recipe.ClientRecipeManager;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.api.rrv.recipe.*;
@@ -57,6 +58,15 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
                     recipeList.add(new BlowingClientRecipe(block, result));
                 }
             });
+            ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.OBSIDIAN_MIXING).forEach(obsidianMixerRecipeRecipeHolder -> {
+                ObsidianMixerRecipe recipe = obsidianMixerRecipeRecipeHolder.value();
+                Ingredient firstItem = recipe.firstItem();
+                Ingredient secondItem = recipe.secondItem();
+                Ingredient thirdItem = recipe.thirdItem();
+                Ingredient fourthItem = recipe.fourthItem();
+                recipeList.add(new ObsidianMixingClientRecipe(firstItem, secondItem, thirdItem, fourthItem, recipe.time(), recipe.result()));
+            });
+
 
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.DIORITE_COATED_ROCK, ModItems.GRANITE_COATED_ROCK, null, ModBlocks.STONE_CASING));
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.PACKED_DEEPSLATE, ModItems.OBSIDIAN_BOOK, ModItems.OBSIDIAN_BOOK, ModBlocks.OBSIDIAN_CASING));
