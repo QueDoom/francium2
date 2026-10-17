@@ -48,6 +48,8 @@ public class Loot extends FabricBlockLootSubProvider {
 
         dropSelf(ModBlocks.BELLOW);
 
+        dropSelf(ModBlocks.STEEL_BLOCK);
+
         dropSelf(ModBlocks.ALLOWED_COPPER_BLOCK);
         dropSelf(ModBlocks.ALLOWED_EXPOSED_COPPER);
         dropSelf(ModBlocks.ALLOWED_WEATHERED_COPPER);

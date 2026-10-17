@@ -1,15 +1,18 @@
 package net.quedoom.francium.datagen;
 
+import net.darkhax.pricklemc.common.api.annotations.Value;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Item;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.api.prickle.FranciumConfigs;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
 
+import java.lang.reflect.Field;
 import java.util.concurrent.CompletableFuture;
 
 public class Francium2LanguageProvider extends QueTLanguageProvider {
@@ -25,6 +28,8 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
     @Override
     public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder, QTTranslationBuilder qtTranslationBuilder) {
         pileTranslate(qtTranslationBuilder, ModItems.DIRT_PILE, "Dirt");
+        pileTranslate(qtTranslationBuilder, ModItems.CLAY_PILE, "Clay");
+        pileTranslate(qtTranslationBuilder, ModItems.MUD_PILE, "Mud");
         pileTranslate(qtTranslationBuilder, ModItems.GRAVEL_PILE, "Gravel");
         pileTranslate(qtTranslationBuilder, ModItems.SAND_PILE, "Sand");
         pileTranslate(qtTranslationBuilder, ModItems.DIORITE_PILE, "Diorite");
@@ -66,6 +71,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add(ModBlocks.GLUE_MIXER, "Glue Mixer");
 
         qtTranslationBuilder.auto(ModBlocks.WOODEN_MERGER);
+        qtTranslationBuilder.auto(ModBlocks.DRIPSTONE_SPIKES);
         qtTranslationBuilder.auto(ModBlocks.DEEP_MERGER);
         qtTranslationBuilder.auto(ModBlocks.BUNDLE_TABLE);
         translationBuilder.add(ModBlocks.TRADER_BENCH, "Trader's Bench");
@@ -85,6 +91,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModBlocks.OBSIDIAN_CASING);
         qtTranslationBuilder.auto(ModBlocks.ECHO_BLOCK);
         qtTranslationBuilder.auto(ModBlocks.ECHO_BLOCK.asItem());
+        qtTranslationBuilder.auto(ModBlocks.STEEL_BLOCK);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_SUGAR_CANE);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO_ITEM);
@@ -125,8 +132,14 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add(Francium.translationString("rrv", "wooden_merging"), "Wooden Merging");
         translationBuilder.add(Francium.translationString("rrv", "deep_merging"), "Deep Merging");
         translationBuilder.add(Francium.translationString("rrv", "glue_mixing"), "Glue Mixing");
+        translationBuilder.add(Francium.translationString("rrv", "burning"), "Burning");
+        translationBuilder.add(Francium.translationString("rrv", "blowing"), "Blowing");
         translationBuilder.add(Francium.translationString("rrv", "anvil_pressing"), "Anvil Pressing");
         translationBuilder.add(Francium.translationString("rrv", "two_block_anvil_pressing"), "BIIIG Anvil Pressing");
+        translationBuilder.add(Francium.translationString("rrv", "obsidian_mixing.time"), "Time: %ss");
+        translationBuilder.add(Francium.translationString("rrv", "obsidian_mixing"), "Obsidian Mixing");
+        translationBuilder.add(Francium.translationString("rrv", "casing_crafting"), "Casing Crafting");
+        translationBuilder.add(Francium.translationString("rrv", "use_in_order"), "Apply the items in-order");
 
         translationBuilder.add(Francium.translationString("stackgroup", "piles"), "Piles");
 
@@ -134,7 +147,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add("menu.francium_2.trader_bench", "Trading");
         translationBuilder.add("menu.francium_2.bundle_table", "Bundle Table");
 
-        autoTranslateAdvancement(translationBuilder, "get_gravel_pile", "Acquire some gravel.");
+        qtTranslationBuilder.autoTranslateAllAdvancements();
 
         translationBuilder.add(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, "No item");
 
@@ -179,6 +192,13 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModBlocks.ALLOWED_WAXED_EXPOSED_CUT_COPPER_SLAB);
         qtTranslationBuilder.auto(ModBlocks.ALLOWED_WAXED_CUT_COPPER_SLAB);
         qtTranslationBuilder.auto(ModBlocks.ALLOWED_GOLD_BLOCK);
+
+        qtTranslationBuilder.translateAllTabs();
+
+        // API
+        qtTranslationBuilder.builder().add(Francium.MOD_ID + ".options", "Options");
+        translateOptions(qtTranslationBuilder);
+        //qtTranslationBuilder.autoTranslatePrickleConfigs("francium", FranciumConfigs.class);
     }
 
 
@@ -201,5 +221,13 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
 
     private void pileTranslate(QTTranslationBuilder builder, Item item, String material) {
         builder.builder().add(item, "Pile Of " + material);
+    }
+
+    private void translateOptions(QTTranslationBuilder builder) {
+        for (Field field : FranciumConfigs.class.getDeclaredFields()) {
+            Value meta = field.getAnnotation(Value.class);
+            if (meta == null) continue;
+            builder.builder().add("francium.options." + field.getName(), QTTranslationBuilder.snakeToTitleCase(field.getName()));
+        }
     }
 }

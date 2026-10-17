@@ -18,6 +18,24 @@ public class BlockTagGen extends QueTBlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
+        valueLookupBuilder(ModTags.Blocks.CRUSHED_BY_HEAVY_ANVIL)
+                .addOptionalTag(BlockTags.WOODEN_BUTTONS)
+                .addOptionalTag(BlockTags.WOODEN_DOORS)
+                .addOptionalTag(BlockTags.WOODEN_FENCES)
+                .addOptionalTag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .addOptionalTag(BlockTags.WOODEN_SHELVES)
+                .addOptionalTag(BlockTags.WOODEN_SLABS)
+                .addOptionalTag(BlockTags.WOODEN_STAIRS)
+                .addOptionalTag(BlockTags.WOODEN_TRAPDOORS)
+                .addOptionalTag(BlockTags.LOGS)
+                .addOptionalTag(BlockTags.PLANKS)
+                .add(ModBlocks.WOODEN_CASING)
+                .add(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK)
+                .add(ModBlocks.WOODEN_CASING_CONTAINING_ITEMS)
+                .add(ModBlocks.WOODEN_MERGER)
+                .add(ModBlocks.GLUE_MIXER)
+        ;
+
         valueLookupBuilder(ModTags.Blocks.GROWS_INTO_THICK)
                 .add(
                         Blocks.POTATOES,
@@ -113,8 +131,8 @@ public class BlockTagGen extends QueTBlockTagProvider {
                         ModBlocks.FRYING_PAN_CAMPFIRE,
                         ModBlocks.POT_CAMPFIRE,
 
-
-
+                        ModBlocks.STEEL_BLOCK,
+                        ModBlocks.HEAVY_ANVIL,
 
                         ModBlocks.ALLOWED_COPPER_BLOCK,
                         ModBlocks.ALLOWED_EXPOSED_COPPER,
@@ -234,7 +252,8 @@ public class BlockTagGen extends QueTBlockTagProvider {
                         Blocks.COARSE_DIRT,
                         Blocks.ROOTED_DIRT,
                         Blocks.GRASS_BLOCK,
-                        Blocks.PODZOL
+                        Blocks.PODZOL,
+                        Blocks.MYCELIUM
                 );
 
         valueLookupBuilder(ModTags.Blocks.TUFF_ROCKS_REPLACEABLE)

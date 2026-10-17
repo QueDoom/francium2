@@ -37,6 +37,7 @@ public class RecipeGen extends QueTRecipeProvider {
             @Override
             public void buildRecipes() {
                 FranciumRecipeHelper recipes = new FranciumRecipeHelper(this, output);
+                QTRecipeHelper qtRecipe = new QTRecipeHelper(this, output, Francium.MOD_ID);
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
                 glueMixing(this, output, WoodenMixerGlueType.NORMAL, 0, ModItems.GLUE, 32);
@@ -58,20 +59,49 @@ public class RecipeGen extends QueTRecipeProvider {
                 woodenMerging(this, output, ModItems.SLOT, ModItems.IRON_ORE_PILE, ModItems.VEGAN_GLUE, ModItems.RAW_SLOT, 1);
                 woodenMerging(this, output, ModItems.RAW_SLOT, ModItems.RAW_SLOT, ModItems.VEGAN_GLUE, ModItems.STACKED_RAW_SLOT, 1);
 
-                deepMerging(this, output, ModItems.ANDESITE_ALLOY, ModItems.DIORITE_ALLOY, ModItems.GRANITE_ALLOY, ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX, 1);
+                woodenMerging(this, output, ModItems.CLAY_PILE, ModItems.CLAY_PILE, ModItems.GLUE, Items.CLAY_BALL, 1);
+                deepMerging(this, output, Items.CLAY_BALL, ModItems.CLAY_PILE, Items.CLAY_BALL, ModItems.GLUE, Items.CLAY, 1);
+
+                woodenMerging(this, output, ModItems.ANCIENT_ROD, ModItems.STEEL_BOWL, ModItems.ECHO_GLUE, ModItems.POT, 1);
+                deepMerging(this, output, ModItems.STEEL_INGOT,  ModItems.STEEL_BOWL, ModItems.STEEL_INGOT, ModItems.VEGAN_GLUE, ModItems.ANCIENT_ROD, ModItems.FRYING_PAN, 1);
+
+                woodenMerging(this, output, ModItems.ANDESITE_ALLOY,  ModItems.ROCK, ModItems.ECHO_GLUE,  ModItems.ANDESITE_COATED_ROCK,    1);
+                woodenMerging(this, output, ModItems.DIORITE_ALLOY,   ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.DIORITE_COATED_ROCK,     1);
+                woodenMerging(this, output, ModItems.GRANITE_ALLOY,   ModItems.ROCK, ModItems.GLUE,       ModItems.GRANITE_COATED_ROCK,     1);
+                woodenMerging(this, output, ModItems.AMETHYST_PASTE,  Items.DIAMOND, ModItems.SUPER_GLUE, ModItems.AMETHYST_COATED_DIAMOND, 1);
+
+                deepMerging(this, output, ModItems.ANDESITE_ALLOY,       ModItems.DIORITE_ALLOY,        ModItems.GRANITE_ALLOY,  ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX,                                                    1);
+                deepMerging(this, output, ModItems.OBSIDIAN_PASTE,       Items.LEATHER,                 ModItems.OBSIDIAN_PASTE, ModItems.SUPER_GLUE, ModItems.OBSIDIAN_COATED_LEATHER,                                        1);
+                deepMerging(this, output, ModItems.CACTUS_PAPER,         ModItems.CACTUS_PAPER,         ModItems.CACTUS_PAPER,   ModItems.ECHO_GLUE,  ModItems.OBSIDIAN_COATED_LEATHER, ModItems.OBSIDIAN_BOOK,                1);
+                deepMerging(this, output, ModItems.DIAMOND_DUST,         ModItems.DIAMOND_DUST,         ModItems.DIAMOND_DUST,   ModItems.SUPER_GLUE, ModItems.OBSIDIAN_PASTE,          ModItems.OBSIDIAN_INFUSED_DIAMOND,     1);
+                deepMerging(this, output, ModItems.SHARP_DEEPSLATE_ROCK, ModItems.SHARP_AMETHYST_ROCK,  Items.IRON_INGOT,        ModItems.GLUE_MIX,   ModItems.CRAFTING_TOKEN,          ModItems.TOOLBOX,                      1);
+                deepMerging(this, output, ModItems.MINERAL_MIX,          ModItems.MINERAL_MIX,          ModItems.MINERAL_MIX,    ModItems.SUPER_GLUE, ModItems.DRIPSTONE_PASTE,         ModItems.DRIPSTONE_COATED_MINERAL_MIX, 2);
 
                 basicAnvilPressing(this, output, ModItems.DRIPSTONE_COATED_MINERAL_MIX, 4, ModBlocks.WOODEN_CASING, ModBlocks.MINERAL_MIX_BLOCK);
                 recipes.itemsAnvilPressing(ModItems.CALCITE_PILE, 9, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.PACKED_CALCITE);
                 recipes.anvilWoodenCompacting2x2(Items.SLIME_BALL, Items.SLIME_BLOCK);
                 recipes.itemsAnvilPressing(ModItems.PULP, 1, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, Items.PAPER);
-                recipes.itemsBlocksAnvilPressing(ModItems.PULP, 2, ModBlocks.SMOOTH_CACTUS, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.CACTUS_PAPER);
+                recipes.itemsBlocksAnvilPressing(ModItems.PULP, 2, ModBlocks.SMOOTH_CACTUS, ModBlocks.STONE_CASING, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.CACTUS_PAPER);
+                basicAnvilPressing(this, output, ModItems.STEEL_INGOT, 3, ModBlocks.STONE_CASING, ModItems.STEEL_BOWL);
+                basicAnvilPressing(this, output, ModItems.STEEL_INGOT, 3, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.STEEL_BOWL, "from_items_casing");
+                basicAnvilPressing(this, output, ModBlocks.FORBIDDEN_DUST, 64, ModBlocks.STONE_CASING, ModItems.CORRUPTED_MODEL);
+                basicAnvilPressing(this, output, ModBlocks.FORBIDDEN_DUST, 64, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.CORRUPTED_MODEL, "from_items_casing");
 
-                recipes.itemsBlocksAnvilPressing(ModTags.Items.MAKES_PAPER, 4, Blocks.WATER, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.PULP);
+                recipes.itemsBlocksAnvilPressing(ModTags.Items.MAKES_PAPER, 4, Blocks.WATER, ModBlocks.STONE_CASING, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.PULP);
+                recipes.blocksAnvilPressing(Items.HEAVY_CORE, Blocks.SCULK, ModBlocks.STONE_CASING, ModBlocks.HEAVY_SCULK);
+                recipes.itemsBlocksAnvilPressing(Items.ECHO_SHARD, 3, ModBlocks.HEAVY_SCULK, ModBlocks.OBSIDIAN_CASING, ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS, ModItems.DENCHO_SHARD, 6);
                 recipes.blocksAnvilPressing(ModItems.STACKED_RAW_SLOT, 2, ModBlocks.DRIPSTONE_SPIKES, Blocks.DEEPSLATE, ModBlocks.DEEP_MERGER);
+                recipes.blocksAnvilPressing(ModItems.STEEL_BOWL, 1, ModBlocks.STEEL_WEDGE, Blocks.OBSIDIAN, ModBlocks.OBSIDIAN_MIXER);
 
                 recipes.burning(Blocks.CACTUS, 0.25f, ModBlocks.SMOOTH_CACTUS.defaultBlockState());
 
-
+                recipes.obsidianMixing(Blocks.OBSIDIAN, Blocks.HONEY_BLOCK, Blocks.HONEY_BLOCK, Blocks.OBSIDIAN, 400, ModItems.OBSIDIAN_PASTE);
+                recipes.obsidianMixing(Blocks.AMETHYST_BLOCK, Blocks.HONEY_BLOCK, Blocks.SLIME_BLOCK, Blocks.AMETHYST_BLOCK, 200, ModItems.AMETHYST_PASTE);
+                recipes.obsidianMixing(Blocks.DRIPSTONE_BLOCK, Blocks.SLIME_BLOCK, Blocks.SLIME_BLOCK, Blocks.DRIPSTONE_BLOCK, 100, ModItems.DRIPSTONE_PASTE);
+                recipes.obsidianMixing(ModItems.GLUE, ModItems.VEGAN_GLUE, ModItems.ECHO_GLUE, ModItems.SUPER_GLUE, 140, ModItems.GLUE_MIX);
+                recipes.obsidianMixing(ModItems.ANCIENT_DUST, ModItems.ANCIENT_DUST, ModItems.GOLD_DUST, ModItems.GOLD_DUST, 260, ModItems.NETHERITE_DUST);
+                recipes.obsidianMixing(ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, 140, Items.GLASS);
+                recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.SLIME_BLOCK, 200, ModItems.NETHER_GLUE, 6);
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 
@@ -80,12 +110,19 @@ public class RecipeGen extends QueTRecipeProvider {
                 oreBlasting(List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, CookingBookCategory.MISC,
                         ModItems.STEEL_INGOT, 2, 100, "steel_dust");
 
-                shaped(RecipeCategory.MISC, ModItems.PACKED_CALCITE)
-                        .pattern("DDD")
-                        .pattern("DDD")
-                        .pattern("DDD")
-                        .define('D', ModItems.CALCITE_PILE)
-                        .unlockedBy(getHasName(ModItems.CALCITE_PILE), has(ModItems.CALCITE_PILE))
+                qtRecipe.reversible3x3Compacting(ModItems.STEEL_INGOT, ModBlocks.STEEL_BLOCK);
+
+                qtRecipe.shaped(ModBlocks.STEEL_BLOCK, ModBlocks.HEAVY_ANVIL, "SSS", " B ", "SSS")
+                                .define('S', ModBlocks.STEEL_BLOCK)
+                                .define('B', ModItems.ANCIENT_BUN)
+                                .save(output);
+
+                shaped(RecipeCategory.MISC, ModItems.ANCIENT_ROD)
+                        .pattern("D")
+                        .pattern("D")
+                        .pattern("D")
+                        .define('D', ModItems.ANCIENT_DUST)
+                        .unlockedBy(getHasName(ModItems.ANCIENT_DUST), has(ModItems.ANCIENT_DUST))
                         .save(output)
                 ;
 
@@ -217,15 +254,13 @@ public class RecipeGen extends QueTRecipeProvider {
                         .unlockedBy(getHasName(ModBlocks.WOODEN_CASING), has(ModBlocks.WOODEN_CASING))
                         .save(output);
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEEP_MERGER)
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRIPSTONE_SPIKES)
                         .pattern("DDD")
-                        .pattern("RGS")
-                        .pattern("EEE")
+                        .pattern("DDD")
+                        .pattern("MGM")
                         .define('D', Blocks.POINTED_DRIPSTONE)
-                        .define('R', ModItems.STACKED_RAW_SLOT)
+                        .define('M', ModBlocks.MINERAL_MIX_BLOCK)
                         .define('G', Items.GOLD_INGOT)
-                        .define('S', ModItems.STACKED_SLOT)
-                        .define('E', Blocks.DEEPSLATE)
                         .unlockedBy(getHasName(ModItems.DRIPSTONE_PILE), has(ModItems.DRIPSTONE_PILE))
                         .save(output);
 
