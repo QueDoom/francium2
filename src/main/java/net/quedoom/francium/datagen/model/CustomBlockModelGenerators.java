@@ -20,19 +20,19 @@ public class CustomBlockModelGenerators {
 
     // helper method for creating Models
     private static ModelTemplate block(String parent, TextureSlot... requiredTextureKeys) {
-        return new ModelTemplate(Optional.of(Francium.of("block/" + parent)), Optional.empty(), requiredTextureKeys);
+        return new ModelTemplate(Optional.of(Francium.of("item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 
     // helper method for creating Models with variants
     private static ModelTemplate block(String parent, String variant, TextureSlot... requiredTextureKeys) {
-        return new ModelTemplate(Optional.of(Francium.of("block/" + parent)), Optional.of(variant), requiredTextureKeys);
+        return new ModelTemplate(Optional.of(Francium.of("item/" + parent)), Optional.of(variant), requiredTextureKeys);
     }
 
 
-//    private static BlockModelDefinitionGenerator createEighthsEatableOctantBlockStates(Block block, Identifier id) {
+//    private static BlockModelDefinitionGenerator createEighthsEatableOctantBlockStates(Block item, Identifier id) {
 //        MultiVariant model = BlockModelGenerators.plainVariant(id);
 //
-//        return MultiVariantGenerator.dispatch(block, model)
+//        return MultiVariantGenerator.dispatch(item, model)
 //                .with(PropertyDispatch.initial(ModProperties.NORTH_EAST_UP, ModProperties.NORTH_WEST_UP, ModProperties.SOUTH_EAST_UP, ModProperties.SOUTH_WEST_DOWN))
 //    }
 }
