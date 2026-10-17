@@ -54,6 +54,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.FIRE_ESSENCE);
 
       output.accept(ModItems.TOOLBOX);
+      output.accept(ModItems.DASH_ORB);
 
       output.accept(ModBlocks.BELLOW);
 

@@ -13,6 +13,7 @@ import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
 import net.quedoom.quet.init.QueTItem;
 
+import java.util.Properties;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -139,7 +140,7 @@ public class ModItems {
     public static Item FIRE_STARTER = Q.register(Q.create("fire_starter"), FireStarterItem::new, new Item.Properties().durability(127));
     public static Item GLASS_SHARDS = Q.register("glass_shards");
 
-    public static Item DASH_ORB = Q.register("dash_orb", DashOrbItem::new);
+    public static Item DASH_ORB = Q.register(Q.create("dash_orb"), DashOrbItem::new, new Item.Properties().stacksTo(16));
     public static Item STEEL_BOWL = Q.register("steel_bowl");
 
     public static Item PACKED_CALCITE = Q.register("packed_calcite");
