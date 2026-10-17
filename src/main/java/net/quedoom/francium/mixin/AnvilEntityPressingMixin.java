@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.init.ModTags;
 import net.quedoom.francium.recipe.AnvilPressing;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,19 +28,19 @@ public abstract class AnvilEntityPressingMixin extends Entity {
     @ModifyExpressionValue(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/block/state/BlockState;canBeReplaced(Lnet/minecraft/world/item/context/BlockPlaceContext;)Z"))
     private boolean francium$canBeReplaced(boolean original) {
-        return original || pressingMatches() || matchesAndBelow(ModBlocks.HEAVY_ANVIL, ModBlocks.WOODEN_CASING);
+        return original || pressingMatches();
     }
 
     @ModifyExpressionValue(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/block/state/BlockState;canSurvive(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"))
     private boolean francium$canSurvive(boolean original) {
-        return original || pressingMatches() || matchesAndBelow(ModBlocks.HEAVY_ANVIL, ModBlocks.WOODEN_CASING);
+        return original || pressingMatches();
     }
 
     @Unique
     private boolean pressingMatches() {
         if (!(this.level() instanceof ServerLevel server)) return false;
-        if (!this.blockState.is(BlockTags.ANVIL)) return false;
+        if (!this.blockState.is(ModBlocks.HEAVY_ANVIL)) return false;
         BlockPos pos = this.blockPosition();
         return AnvilPressing.find(server, pos, server.getBlockState(pos), AnvilPressing.itemsTall(server, pos.below(), 2)).isPresent();
     }

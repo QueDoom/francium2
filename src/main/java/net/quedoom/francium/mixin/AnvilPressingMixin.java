@@ -19,6 +19,7 @@ import net.quedoom.francium.block.entity.BlockContainingItemsEntity;
 import net.quedoom.francium.block.CasingWithPotentialContainer;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModRecipeTypes;
+import net.quedoom.francium.init.ModTags;
 import net.quedoom.francium.recipe.AnvilPressing;
 import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
 import net.quedoom.francium.recipe.BasicAnvilPressingRecipeInput;
@@ -39,13 +40,20 @@ public class AnvilPressingMixin {
                                              FallingBlockEntity entity, CallbackInfo ci) {
         if (!(level instanceof ServerLevel server)) return;
 
-        if (
-                !(level.getBlockState(pos)).is(ModBlocks.WOODEN_CASING) ||
-                        !(state.is(ModBlocks.HEAVY_ANVIL))
-        ) return;
+        BlockPos targetPos = pos.below();
+        BlockState targetState = level.getBlockState(targetPos);
+        if (!state.is(ModBlocks.HEAVY_ANVIL)) return;
 
-        server.setBlockAndUpdate(pos, ModBlocks.WOODEN_CASING_WITH_HEAVY_ANVIL.defaultBlockState()
-                .setValue(HeavyAnvilBlock.FACING, state.getValue(HeavyAnvilBlock.FACING)));
+        if (targetState.is(ModTags.Blocks.CRUSHED_BY_HEAVY_ANVIL)) {
+            if (targetState.is(ModBlocks.WOODEN_CASING)) {
+                server.setBlockAndUpdate(targetPos, ModBlocks.WOODEN_CASING_WITH_HEAVY_ANVIL.defaultBlockState()
+                        .setValue(HeavyAnvilBlock.FACING, state.getValue(HeavyAnvilBlock.FACING)));
+                server.removeBlock(targetPos.above(), false);
+            } else {
+                level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, targetPos, Block.getId(targetState));
+                level.removeBlock(targetPos, false);
+            }
+        }
     }
 
     @Inject(method = "onLand",
@@ -137,7 +145,7 @@ public class AnvilPressingMixin {
 
         ItemStack result = recipe.result().create();
         BlockState bottomState = server.getBlockState(bottom);
-        if (!server.getBlockState(topPos).is(BlockTags.ANVIL)) {
+        if (!server.getBlockState(topPos).is(ModBlocks.HEAVY_ANVIL)) {
             server.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, topPos, Block.getId(server.getBlockState(topPos)));
             server.removeBlock(topPos, false);
         }

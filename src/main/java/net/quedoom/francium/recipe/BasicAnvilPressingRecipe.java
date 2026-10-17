@@ -19,7 +19,7 @@ public record BasicAnvilPressingRecipe(Ingredient ingredient, int countReq, Bloc
     public static final MapCodec<BasicAnvilPressingRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
             Ingredient.CODEC.fieldOf("ingredient").forGetter(BasicAnvilPressingRecipe::ingredient),
             PrimitiveCodec.INT.optionalFieldOf("chance", 1).forGetter(BasicAnvilPressingRecipe::countReq),
-            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(BasicAnvilPressingRecipe::block),
+            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("item").forGetter(BasicAnvilPressingRecipe::block),
             ItemStackTemplate.CODEC.fieldOf("result").forGetter(BasicAnvilPressingRecipe::result)
     ).apply(i, BasicAnvilPressingRecipe::new));
 
@@ -31,7 +31,7 @@ public record BasicAnvilPressingRecipe(Ingredient ingredient, int countReq, Bloc
                     ByteBufCodecs.VAR_INT,
                     BasicAnvilPressingRecipe::countReq,
 
-                    ByteBufCodecs.registry(Registries.BLOCK),
+                    BlockRecipeInput.BLOCK_STREAM,
                     BasicAnvilPressingRecipe::block,
 
                     ItemStackTemplate.STREAM_CODEC,

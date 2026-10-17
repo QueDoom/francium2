@@ -5,6 +5,7 @@ import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.quet.api.rrv.ReliableClientRecipeTypeHelper;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class TwoBlockPressingClientRecipeType extends ReliableClientRecipeTypeHe
     protected TwoBlockPressingClientRecipeType() {
         super(
                 "two_block_anvil_pressing",
-                List.of(new ItemStack(Blocks.ANVIL), new ItemStack(Blocks.CHIPPED_ANVIL), new ItemStack(Blocks.DAMAGED_ANVIL)),
+                List.of(new ItemStack(ModBlocks.HEAVY_ANVIL)),
                 82, 92
         );
     }
