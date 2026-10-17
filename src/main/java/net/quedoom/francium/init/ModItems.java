@@ -63,6 +63,7 @@ public class ModItems {
     public static Item NETHER_QUARTZ_DUST = Q.register("quartz_dust");
     public static Item ANCIENT_DUST = Q.register("ancient_dust");
     public static Item ANCIENT_BUN = Q.register("ancient_bun");
+    public static Item ANCIENT_ROD = Q.register("ancient_rod");
     public static Item NETHERITE_DUST = Q.register("netherite_dust");
 
     public static Item STEEL_IN_A_BOTTLE = Q.register("steel_in_a_bottle", SteelInABottleItem::new);
