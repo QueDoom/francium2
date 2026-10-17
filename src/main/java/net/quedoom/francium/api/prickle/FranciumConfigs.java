@@ -32,6 +32,12 @@ public class FranciumConfigs {
     @RangedFloat(min = 0F, max = 1F)
     public float stoke_fire_chance = 1f;
 
+    @Value(name = "stoked_fire_time", comment = "How long Stoked Fire burns (give or take)")
+    public int stoked_fire_time = 120;
+
+    @Value(name = "stoked_fire_blow_adding", comment = "How much to reset the burn timer when blowing, negative means full reset")
+    public int stoked_fire_blow_adding = -1;
+
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)

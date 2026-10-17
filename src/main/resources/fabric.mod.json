@@ -29,6 +29,9 @@
 		],
 		"rrv_client": [
 			"net.quedoom.francium.api.rrv.FranciumRRVClientIntegration"
+		],
+		"modmenu": [
+			"net.quedoom.francium.api.modmenu.FranciumModMenuApi"
 		]
 
 	},"custom": {

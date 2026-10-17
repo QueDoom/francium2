@@ -1,5 +1,6 @@
 package net.quedoom.francium.api.modmenu;
 
+import com.terraformersmc.modmenu.ModMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.screens.Screen;
@@ -25,6 +26,11 @@ public class FranciumOptionsScreen extends OptionsSubScreen {
             AbstractWidget right = i + 1 < widgets.size() ? widgets.get(i + 1) : null;
             this.list.addSmall(left, right); // adjust to the overload that actually exists
         }
+    }
+
+    @Override
+    public void added() {
+        ModMenu.LOGGER.info("Opened Config Screen for Francium 2");
     }
 
     @Override

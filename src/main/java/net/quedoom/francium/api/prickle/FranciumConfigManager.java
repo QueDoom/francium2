@@ -17,11 +17,16 @@ import java.util.Locale;
 
 public class FranciumConfigManager {
     private static final String CONFIG_ID = "francium";
-    public static FranciumConfigs CONFIG = ConfigManager.load(CONFIG_ID, new FranciumConfigs());
+    public static FranciumConfigs CONFIG = firstLoad();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     private static Path path() {
         return FabricLoader.getInstance().getConfigDir().resolve(CONFIG_ID + ".json");
+    }
+
+    private static FranciumConfigs firstLoad() {
+        PrickleMod.LOG.info("Loaded Francium configs!");
+        return ConfigManager.load(CONFIG_ID, new FranciumConfigs());
     }
 
     public static void load() {
@@ -29,7 +34,10 @@ public class FranciumConfigManager {
     }
 
     public static void save() {
+        PrickleMod.LOG.info("Saving configs for Francium...");
         Path path = path();
+        System.currentTimeMillis();
+        long time;
         try {
             JsonObject root;
             try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -37,6 +45,7 @@ public class FranciumConfigManager {
             }
 
             for (Field field : FranciumConfigs.class.getDeclaredFields()) {
+                time = System.currentTimeMillis();
                 Value meta = field.getAnnotation(Value.class);
                 if (meta == null) continue;
                 field.setAccessible(true);
@@ -49,6 +58,12 @@ public class FranciumConfigManager {
                 JsonElement value = GSON.toJsonTree(field.get(CONFIG));
                 entry.add("value", value);
                 root.add(key, entry);
+                long writeTime = System.currentTimeMillis() - time;
+                if (writeTime > 10) {
+                    PrickleMod.LOG.warn("Wrote {} in {}ms", field.getName(), writeTime);
+                } else {
+                    PrickleMod.LOG.info("Wrote {} in {}ms", field.getName(), writeTime < 1 ? "<1" : writeTime);
+                }
             }
 
             try (BufferedWriter writer = Files.newBufferedWriter(path)) {
@@ -59,6 +74,7 @@ public class FranciumConfigManager {
             PrickleMod.LOG.error("Couldn't save Francium config!");
             e.printStackTrace();
         }
+        PrickleMod.LOG.info("Saved Francium config!");
     }
 
     private static String findKey(JsonObject root, Field field, Value meta) {
@@ -70,6 +86,6 @@ public class FranciumConfigManager {
     }
 
     public static void init() {
-        PrickleMod.LOG.info("Loading Configs for Francium...");
+        PrickleMod.LOG.info("Loading configs for Francium...");
     }
 }
