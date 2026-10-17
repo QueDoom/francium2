@@ -1,0 +1,1 @@
+tellraw @s {"italic":false,"text":"Open the advancements menu to get help with the mod"}
