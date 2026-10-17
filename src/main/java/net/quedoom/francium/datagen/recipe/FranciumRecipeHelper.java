@@ -219,14 +219,10 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
                 .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()));
     }
     public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, String suffix) {
-        new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem()))
-                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
-                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()) + '_' + suffix);
+        obsidianMixing(firstItem, secondItem, thirdItem, fourthItem, time, result, 1, suffix);
     }
     public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result) {
-        new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem()))
-                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
-                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()));
+        obsidianMixing(firstItem, secondItem, thirdItem, fourthItem, time, result, 1);
     }
     public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, int count, String suffix) {
         new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem(), count))
