@@ -6,7 +6,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.quedoom.francium.Francium;
 
 public class ModLootTables {
-    public static ResourceKey<LootTable> ADVANCEMENT_BUNDLE_TABLE = registerAdvancement("reward_bundle_table.json\n");
+    public static ResourceKey<LootTable> ADVANCEMENT_BUNDLE_TABLE = registerAdvancement("reward_bundle_table.json");
 
     private static ResourceKey<LootTable> register(final String location) {
         return ResourceKey.create(Registries.LOOT_TABLE, Francium.of(location));
