@@ -55,11 +55,11 @@ public class CasingCraftingClientRecipe extends ReliableClientRecipeWithoutTrans
 
     @Override
     public List<SlotContent> getResults() {
-        return List.of(this.fourthItem);
+        return List.of(this.resultCasing);
     }
 
     @Override
     public void renderRecipe(RecipeScreenContext context) {
-        context.guiGraphics().text(Minecraft.getInstance().font, Francium.translatable("rrv", "use_in_order"), 37, 5,-16777216, false);
+        context.guiGraphics().text(Minecraft.getInstance().font, Francium.translatable("rrv", "use_in_order"), 3, 3,-16777216, false);
     }
 }
