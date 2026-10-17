@@ -17,7 +17,7 @@ import net.quedoom.quet.misc.GetPath;
 
 public record BurningRecipe(Block block, float chance, BlockState result) implements Recipe<BlockRecipeInput> {
     public static final MapCodec<BurningRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(BurningRecipe::block),
+            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("item").forGetter(BurningRecipe::block),
             PrimitiveCodec.FLOAT.optionalFieldOf("chance", 0.5f).forGetter(BurningRecipe::chance),
             BlockState.CODEC.fieldOf("result").forGetter(BurningRecipe::result)
     ).apply(i, BurningRecipe::new));

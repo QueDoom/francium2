@@ -18,7 +18,7 @@ import java.util.Optional;
 
 public record BlowingRecipe(Block block, BlockState result) implements Recipe<BlockRecipeInput> {
     public static final MapCodec<BlowingRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(BlowingRecipe::block),
+            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("item").forGetter(BlowingRecipe::block),
             BlockState.CODEC.fieldOf("result").forGetter(BlowingRecipe::result)
     ).apply(i, BlowingRecipe::new));
 
