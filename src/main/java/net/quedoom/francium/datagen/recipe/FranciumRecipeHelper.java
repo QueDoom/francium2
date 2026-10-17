@@ -123,6 +123,64 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
         itemsBlocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, bottomBlockStorage, result, prefix);
     }
 
+    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
+        ;
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container")
+        ;
+    }
+    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
+        ;
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container_" + prefix)
+        ;
+    }
+
+    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
+        String tagPath = GetPath.get(result.asItem());
+
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy("has_" + tagPath, provider.has(items))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
+        ;
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy("has_" + tagPath, provider.has(items))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container")
+        ;
+    }
+    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
+        String tagPath = GetPath.get(result.asItem());
+
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy("has_" + tagPath, provider.has(items))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
+        ;
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
+                .unlockedBy("has_" + tagPath, provider.has(items))
+                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container_" + prefix)
+        ;
+    }
+    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
+        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock,  bottomBlockStorage, result, countResult);
+    }
+    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
+        itemsBlocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, bottomBlockStorage, result, countResult);
+    }
+    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
+        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock, bottomBlockStorage, result, countResult, prefix);
+    }
+    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
+        itemsBlocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, bottomBlockStorage, result, countResult, prefix);
+    }
+
     public void itemsAnvilPressing(ItemLike item, int count, Block block, Block containerBlock, ItemLike result) {
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, block, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
@@ -140,24 +198,45 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
                 .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + "_container_" + suffix);
     }
-    public void burning(Block block, float chance, BlockState result, String prefix) {
+    public void burning(Block block, float chance, BlockState result, String suffix) {
         new BurningRecipeBuilder(RecipeCategory.MISC, block, chance, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
-                .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()) + '_' + prefix);
+                .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()) + '_' + suffix);
     }
     public void burning(Block block, float chance, BlockState result) {
         new BurningRecipeBuilder(RecipeCategory.MISC, block, chance, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
                 .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()));
     }
-    public void blowing(Block block, BlockState result, String prefix) {
+    public void blowing(Block block, BlockState result, String suffix) {
         new BlowingRecipeBuilder(RecipeCategory.MISC, block, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
-                .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()) + '_' + prefix);
+                .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()) + '_' + suffix);
     }
     public void blowing(Block block, BlockState result) {
         new BlowingRecipeBuilder(RecipeCategory.MISC, block, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
                 .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()));
     }
+    public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, String suffix) {
+        new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem()))
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
+                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()) + '_' + suffix);
+    }
+    public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result) {
+        new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem()))
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
+                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()));
+    }
+    public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, int count, String suffix) {
+        new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem(), count))
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
+                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()) + '_' + suffix);
+    }
+    public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, int count) {
+        new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem(), count))
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
+                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()));
+    }
+
 }
