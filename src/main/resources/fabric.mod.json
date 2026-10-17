@@ -34,7 +34,8 @@
 	},"custom": {
 		"modmenu": {
 			"links": {
-				"modmenu.discord": "https://discord.gg/xkdXpApT5r"
+				"modmenu.discord": "https://discord.gg/xkdXpApT5r",
+				"modmenu.issues": "https://github.com/QueDoom/francium2/issues"
 			},
 			"badges": []
 		},
