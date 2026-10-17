@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://quedoom.com",
-		"sources": ""
+		"sources": "https://github.com/QueDoom/francium2"
 	},
 	"license": "MIT",
 	"icon": "assets/francium_2/icon.png",
