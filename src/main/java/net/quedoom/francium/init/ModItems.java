@@ -24,6 +24,8 @@ public class ModItems {
     public static QueTItem Q = new QueTItem(Francium.MOD_ID);
     
     public static Item DIRT_PILE = Q.register("dirt_pile", false);
+    public static Item CLAY_PILE = Q.register("clay_pile", false);
+    public static Item MUD_PILE = Q.register("mud_pile", false);
     public static Item BROKEN_STICK = Q.register("broken_stick");
     public static Item SAWDUST = Q.register("sawdust");
     public static Item GRAVEL_PILE = Q.register("gravel_pile", false);
