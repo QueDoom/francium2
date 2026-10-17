@@ -11,7 +11,7 @@
 		"homepage": "https://quedoom.com",
 		"sources": ""
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/francium_2/icon.png",
 	"environment": "*",
 	"entrypoints": {
