@@ -3,6 +3,7 @@ package net.quedoom.francium.block;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -79,8 +80,6 @@ public class WoodenMixerBlock extends BaseEntityBlock {
 
         if (veg > 0) type = 1;
         if (echo > 0) type = 2;
-//      Francium.LOGGER.info("Veg: {}", veg);
-//      Francium.LOGGER.info("Echo: {}", echo);
 
         if (type < 0) return InteractionResult.FAIL;
 
@@ -120,17 +119,17 @@ public class WoodenMixerBlock extends BaseEntityBlock {
             Optional<RecipeHolder<GlueMixingRecipe>> foundRecipe;
             if (level instanceof ServerLevel serverLevel) {
                 foundRecipe = serverLevel.recipeAccess().getRecipeFor(ModRecipeTypes.GLUE_MIXING, input, serverLevel);
-//          Francium.LOGGER.info("SERVER");
             } else {
-//          Francium.LOGGER.info("CLIENT");
                 return false;
             }
             foundRecipe.ifPresentOrElse((recipe) -> {
-//          Francium.LOGGER.info("craft");
                 ItemStack result = recipe.value().assemble(input);
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), result);
                 level.setBlockAndUpdate(pos, this.defaultBlockState());
                 if (!player.hasInfiniteMaterials()) stack.shrink(1);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ModAdvancementTriggers.MAKE_GLUE_EVENT.trigger(serverPlayer, result);
+                }
             }, () -> {
             });
             return foundRecipe.isPresent();
@@ -138,9 +137,6 @@ public class WoodenMixerBlock extends BaseEntityBlock {
     }
 
     private GlueMixerInput createRecipeInput(ItemStack stack, ItemStack strength, ItemStack gType) {
-//      Francium.LOGGER.info(stack.toString());
-//      Francium.LOGGER.info(strength.toString());
-//      Francium.LOGGER.info(gType.toString());
         return new GlueMixerInput(gType, strength, stack);
     }
 
