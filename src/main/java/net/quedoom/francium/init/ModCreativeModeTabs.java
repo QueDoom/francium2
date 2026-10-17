@@ -51,6 +51,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.ECHO_GLUE);
       output.accept(ModItems.GLUE_MIX);
       output.accept(ModItems.NETHER_GLUE);
+      output.accept(ModItems.FIRE_ESSENCE);
 
       output.accept(ModItems.TOOLBOX);
 

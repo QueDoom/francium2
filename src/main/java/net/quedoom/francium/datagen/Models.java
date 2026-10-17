@@ -176,6 +176,7 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.ECHO_GLUE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GLUE_MIX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.NETHER_GLUE, ModelTemplates.FLAT_ITEM);
+        qtItemModelGenerators.generateGenerated(ModItems.FIRE_ESSENCE);
 
         itemModelGenerators.generateFlatItem(ModItems.SHARP_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
 

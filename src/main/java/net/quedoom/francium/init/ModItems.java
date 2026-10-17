@@ -146,6 +146,7 @@ public class ModItems {
     public static Item PACKED_BASALT = Q.register("packed_basalt");
     public static Item PACKED_DEEPSLATE = Q.register("packed_deepslate");
     public static Item PACKED_NETHERRACK = Q.register("packed_netherrack");
+    public static Item FIRE_ESSENCE = Q.register("fire_essence");
     public static Item PACKED_DIRT = Q.register("packed_dirt");
     public static Item PACKED_PLANKS = Q.register("packed_planks");
 
