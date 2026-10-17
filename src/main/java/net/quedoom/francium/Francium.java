@@ -9,7 +9,7 @@ import net.minecraft.resources.Identifier;
 
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.api.LoadedMods;
-import net.quedoom.francium.api.prickle.FranciumConfigs;
+import net.quedoom.francium.api.prickle.FranciumConfigManager;
 import net.quedoom.francium.init.*;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import org.slf4j.Logger;
@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 public class Francium implements ModInitializer {
 	public static final String MOD_ID = "francium_2";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final FranciumConfigs CONFIG = ConfigManager.load("francium", new FranciumConfigs());
 
 	public static Identifier of(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
@@ -35,6 +34,9 @@ public class Francium implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LoadedMods.set();
+		FranciumConfigManager.init();
+
+		if (!LoadedMods.MODMENU_BADGES) LOGGER.warn("You should get Modmenu Badges lib :), I'd quite like it!");
 
 		QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
 		ModAdvancementTriggers.init();
