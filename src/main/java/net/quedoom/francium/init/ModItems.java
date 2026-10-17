@@ -87,6 +87,8 @@ public class ModItems {
     public static Item VEGAN_GLUE = Q.register("vegan_glue");
     public static Item SUPER_GLUE = Q.register("super_glue");
     public static Item ECHO_GLUE = Q.register("echo_glue");
+    public static Item GLUE_MIX = Q.register("glue_mix");
+    public static Item NETHER_GLUE = Q.register("nether_glue");
 
     public static Item BEDROCK_PILE = Q.register("bedrock_pile", false);
     public static Item BEDROCK_PEBBLES = Q.register("bedrock_pebbles");
