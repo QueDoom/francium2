@@ -6,14 +6,13 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ConcretePowderBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.quedoom.francium.block.ModdedBambooStalkBlock;
-import net.quedoom.francium.block.RotatableStonecutterBlock;
-import net.quedoom.francium.block.SolidSugarCaneBlock;
+import net.quedoom.francium.block.*;
 import net.quedoom.francium.block.thicc_farming.EighthsDrinkableBlock;
 import net.quedoom.francium.block.thicc_farming.RotateableEighthsEatableBlock;
 import net.quedoom.francium.block.thicc_farming.ShearableEightsEatableBlock;
@@ -21,6 +20,7 @@ import net.quedoom.francium.block.thicc_crops.ThickableBeetrootBlock;
 import net.quedoom.francium.block.thicc_crops.ThickableCarrotBlock;
 import net.quedoom.francium.block.thicc_crops.ThickablePotatoBlock;
 import net.quedoom.francium.init.ReRegistrator;
+import net.quedoom.francium.util.ColorHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,6 +39,17 @@ public class RegisterBlockMixin {
     private static void register(ResourceKey<Block> id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, CallbackInfoReturnable<Block> cir) {
         ReRegistrator reRegistrator = new ReRegistrator(id, factory, properties, cir);
         String name = id.toString();
+
+        reRegister(name.contains("wool") && name.contains("minecraft"), id, cir, p -> new WoolBlock(ColorHelper.dyeColorFromString(name), p), properties);
+        reRegister(name.contains("carpet") && name.contains("minecraft") && !name.contains("moss"), id, cir, p -> new WoolCarpetBlock(ColorHelper.dyeColorFromString(name), p), properties);
+
+        if (name.contains("concrete") && name.contains("minecraft")) {
+            if (name.contains("powder")) {
+                reRegister(true, id, cir, p -> new PowderedConcreteBlock(ColorHelper.dyeColorFromString(name), p), properties);
+            } else {
+                reRegister(true, id, cir, p -> new ConcreteBlock(ColorHelper.dyeColorFromString(name), p), properties);
+            }
+        }
 
         reRegister(name.equals(string("potatoes")), id, cir, ThickablePotatoBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
         reRegister(name.equals(string("carrots")), id, cir, ThickableCarrotBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
@@ -99,15 +110,15 @@ public class RegisterBlockMixin {
 
     @Unique
     private static String string(String string) {
-        return "ResourceKey[minecraft:block / minecraft:" + string + "]";
+        return "ResourceKey[minecraft:item / minecraft:" + string + "]";
     }
     @Unique
     private static String string(String namespace, String string) {
-        return "ResourceKey[minecraft:block / " + namespace + ":" + string + "]";
+        return "ResourceKey[minecraft:item / " + namespace + ":" + string + "]";
     }
     @Unique
     private static String string(Identifier identifier) {
-        return "ResourceKey[minecraft:block / " + identifier.getNamespace() + ":" +  identifier.getPath() + "]";
+        return "ResourceKey[minecraft:item / " + identifier.getNamespace() + ":" +  identifier.getPath() + "]";
     }
 
     @Unique
