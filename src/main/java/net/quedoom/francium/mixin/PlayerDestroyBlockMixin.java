@@ -78,14 +78,16 @@ public class PlayerDestroyBlockMixin {
         }
 
         if (state.is(ModTags.Blocks.TILLS)) {
-            boolean blocks = state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.ROOTED_DIRT) || state.is(Blocks.COARSE_DIRT) || state.is(Blocks.PODZOL);
+            boolean blocks = state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.ROOTED_DIRT) || state.is(Blocks.COARSE_DIRT) || state.is(Blocks.PODZOL) || state.is(Blocks.MYCELIUM);
             if (destroyedWith.is(ItemTags.HOES)) {
                 level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState());
                 ci.cancel();
             } else {
                 if (blocks) {
                     level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
-                    ci.cancel();
+                    if (!state.is(Blocks.MYCELIUM)) {
+                        ci.cancel();
+                    }
                 }
             }
         }
