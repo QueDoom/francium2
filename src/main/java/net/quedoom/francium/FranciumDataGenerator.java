@@ -15,13 +15,13 @@ import net.quedoom.quet.misc.QueTObjectStorage;
 public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 	@Override
 	protected void doDatagen(FabricDataGenerator fabricDataGenerator, FabricDataGenerator.Pack pack) {
+		pack.addProvider(ModAdvancements::new);
 		pack.addProvider(BlockTagGen::new);
 		pack.addProvider(ItemTagGen::new);
 		pack.addProvider(Francium2LanguageProvider::new);
 		pack.addProvider(Loot::new);
 		pack.addProvider(Models::new);
 		pack.addProvider(RecipeGen::new);
-		pack.addProvider(ModAdvancements::new);
 	}
 
 	@Override
