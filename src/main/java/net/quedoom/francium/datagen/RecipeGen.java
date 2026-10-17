@@ -101,7 +101,8 @@ public class RecipeGen extends QueTRecipeProvider {
                 recipes.obsidianMixing(ModItems.GLUE, ModItems.VEGAN_GLUE, ModItems.ECHO_GLUE, ModItems.SUPER_GLUE, 140, ModItems.GLUE_MIX);
                 recipes.obsidianMixing(ModItems.ANCIENT_DUST, ModItems.ANCIENT_DUST, ModItems.GOLD_DUST, ModItems.GOLD_DUST, 260, ModItems.NETHERITE_DUST);
                 recipes.obsidianMixing(ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, 140, Items.GLASS);
-                recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.SLIME_BLOCK, 200, ModItems.NETHER_GLUE, 6);
+                recipes.obsidianMixing(ModItems.FIRE_ESSENCE, Items.NETHERRACK, Items.NETHERRACK, ModItems.FIRE_ESSENCE, 60, Items.MAGMA_BLOCK);
+                recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.MAGMA_BLOCK, 200, ModItems.NETHER_GLUE, 6);
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 
