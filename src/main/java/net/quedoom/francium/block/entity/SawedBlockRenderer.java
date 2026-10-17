@@ -119,7 +119,7 @@ public class SawedBlockRenderer implements BlockEntityRenderer<SawedBlockEntity,
                 float maxZ = minZ + OCTANT_SIZE_PX;
 
                 for (Direction face : Direction.values()) {
-                    // Skip faces that touch another enabled octant (hidden inside the block)
+                    // Skip faces that touch another enabled octant (hidden inside the item)
                     int neighborEastBit = octantEastBit + face.getStepX();
                     int neighborUpBit = octantUpBit + face.getStepY();
                     int neighborSouthBit = octantSouthBit + face.getStepZ();
@@ -148,7 +148,7 @@ public class SawedBlockRenderer implements BlockEntityRenderer<SawedBlockEntity,
                         float cornerY = corner[1];
                         float cornerZ = corner[2];
 
-                        // UV from position inside the FULL cube (0..16), so the texture matches the uncut block
+                        // UV from position inside the FULL cube (0..16), so the texture matches the uncut item
                         float fullBlockU;
                         float fullBlockV;
                         switch (face) {

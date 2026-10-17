@@ -28,7 +28,6 @@ import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.entity.SawedBlockEntity;
 import net.quedoom.francium.init.ModProperties;
 import net.quedoom.francium.util.EighthsEatableOctant;
-import net.quedoom.francium.util.QTLogger;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -257,13 +256,13 @@ public class SawedBlock extends BaseEntityBlock {
             char ew = crazyDX < 0.5 ? 'w' : 'e';
             char ud = crazyDY < 0.5 ? 'd' : 'u';
 
-            return QTLogger.logAndReturn(EighthsEatableOctant.ofChars(ns, ew, ud));
+            return EighthsEatableOctant.ofChars(ns, ew, ud);
         } else {
             char ns = dz < 0.5 ? 'n' : 's';
             char ew = dx < 0.5 ? 'w' : 'e';
             char ud = dy < 0.5 ? 'd' : 'u';
 
-            return QTLogger.logAndReturn(EighthsEatableOctant.ofChars(ns, ew, ud));
+            return EighthsEatableOctant.ofChars(ns, ew, ud);
         }
     }
 
