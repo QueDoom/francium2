@@ -6,6 +6,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.quedoom.francium.api.prickle.FranciumConfigManager;
+import net.quedoom.francium.api.prickle.FranciumConfigs;
 import net.quedoom.francium.block.BellowBlock;
 import net.quedoom.francium.init.ModBlockEntities;
 import net.quedoom.francium.init.ModEntityTypes;
@@ -30,7 +32,7 @@ public class BellowBlockEntity extends BlockEntity {
         if (!(entity instanceof BellowBlockEntity blockEntity)) return;
         if (!(state.getBlock() instanceof BellowBlock bellowBlock)) return;
         blockEntity.add();
-        if (blockEntity.tick % 20 == 0) {
+        if (blockEntity.tick % FranciumConfigManager.CONFIG.bellow_delay == 0) {
             bellowBlock.raise(level, pos, state);
         }
     }

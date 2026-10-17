@@ -1,6 +1,7 @@
 package net.quedoom.francium.block;
 
 import com.mojang.serialization.MapCodec;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -23,7 +24,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.api.prickle.FranciumConfigManager;
 import net.quedoom.francium.block.entity.BellowBlockEntity;
+import net.quedoom.francium.block.entity.StokedFireEntity;
 import net.quedoom.francium.init.ModBlockEntities;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.recipe.BlowingRecipe;
@@ -72,7 +75,7 @@ public class BellowBlock extends BaseEntityBlock {
          if (pressure != 0) {
              level.setBlockAndUpdate(pos, onState.setValue(PRESSURE, pressure - 1));
          }
-         if (pressure < 3) {
+         if (pressure < 3 && pressure != 0) {
              double relX = 0, relZ = 0;
              double relY = pressure == 0 ? 0.25D : 0.28125D;
 
@@ -97,9 +100,6 @@ public class BellowBlock extends BaseEntityBlock {
              if (pressure <= 1) {
                  if (!(level instanceof ServerLevel server)) return;
                  BlockState targetState = level.getBlockState(targetPos);
-                 Logger LOGGER = Francium.LOGGER;
-                 LOGGER.info("Blowing the block: {}, on pos: {}", targetState, targetPos);
-
 
                  if (targetState.is(Blocks.FIRE)) {
                      boolean north = targetState.getValue(FireBlock.NORTH);
@@ -109,8 +109,14 @@ public class BellowBlock extends BaseEntityBlock {
                      boolean up = targetState.getValue(FireBlock.UP);
 
                      if (!north && !east && !south && !west && !up) {
-                         level.setBlockAndUpdate(targetPos, ModBlocks.STOKED_FIRE.defaultBlockState());
+                         if (level.getRandom().nextFloat() <= FranciumConfigManager.CONFIG.stoke_fire_chance)
+                             level.setBlockAndUpdate(targetPos, ModBlocks.STOKED_FIRE.defaultBlockState());
+
                      }
+                 }
+
+                 if (targetState.is(ModBlocks.STOKED_FIRE)) {
+                     ((StokedFireEntity) level.getBlockEntity(targetPos)).blow();
                  }
 
                  BlowingRecipe.find(server, targetState.getBlock()).ifPresent(blowingRecipeRecipeHolder ->
@@ -126,7 +132,7 @@ public class BellowBlock extends BaseEntityBlock {
     }
 
     public void raise(Level level, BlockPos pos, BlockState state) {
-        if (!level.getEntitiesOfClass(Player.class, AABB.encapsulatingFullBlocks(pos, pos.above())).isEmpty()) return;
+        if (!level.getEntitiesOfClass(Player.class, AABB.encapsulatingFullBlocks(pos, pos.above()).setMaxY(pos.above().getY())).isEmpty()) return;
         int pressure = state.getValue(PRESSURE);
         if (pressure < 7) {
             level.setBlockAndUpdate(pos, state.setValue(PRESSURE, pressure + 1));
@@ -159,7 +165,7 @@ public class BellowBlock extends BaseEntityBlock {
                 zd = 0;
             }
         }
-        level.addParticle(new DustParticleOptions(15788758,  ((float) Math.max(Math.random(), 0.75))),
+        level.addParticle(new DustParticleOptions(15921649,  ((float) Math.max(Math.random(), 0.75))),
                 pos.getX() + relativeX, pos.getY() + relativeY, pos.getZ() + relativeZ,
                 xd, yd, zd
         );
@@ -169,7 +175,7 @@ public class BellowBlock extends BaseEntityBlock {
         return Math.clamp(Math.random(), 0.25D, 0.75D) - 0.5D;
     }
     private double significant() {
-        return Math.clamp(Math.random() * 3, 1.25D, 2.75);
+        return Math.max(Math.random() * 16, 1.25D);
     }
 
     @Override
