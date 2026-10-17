@@ -34,6 +34,9 @@ public class ModBlockEntities {
     public static final BlockEntityType<BellowBlockEntity> BELLOW_ENTITY =
             Q.register("bellow", BellowBlockEntity::new, ModBlocks.BELLOW);
 
+    public static final BlockEntityType<StokedFireEntity> STOKED_FIRE_ENTITY =
+            Q.register("stoked_fire", StokedFireEntity::new, ModBlocks.STOKED_FIRE);
+
     
     public static void registerBlockEntities() {}
 
