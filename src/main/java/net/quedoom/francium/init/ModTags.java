@@ -36,6 +36,8 @@ public class ModTags {
         public static final TagKey<Block> TUFF_ROCKS_REPLACEABLE = Q.create("tuff_rocks_replaceable");
 
         public static final TagKey<Block> GROWS_INTO_THICK = Q.create("grows_into_thick");
+
+        public static final TagKey<Block> CRUSHED_BY_HEAVY_ANVIL = Q.create("crushed_by_heavy_anvil");
     }
     public static class Items {
         private static final QueTTag.QTItemTags Q = BUILDER.item();

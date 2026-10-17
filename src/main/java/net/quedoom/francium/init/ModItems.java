@@ -122,6 +122,7 @@ public class ModItems {
     public static Item OBSIDIAN_INFUSED_DIAMOND = Q.register("obsidian_infused_diamond");
 
     public static Item CACTUS_PAPER = Q.register("cactus_paper");
+    public static Item OBSIDIAN_COATED_LEATHER = Q.register("obsidian_coated_leather");
     public static Item OBSIDIAN_BOOK = Q.register("obsidian_book");
 
     public static Item RAW_SLOT = Q.register("raw_slot");

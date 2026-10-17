@@ -104,6 +104,23 @@ public class ModRecipeTypes {
             }
     );
 
+    public static final RecipeSerializer<ObsidianMixerRecipe> OBSIDIAN_MIXING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.of(ObsidianMixerRecipe.Type.ID),
+            new RecipeSerializer<>(ObsidianMixerRecipe.CODEC, ObsidianMixerRecipe.STREAM_CODEC)
+    );
+
+    public static final RecipeType<ObsidianMixerRecipe> OBSIDIAN_MIXING = Registry.register(
+            BuiltInRegistries.RECIPE_TYPE,
+            Francium.of(ObsidianMixerRecipe.Type.ID),
+            new RecipeType<ObsidianMixerRecipe>() {
+                @Override
+                public String toString() {
+                    return ObsidianMixerRecipe.Type.ID;
+                }
+            }
+    );
+
     public static final RecipeSerializer<TradingRecipe> TRADING_SERIALIZER = Registry.register(
             BuiltInRegistries.RECIPE_SERIALIZER,
             Francium.of(TradingRecipe.Type.ID),

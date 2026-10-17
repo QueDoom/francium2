@@ -36,6 +36,8 @@ public class Models extends QueTModelProvider {
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
         blockModelGenerators.family(ModBlocks.RUBBER_BLOCK);
+        blockModelGenerators.family(ModBlocks.STEEL_BLOCK);
+
         Identifier woodenCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.WOODEN_CASING);
         Identifier stoneCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.STONE_CASING);
         Identifier obsidianCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.OBSIDIAN_CASING);
@@ -101,6 +103,8 @@ public class Models extends QueTModelProvider {
         qtItemModelGenerators.addFlatItems();
 
         itemModelGenerators.generateFlatItem(ModItems.DIRT_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CLAY_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.MUD_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SAWDUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BROKEN_STICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRAVEL_PILE, PILE_FLAT_ITEM);
@@ -138,6 +142,7 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.ANCIENT_DUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.NETHERITE_DUST, PILE_FLAT_ITEM);
 
+        qtItemModelGenerators.generateGenerated(ModItems.OBSIDIAN_COATED_LEATHER);
 
         itemModelGenerators.generateFlatItem(ModItems.STEEL_IN_A_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.STEEL_DUST, PILE_FLAT_ITEM);
@@ -169,6 +174,8 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.VEGAN_GLUE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SUPER_GLUE, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ECHO_GLUE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.GLUE_MIX, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.NETHER_GLUE, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.SHARP_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
 

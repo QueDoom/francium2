@@ -29,7 +29,7 @@ public class ModBlocks  {
     public static final Block GLUE_MIXER = Q.register("glue_mixer", WoodenMixerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).noOcclusion()
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
-    public static final Block OBSIDIAN_MIXER = Q.register("obsidian_mixer", ObsidianMixerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).noOcclusion());
+    public static final Block OBSIDIAN_MIXER = Q.register("obsidian_mixer", ObsidianMixerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).noOcclusion().randomTicks());
     public static final Block WOODEN_MERGER = Q.register("wooden_merger", WoodenMergerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS)
             .strength(2.5F, 3.5F).sound(SoundType.WOOD));
@@ -40,9 +40,7 @@ public class ModBlocks  {
     public static final Block BUNDLE_TABLE = Q.register("bundle_table", BundleTableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
     public static final Block TRADER_BENCH = Q.register("trader_bench", TraderBenchBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
 
-public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
-
-    public static final Block MINERAL_MIX_BLOCK = Q.register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
+    public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).noOcclusion());
 
     public static final Block STONE_CASING = Q.register("stone_casing", StoneCasingBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).noOcclusion());
 
@@ -68,11 +66,21 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
     public static final Block WOODEN_CASING_WITH_HEAVY_ANVIL = Q.register("wooden_casing_with_heavy_anvil", WoodenCasingWithHeavyAnvilBlock::new,
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
 
+    // region packed blocks
+
+    public static final Block MINERAL_MIX_BLOCK = Q.register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
+    public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
+    public static final Block HEAVY_SCULK = Q.register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
+    public static final Block RUBBER_BLOCK = Q.register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
+    public static final Block STEEL_BLOCK = Q.register("steel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
+    public static final Block STEEL_WEDGE = Q.register("steel_wedge", SteelWedgeBlock::new, BlockBehaviour.Properties.ofFullCopy(STEEL_BLOCK).noOcclusion());
+
+    //endregion packed blocks
+
     public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
     public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.9F).sound(SoundType.STONE).pushReaction(PushReaction.BLOCK));
-    public static final Block STOKED_FIRE = Q.register("stoked_fire", StokedFireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE).randomTicks(), false);
+    public static final Block STOKED_FIRE = Q.register("stoked_fire", StokedFireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE), false);
 
-    public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
 
     public static final Block FORBIDDEN_DUST = Q.register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
     public static final Block FORBIDDEN_FLAKE = Q.register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
@@ -88,9 +96,6 @@ public static final Block WOODEN_CASING = Q.register("wooden_casing", WoodenCasi
 
     public static final Block FRYING_PAN_CAMPFIRE = Q.register("frying_pan_campfire", FryingPanCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
     public static final Block POT_CAMPFIRE = Q.register("pot_campfire", PotCampfireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).sound(SoundType.IRON), false);
-
-    public static final Block HEAVY_SCULK = Q.register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
-    public static final Block RUBBER_BLOCK = Q.register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
 
     public static final Block SAWED_BLOCK = Q.register("sawed_block", SawedBlock::new, BlockBehaviour.Properties.of().noLootTable().strength(-1).noOcclusion(), false);
 

@@ -49,6 +49,8 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.VEGAN_GLUE);
       output.accept(ModItems.SUPER_GLUE);
       output.accept(ModItems.ECHO_GLUE);
+      output.accept(ModItems.GLUE_MIX);
+      output.accept(ModItems.NETHER_GLUE);
 
       output.accept(ModItems.TOOLBOX);
 
@@ -128,6 +130,8 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.STEEL_IN_A_BOTTLE);
       output.accept(ModItems.STEEL_DUST);
       output.accept(ModItems.STEEL_INGOT);
+      output.accept(ModBlocks.STEEL_BLOCK);
+      output.accept(ModBlocks.STEEL_WEDGE);
       output.accept(ModItems.STEEL_BOWL);
       output.accept(ModItems.FRYING_PAN);
       output.accept(ModItems.POT);
@@ -136,6 +140,8 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.SAWDUST);
       output.accept(ModItems.GRAVEL_PILE);
       output.accept(ModItems.SAND_PILE);
+      output.accept(ModItems.CLAY_PILE);
+      output.accept(ModItems.MUD_PILE);
       output.accept(ModItems.GLASS_SHARDS);
       output.accept(ModItems.ANDESITE_PILE);
       output.accept(ModItems.DIORITE_PILE );
@@ -167,6 +173,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.NETHER_QUARTZ_ORE_PILE);
       output.accept(ModItems.NETHER_QUARTZ_DUST);
       output.accept(ModItems.ANCIENT_DUST);
+      output.accept(ModItems.ANCIENT_ROD);
       output.accept(ModItems.NETHERITE_DUST);
       output.accept(ModBlocks.ANCIENT_BUNS);
       output.accept(ModItems.ANCIENT_BUN);
