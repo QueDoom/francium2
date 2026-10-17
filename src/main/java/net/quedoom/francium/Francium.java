@@ -37,6 +37,8 @@ public class Francium implements ModInitializer {
 		LoadedMods.set();
 
 		QTTranslationBuilder.SHOULD_AUTO_TRANSLATE_BY_DEFAULT = true;
+		ModAdvancementTriggers.init();
+
 		ModItems.registerItem();
 		ModCreativeModeTabs.registerTabs();
 
