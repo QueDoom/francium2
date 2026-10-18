@@ -125,12 +125,18 @@ public class DestroyBlock {
         if (state.is(ModTags.Blocks.NETHER_ORES)) {
             level.setBlock(pos, Blocks.NETHERRACK.defaultBlockState(), 1);
         }
+        if (state.is(ModTags.Blocks.TUFF_ORES)) {
+            level.setBlock(pos, Blocks.TUFF.defaultBlockState(), 1);
+        }
 
         if (state.is(Blocks.STONE)) {
             level.setBlock(pos, Blocks.COBBLESTONE.defaultBlockState(), 1);
         }
         if (state.is(Blocks.DEEPSLATE)) {
             level.setBlock(pos, Blocks.COBBLED_DEEPSLATE.defaultBlockState(), 1);
+        }
+        if (state.is(Blocks.TUFF)) {
+            level.setBlock(pos, ModBlocks.COBBLED_TUFF.defaultBlockState(), 1);
         }
 
         if (state.is(Blocks.ANCIENT_DEBRIS)) {

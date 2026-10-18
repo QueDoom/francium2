@@ -66,6 +66,21 @@ public class ModBlocks  {
     public static final Block WOODEN_CASING_WITH_HEAVY_ANVIL = Q.register("wooden_casing_with_heavy_anvil", WoodenCasingWithHeavyAnvilBlock::new,
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
 
+    // region slabs
+    public static final Block COARSE_DIRT_SLAB = registerFallableSlab("coarse_dirt_slab", "minecraft:coarse_dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.COARSE_DIRT));
+    public static final Block DIRT_SLAB = registerFallableSlab("dirt_slab", "minecraft:dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
+    public static final Block SAND_SLAB = registerFallableSlab("sand_slab", "minecraft:sand", BlockBehaviour.Properties.ofFullCopy(Blocks.RED_SAND));
+    public static final Block RED_SAND_SLAB = registerFallableSlab("red_sand_slab", "minecraft:red_sand", BlockBehaviour.Properties.ofFullCopy(Blocks.SAND));
+    public static final Block CLAY_SLAB = registerFallableSlab("clay_slab", "minecraft:clay", BlockBehaviour.Properties.ofFullCopy(Blocks.CLAY));
+    public static final Block GRAVEL_SLAB = registerFallableSlab("gravel_slab", "minecraft:gravel", BlockBehaviour.Properties.ofFullCopy(Blocks.GRAVEL));
+    public static final Block SOUL_SLAB = registerFallableSlab("soul_slab", "minecraft:soul_sand", BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_SAND));
+
+    // endregion slabs
+
+    private static Block registerFallableSlab(String name, String fullBlock, BlockBehaviour.Properties properties) {
+        return Q.register(name, p -> new FallingSlabBlock(fullBlock, p), properties);
+    }
+
     // region packed blocks
 
     public static final Block MINERAL_MIX_BLOCK = Q.register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
@@ -75,6 +90,9 @@ public class ModBlocks  {
     public static final Block STEEL_BLOCK = Q.register("steel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
     public static final Block STEEL_WEDGE = Q.register("steel_wedge", SteelWedgeBlock::new, BlockBehaviour.Properties.ofFullCopy(STEEL_BLOCK).noOcclusion());
 
+    public static final Block COBBLED_TUFF = Q.register("cobbled_tuff", BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF).strength(1.75F, 6.5F));
+    public static final Block COAL_TUFF_ORE = Q.register("coal_tuff_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF).strength(2.25F, 7F));
+    public static final Block COPPER_TUFF_ORE = Q.register("copper_tuff_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF).strength(2.25F, 7F));
     //endregion packed blocks
 
     public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
