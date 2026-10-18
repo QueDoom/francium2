@@ -1,12 +1,7 @@
 package net.quedoom.francium.init;
 
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.quet.init.QueTCreativeTab;
@@ -54,6 +49,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.FIRE_ESSENCE);
 
       output.accept(ModItems.TOOLBOX);
+      output.accept(ModItems.FLATTENED_ENDER_PEARL);
       output.accept(ModItems.DASH_ORB);
 
       output.accept(ModBlocks.BELLOW);
@@ -138,10 +134,18 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.FRYING_PAN);
       output.accept(ModItems.POT);
 
+      output.accept(ModBlocks.COARSE_DIRT_SLAB);
+      output.accept(ModBlocks.DIRT_SLAB);
+      output.accept(ModBlocks.SAND_SLAB);
+      output.accept(ModBlocks.RED_SAND_SLAB);
+      output.accept(ModBlocks.CLAY_SLAB);
+      output.accept(ModBlocks.GRAVEL_SLAB);
+      output.accept(ModBlocks.SOUL_SLAB);
+
       output.accept(ModItems.DIRT_PILE);
-      output.accept(ModItems.SAWDUST);
       output.accept(ModItems.GRAVEL_PILE);
       output.accept(ModItems.SAND_PILE);
+      output.accept(ModItems.RED_SAND_PILE);
       output.accept(ModItems.CLAY_PILE);
       output.accept(ModItems.MUD_PILE);
       output.accept(ModItems.GLASS_SHARDS);

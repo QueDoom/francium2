@@ -32,7 +32,9 @@ public class RotateableEighthsEatableBlock extends EighthsEatableBlock{
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return super.getStateForPlacement(context).setValue(FACING, context.getNearestLookingDirection().getOpposite());
+        Direction direction = context.getNearestLookingDirection().getOpposite();
+        Direction outputDir = direction == Direction.DOWN || direction == Direction.UP ? Direction.NORTH : direction;
+        return super.getStateForPlacement(context).setValue(FACING, outputDir);
     }
 
     @Override

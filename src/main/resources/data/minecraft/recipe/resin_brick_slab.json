@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "r": "minecraft:resing_brick"
+  },
+  "pattern": [
+    "  ",
+    "RR"
+  ],
+  "result": {
+    "id": "minecraft:resin_brick_slab"
+  }
+}

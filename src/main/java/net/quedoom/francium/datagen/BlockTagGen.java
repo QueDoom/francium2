@@ -54,6 +54,12 @@ public class BlockTagGen extends QueTBlockTagProvider {
                 .add(Blocks.EMERALD_ORE)
                 .add(Blocks.REDSTONE_ORE)
                 .add(Blocks.DIAMOND_ORE);
+        valueLookupBuilder(ModTags.Blocks.TUFF_ORES)
+                .add(
+                        ModBlocks.COPPER_TUFF_ORE,
+                        ModBlocks.COAL_TUFF_ORE
+                );
+
 
         valueLookupBuilder(ModTags.Blocks.DEEPSLATE_ORES)
                 .add(Blocks.DEEPSLATE_COAL_ORE)

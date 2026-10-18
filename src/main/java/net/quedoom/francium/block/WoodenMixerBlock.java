@@ -122,7 +122,7 @@ public class WoodenMixerBlock extends BaseEntityBlock {
             } else {
                 return false;
             }
-            foundRecipe.ifPresentOrElse((recipe) -> {
+            foundRecipe.ifPresent((recipe) -> {
                 ItemStack result = recipe.value().assemble(input);
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), result);
                 level.setBlockAndUpdate(pos, this.defaultBlockState());
@@ -130,7 +130,6 @@ public class WoodenMixerBlock extends BaseEntityBlock {
                 if (player instanceof ServerPlayer serverPlayer) {
                     ModAdvancementTriggers.MAKE_GLUE_EVENT.trigger(serverPlayer, result);
                 }
-            }, () -> {
             });
             return foundRecipe.isPresent();
         }

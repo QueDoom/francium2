@@ -32,6 +32,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         pileTranslate(qtTranslationBuilder, ModItems.MUD_PILE, "Mud");
         pileTranslate(qtTranslationBuilder, ModItems.GRAVEL_PILE, "Gravel");
         pileTranslate(qtTranslationBuilder, ModItems.SAND_PILE, "Sand");
+        pileTranslate(qtTranslationBuilder, ModItems.RED_SAND_PILE, "Red Sand");
         pileTranslate(qtTranslationBuilder, ModItems.DIORITE_PILE, "Diorite");
         pileTranslate(qtTranslationBuilder, ModItems.GRANITE_PILE, "Granite");
         pileTranslate(qtTranslationBuilder, ModItems.ANDESITE_PILE, "Andesite");
@@ -54,6 +55,8 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         pileTranslate(qtTranslationBuilder, ModItems.BASALT_PILE, "Basalt");
         pileTranslate(qtTranslationBuilder, ModItems.NETHER_GOLD_ORE_PILE, "Nether Gold Ore");
         pileTranslate(qtTranslationBuilder, ModItems.NETHER_QUARTZ_ORE_PILE, "Nether Quartz Ore");
+        pileTranslate(qtTranslationBuilder, ModItems.COAL_LUMP, "Lump of Coal");
+        pileTranslate(qtTranslationBuilder, ModItems.RAW_COPPER_CLUMP, "Clump of Raw Copper");
 
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_DUST);
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_FLAKE);
@@ -92,6 +95,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModBlocks.ECHO_BLOCK);
         qtTranslationBuilder.auto(ModBlocks.ECHO_BLOCK.asItem());
         qtTranslationBuilder.auto(ModBlocks.STEEL_BLOCK);
+        qtTranslationBuilder.auto(ModBlocks.STEEL_WEDGE);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_SUGAR_CANE);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO);
         qtTranslationBuilder.auto(ModBlocks.STRIPPED_BAMBOO_ITEM);
@@ -102,6 +106,24 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         qtTranslationBuilder.auto(ModBlocks.THICK_BEETROOT);
         qtTranslationBuilder.auto(ModBlocks.THICK_BEETROOT_FOLIAGE);
         qtTranslationBuilder.auto(ModBlocks.THICK_APPLE);
+
+        qtTranslationBuilder.auto(ModBlocks.COBBLED_TUFF);
+        qtTranslationBuilder.auto(ModBlocks.COAL_TUFF_ORE);
+        qtTranslationBuilder.auto(ModBlocks.COPPER_TUFF_ORE);
+
+        qtTranslationBuilder.auto(ModBlocks.HEAVY_ANVIL);
+
+        // region slabs
+
+        qtTranslationBuilder.auto(ModBlocks.COARSE_DIRT_SLAB);
+        qtTranslationBuilder.auto(ModBlocks.DIRT_SLAB);
+        qtTranslationBuilder.auto(ModBlocks.SAND_SLAB);
+        qtTranslationBuilder.auto(ModBlocks.RED_SAND_SLAB);
+        qtTranslationBuilder.auto(ModBlocks.CLAY_SLAB);
+        qtTranslationBuilder.auto(ModBlocks.GRAVEL_SLAB);
+        qtTranslationBuilder.auto(ModBlocks.SOUL_SLAB);
+
+        // endregion slabs
 
         qtTranslationBuilder.auto(ModTags.Items.AMETHYST_ROCK_MATERIALS);
         qtTranslationBuilder.auto(ModTags.Items.BEDROCK_ROCK_MATERIALS);

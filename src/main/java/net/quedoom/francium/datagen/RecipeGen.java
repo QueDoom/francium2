@@ -22,11 +22,12 @@ import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
 import net.quedoom.francium.recipe.WoodenMixerGlueType;
 import net.quedoom.quet.datagen.recipe.QueTRecipeProvider;
 import net.quedoom.quet.misc.GetPath;
+import net.quedoom.quet.misc.LocalizedGetPath;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class RecipeGen extends QueTRecipeProvider {
+public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
     public RecipeGen(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
@@ -65,17 +66,18 @@ public class RecipeGen extends QueTRecipeProvider {
                 woodenMerging(this, output, ModItems.ANCIENT_ROD, ModItems.STEEL_BOWL, ModItems.ECHO_GLUE, ModItems.POT, 1);
                 deepMerging(this, output, ModItems.STEEL_INGOT,  ModItems.STEEL_BOWL, ModItems.STEEL_INGOT, ModItems.VEGAN_GLUE, ModItems.ANCIENT_ROD, ModItems.FRYING_PAN, 1);
 
-                woodenMerging(this, output, ModItems.ANDESITE_ALLOY,  ModItems.ROCK, ModItems.ECHO_GLUE,  ModItems.ANDESITE_COATED_ROCK,    1);
+                woodenMerging(this, output, ModItems.ANDESITE_ALLOY,  ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.ANDESITE_COATED_ROCK,    1);
                 woodenMerging(this, output, ModItems.DIORITE_ALLOY,   ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.DIORITE_COATED_ROCK,     1);
-                woodenMerging(this, output, ModItems.GRANITE_ALLOY,   ModItems.ROCK, ModItems.GLUE,       ModItems.GRANITE_COATED_ROCK,     1);
+                woodenMerging(this, output, ModItems.GRANITE_ALLOY,   ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.GRANITE_COATED_ROCK,     1);
                 woodenMerging(this, output, ModItems.AMETHYST_PASTE,  Items.DIAMOND, ModItems.SUPER_GLUE, ModItems.AMETHYST_COATED_DIAMOND, 1);
 
-                deepMerging(this, output, ModItems.ANDESITE_ALLOY,       ModItems.DIORITE_ALLOY,        ModItems.GRANITE_ALLOY,  ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX,                                                    1);
-                deepMerging(this, output, ModItems.OBSIDIAN_PASTE,       Items.LEATHER,                 ModItems.OBSIDIAN_PASTE, ModItems.SUPER_GLUE, ModItems.OBSIDIAN_COATED_LEATHER,                                        1);
-                deepMerging(this, output, ModItems.CACTUS_PAPER,         ModItems.CACTUS_PAPER,         ModItems.CACTUS_PAPER,   ModItems.ECHO_GLUE,  ModItems.OBSIDIAN_COATED_LEATHER, ModItems.OBSIDIAN_BOOK,                1);
-                deepMerging(this, output, ModItems.DIAMOND_DUST,         ModItems.DIAMOND_DUST,         ModItems.DIAMOND_DUST,   ModItems.SUPER_GLUE, ModItems.OBSIDIAN_PASTE,          ModItems.OBSIDIAN_INFUSED_DIAMOND,     1);
-                deepMerging(this, output, ModItems.SHARP_DEEPSLATE_ROCK, ModItems.SHARP_AMETHYST_ROCK,  Items.IRON_INGOT,        ModItems.GLUE_MIX,   ModItems.CRAFTING_TOKEN,          ModItems.TOOLBOX,                      1);
-                deepMerging(this, output, ModItems.MINERAL_MIX,          ModItems.MINERAL_MIX,          ModItems.MINERAL_MIX,    ModItems.SUPER_GLUE, ModItems.DRIPSTONE_PASTE,         ModItems.DRIPSTONE_COATED_MINERAL_MIX, 2);
+                deepMerging(this, output, ModItems.ANDESITE_ALLOY,        ModItems.DIORITE_ALLOY,       ModItems.GRANITE_ALLOY,         ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX,                                                    1);
+                deepMerging(this, output, ModItems.OBSIDIAN_PASTE,        Items.LEATHER,                ModItems.OBSIDIAN_PASTE,        ModItems.SUPER_GLUE, ModItems.OBSIDIAN_COATED_LEATHER,                                        1);
+                deepMerging(this, output, ModItems.CACTUS_PAPER,          ModItems.CACTUS_PAPER,        ModItems.CACTUS_PAPER,          ModItems.ECHO_GLUE,  ModItems.OBSIDIAN_COATED_LEATHER, ModItems.OBSIDIAN_BOOK,                1);
+                deepMerging(this, output, ModItems.DIAMOND_DUST,          ModItems.DIAMOND_DUST,        ModItems.DIAMOND_DUST,          ModItems.SUPER_GLUE, ModItems.OBSIDIAN_PASTE,          ModItems.OBSIDIAN_INFUSED_DIAMOND,     1);
+                deepMerging(this, output, ModItems.SHARP_DEEPSLATE_ROCK,  ModItems.SHARP_AMETHYST_ROCK, Items.IRON_INGOT,               ModItems.GLUE_MIX,   ModItems.CRAFTING_TOKEN,          ModItems.TOOLBOX,                      1);
+                deepMerging(this, output, ModItems.MINERAL_MIX,           ModItems.MINERAL_MIX,         ModItems.MINERAL_MIX,           ModItems.SUPER_GLUE, ModItems.DRIPSTONE_PASTE,         ModItems.DRIPSTONE_COATED_MINERAL_MIX, 2);
+                deepMerging(this, output, ModItems.FLATTENED_ENDER_PEARL, ModItems.DENCHO_SHARD,        ModItems.FLATTENED_ENDER_PEARL, ModItems.GLUE_MIX,   ModItems.AMETHYST_PASTE,          ModItems.DASH_ORB,                     1);
 
                 basicAnvilPressing(this, output, ModItems.DRIPSTONE_COATED_MINERAL_MIX, 4, ModBlocks.WOODEN_CASING, ModBlocks.MINERAL_MIX_BLOCK);
                 recipes.itemsAnvilPressing(ModItems.CALCITE_PILE, 9, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.PACKED_CALCITE);
@@ -86,6 +88,7 @@ public class RecipeGen extends QueTRecipeProvider {
                 basicAnvilPressing(this, output, ModItems.STEEL_INGOT, 3, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.STEEL_BOWL, "from_items_casing");
                 basicAnvilPressing(this, output, ModBlocks.FORBIDDEN_DUST, 64, ModBlocks.STONE_CASING, ModItems.CORRUPTED_MODEL);
                 basicAnvilPressing(this, output, ModBlocks.FORBIDDEN_DUST, 64, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.CORRUPTED_MODEL, "from_items_casing");
+                recipes.itemsAnvilPressing(Items.ENDER_PEARL, 1, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.FLATTENED_ENDER_PEARL);
 
                 recipes.itemsBlocksAnvilPressing(ModTags.Items.MAKES_PAPER, 4, Blocks.WATER, ModBlocks.STONE_CASING, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.PULP);
                 recipes.blocksAnvilPressing(Items.HEAVY_CORE, Blocks.SCULK, ModBlocks.STONE_CASING, ModBlocks.HEAVY_SCULK);
@@ -103,6 +106,26 @@ public class RecipeGen extends QueTRecipeProvider {
                 recipes.obsidianMixing(ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, 140, Items.GLASS);
                 recipes.obsidianMixing(ModItems.FIRE_ESSENCE, Items.NETHERRACK, Items.NETHERRACK, ModItems.FIRE_ESSENCE, 60, Items.MAGMA_BLOCK);
                 recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.MAGMA_BLOCK, 200, ModItems.NETHER_GLUE, 6);
+
+                qtRecipe.shaped(ModItems.DIRT_PILE, ModBlocks.COARSE_DIRT_SLAB, "DG", "GD")
+                                .define('D', ModItems.DIRT_PILE)
+                                .define('G', ModItems.GRAVEL_PILE)
+                                .save(output);
+                qtRecipe.irreversible2x2Compacting(ModItems.DIRT_PILE, ModBlocks.DIRT_SLAB);
+                qtRecipe.irreversible3x3Compacting(ModItems.DIRT_PILE, Blocks.DIRT);
+                qtRecipe.irreversible2x2Compacting(ModItems.SAND_PILE, ModBlocks.SAND_SLAB);
+                qtRecipe.irreversible3x3Compacting(ModItems.SAND_PILE, Blocks.SAND);
+                qtRecipe.irreversible2x2Compacting(ModItems.RED_SAND_PILE, ModBlocks.RED_SAND_SLAB);
+                qtRecipe.irreversible3x3Compacting(ModItems.RED_SAND_PILE, Blocks.RED_SAND);
+                qtRecipe.irreversible2x2Compacting(ModItems.CLAY_PILE, ModBlocks.CLAY_SLAB);
+                qtRecipe.irreversible3x3Compacting(ModItems.CLAY_PILE, Blocks.CLAY);
+                qtRecipe.shaped(ModItems.GRAVEL_PILE, ModBlocks.GRAVEL_SLAB, "GG", "  ")
+                        .define('G', ModItems.GRAVEL_PILE)
+                        .save(output);
+                qtRecipe.irreversible3x3Compacting(ModItems.GRAVEL_PILE, Blocks.GRAVEL);
+                recipes.anvilCompacting(ModItems.GRAVEL_PILE, 4, ModBlocks.WOODEN_CASING, Blocks.STONE);
+                qtRecipe.irreversible2x2Compacting(ModItems.SOUL_PILE, ModBlocks.SOUL_SLAB);
+                qtRecipe.irreversible3x3Compacting(ModItems.SOUL_PILE, Blocks.SOUL_SAND);
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
 
@@ -304,6 +327,7 @@ public class RecipeGen extends QueTRecipeProvider {
     private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
                 .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:wooden_mixing/" + GetPath.get(result.asItem()))
         ;
     }
@@ -311,13 +335,15 @@ public class RecipeGen extends QueTRecipeProvider {
     private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count, String id) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
                 .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
-                .save(output, "francium_2:wooden_merging/" + GetPath.get(result.asItem()) + "_" + id)
+                .group(getPath(result.asItem()))
+                .save(output, "francium_2:wooden_mixing/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
 
     private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count) {
         WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:wooden_merging/" + GetPath.get(result.asItem()))
         ;
     }
@@ -325,6 +351,7 @@ public class RecipeGen extends QueTRecipeProvider {
     private void woodenMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike glue, ItemLike result, int count, String id) {
         WoodenMergerRecipeBuilder.woodenMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:wooden_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
@@ -332,6 +359,7 @@ public class RecipeGen extends QueTRecipeProvider {
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike wildcard, ItemLike result, int count) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, wildcard, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()))
         ;
     }
@@ -339,6 +367,7 @@ public class RecipeGen extends QueTRecipeProvider {
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike wildcard, ItemLike result, int count, String id) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, wildcard, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
@@ -346,6 +375,7 @@ public class RecipeGen extends QueTRecipeProvider {
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike result, int count) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()))
         ;
     }
@@ -353,6 +383,7 @@ public class RecipeGen extends QueTRecipeProvider {
     private void deepMerging(RecipeProvider provider, RecipeOutput output, ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike glue, ItemLike result, int count, String id) {
         DeepMergerRecipeBuilder.deepMergerRecipe(RecipeCategory.MISC, firstItem, secondItem, thirdItem, glue, result, count)
                 .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:deep_merging/" + GetPath.get(result.asItem()) + "_" + id)
         ;
     }
@@ -360,12 +391,14 @@ public class RecipeGen extends QueTRecipeProvider {
     private void basicAnvilPressing(RecipeProvider provider, RecipeOutput output, ItemLike item, int count, Block block, ItemLike result, String id) {
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, block, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + '_' + id);
     }
 
     private void basicAnvilPressing(RecipeProvider provider, RecipeOutput output, ItemLike item, int count, Block block, ItemLike result) {
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, block, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
+                .group(getPath(result.asItem()))
                 .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()));
     }
 

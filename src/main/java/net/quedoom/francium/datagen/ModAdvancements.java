@@ -80,20 +80,45 @@ public class ModAdvancements extends QueTAdvancementProvider {
                 .buildWithTranslations(consumer, "Sticky Bowl", "Just THROW ;);) in some slime and stuff.");
         QTAdvancement glue = qtConsumer.builder(
             wooden_mixer, ModItems.GLUE, "glue", AdvancementType.TASK
-        ).addCriterion("glue", makeGlueTrigger(ModItems.GLUE))
+        ).addCriterion("glue", singleItemTrigger(ModItems.GLUE))
                 .buildWithTranslations(consumer, "*sniff sniff*", "Create the first bottle of glue.");
         QTAdvancement vegan_glue = qtConsumer.builder(
             glue, ModItems.VEGAN_GLUE, "vegan_glue", AdvancementType.TASK
-        ).addCriterion("vegan_glue", makeGlueTrigger(ModItems.VEGAN_GLUE))
+        ).addCriterion("vegan_glue", singleItemTrigger(ModItems.VEGAN_GLUE))
                 .buildWithTranslations(consumer, "I am vegan", "Create vegan, moral glue. Slime is definitely vegan... ehh.");
         QTAdvancement echo_glue = qtConsumer.builder(
             vegan_glue, ModItems.ECHO_GLUE, "echo_glue", AdvancementType.GOAL
-        ).addCriterion("echo_glue", makeGlueTrigger(ModItems.ECHO_GLUE))
+        ).addCriterion("echo_glue", singleItemTrigger(ModItems.ECHO_GLUE))
                 .buildWithTranslations(consumer, "Deep and dark glue", "Head down to the scary place and make glue with it.");
         QTAdvancement super_glue = qtConsumer.builder(
             vegan_glue, ModItems.SUPER_GLUE, "super_glue", AdvancementType.GOAL
-        ).addCriterion("super_glue", makeGlueTrigger(ModItems.SUPER_GLUE))
+        ).addCriterion("super_glue", singleItemTrigger(ModItems.SUPER_GLUE))
                 .buildWithTranslations(consumer, "SUPER-GLUE", "The bees make honey.");
+        QTAdvancement steel = qtConsumer.builder(
+                        wooden_mixer, ModItems.STEEL_DUST, "steel", AdvancementType.TASK
+                ).addCriterion("steel", singleItemTrigger(ModItems.STEEL_IN_A_BOTTLE))
+                .buildWithTranslations(consumer, "Coal-iron fusion", "Make steel with slime, echo, iron and coal.");
+        QTAdvancement steel_wedge = qtConsumer.builder(
+                        steel, ModBlocks.STEEL_WEDGE, "steel_wedge", AdvancementType.TASK
+                ).addCriterion("steel_wedge", singleItemTrigger(ModBlocks.STEEL_WEDGE.asItem()))
+                .buildWithTranslations(consumer, "Wedge the steel", "Get steel wedge.");
+        QTAdvancement obsidian_mixer = qtConsumer.builder(
+                        steel_wedge, ModBlocks.OBSIDIAN_MIXER, "obsidian_mixer", AdvancementType.TASK
+                ).addCriterion("obsidian_mixer", placedBlockTrigger(ModBlocks.OBSIDIAN_MIXER))
+                .buildWithTranslations(consumer, "Hot Bowl", "Things are about to get pasty.");
+        QTAdvancement dripstone_paste = qtConsumer.builder(
+                        obsidian_mixer, ModItems.DRIPSTONE_PASTE, "dripstone_paste", AdvancementType.TASK
+                ).addCriterion("dripstone_paste", singleItemTrigger(ModItems.DRIPSTONE_PASTE))
+                .buildWithTranslations(consumer, "Drippy paste", "Make dripstone paste.");
+        QTAdvancement amethyst_paste = qtConsumer.builder(
+                        obsidian_mixer, ModItems.AMETHYST_PASTE, "amethyst_paste", AdvancementType.TASK
+                ).addCriterion("amethyst_paste", singleItemTrigger(ModItems.AMETHYST_PASTE))
+                .buildWithTranslations(consumer, "Porpol paste", "Make amethyst paste.");
+        QTAdvancement obsidian_paste = qtConsumer.builder(
+                        obsidian_mixer, ModItems.OBSIDIAN_PASTE, "obsidian_paste", AdvancementType.TASK
+                ).addCriterion("obsidian_paste", singleItemTrigger(ModItems.OBSIDIAN_PASTE))
+                .buildWithTranslations(consumer, "Hot paste", "Make obsidian paste.");
+
         // endregion main
         // endregion baseline
     }

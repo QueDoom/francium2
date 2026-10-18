@@ -4,11 +4,10 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.model.*;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
@@ -38,9 +37,25 @@ public class Models extends QueTModelProvider {
         blockModelGenerators.family(ModBlocks.RUBBER_BLOCK);
         blockModelGenerators.family(ModBlocks.STEEL_BLOCK);
 
+        blockModelGenerators.family(ModBlocks.COBBLED_TUFF);
+        blockModelGenerators.family(ModBlocks.COAL_TUFF_ORE);
+        blockModelGenerators.family(ModBlocks.COPPER_TUFF_ORE);
+
         Identifier woodenCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.WOODEN_CASING);
         Identifier stoneCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.STONE_CASING);
         Identifier obsidianCasingModel = ModelLocationUtils.getModelLocation(ModBlocks.OBSIDIAN_CASING);
+
+        // region slabs
+
+        slab(blockModelGenerators, Blocks.COARSE_DIRT, ModBlocks.COARSE_DIRT_SLAB);
+        slab(blockModelGenerators, Blocks.DIRT, ModBlocks.DIRT_SLAB);
+        slab(blockModelGenerators, Blocks.SAND, ModBlocks.SAND_SLAB);
+        slab(blockModelGenerators, Blocks.RED_SAND, ModBlocks.RED_SAND_SLAB);
+        slab(blockModelGenerators, Blocks.CLAY, ModBlocks.CLAY_SLAB);
+        slab(blockModelGenerators, Blocks.GRAVEL, ModBlocks.GRAVEL_SLAB);
+        slab(blockModelGenerators, Blocks.SOUL_SAND, ModBlocks.SOUL_SLAB);
+
+        // endregion slabs
 
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(woodenCasingModel)));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.STONE_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(stoneCasingModel)));
@@ -98,6 +113,26 @@ public class Models extends QueTModelProvider {
                 .donateModelTo(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER, ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
     }
 
+    private static void slab(BlockModelGenerators gen, Block fullBlock, Block slab) {
+        if (fullBlock == null) {
+            throw new IllegalStateException("Full block not generated yet");
+        }
+
+        TextureMapping mapping = TextureMapping.cube(fullBlock);
+
+        Identifier bottom = ModelTemplates.SLAB_BOTTOM.create(slab, mapping, gen.modelOutput);
+        Identifier top = ModelTemplates.SLAB_TOP.create(slab, mapping, gen.modelOutput);
+        Identifier full = ModelLocationUtils.getModelLocation(fullBlock);
+
+        gen.blockStateOutput.accept(BlockModelGenerators.createSlab(
+                slab,
+                BlockModelGenerators.plainVariant(bottom),
+                BlockModelGenerators.plainVariant(top),
+                BlockModelGenerators.plainVariant(full)));
+
+        gen.registerSimpleItemModel(slab, bottom);
+    }
+
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators, QTItemModelGenerators qtItemModelGenerators) {
         qtItemModelGenerators.addFlatItems();
@@ -109,6 +144,7 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.BROKEN_STICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRAVEL_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SAND_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.RED_SAND_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GLASS_SHARDS, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ANDESITE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DIORITE_PILE, PILE_FLAT_ITEM);
@@ -181,6 +217,7 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.SHARP_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.TOOLBOX, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.FLATTENED_ENDER_PEARL, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DASH_ORB, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.ANDESITE_COATED_ROCK, ModelTemplates.FLAT_ITEM);

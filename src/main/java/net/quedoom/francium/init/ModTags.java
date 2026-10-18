@@ -19,6 +19,7 @@ public class ModTags {
         public static final TagKey<Block> STONE_ORES = Q.create("stone_ores");
         public static final TagKey<Block> DEEPSLATE_ORES = Q.create("deepslate_ores");
         public static final TagKey<Block> NETHER_ORES = Q.create("nether_ores");
+        public static final TagKey<Block> TUFF_ORES = Q.create("tuff_ores");
 
         public static final TagKey<Block> FORCE_REQUIRE_TOOL = Q.create("force_require_tool");
         public static final TagKey<Block> FORCE_UNREQUIRE_TOOL = Q.create("force_unrequire_tool");

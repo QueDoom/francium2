@@ -1,21 +1,11 @@
 package net.quedoom.francium.init;
 
-import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.item.*;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
-import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
 import net.quedoom.quet.init.QueTItem;
-
-import java.util.Properties;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class ModItems {
     static {
@@ -31,6 +21,7 @@ public class ModItems {
     public static Item SAWDUST = Q.register("sawdust");
     public static Item GRAVEL_PILE = Q.register("gravel_pile", false);
     public static Item SAND_PILE = Q.register("sand_pile", false);
+    public static Item RED_SAND_PILE = Q.register("red_sand_pile", false);
     public static Item ANDESITE_PILE = Q.register("andesite_pile", false);
     public static Item DIORITE_PILE = Q.register("diorite_pile", false);
     public static Item GRANITE_PILE = Q.register("granite_pile", false);
@@ -44,10 +35,12 @@ public class ModItems {
     public static Item COPPER_ORE_PILE = Q.register("copper_ore_pile", false);
     public static Item DEEPSLATE_COPPER_ORE_PILE = Q.register("deepslate_copper_ore_pile", false);
     public static Item COPPER_DUST = Q.register("copper_dust");
+    public static Item RAW_COPPER_CLUMP = Q.register("raw_copper_clump", false);
     public static Item DIAMOND_ORE_PILE = Q.register("diamond_ore_pile", false);
     public static Item DEEPSLATE_DIAMOND_ORE_PILE = Q.register("deepslate_diamond_ore_pile", false);
     public static Item DIAMOND_DUST = Q.register("diamond_dust");
     public static Item COAL_DUST = Q.register("coal_dust");
+    public static Item COAL_LUMP = Q.register("coal_lump", false);
 
     public static Item DEEPSLATE_PILE = Q.register("deepslate_pile", false);
     public static Item TUFF_PILE = Q.register("tuff_pile", false);
@@ -140,6 +133,7 @@ public class ModItems {
     public static Item FIRE_STARTER = Q.register(Q.create("fire_starter"), FireStarterItem::new, new Item.Properties().durability(127));
     public static Item GLASS_SHARDS = Q.register("glass_shards");
 
+    public static Item FLATTENED_ENDER_PEARL = Q.register("flattened_ender_pearl");
     public static Item DASH_ORB = Q.register(Q.create("dash_orb"), DashOrbItem::new, new Item.Properties().stacksTo(16));
     public static Item STEEL_BOWL = Q.register("steel_bowl");
 

@@ -51,21 +51,21 @@ public class RegisterBlockMixin {
             }
         }
 
-        reRegister(name.equals(string("potatoes")), id, cir, ThickablePotatoBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
-        reRegister(name.equals(string("carrots")), id, cir, ThickableCarrotBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
-        reRegister(name.equals(string("beetroots")), id, cir, ThickableBeetrootBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
-        reRegister(name.equals(string("stonecutter")), id, cir, RotatableStonecutterBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion());
+        reRegister(name.contains("potatoes"), id, cir, ThickablePotatoBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+        reRegister(name.contains("carrots"), id, cir, ThickableCarrotBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+        reRegister(name.contains("beetroots"), id, cir, ThickableBeetrootBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+        reRegister(name.contains("stonecutter"), id, cir, RotatableStonecutterBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion());
 
         reRegister(name.equals(string("bedrock")), id, cir, factory, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops());
         if (name.equals(string("cactus"))) {
             reRegister(true, id, cir, factory, properties.ignitedByLava());
         }
-        reRegister(name.equals(string("sugar_cane")), id, cir,
+        reRegister(name.contains("sugar"), id, cir,
                 SolidSugarCaneBlock::new,
                 BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks()
                         .sound(SoundType.BAMBOO).pushReaction(PushReaction.DESTROY).strength(2f));
 
-        reRegister(name.equals(string("bamboo")), id, cir,
+        reRegister(name.contains("bamboo"), id, cir,
                 ModdedBambooStalkBlock::new,
                 BlockBehaviour.Properties.of()
                         .mapColor(MapColor.PLANT)
