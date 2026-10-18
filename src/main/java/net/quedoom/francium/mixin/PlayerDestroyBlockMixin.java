@@ -82,6 +82,9 @@ public class PlayerDestroyBlockMixin {
             if (destroyedWith.is(ItemTags.HOES)) {
                 level.setBlockAndUpdate(pos, Blocks.FARMLAND.defaultBlockState());
                 ci.cancel();
+            } else if (destroyedWith.is(ItemTags.SHOVELS)) {
+                level.setBlockAndUpdate(pos, Blocks.DIRT_PATH.defaultBlockState());
+                ci.cancel();
             } else {
                 if (blocks) {
                     level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
