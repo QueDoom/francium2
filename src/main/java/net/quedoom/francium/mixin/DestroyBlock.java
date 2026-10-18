@@ -58,6 +58,14 @@ public class DestroyBlock {
             level.setBlock(pos, Blocks.STRIPPED_SPRUCE_LOG.defaultBlockState().setValue(BlockStateProperties.AXIS,
                     state.getValue(BlockStateProperties.AXIS)), 1);
         }
+        if (state.is(Blocks.CRIMSON_STEM)) {
+            level.setBlock(pos, Blocks.STRIPPED_CRIMSON_STEM.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.WARPED_STEM)) {
+            level.setBlock(pos, Blocks.STRIPPED_WARPED_STEM.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
 
         if (state.is(Blocks.ACACIA_WOOD)) {
             level.setBlock(pos, Blocks.STRIPPED_ACACIA_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
@@ -93,6 +101,18 @@ public class DestroyBlock {
         }
         if (state.is(Blocks.SPRUCE_WOOD)) {
             level.setBlock(pos, Blocks.STRIPPED_SPRUCE_WOOD.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.CRIMSON_HYPHAE)) {
+            level.setBlock(pos, Blocks.STRIPPED_CRIMSON_HYPHAE.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.WARPED_HYPHAE)) {
+            level.setBlock(pos, Blocks.STRIPPED_WARPED_HYPHAE.defaultBlockState().setValue(BlockStateProperties.AXIS,
+                    state.getValue(BlockStateProperties.AXIS)), 1);
+        }
+        if (state.is(Blocks.BAMBOO_BLOCK)) {
+            level.setBlock(pos, Blocks.STRIPPED_BAMBOO_BLOCK.defaultBlockState().setValue(BlockStateProperties.AXIS,
                     state.getValue(BlockStateProperties.AXIS)), 1);
         }
 
