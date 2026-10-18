@@ -13,3 +13,5 @@ accessible field net/minecraft/world/inventory/AnvilMenu onlyRenaming Z
 accessible field net/minecraft/world/inventory/AnvilMenu itemName Ljava/lang/String;
 accessible field net/minecraft/world/inventory/AnvilMenu repairItemCountCost I
 accessible field net/minecraft/world/level/block/FireBlock igniteOdds Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+
+accessible field net/minecraft/world/entity/item/FallingBlockEntity blockState Lnet/minecraft/world/level/block/state/BlockState;
