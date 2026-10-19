@@ -56,6 +56,8 @@ dependencies {
 
 	implementation("net.darkhax.pricklemc:prickle-fabric-${minecraft_version}:${minecraft_version}.${prickle_version}")
 
+	implementation("maven.modrinth:spice-of-fabric:${spice_of_fabric_version}+mc${minecraft_version}")
+
 	implementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 	include(implementation("maven.modrinth:modmenu-badges-lib:2026.3.1"))
 }
