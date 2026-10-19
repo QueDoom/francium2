@@ -43,6 +43,9 @@ public class RegisterBlockMixin {
         reRegister(name.contains("wool") && name.contains("minecraft"), id, cir, p -> new WoolBlock(ColorHelper.dyeColorFromString(name), p), properties);
         reRegister(name.contains("carpet") && name.contains("minecraft") && !name.contains("moss"), id, cir, p -> new WoolCarpetBlock(ColorHelper.dyeColorFromString(name), p), properties);
 
+        reRegister(name.contains("obsidian") && name.contains("minecraft"), id, cir, HotBlock::new, properties);
+
+
         if (name.contains("concrete") && name.contains("minecraft")) {
             if (name.contains("powder")) {
                 reRegister(true, id, cir, p -> new PowderedConcreteBlock(ColorHelper.dyeColorFromString(name), p), properties);
