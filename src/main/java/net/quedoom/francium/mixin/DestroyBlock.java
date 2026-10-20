@@ -1,6 +1,7 @@
 package net.quedoom.francium.mixin;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -140,7 +141,7 @@ public class DestroyBlock {
         }
 
         if (state.is(Blocks.ANCIENT_DEBRIS)) {
-            level.setBlock(pos, AncientBunsBlock.placementState(ModBlocks.ANCIENT_BUNS.defaultBlockState()), 1);
+            level.setBlock(pos, AncientBunsBlock.placementState((Level) level), 1);
         }
 
 

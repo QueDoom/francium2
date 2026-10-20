@@ -2,6 +2,7 @@ package net.quedoom.francium.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModProperties;
 import org.jspecify.annotations.Nullable;
 
@@ -39,20 +41,12 @@ public class AncientBunsBlock extends Block {
         builder.add(BUN_0, BUN_1, BUN_2, BUN_3, BUN_4);
     }
 
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState state = this.defaultBlockState();
-        int first = ThreadLocalRandom.current().nextInt(0, 4 + 1);
-        int second = ThreadLocalRandom.current().nextInt(0, 4 + 1);
-        int third = ThreadLocalRandom.current().nextInt(0, 4 + 1);
-
-        return state.setValue(getBunProperty(first), true).setValue(getBunProperty(second), true).setValue(getBunProperty(third), true);
-    }
-
-    public static BlockState placementState(BlockState defaultState) {
-        int first = ThreadLocalRandom.current().nextInt(0, 4 + 1);
-        int second = ThreadLocalRandom.current().nextInt(0, 4 + 1);
-        int third = ThreadLocalRandom.current().nextInt(0, 4 + 1);
+    public static BlockState placementState(Level level) {
+        BlockState defaultState = ModBlocks.ANCIENT_BUNS.defaultBlockState();
+        RandomSource random = level.getRandom();
+        int first = random.nextInt(0, 5);
+        int second = random.nextInt(0, 5);
+        int third = random.nextInt(0, 5);
 
         return defaultState.setValue(getBunProperty(first), true).setValue(getBunProperty(second), true).setValue(getBunProperty(third), true);
     }
@@ -61,15 +55,9 @@ public class AncientBunsBlock extends Block {
     public void destroy(LevelAccessor level, BlockPos pos, BlockState state) {
         if (trueProperties(state) <= 1) return;
 
-        ArrayList<BooleanProperty> bunList = new ArrayList<>();
-        for (int i : getProperties()) {
-            if (getBuns(state, i)) {
-                bunList.add(getBunProperty(i));
-            }
-        }
+        BooleanProperty randomProperty = getRandomProperty(((Level) level), state);
 
-        ((Level) level).setBlockAndUpdate(pos, state.setValue(
-                bunList.get(ThreadLocalRandom.current().nextInt(0, bunList.size())), false));
+        level.setBlock(pos, state.setValue(randomProperty, false), Block.UPDATE_SKIP_ON_PLACE);
 
     }
 
@@ -78,15 +66,31 @@ public class AncientBunsBlock extends Block {
         return box(5, 0, 5, 11, 16, 11);
     }
 
+    private static BooleanProperty getRandomProperty(Level level, BlockState state) {
+        List<BooleanProperty> shownBuns = getShownBuns(state);
+        return shownBuns.get(level.getRandom().nextInt(0, shownBuns.size()));
+    }
+
+    private static List<BooleanProperty> getShownBuns(BlockState state) {
+        List<BooleanProperty> booleanProperties = new ArrayList<>();
+        for (BooleanProperty property : getProperties()) {
+            if (state.getValue(property)) booleanProperties.add(property);
+        }
+        return booleanProperties;
+    }
+
+    private static List<BooleanProperty> getProperties() {
+        return List.of(BUN_0, BUN_1, BUN_2, BUN_3, BUN_4);
+    }
+
     public static boolean getBuns(BlockState state, int value) {
-        if (state.getBlock() instanceof AncientBunsBlock) return switch (value) {
+        return switch (value) {
             case 1 -> state.getValue(BUN_1);
             case 2 -> state.getValue(BUN_2);
             case 3 -> state.getValue(BUN_3);
             case 4 -> state.getValue(BUN_4);
             default -> state.getValue(BUN_0);
         };
-        return false;
     }
 
     public static BooleanProperty getBunProperty(int value) {
@@ -99,17 +103,7 @@ public class AncientBunsBlock extends Block {
         };
     }
 
-    private static List<Integer> getProperties() {
-        return List.of(0, 1, 2, 3, 4);
-    }
-
     private static int trueProperties(BlockState state) {
-        int amount = 0;
-        if (state.getValue(BUN_0)) amount += 1;
-        if (state.getValue(BUN_1)) amount += 1;
-        if (state.getValue(BUN_2)) amount += 1;
-        if (state.getValue(BUN_3)) amount += 1;
-        if (state.getValue(BUN_4)) amount += 1;
-        return amount;
+        return getShownBuns(state).size();
     }
 }
