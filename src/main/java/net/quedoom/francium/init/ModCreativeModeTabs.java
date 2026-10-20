@@ -142,6 +142,12 @@ public class  ModCreativeModeTabs {
       output.accept(ModBlocks.GRAVEL_SLAB);
       output.accept(ModBlocks.SOUL_SLAB);
 
+      output.accept(ModBlocks.COBBLED_TUFF);
+      output.accept(ModBlocks.COAL_TUFF_ORE);
+      output.accept(ModBlocks.COPPER_TUFF_ORE);
+      output.accept(ModItems.RAW_COPPER_CLUMP);
+      output.accept(ModItems.COAL_LUMP);
+
       output.accept(ModItems.DIRT_PILE);
       output.accept(ModItems.GRAVEL_PILE);
       output.accept(ModItems.SAND_PILE);
