@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "r": "minecraft:resing_brick"
+    "r": "minecraft:resin_brick"
   },
   "pattern": [
     "RR",

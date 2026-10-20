@@ -11,7 +11,7 @@
               "condition": "minecraft:survives_explosion"
             }
           ],
-          "name": "francium_2:coal_clump",
+          "name": "francium_2:coal_lump",
           "functions": [
             {
               "function": "minecraft:set_count",

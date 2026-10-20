@@ -1,7 +1,7 @@
 {
   "type": "francium_2:wooden_merging",
   "firstItem": "minecraft:string",
-  "secondItem": "minecraft:honey_comb",
+  "secondItem": "minecraft:honeycomb",
   "glue": "francium_2:vegan_glue",
   "result": {
     "id": "minecraft:candle"

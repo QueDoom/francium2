@@ -132,5 +132,5 @@
       "rolls": 5
     }
   ],
-  "random_sequence": "minecraft:blocks/_leaves"
+  "random_sequence": "minecraft:blocks/birch_leaves"
 }
