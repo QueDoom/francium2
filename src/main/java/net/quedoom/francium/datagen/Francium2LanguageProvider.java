@@ -55,8 +55,9 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         pileTranslate(qtTranslationBuilder, ModItems.BASALT_PILE, "Basalt");
         pileTranslate(qtTranslationBuilder, ModItems.NETHER_GOLD_ORE_PILE, "Nether Gold Ore");
         pileTranslate(qtTranslationBuilder, ModItems.NETHER_QUARTZ_ORE_PILE, "Nether Quartz Ore");
-        pileTranslate(qtTranslationBuilder, ModItems.COAL_LUMP, "Lump of Coal");
-        pileTranslate(qtTranslationBuilder, ModItems.RAW_COPPER_CLUMP, "Clump of Raw Copper");
+
+        translationBuilder.add(ModItems.COAL_LUMP, "Lump of Coal");
+        translationBuilder.add(ModItems.RAW_COPPER_CLUMP, "Lump of Raw Copper");
 
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_DUST);
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_FLAKE);
@@ -242,7 +243,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
     }
 
     private void pileTranslate(QTTranslationBuilder builder, Item item, String material) {
-        builder.builder().add(item, "Pile Of " + material);
+        builder.builder().add(item, "Pile of " + material);
     }
 
     private void translateOptions(QTTranslationBuilder builder) {

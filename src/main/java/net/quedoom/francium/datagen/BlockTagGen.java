@@ -140,6 +140,10 @@ public class BlockTagGen extends QueTBlockTagProvider {
                         ModBlocks.STEEL_BLOCK,
                         ModBlocks.HEAVY_ANVIL,
 
+                        ModBlocks.COBBLED_TUFF,
+                        ModBlocks.COAL_TUFF_ORE,
+                        ModBlocks.COPPER_TUFF_ORE,
+
                         ModBlocks.ALLOWED_COPPER_BLOCK,
                         ModBlocks.ALLOWED_EXPOSED_COPPER,
                         ModBlocks.ALLOWED_WEATHERED_COPPER,
