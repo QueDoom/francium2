@@ -39,6 +39,7 @@ public class RegisterBlockMixin {
     private static void register(ResourceKey<Block> id, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties, CallbackInfoReturnable<Block> cir) {
         ReRegistrator reRegistrator = new ReRegistrator(id, factory, properties, cir);
         String name = id.toString();
+        String path = id.identifier().getPath();
 
         reRegister(name.contains("wool") && name.contains("minecraft"), id, cir, p -> new WoolBlock(ColorHelper.dyeColorFromString(name), p), properties);
         reRegister(name.contains("carpet") && name.contains("minecraft") && !name.contains("moss"), id, cir, p -> new WoolCarpetBlock(ColorHelper.dyeColorFromString(name), p), properties);
@@ -68,7 +69,7 @@ public class RegisterBlockMixin {
                 BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks()
                         .sound(SoundType.BAMBOO).pushReaction(PushReaction.DESTROY).strength(2f));
 
-        reRegister(name.contains("bamboo"), id, cir,
+        reRegister(path.equals("bamboo"), id, cir,
                 ModdedBambooStalkBlock::new,
                 BlockBehaviour.Properties.of()
                         .mapColor(MapColor.PLANT)
