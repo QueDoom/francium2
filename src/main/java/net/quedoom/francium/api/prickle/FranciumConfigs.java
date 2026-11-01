@@ -123,7 +123,6 @@ public class FranciumConfigs {
         return min > -Double.MAX_VALUE && max < Double.MAX_VALUE;
     }
 
-    /** Slider over [0,1] mapped to the real value. Kept generic so the xmap value set type is never named. */
     private static <T> AbstractWidget unitSlider(Options options, String key, Component comment,
                                                  DoubleFunction<T> to, ToDoubleFunction<T> from,
                                                  Function<T, String> format, T initial, Consumer<T> onChange) {
