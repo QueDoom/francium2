@@ -71,6 +71,9 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 woodenMerging(this, output, ModItems.GRANITE_ALLOY,   ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.GRANITE_COATED_ROCK,     1);
                 woodenMerging(this, output, ModItems.AMETHYST_PASTE,  Items.DIAMOND, ModItems.SUPER_GLUE, ModItems.AMETHYST_COATED_DIAMOND, 1);
 
+                woodenMerging(this, output, ModItems.IRON_DUST, ModItems.IRON_DUST, ModItems.VEGAN_GLUE, Items.IRON_NUGGET, 3);
+                deepMerging(this, output, ModItems.COPPER_DUST, ModItems.COPPER_DUST, ModItems.COPPER_DUST, ModItems.VEGAN_GLUE, Items.COPPER_NUGGET, 2);
+
                 deepMerging(this, output, ModItems.ANDESITE_ALLOY,        ModItems.DIORITE_ALLOY,       ModItems.GRANITE_ALLOY,         ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX,                                                    1);
                 deepMerging(this, output, ModItems.OBSIDIAN_PASTE,        Items.LEATHER,                ModItems.OBSIDIAN_PASTE,        ModItems.SUPER_GLUE, ModItems.OBSIDIAN_COATED_LEATHER,                                        1);
                 deepMerging(this, output, ModItems.CACTUS_PAPER,          ModItems.CACTUS_PAPER,        ModItems.CACTUS_PAPER,          ModItems.ECHO_GLUE,  ModItems.OBSIDIAN_COATED_LEATHER, ModItems.OBSIDIAN_BOOK,                1);
@@ -107,6 +110,29 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 recipes.obsidianMixing(ModItems.FIRE_ESSENCE, Items.NETHERRACK, Items.NETHERRACK, ModItems.FIRE_ESSENCE, 60, Items.MAGMA_BLOCK);
                 recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.MAGMA_BLOCK, 200, ModItems.NETHER_GLUE, 6);
 
+                registerMetalMixing(recipes,
+                        Items.IRON_ORE, Items.RAW_IRON, Items.RAW_IRON_BLOCK,
+                        ModItems.IRON_ORE_PILE, ModItems.IRON_DUST,
+                        Items.IRON_INGOT, Items.IRON_BLOCK);
+
+                registerMetalMixing(recipes,
+                        Items.GOLD_ORE, Items.RAW_GOLD, Items.RAW_GOLD_BLOCK,
+                        ModItems.GOLD_ORE_PILE, ModItems.GOLD_DUST,
+                        Items.GOLD_INGOT, ModBlocks.ALLOWED_GOLD_BLOCK.asItem());
+
+                registerMetalMixing(recipes,
+                        Items.COPPER_ORE, Items.RAW_COPPER, Items.RAW_COPPER_BLOCK,
+                        ModItems.COPPER_ORE_PILE, ModItems.COPPER_DUST,
+                        Items.COPPER_INGOT, ModBlocks.ALLOWED_COPPER_BLOCK.asItem());
+                recipes.obsidianMixing(ModItems.RAW_COPPER_CLUMP, ModItems.RAW_COPPER_CLUMP, ModItems.RAW_COPPER_CLUMP, ModItems.RAW_COPPER_CLUMP, 800, Items.RAW_COPPER_BLOCK, 2);
+
+//                registerOreMixing(recipes, Items.COAL_ORE, ModItems.COAL_ORE_PILE, ModItems.COAL_DUST, Items.COAL);
+//                registerOreMixing(recipes, Items.REDSTONE_ORE, ModItems.REDSTONE_ORE_PILE, ModItems.REDSTONE_DUST, Items.REDSTONE);
+//                registerOreMixing(recipes, Items.LAPIS_ORE, ModItems.LAPIS_ORE_PILE, ModItems.LAPIS_DUST, Items.LAPIS_LAZULI);
+                registerOreMixing(recipes, Items.DIAMOND_ORE, ModItems.DIAMOND_ORE_PILE, ModItems.DIAMOND_DUST, Items.DIAMOND);
+//                registerOreMixing(recipes, Items.EMERALD_ORE, ModItems.EMERALD_ORE_PILE, ModItems.EMERALD_DUST, Items.EMERALD);
+//                registerOreMixing(recipes, Items.NETHER_QUARTZ_ORE, ModItems.QUARTZ_ORE_PILE, ModItems.QUARTZ_DUST, Items.QUARTZ);
+
                 qtRecipe.shaped(ModItems.DIRT_PILE, ModBlocks.COARSE_DIRT_SLAB, "DG", "GD")
                                 .define('D', ModItems.DIRT_PILE)
                                 .define('G', ModItems.GRAVEL_PILE)
@@ -133,6 +159,10 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                         ModItems.STEEL_INGOT, 2, 200, "steel_dust");
                 oreBlasting(List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, CookingBookCategory.MISC,
                         ModItems.STEEL_INGOT, 2, 100, "steel_dust");
+                oreSmelting(List.of(ModItems.IRON_ORE_PILE), RecipeCategory.MISC, CookingBookCategory.MISC,
+                        ModItems.IRON_DUST, 2, 200, "iron_dust");
+                oreBlasting(List.of(ModItems.IRON_ORE_PILE), RecipeCategory.MISC, CookingBookCategory.MISC,
+                        ModItems.IRON_DUST, 2, 100, "iron_dust");
 
                 qtRecipe.reversible3x3Compacting(ModItems.STEEL_INGOT, ModBlocks.STEEL_BLOCK);
 
@@ -322,6 +352,56 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                         .save(output);
             }
         };
+    }
+
+    private static void registerMetalMixing(
+            FranciumRecipeHelper recipes,
+            Item ore, Item raw, Item rawBlock, Item orePile, Item dust,
+            Item ingot, Item block) {
+
+        String ingotName = GetPath.get(ingot);
+        String blockName = GetPath.get(block);
+
+        // Ore
+        String orePrefix = "obsidian_mix_" + GetPath.get(ore) + "_to_" + ingotName;
+        recipes.obsidianMixing(ore, ore, ore, ore, 200, ingot, 4, orePrefix);
+        recipes.obsidianMixing(ore, ore, ore, ModItems.ECHO_GLUE, 250, ingot, 6, orePrefix + "_with_echo_glue");
+
+        // Raw
+        String rawPrefix = "obsidian_mix_" + GetPath.get(raw) + "_to_" + ingotName;
+        recipes.obsidianMixing(raw, raw, raw, raw, 200, ingot, 4, rawPrefix);
+        recipes.obsidianMixing(raw, raw, raw, ModItems.ECHO_GLUE, 250, ingot, 6, rawPrefix + "_with_echo_glue");
+        recipes.obsidianMixing(rawBlock, ModItems.ECHO_GLUE, ModItems.NETHER_GLUE, ModItems.NETHER_GLUE, 500, block, 2,
+                "obsidian_mix_" + GetPath.get(raw) + "_to_" + blockName);
+
+        // Ore pile
+        recipes.obsidianMixing(orePile, orePile, orePile, orePile, 300, ingot, 4,
+                "obsidian_mix_" + GetPath.get(orePile) + "_to_" + ingotName);
+
+        // Dust
+        recipes.obsidianMixing(dust, dust, dust, dust, 700, ingot, 5,
+                "obsidian_mix_" + GetPath.get(dust) + "_to_" + ingotName);
+    }
+
+    private static void registerOreMixing(
+            FranciumRecipeHelper recipes,
+            Item ore, Item orePile, Item dust,
+            Item output) {
+
+        String outputName = GetPath.get(output);
+
+        // Ore
+        String orePrefix = "obsidian_mix_" + GetPath.get(ore) + "_to_" + outputName;
+        recipes.obsidianMixing(ore, ore, ore, ore, 200, output, 4, orePrefix);
+        recipes.obsidianMixing(ore, ore, ore, ModItems.ECHO_GLUE, 250, output, 6, orePrefix + "_with_echo_glue");
+
+        // Ore pile
+        recipes.obsidianMixing(orePile, orePile, orePile, orePile, 300, output, 4,
+                "obsidian_mix_" + GetPath.get(orePile) + "_to_" + outputName);
+
+        // Dust
+        recipes.obsidianMixing(dust, dust, dust, dust, 700, output, 5,
+                "obsidian_mix_" + GetPath.get(dust) + "_to_" + outputName);
     }
 
     private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count) {
