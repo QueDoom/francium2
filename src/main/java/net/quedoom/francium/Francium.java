@@ -45,6 +45,7 @@ public class Francium implements ModInitializer {
 		ModCreativeModeTabs.registerTabs();
 
 		ModBlocks.registerBlock();
+		ModBlockStateModels.register();
 		ModBlockEntities.registerBlockEntities();
 
 		ModEntityTypes.registerEntityTypes();
