@@ -15,3 +15,7 @@ accessible field net/minecraft/world/inventory/AnvilMenu repairItemCountCost I
 accessible field net/minecraft/world/level/block/FireBlock igniteOdds Lit/unimi/dsi/fastutil/objects/Object2IntMap;
 
 accessible field net/minecraft/world/entity/item/FallingBlockEntity blockState Lnet/minecraft/world/level/block/state/BlockState;
+
+accessible method net/minecraft/data/worldgen/placement/OrePlacements orePlacement (Lnet/minecraft/world/level/levelgen/placement/PlacementModifier;Lnet/minecraft/world/level/levelgen/placement/PlacementModifier;)Ljava/util/List;
+accessible method net/minecraft/data/worldgen/placement/OrePlacements commonOrePlacement (ILnet/minecraft/world/level/levelgen/placement/PlacementModifier;)Ljava/util/List;
+accessible method net/minecraft/data/worldgen/placement/OrePlacements rareOrePlacement (ILnet/minecraft/world/level/levelgen/placement/PlacementModifier;)Ljava/util/List;
