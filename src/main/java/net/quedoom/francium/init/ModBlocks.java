@@ -96,9 +96,15 @@ public class ModBlocks  {
     //endregion packed blocks
 
     public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
-    public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.9F).sound(SoundType.STONE).pushReaction(PushReaction.BLOCK));
+    public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.9F).sound(SoundType.WOOD).pushReaction(PushReaction.BLOCK));
     public static final Block STOKED_FIRE = Q.register("stoked_fire", StokedFireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE), false);
 
+    public static final Block BEDROCK_CHUNK = Q.register("bedrock_chunk", BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .strength(-1.0F, 3600000.0F)
+            .noLootTable()
+            .isValidSpawn(Blocks::never));
 
     public static final Block FORBIDDEN_DUST = Q.register("forbidden_dust", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));
     public static final Block FORBIDDEN_FLAKE = Q.register("forbidden_flake", DustBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_WIRE));

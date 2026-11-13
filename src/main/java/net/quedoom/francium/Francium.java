@@ -53,6 +53,8 @@ public class Francium implements ModInitializer {
 
 		ModMenuTypes.registerMenus();
 
+		ModWorldGeneration.generate();
+
 		ModStats.registerStats();
 		ModLootTables.registerLootTables();
 

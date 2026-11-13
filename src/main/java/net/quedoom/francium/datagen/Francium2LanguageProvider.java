@@ -82,6 +82,8 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
 
         qtTranslationBuilder.auto(ModBlocks.HEAVY_SCULK);
         qtTranslationBuilder.auto(ModBlocks.SMOOTH_CACTUS);
+        qtTranslationBuilder.auto(ModBlocks.BEDROCK_CHUNK);
+        qtTranslationBuilder.auto(ModBlocks.OBSIDIAN_MIXER);
 
         qtTranslationBuilder.auto(ModBlocks.WOODEN_CASING_WITH_HEAVY_ANVIL);
 

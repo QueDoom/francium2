@@ -1,16 +1,12 @@
 package net.quedoom.francium;
 
-import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.core.registries.Registries;
 import net.quedoom.francium.datagen.*;
-import net.quedoom.francium.init.ModBlocks;
-import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.init.ModConfiguredFeatures;
+import net.quedoom.francium.init.ModPlacedFeatures;
 import net.quedoom.quet.datagen.QTRegistryBuilder;
 import net.quedoom.quet.datagen.QueTDataGeneratorEntrypoint;
-import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
-import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
-import net.quedoom.quet.init.ModRegistrator;
-import net.quedoom.quet.misc.QueTObjectStorage;
 
 public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 	@Override
@@ -22,10 +18,12 @@ public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 		pack.addProvider(Loot::new);
 		pack.addProvider(Models::new);
 		pack.addProvider(RecipeGen::new);
+		pack.addProvider(FranciumRegistryDataProvider::new);
 	}
 
 	@Override
 	protected void buildRegistry(QTRegistryBuilder qtRegistryBuilder) {
-
+		qtRegistryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+		qtRegistryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 	}
 }
