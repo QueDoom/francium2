@@ -213,7 +213,6 @@ public class ObsidianMixerEntity extends BlockEntity implements Container {
     @Override
     protected void saveAdditional(ValueOutput output) {
         super.saveAdditional(output);
-//        Collections.fill(CONTAINER, ItemStack.EMPTY);
         ContainerHelper.saveAllItems(output, CONTAINER, true);
         output.putInt("item", state);
         output.putInt("progress", progress);
@@ -224,6 +223,7 @@ public class ObsidianMixerEntity extends BlockEntity implements Container {
     @Override
     protected void loadAdditional(ValueInput input) {
         super.loadAdditional(input);
+        Collections.fill(CONTAINER, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(input, CONTAINER);
         state = input.getInt("item").orElse(0);
         progress = input.getIntOr("progress", 0);
