@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.quedoom.francium.block.entity.BellowBlockEntity;
 import net.quedoom.francium.block.entity.ObsidianMixerEntity;
 import net.quedoom.francium.init.ModBlockEntities;
 import net.quedoom.francium.init.ModBlocks;
@@ -75,7 +74,7 @@ public class ObsidianMixerBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
-        return createTicker(level, type, ModBlockEntities.OBSIDIAN_MIXER_ENTITY);
+        return createTicker(level, type, ModBlockEntities.OBSIDIAN_MIXER);
     }
 
     protected static <T extends BlockEntity> @Nullable BlockEntityTicker<T> createTicker(final Level level, final BlockEntityType<T> actualType, final BlockEntityType<? extends ObsidianMixerEntity> expectedType) {

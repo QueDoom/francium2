@@ -2,32 +2,21 @@ package net.quedoom.francium.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import net.quedoom.francium.block.entity.BellowBlockEntity;
 import net.quedoom.francium.block.entity.StokedFireEntity;
 import net.quedoom.francium.init.ModBlockEntities;
 import org.jspecify.annotations.Nullable;
-import org.w3c.dom.Entity;
 
 public class StokedFireBlock extends BaseFireBlock implements EntityBlock {
     public static final BooleanProperty SHORT = BooleanProperty.create("short");
@@ -81,7 +70,7 @@ public class StokedFireBlock extends BaseFireBlock implements EntityBlock {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
-        return createTicker(level, type, ModBlockEntities.STOKED_FIRE_ENTITY);
+        return createTicker(level, type, ModBlockEntities.STOKED_FIRE);
     }
 
     @SuppressWarnings("unchecked")

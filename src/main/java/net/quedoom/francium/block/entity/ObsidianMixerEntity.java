@@ -7,7 +7,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
@@ -45,7 +44,7 @@ public class ObsidianMixerEntity extends BlockEntity implements Container {
     private int mixTime = 1;
 
     public ObsidianMixerEntity(BlockPos worldPosition, BlockState blockState) {
-        super(ModBlockEntities.OBSIDIAN_MIXER_ENTITY, worldPosition, blockState);
+        super(ModBlockEntities.OBSIDIAN_MIXER, worldPosition, blockState);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, final BlockEntity e, BlockState below) {

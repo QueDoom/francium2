@@ -12,8 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.francium.block.SawedBlock;
 import net.quedoom.francium.init.ModBlockEntities;
 import org.jspecify.annotations.Nullable;
 
@@ -23,7 +21,7 @@ public class SawedBlockEntity extends BlockEntity {
     private Optional<BlockState> stateInside = Optional.empty();
 
     public SawedBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(ModBlockEntities.SAWED_BLOCK_ENTITY, worldPosition, blockState);
+        super(ModBlockEntities.SAWED_BLOCK, worldPosition, blockState);
     }
 
     @Override

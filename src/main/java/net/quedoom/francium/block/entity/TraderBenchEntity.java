@@ -7,6 +7,6 @@ import net.quedoom.francium.init.ModBlockEntities;
 
 public class TraderBenchEntity extends BlockEntity {
     public TraderBenchEntity(BlockPos worldPosition, BlockState blockState) {
-        super(ModBlockEntities.TRADER_BENCH_ENTITY, worldPosition, blockState);
+        super(ModBlockEntities.TRADER_BENCH, worldPosition, blockState);
     }
 }

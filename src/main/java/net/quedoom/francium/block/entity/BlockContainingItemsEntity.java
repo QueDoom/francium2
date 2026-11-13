@@ -29,7 +29,7 @@ public class BlockContainingItemsEntity extends BlockEntity implements Container
     public NonNullList<ItemStack> container = NonNullList.withSize(6, ItemStack.EMPTY);
 
     public BlockContainingItemsEntity(BlockPos worldPosition, BlockState blockState) {
-        super(ModBlockEntities.BLOCK_CONTAINING_ITEMS_ENTITY, worldPosition, blockState);
+        super(ModBlockEntities.BLOCK_CONTAINING_ITEMS, worldPosition, blockState);
     }
 
     @Override

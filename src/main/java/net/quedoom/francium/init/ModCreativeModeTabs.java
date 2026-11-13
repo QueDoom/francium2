@@ -52,6 +52,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.DASH_ORB);
 
       output.accept(ModBlocks.BELLOW);
+      output.accept(ModBlocks.FAN);
 
       output.accept(ModItems.ANDESITE_COATED_ROCK);
       output.accept(ModItems.DIORITE_COATED_ROCK);

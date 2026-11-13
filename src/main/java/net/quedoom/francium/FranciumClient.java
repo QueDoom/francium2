@@ -27,11 +27,11 @@ public class FranciumClient implements ClientModInitializer {
     public void onInitializeClient() {
         ClientRecipeSynchronizedEvent.EVENT.register(FranciumClient::compareWithLocalServer);
 
-        BlockEntityRenderers.register(ModBlockEntities.DEEP_MERGER_ENTITY, DeepMergerRenderer::new);
-        BlockEntityRenderers.register(ModBlockEntities.GLUE_MIXER_ENTITY, GlueMixerRenderer::new);
-        BlockEntityRenderers.register(ModBlockEntities.OBSIDIAN_MIXER_ENTITY, ObsidianMixerRenderer::new);
-        BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING_ENTITY, BlockContainingRenderer::new);
-        BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING_ITEMS_ENTITY, BlockContainingItemsRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.DEEP_MERGER, DeepMergerRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.GLUE_MIXER, GlueMixerRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.OBSIDIAN_MIXER, ObsidianMixerRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING, BlockContainingRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING_ITEMS, BlockContainingItemsRenderer::new);
 
         EntityRenderers.register(ModEntityTypes.STEEL_IN_A_BOTTLE, ThrownItemRenderer::new);
 

@@ -1,7 +1,6 @@
 package net.quedoom.francium.block;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -23,7 +22,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.francium.Francium;
 import net.quedoom.francium.api.prickle.FranciumConfigManager;
 import net.quedoom.francium.block.entity.BellowBlockEntity;
 import net.quedoom.francium.block.entity.StokedFireEntity;
@@ -31,7 +29,6 @@ import net.quedoom.francium.init.ModBlockEntities;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.recipe.BlowingRecipe;
 import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
 
 public class BellowBlock extends BaseEntityBlock {
     public static final IntegerProperty PRESSURE = IntegerProperty.create("pressure", 0, 7);
@@ -196,6 +193,6 @@ public class BellowBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
-        return createTicker(level, type, ModBlockEntities.BELLOW_ENTITY);
+        return createTicker(level, type, ModBlockEntities.BELLOW);
     }
 }

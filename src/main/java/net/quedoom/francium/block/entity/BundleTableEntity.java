@@ -5,23 +5,19 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.block.menu.BundleTableMenu;
 import net.quedoom.francium.init.ModBlockEntities;
-import net.quedoom.francium.init.ModBlocks;
 
 public class BundleTableEntity extends BaseContainerBlockEntity implements Container {
     public static final NonNullList<ItemStack> container = NonNullList.withSize(6, ItemStack.EMPTY);
 
     public BundleTableEntity(BlockPos worldPosition, BlockState blockState) {
-        super(ModBlockEntities.BUNDLE_TABLE_ENTITY, worldPosition, blockState);
+        super(ModBlockEntities.BUNDLE_TABLE, worldPosition, blockState);
     }
 
     @Override
