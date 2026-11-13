@@ -36,7 +36,6 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.BEDROCK_ROCK);
       output.accept(ModItems.SHARP_BEDROCK_ROCK);
 
-
       output.accept(ModBlocks.OBSIDIAN_MIXER);
       output.accept(ModBlocks.GLUE_MIXER);
       output.accept(ModItems.GLUE_BOTTLE);
@@ -102,6 +101,9 @@ public class  ModCreativeModeTabs {
       output.accept(ModBlocks.WOODEN_CASING);
       output.accept(ModBlocks.STONE_CASING);
       output.accept(ModBlocks.OBSIDIAN_CASING);
+
+      output.accept(ModItems.OBSIDIAN_CHISEL);
+      output.accept(ModItems.BEDROCK_CHISEL);
 
       output.accept(Blocks.SUGAR_CANE);
       output.accept(ModBlocks.STRIPPED_SUGAR_CANE);
@@ -194,6 +196,8 @@ public class  ModCreativeModeTabs {
       output.accept(ModBlocks.FORBIDDEN_FLAKE);
       output.accept(ModItems.CORRUPTED_MODEL);
 
+      output.accept(ModBlocks.BEDROCK_CHUNK);
+      output.accept(Blocks.BEDROCK);
       output.accept(ModItems.BEDROCK_PILE);
       output.accept(ModItems.BEDROCK_PEBBLES);
       output.accept(ModItems.BEDROCK_FLAKE);
