@@ -34,7 +34,8 @@
 			"net.quedoom.francium.api.modmenu.FranciumModMenuApi"
 		]
 
-	},"custom": {
+	},
+	"custom": {
 		"modmenu": {
 			"links": {
 				"modmenu.discord": "https://discord.gg/xkdXpApT5r",
