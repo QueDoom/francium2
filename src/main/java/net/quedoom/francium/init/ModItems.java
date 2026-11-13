@@ -87,6 +87,9 @@ public class ModItems {
     public static Item GLUE_MIX = Q.register("glue_mix");
     public static Item NETHER_GLUE = Q.register("nether_glue");
 
+    public static Item OBSIDIAN_CHISEL = Q.register(Q.create("obsidian_chisel"), p -> new ChiselItem(false, p), new Item.Properties().durability(413));
+    public static Item BEDROCK_CHISEL = Q.register(Q.create("bedrock_chisel"), p -> new ChiselItem(true, p), new Item.Properties().durability(2325));
+
     public static Item BEDROCK_PILE = Q.register("bedrock_pile", false);
     public static Item BEDROCK_PEBBLES = Q.register("bedrock_pebbles");
     public static Item BEDROCK_FLAKE = Q.register("bedrock_flake");

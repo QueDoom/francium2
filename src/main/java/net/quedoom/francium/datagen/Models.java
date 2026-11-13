@@ -185,6 +185,9 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.STEEL_BOWL, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.STEEL_INGOT, ModelTemplates.FLAT_ITEM);
 
+        qtItemModelGenerators.generate(ModItems.OBSIDIAN_CHISEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        qtItemModelGenerators.generate(ModItems.BEDROCK_CHISEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PEBBLES, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_FLAKE, FLAKE_FLAT_ITEM);
