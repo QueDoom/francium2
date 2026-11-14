@@ -101,6 +101,6 @@ public class WoodenCasingBlock extends CasingWithPotentialContainer {
             }
             return true;
         }
-        return false;
+        return true;
     }
 }
