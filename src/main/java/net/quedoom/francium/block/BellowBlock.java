@@ -123,11 +123,6 @@ public class BellowBlock extends BaseEntityBlock {
 
     }
 
-    @Override
-    protected boolean isRandomlyTicking(BlockState state) {
-        return state.getValue(PRESSURE) < 2;
-    }
-
     public void raise(Level level, BlockPos pos, BlockState state) {
         if (!level.getEntitiesOfClass(Player.class, AABB.encapsulatingFullBlocks(pos, pos.above()).setMaxY(pos.above().getY())).isEmpty()) return;
         int pressure = state.getValue(PRESSURE);

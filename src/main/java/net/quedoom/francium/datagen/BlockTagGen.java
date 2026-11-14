@@ -18,6 +18,13 @@ public class BlockTagGen extends QueTBlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
+        valueLookupBuilder(ModTags.Blocks.FAN_BLOWS_THROUGH)
+                .add(
+                        ModBlocks.STOKED_FIRE,
+                        Blocks.FIRE
+                )
+                        .addOptionalTag(BlockTags.AIR);
+
         valueLookupBuilder(ModTags.Blocks.CRUSHED_BY_HEAVY_ANVIL)
                 .addOptionalTag(BlockTags.WOODEN_BUTTONS)
                 .addOptionalTag(BlockTags.WOODEN_DOORS)
