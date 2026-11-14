@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "francium_2:block/fan"
+    },
+    "facing=east": {
+      "model": "francium_2:block/fan",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "francium_2:block/fan",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "francium_2:block/fan",
+      "y": 270
     }
   }
 }
