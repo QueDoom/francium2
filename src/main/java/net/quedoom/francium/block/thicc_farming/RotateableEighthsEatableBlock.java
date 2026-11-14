@@ -13,21 +13,29 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.francium.util.EighthsEatableOctant;
+import net.quedoom.thicc_farming.util.EighthsEatableOctant;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class RotateableEighthsEatableBlock extends EighthsEatableBlock{
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
+    public RotateableEighthsEatableBlock(String item, int nutrition, float saturation, Properties properties) {
+        super(item, nutrition, saturation, properties);
+        this.registerDefaultState(super.defaultBlockState().setValue(FACING, Direction.NORTH));
+    }
     public RotateableEighthsEatableBlock(int nutrition, float saturation, Properties properties) {
-        super(nutrition, saturation, properties);
+        super("", nutrition, saturation, properties);
+        this.registerDefaultState(super.defaultBlockState().setValue(FACING, Direction.NORTH));
+    }
+
+    public RotateableEighthsEatableBlock(String item, Properties properties) {
+        super(item, properties);
         this.registerDefaultState(super.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     public RotateableEighthsEatableBlock(Properties properties) {
-        super(properties);
-        this.registerDefaultState(super.defaultBlockState().setValue(FACING, Direction.NORTH));
+        super("", properties);
     }
 
     @Override
@@ -57,7 +65,7 @@ public class RotateableEighthsEatableBlock extends EighthsEatableBlock{
     }
 
     @Override
-    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, Direction side, Direction facing) {
+    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, BlockState state, Direction side, Direction facing) {
         double x = hitPos.x - blockPos.getX() - side.getStepX() * 0.01;
         double y = hitPos.y - blockPos.getY() - side.getStepY() * 0.01;
         double z = hitPos.z - blockPos.getZ() - side.getStepZ() * 0.01;
@@ -73,7 +81,7 @@ public class RotateableEighthsEatableBlock extends EighthsEatableBlock{
         char ew = x < 0.5 ? 'w' : 'e';
         char ud = y < 0.5 ? 'd' : 'u';
 
-        return EighthsEatableOctant.ofChars(ns, ew, ud);
+        return orRandomRemaining(EighthsEatableOctant.ofChars(ns, ew, ud), state);
     }
 
     @Override

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.quedoom.thicc_farming.api.config.ThiccConfigManager;
 
 import java.util.Optional;
 
@@ -33,7 +34,9 @@ public abstract class ThickableCropBlock extends CropBlock {
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return random.nextInt(16) == 0;
+        int rarity = ThiccConfigManager.CONFIG.bone_meal_success_rarity;
+        if (rarity == -1) return false;
+        return random.nextInt(rarity) == 0;
     }
 
     @Override
@@ -41,8 +44,8 @@ public abstract class ThickableCropBlock extends CropBlock {
         if (level.getRawBrightness(pos, 0) >= 9) {
             int age = this.getAge(state);
             if (age < this.getMaxAge()) {
-                float growthSpeed = getGrowthSpeed(this, level, pos) / 2;
-                if (random.nextInt((int)(25.0F / growthSpeed) + 1 + addDelayToGrowing()) == 0) {
+                float growthSpeed = getGrowthSpeed(this, level, pos) * ThiccConfigManager.CONFIG.growth_speed_multiplier;
+                if (random.nextInt((int)(20.0F / growthSpeed) + addDelayToGrowing()) == addDelayToGrowing()) {
                     level.setBlock(pos, this.getStateForAge(age + 1), 2);
                 }
             } else {

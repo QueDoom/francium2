@@ -2,10 +2,15 @@ package net.quedoom.francium.block.thicc_farming;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -20,15 +25,21 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.francium.Francium;
-import net.quedoom.francium.api.LoadedMods;
-import net.quedoom.francium.init.ModProperties;
-import net.quedoom.francium.init.ModStats;
-import net.quedoom.francium.util.EighthsEatableOctant;
+import net.quedoom.quet.api.LoadedMods;
+import net.quedoom.thicc_farming.block.ModProperties;
+import net.quedoom.thicc_farming.block.thicc_farming.RotateableEighthsEatableBlock;
+import net.quedoom.thicc_farming.init.ModStats;
+import net.quedoom.thicc_farming.init.ModTags;
+import net.quedoom.thicc_farming.item.CleaverItem;
+import net.quedoom.thicc_farming.util.EighthsEatableOctant;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import toughasnails.api.thirst.IThirst;
 import toughasnails.api.thirst.ThirstHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class EighthsEatableBlock extends Block {
     public static final BooleanProperty NORTH_EAST_DOWN = ModProperties.NORTH_EAST_DOWN;
@@ -42,6 +53,16 @@ public class EighthsEatableBlock extends Block {
 
     protected final int nutrition;
     protected final float saturation;
+    protected final String item;
+
+    public EighthsEatableBlock(String item, int nutrition, float saturation, Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(NORTH_EAST_DOWN, true).setValue(NORTH_WEST_DOWN, true).setValue(SOUTH_EAST_DOWN, true).setValue(SOUTH_EAST_DOWN, true)
+                                                                 .setValue(NORTH_EAST_UP, true).setValue(NORTH_WEST_UP, true).setValue(SOUTH_EAST_UP, true).setValue(SOUTH_WEST_UP, true));
+        this.nutrition = nutrition;
+        this.saturation = saturation;
+        this.item = item;
+    }
 
     public EighthsEatableBlock(int nutrition, float saturation, Properties properties) {
         super(properties);
@@ -49,14 +70,25 @@ public class EighthsEatableBlock extends Block {
                                                                  .setValue(NORTH_EAST_UP, true).setValue(NORTH_WEST_UP, true).setValue(SOUTH_EAST_UP, true).setValue(SOUTH_WEST_UP, true));
         this.nutrition = nutrition;
         this.saturation = saturation;
+        this.item = "";
     }
 
-    public EighthsEatableBlock(Properties properties) {
+    public EighthsEatableBlock(String item, Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(NORTH_EAST_DOWN, true).setValue(NORTH_WEST_DOWN, true).setValue(SOUTH_EAST_DOWN, true).setValue(SOUTH_EAST_DOWN, true)
                 .setValue(NORTH_EAST_UP, true).setValue(NORTH_WEST_UP, true).setValue(SOUTH_EAST_UP, true).setValue(SOUTH_WEST_UP, true));
         this.nutrition = 1;
         this.saturation = 0.1F;
+        this.item = item;
+    }
+
+    public EighthsEatableBlock(Properties properties) {
+        super( properties);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(NORTH_EAST_DOWN, true).setValue(NORTH_WEST_DOWN, true).setValue(SOUTH_EAST_DOWN, true).setValue(SOUTH_EAST_DOWN, true)
+                .setValue(NORTH_EAST_UP, true).setValue(NORTH_WEST_UP, true).setValue(SOUTH_EAST_UP, true).setValue(SOUTH_WEST_UP, true));
+        this.nutrition = 1;
+        this.saturation = 0.1F;
+        this.item = "";
     }
 
     @Override
@@ -107,6 +139,45 @@ public class EighthsEatableBlock extends Block {
         return this.eat(level, pos, state, player, hitResult);
     }
 
+    @Override
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (this.item.isEmpty() || this.item.isBlank()) {
+            return InteractionResult.TRY_WITH_EMPTY_HAND;
+        }
+        if (itemStack.getItem() instanceof CleaverItem || itemStack.is(ModTags.Items.CLEAVERS)) {
+            itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
+            return extract(level, pos, state, player, hitResult);
+        }
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
+    }
+
+    public Item getItem() {
+        Identifier id = Identifier.tryParse(this.item);
+        return BuiltInRegistries.ITEM.getValue(id);
+    }
+
+    protected InteractionResult extract(final Level level, final BlockPos pos, final BlockState state, final Player player, final BlockHitResult hitResult) {
+        int bites = getBites(state);
+        if (bites < 7) {
+            Vec3 hitPos = hitResult.getLocation();
+            BlockPos blockPos = hitResult.getBlockPos();
+            Direction side = hitResult.getDirection();
+
+            EighthsEatableOctant octant = this.getOctant(hitPos, blockPos, state, side, (state.getBlock() instanceof RotateableEighthsEatableBlock ? state.getValue(RotateableEighthsEatableBlock.FACING) : null));
+
+            Vec3 worldRelative = octant.worldRelative(pos);
+            Containers.dropItemStack(level, worldRelative.x, worldRelative.y, worldRelative.z, getItem().getDefaultInstance());
+
+            set(level, pos, state, octant);
+
+        } else {
+            level.removeBlock(pos, false);
+            level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
     protected void set(LevelAccessor level, BlockPos pos, BlockState state, EighthsEatableOctant octant) {
         octant.set(((Level) level), state, pos, false);
     }
@@ -125,10 +196,9 @@ public class EighthsEatableBlock extends Block {
             BlockPos blockPos = hitResult.getBlockPos();
             Direction side = hitResult.getDirection();
 
-            EighthsEatableOctant octant = this.getOctant(hitPos, blockPos, side, (state.getBlock() instanceof RotateableEighthsEatableBlock ? state.getValue(RotateableEighthsEatableBlock.FACING) : null));
+            EighthsEatableOctant octant = this.getOctant(hitPos, blockPos, state, side, (state.getBlock() instanceof RotateableEighthsEatableBlock ? state.getValue(RotateableEighthsEatableBlock.FACING) : null));
 
             set(level, pos, state, octant);
-            Francium.LOGGER.info(octant.toString());
 
         } else {
             level.removeBlock(pos, false);
@@ -150,19 +220,26 @@ public class EighthsEatableBlock extends Block {
         }
     }
 
-    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, Direction side) {
-        return getOctant(hitPos, blockPos, side, null);
+    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, BlockState state, Direction side) {
+        return getOctant(hitPos, blockPos, state, side, null);
     }
-    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, Direction side, @Nullable Direction facing) {
+    protected @NonNull EighthsEatableOctant getOctant(Vec3 hitPos, BlockPos blockPos, BlockState state, Direction side, @Nullable Direction facing) {
         double dx = hitPos.x - blockPos.getX() - (side.equals(Direction.EAST) ? 0.01F : -0.01);
         double dy = hitPos.y - blockPos.getY() - (side.equals(Direction.UP) ? 0.01F : -0.01);
         double dz = hitPos.z - blockPos.getZ() - (side.equals(Direction.NORTH) ? -0.01F : 0.01);
 
-        char ns = dz < 0.5 ? 'n' : 's';
-        char ew = dx < 0.5 ? 'w' : 'e';
-        char ud = dy < 0.5 ? 'd' : 'u';
+        EighthsEatableOctant octant = EighthsEatableOctant.ofBooleans(dz < 0.5, !(dx < 0.5), !(dy < 0.5));
+        return orRandomRemaining(octant, state);
+    }
 
-        return EighthsEatableOctant.ofChars(ns, ew, ud);
+    protected EighthsEatableOctant orRandomRemaining(EighthsEatableOctant octant, BlockState state) {
+        if (!octant.isEmpty(state)) return octant;
+        List<EighthsEatableOctant> remaining = new ArrayList<>();
+        for (EighthsEatableOctant o : EighthsEatableOctant.values()) {
+            if (!o.isEmpty(state)) remaining.add(o);
+        }
+        return remaining.isEmpty() ? octant
+                : remaining.get(ThreadLocalRandom.current().nextInt(remaining.size()));
     }
 
     protected static int getBites(BlockState state) {
@@ -191,7 +268,6 @@ public class EighthsEatableBlock extends Block {
         if (!state.getValue(SOUTH_WEST_UP)) {
             bites++;
         }
-        Francium.LOGGER.info("{}", bites);
         return bites;
     }
 

@@ -4,9 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.Vec3;
 import net.quedoom.francium.init.ModProperties;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Optional;
 
 public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
@@ -19,6 +21,10 @@ public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
     public static final EighthsEatableOctant sed = new EighthsEatableOctant(false, true, false);
     public static final EighthsEatableOctant swd = new EighthsEatableOctant(false, false, false);
 
+    public static List<EighthsEatableOctant> values() {
+        return List.of(neu, nwu, seu, swu, ned, nwd, sed, swd);
+    }
+
     public static EighthsEatableOctant ofChars(char ns, char ew, char ud) {
         return new EighthsEatableOctant(ns == 'n', ew == 'e', ud == 'u');
     }
@@ -28,6 +34,23 @@ public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
 
     public boolean isUpper() {
         return up;
+    }
+
+    public Vec3 blockRelative() {
+        if (this == neu) return new Vec3(0.75, 0.75, 0.25);
+        if (this == nwu) return new Vec3(0.25, 0.75, 0.25);
+        if (this == seu) return new Vec3(0.75, 0.75, 0.75);
+        if (this == swu) return new Vec3(0.25, 0.75, 0.75);
+        if (this == ned) return new Vec3(0.75, 0.25, 0.25);
+        if (this == nwd) return new Vec3(0.25, 0.25, 0.25);
+        if (this == sed) return new Vec3(0.75, 0.25, 0.75);
+        if (this == swd) return new Vec3(0.25, 0.25, 0.75);
+        return new Vec3(0.5, 0.5, 0.5);
+    }
+
+    public Vec3 worldRelative(BlockPos pos) {
+        Vec3 block = blockRelative();
+        return new Vec3(pos.getX() + block.x, pos.getY() + block.y, pos.getZ() + block.z);
     }
 
     public Optional<BooleanProperty> getStemProperty() {
@@ -117,6 +140,10 @@ public record EighthsEatableOctant(boolean north, boolean east, boolean up) {
 
     public boolean get(BlockState state) {
         return state.getValue(getProperty());
+    }
+
+    public boolean isEmpty(BlockState state) {
+        return !get(state);
     }
 
     @Override

@@ -2,7 +2,6 @@ package net.quedoom.francium.block.thicc_farming;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.Containers;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -18,7 +17,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.francium.init.ModProperties;
+import net.quedoom.thicc_farming.block.ModProperties;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;
@@ -94,7 +93,6 @@ public class ThickFoliageBlock extends VegetationBlock {
             level.setBlockAndUpdate(foliagePos, foliageState.setValue(quadrant, false));
         } else {
             level.removeBlock(foliagePos, false);
-            Containers.dropItemStack(level, foliagePos.getX(), foliagePos.getY() - 0.25F, foliagePos.getZ(), getCloneItemStack(level, foliagePos, foliageState, false));
         }
     }
 

@@ -1,16 +1,15 @@
 package net.quedoom.francium.block.thicc_crops;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.thicc_farming.block.thicc_crops.ThickableCropBlock;
+import net.quedoom.thicc_farming.init.ModBlocks;
 
 import java.util.Optional;
 

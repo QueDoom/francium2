@@ -4,15 +4,23 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.quedoom.francium.util.EighthsEatableOctant;
+import net.quedoom.thicc_farming.block.thicc_farming.ThickFoliageBlock;
+import net.quedoom.thicc_farming.util.EighthsEatableOctant;
 
 public class EighthsEatableBlockWithStem extends EighthsEatableBlock{
+    public EighthsEatableBlockWithStem(String item, int nutrition, float saturation, Properties properties) {
+        super(item, nutrition, saturation, properties);
+    }
     public EighthsEatableBlockWithStem(int nutrition, float saturation, Properties properties) {
-        super(nutrition, saturation, properties);
+        super("", nutrition, saturation, properties);
+    }
+
+    public EighthsEatableBlockWithStem(String item, Properties properties) {
+        super(item, properties);
     }
 
     public EighthsEatableBlockWithStem(Properties properties) {
-        super(properties);
+        super("", properties);
     }
 
     @Override
