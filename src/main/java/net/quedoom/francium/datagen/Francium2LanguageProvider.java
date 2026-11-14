@@ -249,10 +249,25 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
     }
 
     private void translateOptions(QTTranslationBuilder builder) {
+        FranciumConfigs defaults = new FranciumConfigs(); // needs a no-arg constructor
+
         for (Field field : FranciumConfigs.class.getDeclaredFields()) {
             Value meta = field.getAnnotation(Value.class);
             if (meta == null) continue;
-            builder.builder().add("francium.options." + field.getName(), QTTranslationBuilder.snakeToTitleCase(field.getName()));
+
+            String key = "options.francium_2." + field.getName();
+            builder.builder().add(key, QTTranslationBuilder.snakeToTitleCase(field.getName()));
+
+            String descRight = meta.comment();
+            if (meta.writeDefault()) {
+                try {
+                    field.setAccessible(true);
+                    descRight = descRight + " d=" + field.get(defaults);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException("Could not read default for " + field.getName(), e);
+                }
+            }
+            builder.builder().add(key + ".description", descRight);
         }
     }
 }

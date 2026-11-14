@@ -1,7 +1,6 @@
 package net.quedoom.francium.api.prickle;
 
 
-import com.mojang.blaze3d.platform.InputConstants;
 import net.darkhax.pricklemc.common.api.annotations.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
@@ -10,13 +9,15 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.StringRepresentable;
+import net.quedoom.francium.Francium;
+import org.jspecify.annotations.NonNull;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -38,6 +39,18 @@ public class FranciumConfigs {
     @Value(name = "stoked_fire_blow_adding", comment = "How much to reset the burn timer when blowing, negative means full reset")
     public int stoked_fire_blow_adding = -1;
 
+    @RangedInt(min = 1, max = 16)
+    @Value(comment = "How far the Fan could potentially blow.")
+    public int fan_max_reach = 3;
+
+    @Value(comment = "How fast the Fan speeds ut upon activation.")
+    public float fan_acceleration = 1.05f;
+
+    @Value(comment = "How fast the Fan slows down ut upon deactivation.")
+    public float fan_deacceleration = 0.65f;
+
+    @Value(comment = "How fast the fan can spin.")
+    public float fan_max_speed = 18f;
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
@@ -50,9 +63,14 @@ public class FranciumConfigs {
             if (meta == null || field.isAnnotationPresent(FileOnlyConfig.class)) continue;
             field.setAccessible(true);
 
-            String key = "francium.options." + field.getName();
+            String key = "options.francium_2." + field.getName();
             Component name = Component.translatable(key);
-            Component comment = Component.literal(meta.comment());
+            Component comment;
+            if (meta.comment().isBlank()) {
+                comment = Component.literal("");
+            } else {
+                comment = Component.translatable(key + ".description");
+            }
             Class<?> type = field.getType();
 
             try {
@@ -106,6 +124,9 @@ public class FranciumConfigs {
                             v -> String.format("%.2f", v),
                             field.getFloat(FranciumConfigManager.CONFIG), v -> set(field, v));
 
+                } else if (type.isEnum() && StringRepresentable.class.isAssignableFrom(type)) {
+                    widget = enumButton(options, key, comment, field);
+
                 } else if (type == int.class || type == long.class || type == float.class
                         || type == double.class || type == String.class) {
                     widget = textBox(field, name, comment);
@@ -117,6 +138,29 @@ public class FranciumConfigs {
             }
         }
         return widgets;
+    }
+
+    private static Component translatableFromEnum(StringRepresentable enumm) {
+        return Francium.translatable("options.enum", enumm.getClass().getSimpleName() + '.' + enumm.getSerializedName());
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static AbstractWidget enumButton(Options options, String key, Component comment, Field field) throws IllegalAccessException {
+        return enumButtonTyped(options, key, comment, field, (Class) field.getType());
+    }
+
+    private static <E extends Enum<E> & StringRepresentable> AbstractWidget enumButtonTyped(
+            Options options, String key, Component comment, Field field, Class<E> type) throws IllegalAccessException {
+        E[] constants = type.getEnumConstants();
+        @SuppressWarnings("unchecked")
+        E initial = (E) field.get(FranciumConfigManager.CONFIG);
+        OptionInstance.TooltipSupplier<@NonNull E> tip = OptionInstance.cachedConstantTooltip(comment);
+
+        return new OptionInstance<>(key, tip,
+                (caption, v) -> translatableFromEnum(v),
+                new OptionInstance.Enum<>(List.of(constants), StringRepresentable.fromEnum(() -> constants)),
+                initial,
+                v -> set(field, v)).createButton(options);
     }
 
     private static boolean isFinite(double min, double max) {
@@ -147,6 +191,7 @@ public class FranciumConfigs {
                 box.setTextColor(0xFFFF5555);
             }
         });
+        box.setTooltip(Tooltip.create(comment == null ? name : name.copy().append("\n").append(comment)));
         return box;
     }
 

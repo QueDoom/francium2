@@ -8,14 +8,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.FallingBlockRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.quedoom.francium.block.entity.*;
 import net.quedoom.francium.block.menu.BundleTableScreen;
 import net.quedoom.francium.block.menu.DeepMergerScreen;
-import net.quedoom.francium.block.menu.WoodenMergerMenu;
 import net.quedoom.francium.block.menu.WoodenMergerScreen;
 import net.quedoom.francium.datagen.recipe.FranciumSyncedRecipes;
 import net.quedoom.francium.init.ModBlockEntities;
@@ -32,6 +30,7 @@ public class FranciumClient implements ClientModInitializer {
         BlockEntityRenderers.register(ModBlockEntities.OBSIDIAN_MIXER, ObsidianMixerRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING, BlockContainingRenderer::new);
         BlockEntityRenderers.register(ModBlockEntities.BLOCK_CONTAINING_ITEMS, BlockContainingItemsRenderer::new);
+        BlockEntityRenderers.register(ModBlockEntities.FAN, FanBlockEntityRenderer::new);
 
         EntityRenderers.register(ModEntityTypes.STEEL_IN_A_BOTTLE, ThrownItemRenderer::new);
 

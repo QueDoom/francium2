@@ -18,6 +18,7 @@ import java.util.Locale;
 public class FranciumConfigManager {
     private static final String CONFIG_ID = "francium";
     public static FranciumConfigs CONFIG = firstLoad();
+    public static FranciumConfigs DATAGEN_CONFIG = new FranciumConfigs();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     private static Path path() {
