@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "S": "minecraft:string",
-    "W": "#minecraft:planks"
+    "W": "francium_2:wooden_casing"
   },
   "pattern": [
     "WSW",

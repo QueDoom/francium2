@@ -4,6 +4,11 @@ import net.darkhax.pricklemc.common.api.config.ConfigManager;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
@@ -61,6 +66,13 @@ public class Francium implements ModInitializer {
 
 		FlammableBlockRegistry.getDefaultInstance().add(Blocks.CACTUS, 5, 5);
 
-
+		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(container ->
+				ResourceLoader.registerBuiltinPack(
+						of("overrides"),
+						container,
+						Component.literal("Recipe Overrides"),
+						PackActivationType.ALWAYS_ENABLED
+				)
+		);
 	}
 }

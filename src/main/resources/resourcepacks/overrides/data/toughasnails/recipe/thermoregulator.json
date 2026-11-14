@@ -3,8 +3,8 @@
   "category": "misc",
   "key": {
     "I": "minecraft:iron_ingot",
-    "S": "minecraft:smooth_stone",
-    "T": "toughasnails:thermometer"
+    "S": "francium_2:stone_casing",
+    "T": "francium_2:fan"
   },
   "pattern": [
     "SIS",
