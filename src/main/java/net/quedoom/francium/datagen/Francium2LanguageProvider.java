@@ -57,7 +57,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         pileTranslate(qtTranslationBuilder, ModItems.NETHER_QUARTZ_ORE_PILE, "Nether Quartz Ore");
 
         translationBuilder.add(ModItems.COAL_LUMP, "Lump of Coal");
-        translationBuilder.add(ModItems.RAW_COPPER_CLUMP, "Lump of Raw Copper");
+        translationBuilder.add(ModItems.RAW_COPPER_CLUMP, "Clump of Raw Copper");
 
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_DUST);
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_FLAKE);
