@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.quedoom.francium.block.FanBlock;
 import net.quedoom.francium.init.ModBlockStateModels;
@@ -41,11 +42,14 @@ public class FanBlockEntityRenderer implements BlockEntityRenderer<FanBlockEntit
 
         state.spinning = blockEntity.spinning();
 
-        state.facing = blockEntity.getLevel().getBlockState(blockEntity.getBlockPos()).getValue(FanBlock.FACING);
+        BlockState stateetetetet = blockEntity.getLevel().getBlockState(blockEntity.getBlockPos());
+        if (stateetetetet.hasProperty(FanBlock.FACING))
+            state.facing = stateetetetet.getValue(FanBlock.FACING);
     }
 
     @Override
     public void submit(FanBlockEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+        if (state.facing == null) return;
         poseStack.pushPose();
         poseStack.translate(0.5f, 0.5f, 0.5f);
         poseStack.mulPose(Axis.YP.rotationDegrees(180f - state.facing.toYRot()));
