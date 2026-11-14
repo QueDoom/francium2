@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:netherite_ingot",
+  "base": "toughasnails:diamond_water_canteen",
+  "result": {
+    "id": "toughasnails:netherite_water_canteen"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:netherite_ingot",
+  "base": "toughasnails:empty_diamond_canteen",
+  "result": {
+    "id": "toughasnails:empty_netherite_canteen"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

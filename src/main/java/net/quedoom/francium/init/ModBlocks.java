@@ -4,10 +4,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -96,7 +93,8 @@ public class ModBlocks  {
     //endregion packed blocks
 
     public static final Block SMOOTH_CACTUS = Q.register("smooth_cactus", SmoothCactusBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.4F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY));
-    public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().randomTicks().strength(0.9F).sound(SoundType.WOOD).pushReaction(PushReaction.BLOCK));
+    public static final Block BELLOW = Q.register("bellow", BellowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noOcclusion().strength(0.9F).sound(SoundType.WOOD).pushReaction(PushReaction.BLOCK));
+    public static final Block FAN = Q.register("fan", FanBlock::new, BlockBehaviour.Properties.of().mapColor(DyeColor.WHITE).noOcclusion().strength(0.9F).sound(SoundType.IRON).pushReaction(PushReaction.BLOCK));
     public static final Block STOKED_FIRE = Q.register("stoked_fire", StokedFireBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.FIRE), false);
 
     public static final Block BEDROCK_CHUNK = Q.register("bedrock_chunk", BlockBehaviour.Properties.of()

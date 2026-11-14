@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:charcoal",
+    "B": "minecraft:bowl",
+    "S": "minecraft:sugar"
+  },
+  "pattern": [
+    " # ",
+    "#S#",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "toughasnails:charc_os"
+  }
+}
