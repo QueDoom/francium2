@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -15,9 +16,17 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.quedoom.francium.Francium;
+import net.quedoom.francium.block.BlockContainingBlock;
+import net.quedoom.francium.block.CasingWithPotentialContainer;
+import net.quedoom.francium.block.entity.BlockContainingEntity;
+import net.quedoom.francium.block.entity.BlockContainingItemsEntity;
+import net.quedoom.francium.block.thicc_farming.EighthsEatableBlock;
 import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.util.EighthsEatableOctant;
 
 public class ChiselItem extends Item {
     private final boolean chiselsEverything;
@@ -43,14 +52,43 @@ public class ChiselItem extends Item {
         }
 
         BlockState state = level.getBlockState(pos);
+        BlockEntity entity = level.getBlockEntity(pos);
         ItemStack drop = getDropStack(level, pos, state);
+        boolean destroy = true;
+        boolean particle = true;
 
-        level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
-        level.removeBlock(pos, false);
+        // Thick crops
+        if (state.getBlock() instanceof EighthsEatableBlock eighthsEatableBlock) {
+            drop = eighthsEatableBlock.getStack(state);
+        }
+        // Casings with items/blocks in
+        if (entity instanceof BlockContainingEntity blockContainingEntity && !blockContainingEntity.isEmpty()) {
+            drop = blockContainingEntity.getTheItem();
+            Item item = drop.getItem();
+            if (item instanceof BlockItem blockItem)
+                level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(blockItem.getBlock().defaultBlockState()));
+            blockContainingEntity.clearContent();
+            particle = false;
+            destroy = false;
+        }
+        if (entity instanceof BlockContainingItemsEntity blockContainingItems && !blockContainingItems.isEmpty()) {
+            int slot = blockContainingItems.firstSlotWithItem();
+            drop = blockContainingItems.getItem(slot).copyWithCount(1);
+            blockContainingItems.removeItem(slot, 64);
+            destroy = false;
+        }
+
+        if (particle)
+            level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
+        if (destroy)
+            level.removeBlock(pos, false);
+
 
         if (!drop.isEmpty()) {
             Vec3 center = pos.getCenter();
             Containers.dropItemStack(level, center.x, center.y, center.z, drop);
+        } else {
+            Block.dropResources(state, level, pos);
         }
 
         tool.hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
