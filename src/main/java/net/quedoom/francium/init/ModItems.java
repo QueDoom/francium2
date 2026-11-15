@@ -42,6 +42,11 @@ public class ModItems {
     public static Item COAL_DUST = Q.register("coal_dust");
     public static Item COAL_LUMP = Q.register("coal_lump", false);
 
+    public static Item OFF_BLUE_DYE = Q.register("off_blue_dye", false);
+    public static Item ANOTHER_OFF_BLUE_DYE = Q.register("another_off_blue_dye", false);
+    public static Item LAPIS_ESSENCE = Q.register("lapis_essence");
+    public static Item EMERALD_SHARD = Q.register("emerald_shard");
+
     public static Item DEEPSLATE_PILE = Q.register("deepslate_pile", false);
     public static Item TUFF_PILE = Q.register("tuff_pile", false);
     public static Item TUFF_ZONG = Q.register("tuff_zong");
@@ -87,8 +92,13 @@ public class ModItems {
     public static Item GLUE_MIX = Q.register("glue_mix");
     public static Item NETHER_GLUE = Q.register("nether_glue");
 
+    public static Item STRENGTHENED_SHAFT = Q.register(Q.create("strengthened_shaft"));
+
     public static Item OBSIDIAN_CHISEL = Q.register(Q.create("obsidian_chisel"), p -> new ChiselItem(false, p), new Item.Properties().durability(413));
     public static Item BEDROCK_CHISEL = Q.register(Q.create("bedrock_chisel"), p -> new ChiselItem(true, p), new Item.Properties().durability(2325));
+
+    public static Item STEEL_CLEAVER = Q.register(Q.create("steel_cleaver"), p -> new CleaverItem(ModToolMaterials.STEEL, 0.0F, -0.5F, p), new Item.Properties().durability(2325));
+    public static Item BEDROCK_CLEAVER = Q.register(Q.create("bedrock_cleaver"), p -> new CleaverItem(ModToolMaterials.BEDROCK, 5.0F, 6.0F, p), new Item.Properties().durability(2325));
 
     public static Item BEDROCK_PILE = Q.register("bedrock_pile", false);
     public static Item BEDROCK_PEBBLES = Q.register("bedrock_pebbles");

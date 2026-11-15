@@ -1,13 +1,10 @@
 package net.quedoom.francium.init;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
-import net.quedoom.quet.init.ModRegistrator;
 import net.quedoom.quet.init.QueTTag;
 
 public class ModTags {
@@ -41,6 +38,12 @@ public class ModTags {
         public static final TagKey<Block> GROWS_INTO_THICK = Q.create("grows_into_thick");
 
         public static final TagKey<Block> CRUSHED_BY_HEAVY_ANVIL = Q.create("crushed_by_heavy_anvil");
+
+        public static final TagKey<Block> INCORRECT_FOR_BEDROCK_TOOLS = Q.create("incorrect_for_bedrock_tools");
+
+        public static final TagKey<Block> THICKABLE_CROPS = Q.create("thickable_crops");
+        public static final TagKey<Block> THICK_CROPS = Q.create("thick_crops");
+        public static final TagKey<Block> THICK_CROP_FOLIAGE = Q.create("thick_crop_foliage");
     }
     public static class Items {
         private static final QueTTag.QTItemTags Q = BUILDER.item();
@@ -64,9 +67,16 @@ public class ModTags {
 
         public static final TagKey<Item> MAKES_PAPER = Q.create("makes_paper");
 
-        // jei
-        public static final TagKey<Item> ECHO_ITEMS = Q.create("glue_mixer_jei_echo_items");
-        public static final TagKey<Item> LEAF_ITEMS = Q.create("glue_mixer_jei_leaf_items");
+        public static final TagKey<Item> CLEAVERS = Q.create("cleavers");
+        public static final TagKey<Item> ITEMS_TO_THICKABLE_CROPS = Q.create("items_to_thickable_crops");
+
+        public static final TagKey<Item> STEEL_TOOL_MATERIALS = Q.create("steel_tool_materials");
+
+        public static final TagKey<Item> OFF_BLUE_DYES = Q.create("off_blue_dyes");
+
+        // rrv
+        public static final TagKey<Item> ECHO_ITEMS = Q.create("glue_mixer_rrv_echo_items");
+        public static final TagKey<Item> LEAF_ITEMS = Q.create("glue_mixer_rrv_leaf_items");
     }
 
     public static class Entities {

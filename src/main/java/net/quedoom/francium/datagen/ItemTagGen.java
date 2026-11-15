@@ -2,14 +2,14 @@ package net.quedoom.francium.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
+import net.quedoom.francium.init.FranciumConventionalTags;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
-import org.jspecify.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,6 +21,65 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
+        // region conventional
+        valueLookupBuilder(FranciumConventionalTags.Items.TUFF_COBBLESTONES)
+                .add(
+                        ModBlocks.COBBLED_TUFF.asItem()
+                );
+        valueLookupBuilder(FranciumConventionalTags.Items.COBBLESTONES)
+                .addOptionalTag(FranciumConventionalTags.Items.TUFF_COBBLESTONES);
+
+        valueLookupBuilder(ConventionalItemTags.COPPER_RAW_MATERIALS)
+                .add(
+                        ModItems.COPPER_DUST,
+                        ModItems.DEEPSLATE_COPPER_ORE_PILE
+                );
+        valueLookupBuilder(ConventionalItemTags.IRON_RAW_MATERIALS)
+                .add(
+                        ModItems.IRON_ORE_PILE,
+                        ModItems.DEEPSLATE_IRON_ORE_PILE
+                );
+        valueLookupBuilder(ConventionalItemTags.COPPER_RAW_MATERIALS)
+                .add(
+                        ModItems.COPPER_ORE_PILE,
+                        ModItems.DEEPSLATE_COPPER_ORE_PILE
+                );
+        valueLookupBuilder(FranciumConventionalTags.Items.STEEL_DUSTS)
+                .add(
+                        ModItems.STEEL_DUST
+                );
+        valueLookupBuilder(FranciumConventionalTags.Items.STEEL_INGOTS)
+                .add(
+                        ModItems.STEEL_INGOT
+                );
+        valueLookupBuilder(FranciumConventionalTags.Items.RAW_DIAMONDS)
+                .add(
+                        ModItems.DIAMOND_ORE_PILE,
+                        ModItems.DEEPSLATE_DIAMOND_ORE_PILE
+                );
+        valueLookupBuilder(FranciumConventionalTags.Items.RAW_MATERIALS)
+                .addOptionalTag(FranciumConventionalTags.Items.RAW_DIAMONDS);
+
+
+        // endregion conventional
+        valueLookupBuilder(ModTags.Items.OFF_BLUE_DYES)
+                .add(
+                        ModItems.OFF_BLUE_DYE,
+                        ModItems.ANOTHER_OFF_BLUE_DYE
+                );
+        valueLookupBuilder(ModTags.Items.STEEL_TOOL_MATERIALS)
+                .addOptionalTag(ConventionalItemTags.INGOTS);
+        valueLookupBuilder(ModTags.Items.CLEAVERS)
+                .add(
+                    ModItems.STEEL_CLEAVER,
+                    ModItems.BEDROCK_CLEAVER
+                );
+        valueLookupBuilder(ModTags.Items.ITEMS_TO_THICKABLE_CROPS)
+                .add(
+                        Items.POTATO,
+                        Items.CARROT,
+                        Items.BEETROOT
+                );
         valueLookupBuilder(ItemTags.SHOVELS)
                 .add(
                         ModItems.SHARP_STICK,

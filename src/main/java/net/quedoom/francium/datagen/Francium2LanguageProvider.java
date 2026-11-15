@@ -58,6 +58,8 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
 
         translationBuilder.add(ModItems.COAL_LUMP, "Lump of Coal");
         translationBuilder.add(ModItems.RAW_COPPER_CLUMP, "Clump of Raw Copper");
+        translationBuilder.add(ModItems.OFF_BLUE_DYE, "Off Blue Dye");
+        translationBuilder.add(ModItems.ANOTHER_OFF_BLUE_DYE, "Off Blue Dye");
 
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_DUST);
         qtTranslationBuilder.auto(ModBlocks.FORBIDDEN_FLAKE);

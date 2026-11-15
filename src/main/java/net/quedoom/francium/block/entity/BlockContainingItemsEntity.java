@@ -171,6 +171,7 @@ public class BlockContainingItemsEntity extends BlockEntity implements Container
     @Override
     protected void loadAdditional(ValueInput input) {
         super.loadAdditional(input);
+        container.clear();
         ContainerHelper.loadAllItems(input, container);
     }
 }

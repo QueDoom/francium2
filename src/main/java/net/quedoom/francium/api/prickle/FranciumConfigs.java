@@ -52,6 +52,14 @@ public class FranciumConfigs {
     @Value(comment = "How fast the fan can spin.")
     public float fan_max_speed = 18f;
 
+    @RangedInt(min = -1, max = 50)
+    @Value(name = "bone_meal_success_rarity", comment = "Determines how rare it is for bone meal to advance growth, -1 means it wont ever grow. (Vanilla default is 3, Thicc Farming default is 6)")
+    public int bone_meal_success_rarity = 6;
+
+    @RangedFloat(min = 0, max = 2)
+    @Value(name = "growth_speed_multiplier", comment = "How fast crops grow. Lower number is slower. 0 and crops wont grow")
+    public float growth_speed_multiplier = 0.5F;
+
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.FIELD)
     public @interface FileOnlyConfig {}

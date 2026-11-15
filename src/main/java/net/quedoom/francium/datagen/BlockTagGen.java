@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.quedoom.francium.init.FranciumConventionalTags;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModTags;
 import net.quedoom.quet.datagen.tag.QueTBlockTagProvider;
@@ -18,6 +19,42 @@ public class BlockTagGen extends QueTBlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
+        // region conventional
+        valueLookupBuilder(FranciumConventionalTags.Blocks.TUFF_COBBLESTONES)
+                .add(
+                        ModBlocks.COBBLED_TUFF
+                );
+        valueLookupBuilder(FranciumConventionalTags.Blocks.COBBLESTONES)
+                .addOptionalTag(FranciumConventionalTags.Blocks.TUFF_COBBLESTONES);
+
+        // endregion conventional
+
+
+        valueLookupBuilder(ModTags.Blocks.INCORRECT_FOR_BEDROCK_TOOLS);
+        valueLookupBuilder(ModTags.Blocks.THICK_CROP_FOLIAGE)
+                .add(
+                        ModBlocks.THICK_BEETROOT_FOLIAGE,
+                        ModBlocks.THICK_CARROT_FOLIAGE,
+                        ModBlocks.THICK_POTATO_FOLIAGE
+                );
+        valueLookupBuilder(ModTags.Blocks.THICK_CROPS)
+                .add(
+                        ModBlocks.THICK_BEETROOT,
+                        ModBlocks.THICK_CARROT,
+                        ModBlocks.THICK_BEETROOT,
+                        ModBlocks.THICK_APPLE,
+                        Blocks.PUMPKIN,
+                        Blocks.CARVED_PUMPKIN,
+                        Blocks.MELON
+                );
+        valueLookupBuilder(ModTags.Blocks.THICKABLE_CROPS)
+                .add(
+                        Blocks.POTATOES,
+                        Blocks.CARROTS,
+                        Blocks.BEETROOTS,
+                        Blocks.MELON_STEM,
+                        Blocks.PUMPKIN_STEM
+                );
         valueLookupBuilder(ModTags.Blocks.FAN_BLOWS_THROUGH)
                 .add(
                         ModBlocks.STOKED_FIRE,

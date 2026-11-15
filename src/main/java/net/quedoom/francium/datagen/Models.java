@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
+import net.quedoom.francium.util.ThiccModelGenerators;
 import net.quedoom.quet.datagen.models.QTBlockModelGenerators;
 import net.quedoom.quet.datagen.models.QTItemModelGenerators;
 import net.quedoom.quet.datagen.models.QueTModelProvider;
@@ -31,6 +32,8 @@ public class Models extends QueTModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators, QTBlockModelGenerators qtBlockModelGenerators) {
+        ThiccModelGenerators thiccF = new ThiccModelGenerators(blockModelGenerators, qtBlockModelGenerators);
+
         blockModelGenerators.family(ModBlocks.STONE_CASING);
         blockModelGenerators.family(ModBlocks.OBSIDIAN_CASING);
         blockModelGenerators.family(ModBlocks.ECHO_BLOCK);
@@ -57,12 +60,25 @@ public class Models extends QueTModelProvider {
 
         // endregion slabs
 
+        thiccF.thickCrop(ModBlocks.THICK_POTATO);
+        thiccF.thickCropFoliage(ModBlocks.THICK_POTATO_FOLIAGE);
+        thiccF.thickCropWithMultibleFaceTextures(ModBlocks.THICK_CARROT);
+        thiccF.thickCropFoliage(ModBlocks.THICK_CARROT_FOLIAGE);
+        thiccF.thickCrop(ModBlocks.THICK_BEETROOT);
+        thiccF.thickCropFoliage(ModBlocks.THICK_BEETROOT_FOLIAGE);
+        thiccF.thickCropWithoutItem(Blocks.MELON);
+        thiccF.thickCropWithoutItem(Blocks.PUMPKIN);
+        thiccF.rotatableThickCropWithFaceWithoutItem(Blocks.CARVED_PUMPKIN, Blocks.PUMPKIN);
+        thiccF.thickApple(ModBlocks.THICK_APPLE);
+
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.WOODEN_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(woodenCasingModel)));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.STONE_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(stoneCasingModel)));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.OBSIDIAN_CASING_CONTAINING_BLOCK, BlockModelGenerators.plainVariant(obsidianCasingModel)));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, BlockModelGenerators.plainVariant(woodenCasingModel)));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.STONE_CASING_CONTAINING_ITEMS, BlockModelGenerators.plainVariant(stoneCasingModel)));
         blockModelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS, BlockModelGenerators.plainVariant(obsidianCasingModel)));
+
+        // region Allowed
 
         blockModelGenerators.family(ModBlocks.ALLOWED_GOLD_BLOCK);
 
@@ -111,6 +127,7 @@ public class Models extends QueTModelProvider {
                 .donateModelTo(ModBlocks.ALLOWED_WEATHERED_CHISELED_COPPER, ModBlocks.ALLOWED_WAXED_WEATHERED_CHISELED_COPPER);
         blockModelGenerators.family(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER)
                 .donateModelTo(ModBlocks.ALLOWED_EXPOSED_CHISELED_COPPER, ModBlocks.ALLOWED_WAXED_EXPOSED_CHISELED_COPPER);
+        //endregion Allowed
     }
 
     private static void slab(BlockModelGenerators gen, Block fullBlock, Block slab) {
@@ -187,6 +204,8 @@ public class Models extends QueTModelProvider {
 
         qtItemModelGenerators.generate(ModItems.OBSIDIAN_CHISEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         qtItemModelGenerators.generate(ModItems.BEDROCK_CHISEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        qtItemModelGenerators.generate(ModItems.STEEL_CLEAVER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        qtItemModelGenerators.generate(ModItems.BEDROCK_CLEAVER, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BEDROCK_PEBBLES, PILE_FLAT_ITEM);
@@ -219,8 +238,13 @@ public class Models extends QueTModelProvider {
 
         itemModelGenerators.generateFlatItem(ModItems.COAL_LUMP, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.RAW_COPPER_CLUMP, PILE_FLAT_ITEM);
+        qtItemModelGenerators.generateGenerated(ModItems.OFF_BLUE_DYE);
+        qtItemModelGenerators.generateGenerated(ModItems.ANOTHER_OFF_BLUE_DYE);
+        qtItemModelGenerators.generateGenerated(ModItems.LAPIS_ESSENCE);
+        qtItemModelGenerators.generateGenerated(ModItems.EMERALD_SHARD);
 
         itemModelGenerators.generateFlatItem(ModItems.SHARP_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.STRENGTHENED_SHAFT, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.TOOLBOX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.FLATTENED_ENDER_PEARL, ModelTemplates.FLAT_ITEM);

@@ -36,6 +36,7 @@ public class BlockContainingEntity extends BlockEntity implements ContainerSingl
     @Override
     protected void loadAdditional(ValueInput input) {
         super.loadAdditional(input);
+        containerList.clear();
         ContainerHelper.loadAllItems(input, containerList);
     }
 
