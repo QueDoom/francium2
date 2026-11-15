@@ -188,6 +188,13 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                         .define('H', ModItems.STRENGTHENED_SHAFT)
                         .save(output);
 
+                qtRecipe.shaped(ModItems.BEDROCK_FLAKE, ModItems.BEDROCK_CHISEL, "F B", " OS", "S  ")
+                        .define('S', ModItems.STRENGTHENED_SHAFT)
+                        .define('B', Items.BEDROCK)
+                        .define('F', ModItems.BEDROCK_FLAKE)
+                        .define('O', ModItems.OBSIDIAN_CHISEL)
+                        .save(output);
+
                 shaped(RecipeCategory.MISC, ModItems.ANCIENT_ROD)
                         .pattern("D")
                         .pattern("D")
