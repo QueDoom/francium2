@@ -1,7 +1,6 @@
 package net.quedoom.francium.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
@@ -18,8 +17,8 @@ import net.quedoom.francium.datagen.recipe.*;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
-import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
 import net.quedoom.francium.recipe.WoodenMixerGlueType;
+import net.quedoom.francium.util.Glue;
 import net.quedoom.quet.datagen.recipe.QueTRecipeProvider;
 import net.quedoom.quet.misc.GetPath;
 import net.quedoom.quet.misc.LocalizedGetPath;
@@ -41,46 +40,46 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 QTRecipeHelper qtRecipe = new QTRecipeHelper(this, output, Francium.MOD_ID);
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                glueMixing(this, output, WoodenMixerGlueType.NORMAL, 0, ModItems.GLUE, 32);
-                glueMixing(this, output, WoodenMixerGlueType.SUPER, 0, ModItems.SUPER_GLUE, 4);
-                glueMixing(this, output, WoodenMixerGlueType.ECHO, 1, ModItems.ECHO_GLUE, 4, "2");
-                glueMixing(this, output, WoodenMixerGlueType.ECHO, 2, ModItems.ECHO_GLUE, 6, "3");
-                glueMixing(this, output, WoodenMixerGlueType.ECHO, 3, ModItems.ECHO_GLUE, 8, "4");
-                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 1, ModItems.VEGAN_GLUE, 6, "2");
-                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 2, ModItems.VEGAN_GLUE, 8, "3");
-                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 3, ModItems.VEGAN_GLUE, 16, "4");
+                glueMixing(this, output, WoodenMixerGlueType.NORMAL, 0, Glue.NORMAL, 32);
+                glueMixing(this, output, WoodenMixerGlueType.SUPER, 0, Glue.SUPER, 4);
+                glueMixing(this, output, WoodenMixerGlueType.ECHO, 1, Glue.ECHO, 4, "2");
+                glueMixing(this, output, WoodenMixerGlueType.ECHO, 2, Glue.ECHO, 6, "3");
+                glueMixing(this, output, WoodenMixerGlueType.ECHO, 3, Glue.ECHO, 8, "4");
+                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 1, Glue.VEGAN, 6, "2");
+                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 2, Glue.VEGAN, 8, "3");
+                glueMixing(this, output, WoodenMixerGlueType.VEGAN, 3, Glue.VEGAN, 16, "4");
                 glueMixing(this, output, WoodenMixerGlueType.STEEL, 0, ModItems.STEEL_IN_A_BOTTLE, 2);
 
                 woodenMerging(this, output, Items.CRAFTING_TABLE, Items.IRON_INGOT, ModItems.WOODEN_PLATE, ModItems.CRAFTING_TOKEN, 1);
                 woodenMerging(this, output, Items.FURNACE, Items.IRON_INGOT, ModItems.WOODEN_PLATE, ModItems.SMELTING_TOKEN, 1);
                 woodenMerging(this, output, Items.SMITHING_TABLE, Items.IRON_INGOT, ModItems.WOODEN_PLATE, ModItems.SMITHING_TOKEN, 1);
-                woodenMerging(this, output, ModItems.TUFF_PILE, ModItems.TUFF_PILE, ModItems.GLUE, ModItems.TUFF_ZONG, 1);
+                woodenMerging(this, output, ModItems.TUFF_PILE, ModItems.TUFF_PILE, Glue.NORMAL, ModItems.TUFF_ZONG, 1);
 
-                woodenMerging(this, output, ModItems.SLOT, ModItems.SLOT, ModItems.VEGAN_GLUE, ModItems.STACKED_SLOT, 1);
-                woodenMerging(this, output, ModItems.SLOT, ModItems.IRON_ORE_PILE, ModItems.VEGAN_GLUE, ModItems.RAW_SLOT, 1);
-                woodenMerging(this, output, ModItems.RAW_SLOT, ModItems.RAW_SLOT, ModItems.VEGAN_GLUE, ModItems.STACKED_RAW_SLOT, 1);
+                woodenMerging(this, output, ModItems.SLOT, ModItems.SLOT, Glue.VEGAN, ModItems.STACKED_SLOT, 1);
+                woodenMerging(this, output, ModItems.SLOT, ModItems.IRON_ORE_PILE, Glue.VEGAN, ModItems.RAW_SLOT, 1);
+                woodenMerging(this, output, ModItems.RAW_SLOT, ModItems.RAW_SLOT, Glue.VEGAN, ModItems.STACKED_RAW_SLOT, 1);
 
-                woodenMerging(this, output, ModItems.CLAY_PILE, ModItems.CLAY_PILE, ModItems.GLUE, Items.CLAY_BALL, 1);
-                deepMerging(this, output, Items.CLAY_BALL, ModItems.CLAY_PILE, Items.CLAY_BALL, ModItems.GLUE, Items.CLAY, 1);
+                woodenMerging(this, output, ModItems.CLAY_PILE, ModItems.CLAY_PILE, Glue.NORMAL, Items.CLAY_BALL, 1);
+                deepMerging(this, output, Items.CLAY_BALL, ModItems.CLAY_PILE, Items.CLAY_BALL, Glue.NORMAL, Items.CLAY, 1);
 
-                woodenMerging(this, output, ModItems.ANCIENT_ROD, ModItems.STEEL_BOWL, ModItems.ECHO_GLUE, ModItems.POT, 1);
-                deepMerging(this, output, ModItems.STEEL_INGOT,  ModItems.STEEL_BOWL, ModItems.STEEL_INGOT, ModItems.VEGAN_GLUE, ModItems.ANCIENT_ROD, ModItems.FRYING_PAN, 1);
+                woodenMerging(this, output, ModItems.ANCIENT_ROD, ModItems.STEEL_BOWL, Glue.ECHO, ModItems.POT, 1);
+                deepMerging(this, output, ModItems.STEEL_INGOT,  ModItems.STEEL_BOWL, ModItems.STEEL_INGOT, Glue.VEGAN, ModItems.ANCIENT_ROD, ModItems.FRYING_PAN, 1);
 
-                woodenMerging(this, output, ModItems.ANDESITE_ALLOY,  ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.ANDESITE_COATED_ROCK,    1);
-                woodenMerging(this, output, ModItems.DIORITE_ALLOY,   ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.DIORITE_COATED_ROCK,     1);
-                woodenMerging(this, output, ModItems.GRANITE_ALLOY,   ModItems.ROCK, ModItems.VEGAN_GLUE, ModItems.GRANITE_COATED_ROCK,     1);
-                woodenMerging(this, output, ModItems.AMETHYST_PASTE,  Items.DIAMOND, ModItems.SUPER_GLUE, ModItems.AMETHYST_COATED_DIAMOND, 1);
+                woodenMerging(this, output, ModItems.ANDESITE_ALLOY,  ModItems.ROCK, Glue.VEGAN, ModItems.ANDESITE_COATED_ROCK,    1);
+                woodenMerging(this, output, ModItems.DIORITE_ALLOY,   ModItems.ROCK, Glue.VEGAN, ModItems.DIORITE_COATED_ROCK,     1);
+                woodenMerging(this, output, ModItems.GRANITE_ALLOY,   ModItems.ROCK, Glue.VEGAN, ModItems.GRANITE_COATED_ROCK,     1);
+                woodenMerging(this, output, ModItems.AMETHYST_PASTE,  Items.DIAMOND, Glue.SUPER, ModItems.AMETHYST_COATED_DIAMOND, 1);
 
-                woodenMerging(this, output, ModItems.IRON_DUST, ModItems.IRON_DUST, ModItems.VEGAN_GLUE, Items.IRON_NUGGET, 3);
-                deepMerging(this, output, ModItems.COPPER_DUST, ModItems.COPPER_DUST, ModItems.COPPER_DUST, ModItems.VEGAN_GLUE, Items.COPPER_NUGGET, 2);
+                woodenMerging(this, output, ModItems.IRON_DUST, ModItems.IRON_DUST, Glue.VEGAN, Items.IRON_NUGGET, 3);
+                deepMerging(this, output, ModItems.COPPER_DUST, ModItems.COPPER_DUST, ModItems.COPPER_DUST, Glue.VEGAN, Items.COPPER_NUGGET, 2);
 
-                deepMerging(this, output, ModItems.ANDESITE_ALLOY,        ModItems.DIORITE_ALLOY,       ModItems.GRANITE_ALLOY,         ModItems.VEGAN_GLUE, ModItems.MINERAL_MIX,                                                    1);
-                deepMerging(this, output, ModItems.OBSIDIAN_PASTE,        Items.LEATHER,                ModItems.OBSIDIAN_PASTE,        ModItems.SUPER_GLUE, ModItems.OBSIDIAN_COATED_LEATHER,                                        1);
-                deepMerging(this, output, ModItems.CACTUS_PAPER,          ModItems.CACTUS_PAPER,        ModItems.CACTUS_PAPER,          ModItems.ECHO_GLUE,  ModItems.OBSIDIAN_COATED_LEATHER, ModItems.OBSIDIAN_BOOK,                1);
-                deepMerging(this, output, ModItems.DIAMOND_DUST,          ModItems.DIAMOND_DUST,        ModItems.DIAMOND_DUST,          ModItems.SUPER_GLUE, ModItems.OBSIDIAN_PASTE,          ModItems.OBSIDIAN_INFUSED_DIAMOND,     1);
-                deepMerging(this, output, ModItems.SHARP_DEEPSLATE_ROCK,  ModItems.SHARP_AMETHYST_ROCK, Items.IRON_INGOT,               ModItems.GLUE_MIX,   ModItems.CRAFTING_TOKEN,          ModItems.TOOLBOX,                      1);
-                deepMerging(this, output, ModItems.MINERAL_MIX,           ModItems.MINERAL_MIX,         ModItems.MINERAL_MIX,           ModItems.SUPER_GLUE, ModItems.DRIPSTONE_PASTE,         ModItems.DRIPSTONE_COATED_MINERAL_MIX, 2);
-                deepMerging(this, output, ModItems.FLATTENED_ENDER_PEARL, ModItems.DENCHO_SHARD,        ModItems.FLATTENED_ENDER_PEARL, ModItems.GLUE_MIX,   ModItems.AMETHYST_PASTE,          ModItems.DASH_ORB,                     1);
+                deepMerging(this, output, ModItems.ANDESITE_ALLOY,        ModItems.DIORITE_ALLOY,       ModItems.GRANITE_ALLOY,         Glue.VEGAN, ModItems.MINERAL_MIX,                                                    1);
+                deepMerging(this, output, ModItems.OBSIDIAN_PASTE,        Items.LEATHER,                ModItems.OBSIDIAN_PASTE,        Glue.SUPER, ModItems.OBSIDIAN_COATED_LEATHER,                                        1);
+                deepMerging(this, output, ModItems.CACTUS_PAPER,          ModItems.CACTUS_PAPER,        ModItems.CACTUS_PAPER,          Glue.ECHO,  ModItems.OBSIDIAN_COATED_LEATHER, ModItems.OBSIDIAN_BOOK,                1);
+                deepMerging(this, output, ModItems.DIAMOND_DUST,          ModItems.DIAMOND_DUST,        ModItems.DIAMOND_DUST,          Glue.SUPER, ModItems.OBSIDIAN_PASTE,          ModItems.OBSIDIAN_INFUSED_DIAMOND,     1);
+                deepMerging(this, output, ModItems.SHARP_DEEPSLATE_ROCK,  ModItems.SHARP_AMETHYST_ROCK, Items.IRON_INGOT,               Glue.MIX,   ModItems.CRAFTING_TOKEN,          ModItems.TOOLBOX,                      1);
+                deepMerging(this, output, ModItems.MINERAL_MIX,           ModItems.MINERAL_MIX,         ModItems.MINERAL_MIX,           Glue.SUPER, ModItems.DRIPSTONE_PASTE,         ModItems.DRIPSTONE_COATED_MINERAL_MIX, 2);
+                deepMerging(this, output, ModItems.FLATTENED_ENDER_PEARL, ModItems.DENCHO_SHARD,        ModItems.FLATTENED_ENDER_PEARL, Glue.MIX,   ModItems.AMETHYST_PASTE,          ModItems.DASH_ORB,                     1);
 
                 basicAnvilPressing(this, output, ModItems.DRIPSTONE_COATED_MINERAL_MIX, 4, ModBlocks.WOODEN_CASING, ModBlocks.MINERAL_MIX_BLOCK);
                 recipes.itemsAnvilPressing(ModItems.CALCITE_PILE, 9, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.PACKED_CALCITE);
@@ -92,6 +91,8 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 basicAnvilPressing(this, output, ModBlocks.FORBIDDEN_DUST, 64, ModBlocks.STONE_CASING, ModItems.CORRUPTED_MODEL);
                 basicAnvilPressing(this, output, ModBlocks.FORBIDDEN_DUST, 64, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.CORRUPTED_MODEL, "from_items_casing");
                 recipes.itemsAnvilPressing(Items.ENDER_PEARL, 1, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, ModItems.FLATTENED_ENDER_PEARL);
+                recipes.itemsAnvilPressing(ModBlocks.STRIPPED_SUGAR_CANE, 1, ModBlocks.WOODEN_CASING, ModBlocks.WOODEN_CASING_CONTAINING_ITEMS, Items.SUGAR);
+                recipes.itemsAnvilPressing(ModBlocks.STRIPPED_SUGAR_CANE, 1, ModBlocks.STONE_CASING, ModBlocks.STONE_CASING_CONTAINING_ITEMS, Items.SUGAR, "_stone_casing");
 
                 recipes.itemsBlocksAnvilPressing(ModTags.Items.MAKES_PAPER, 4, Blocks.WATER, ModBlocks.STONE_CASING, ModBlocks.STONE_CASING_CONTAINING_ITEMS, ModItems.PULP);
                 recipes.blocksAnvilPressing(Items.HEAVY_CORE, Blocks.SCULK, ModBlocks.STONE_CASING, ModBlocks.HEAVY_SCULK);
@@ -107,11 +108,11 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 recipes.obsidianMixing(Blocks.OBSIDIAN, Blocks.HONEY_BLOCK, Blocks.HONEY_BLOCK, Blocks.OBSIDIAN, 400, ModItems.OBSIDIAN_PASTE);
                 recipes.obsidianMixing(Blocks.AMETHYST_BLOCK, Blocks.HONEY_BLOCK, Blocks.SLIME_BLOCK, Blocks.AMETHYST_BLOCK, 200, ModItems.AMETHYST_PASTE);
                 recipes.obsidianMixing(Blocks.DRIPSTONE_BLOCK, Blocks.SLIME_BLOCK, Blocks.SLIME_BLOCK, Blocks.DRIPSTONE_BLOCK, 100, ModItems.DRIPSTONE_PASTE);
-                recipes.obsidianMixing(ModItems.GLUE, ModItems.VEGAN_GLUE, ModItems.ECHO_GLUE, ModItems.SUPER_GLUE, 140, ModItems.GLUE_MIX);
+                recipes.obsidianMixing(Glue.NORMAL, Glue.VEGAN, Glue.ECHO, Glue.SUPER, 140, Glue.MIX);
                 recipes.obsidianMixing(ModItems.ANCIENT_DUST, ModItems.ANCIENT_DUST, ModItems.GOLD_DUST, ModItems.GOLD_DUST, 260, ModItems.NETHERITE_DUST);
                 recipes.obsidianMixing(ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, ModItems.GLASS_SHARDS, 140, Items.GLASS);
                 recipes.obsidianMixing(ModItems.FIRE_ESSENCE, Items.NETHERRACK, Items.NETHERRACK, ModItems.FIRE_ESSENCE, 60, Items.MAGMA_BLOCK);
-                recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.MAGMA_BLOCK, 200, ModItems.NETHER_GLUE, 6);
+                recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.MAGMA_BLOCK, 200, Glue.NETHER, 6);
 
                 registerMetalMixing(recipes, this,
                         Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE, Items.RAW_IRON, Items.RAW_IRON_BLOCK,
@@ -129,10 +130,14 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                         Items.COPPER_INGOT, ModBlocks.ALLOWED_COPPER_BLOCK.asItem());
                 recipes.obsidianMixing(ModItems.RAW_COPPER_CLUMP, ModItems.RAW_COPPER_CLUMP, ModItems.RAW_COPPER_CLUMP, ModItems.RAW_COPPER_CLUMP, 800, Items.RAW_COPPER_BLOCK, 2);
 
+                // Lapis
+                recipes.obsidianMixing(ModItems.OFF_BLUE_DYE, ModItems.ANOTHER_OFF_BLUE_DYE, ModItems.ANOTHER_OFF_BLUE_DYE, ModItems.OFF_BLUE_DYE, 50, ModItems.LAPIS_ESSENCE, 2);
+                woodenMerging(this, output, ModItems.LAPIS_ESSENCE, ModItems.FIRE_ESSENCE, Glue.NORMAL, Items.LAPIS_LAZULI, 3);
+
 //                registerOreMixing(recipes, Items.COAL_ORE, ModItems.COAL_ORE_PILE, ModItems.COAL_DUST, Items.COAL);
 //                registerOreMixing(recipes, Items.REDSTONE_ORE, ModItems.REDSTONE_ORE_PILE, ModItems.REDSTONE_DUST, Items.REDSTONE);
-//                registerOreMixing(recipes, Items.LAPIS_ORE, ModItems.LAPIS_ORE_PILE, ModItems.LAPIS_DUST, Items.LAPIS_LAZULI);
-                registerOreMixing(recipes, Items.DIAMOND_ORE, Items.DEEPSLATE_DIAMOND_ORE, ModItems.DIAMOND_ORE_PILE, ModItems.DEEPSLATE_DIAMOND_ORE_PILE, ModItems.DIAMOND_DUST, Items.DIAMOND);
+                registerOreMixing(recipes, Items.LAPIS_ORE, Items.DEEPSLATE_LAPIS_ORE, Items.LAPIS_LAZULI, 0.8f);
+                registerOreDustMixing(recipes, Items.DIAMOND_ORE, Items.DEEPSLATE_DIAMOND_ORE, ModItems.DIAMOND_ORE_PILE, ModItems.DEEPSLATE_DIAMOND_ORE_PILE, ModItems.DIAMOND_DUST, Items.DIAMOND);
 //                registerOreMixing(recipes, Items.EMERALD_ORE, ModItems.EMERALD_ORE_PILE, ModItems.EMERALD_DUST, Items.EMERALD);
 //                registerOreMixing(recipes, Items.NETHER_QUARTZ_ORE, ModItems.QUARTZ_ORE_PILE, ModItems.QUARTZ_DUST, Items.QUARTZ);
 
@@ -238,7 +243,7 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                         .save(output)
                 ;
 
-                shaped(RecipeCategory.MISC, ModItems.GLUE_BOTTLE)
+                shaped(RecipeCategory.MISC, Glue.BOTTLE)
                         .pattern("GG")
                         .pattern("GG")
                         .define('G', ModItems.GLASS_SHARDS)
@@ -358,7 +363,6 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
             Item ore, Item deepslateOre, Item raw, Item rawBlock,
             Item orePile, Item deepslateOrePile, Item dust,
             Item ingot, Item block) {
-
         String ingotName = GetPath.get(ingot);
         String blockName = GetPath.get(block);
 
@@ -375,16 +379,16 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
         // Ore
         String orePrefix = GetPath.get(ore) + "_to_" + ingotName;
         recipes.obsidianMixing(ore, ore, ore, ore, 200, ingot, 4, orePrefix);
-        recipes.obsidianMixing(ore, ore, ore, ModItems.ECHO_GLUE, 250, ingot, 6, orePrefix + "_with_echo_glue");
+        recipes.obsidianMixing(ore, ore, ore, Glue.ECHO, 250, ingot, 6, orePrefix + "_with_echo_glue");
         String deepslateOrePrefix = GetPath.get(deepslateOre) + "_to_" + ingotName;
         recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, deepslateOre, 200, ingot, 4, deepslateOrePrefix);
-        recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, ModItems.ECHO_GLUE, 250, ingot, 6, deepslateOrePrefix + "_with_echo_glue");
+        recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, Glue.ECHO, 250, ingot, 6, deepslateOrePrefix + "_with_echo_glue");
 
         // Raw
         String rawPrefix = GetPath.get(raw) + "_to_" + ingotName;
         recipes.obsidianMixing(raw, raw, raw, raw, 200, ingot, 4, rawPrefix);
-        recipes.obsidianMixing(raw, raw, raw, ModItems.ECHO_GLUE, 250, ingot, 6, rawPrefix + "_with_echo_glue");
-        recipes.obsidianMixing(rawBlock, ModItems.ECHO_GLUE, ModItems.NETHER_GLUE, ModItems.NETHER_GLUE, 500, block, 2,
+        recipes.obsidianMixing(raw, raw, raw, Glue.ECHO, 250, ingot, 6, rawPrefix + "_with_echo_glue");
+        recipes.obsidianMixing(rawBlock, Glue.ECHO, Glue.NETHER, Glue.NETHER, 500, block, 2,
                 GetPath.get(raw) + "_to_" + blockName);
 
         // Ore pile
@@ -398,20 +402,19 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 GetPath.get(dust) + "_to_" + ingotName);
     }
 
-    private void registerOreMixing(
+    private void registerOreDustMixing(
             FranciumRecipeHelper recipes,
             Item ore, Item deepslateOre, Item orePile, Item deepslateOrePile, Item dust,
             Item output) {
-
         String outputName = GetPath.get(output);
 
         // Ore
         String orePrefix = GetPath.get(ore) + "_to_" + outputName;
         recipes.obsidianMixing(ore, ore, ore, ore, 200, output, 4, orePrefix);
-        recipes.obsidianMixing(ore, ore, ore, ModItems.ECHO_GLUE, 250, output, 6, orePrefix + "_with_echo_glue");
+        recipes.obsidianMixing(ore, ore, ore, Glue.ECHO, 250, output, 6, orePrefix + "_with_echo_glue");
         String deepslateOrePrefix = GetPath.get(deepslateOre) + "_to_" + outputName;
         recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, deepslateOre, 200, output, 4, deepslateOrePrefix);
-        recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, ModItems.ECHO_GLUE, 250, output, 6, deepslateOrePrefix + "_with_echo_glue");
+        recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, Glue.ECHO, 250, output, 6, deepslateOrePrefix + "_with_echo_glue");
 
         // Ore pile
         recipes.obsidianMixing(orePile, orePile, orePile, orePile, 300, output, 4,
@@ -424,9 +427,28 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 GetPath.get(dust) + "_to_" + outputName);
     }
 
+    private void registerOreMixing(
+            FranciumRecipeHelper recipes,
+            Item ore, Item deepslateOre, Item output, double timeMultiplier) {
+        registerOreMixing(recipes, ore, deepslateOre, output, ((float) timeMultiplier));
+    }
+
+    private void registerOreMixing(
+            FranciumRecipeHelper recipes,
+            Item ore, Item deepslateOre, Item output, float timeMultiplier) {
+        String outputName = GetPath.get(output);
+
+        String orePrefix = GetPath.get(ore) + "_to_" + outputName;
+        recipes.obsidianMixing(ore, ore, ore, ore, ((int) (200 * timeMultiplier)), output, 4, orePrefix);
+        recipes.obsidianMixing(ore, ore, ore, Glue.ECHO, ((int) (250 * timeMultiplier)), output, 6, orePrefix + "_with_echo_glue");
+        String deepslateOrePrefix = GetPath.get(deepslateOre) + "_to_" + outputName;
+        recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, deepslateOre, ((int) (200 * timeMultiplier)), output, 4, deepslateOrePrefix);
+        recipes.obsidianMixing(deepslateOre, deepslateOre, deepslateOre, Glue.ECHO, ((int) (250 * timeMultiplier)), output, 6, deepslateOrePrefix + "_with_echo_glue");
+    }
+
     private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
-                .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
+                .unlockedBy(RecipeProvider.getHasName(Glue.BOTTLE), provider.has(Glue.BOTTLE))
                 .group(getPath(result.asItem()))
                 .save(output, "francium_2:wooden_mixing/" + GetPath.get(result.asItem()))
         ;
@@ -434,7 +456,7 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
 
     private void glueMixing(RecipeProvider provider, RecipeOutput output, WoodenMixerGlueType gType, int strength, ItemLike result, int count, String id) {
         GlueMixerRecipeBuilder.glueMixerRecipe(RecipeCategory.MISC, gType, strength, result, count)
-                .unlockedBy(RecipeProvider.getHasName(ModItems.GLUE_BOTTLE), provider.has(ModItems.GLUE_BOTTLE))
+                .unlockedBy(RecipeProvider.getHasName(Glue.BOTTLE), provider.has(Glue.BOTTLE))
                 .group(getPath(result.asItem()))
                 .save(output, "francium_2:wooden_mixing/" + GetPath.get(result.asItem()) + "_" + id)
         ;
