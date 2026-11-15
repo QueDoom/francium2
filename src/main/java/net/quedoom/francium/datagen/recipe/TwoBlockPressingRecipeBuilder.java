@@ -14,9 +14,11 @@ import net.quedoom.francium.recipe.BasicAnvilPressingRecipe;
 import net.quedoom.francium.recipe.TwoBlockAnvilPressingRecipe;
 import org.jspecify.annotations.Nullable;
 
-public record TwoBlockPressingRecipeBuilder(RecipeCategory category, Ingredient ingredient, int count, Block topBlock, Block bottomBlock, ItemStackTemplate result, RecipeUnlockAdvancementBuilder advancementBuilder) implements RecipeBuilder {
+import java.util.Optional;
 
-    public TwoBlockPressingRecipeBuilder(RecipeCategory category, Ingredient ingredient, int count, Block topBlock, Block bottomBlock, ItemStackTemplate result) {
+public record TwoBlockPressingRecipeBuilder(RecipeCategory category, Optional<Ingredient> ingredient, int count, Block topBlock, Block bottomBlock, ItemStackTemplate result, RecipeUnlockAdvancementBuilder advancementBuilder) implements RecipeBuilder {
+
+    public TwoBlockPressingRecipeBuilder(RecipeCategory category, Optional<Ingredient> ingredient, int count, Block topBlock, Block bottomBlock, ItemStackTemplate result) {
         this(category, ingredient, count, topBlock, bottomBlock, result, new RecipeUnlockAdvancementBuilder());
     }
 

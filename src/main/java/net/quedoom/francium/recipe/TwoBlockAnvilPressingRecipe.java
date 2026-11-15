@@ -1,5 +1,6 @@
 package net.quedoom.francium.recipe;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -16,10 +17,12 @@ import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModRecipeTypes;
 
-public record TwoBlockAnvilPressingRecipe(Ingredient ingredient, int count, Block topBlock, Block bottomBlock, ItemStackTemplate result) implements Recipe<TwoBlockAnvilPressingRecipeInput> {
+import java.util.Optional;
+
+public record TwoBlockAnvilPressingRecipe(Optional<Ingredient> ingredient, int count, Block topBlock, Block bottomBlock, ItemStackTemplate result) implements Recipe<TwoBlockAnvilPressingRecipeInput> {
     public static final MapCodec<TwoBlockAnvilPressingRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-            Ingredient.CODEC.optionalFieldOf("item", Ingredient.of(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID)).forGetter(TwoBlockAnvilPressingRecipe::ingredient),
-            PrimitiveCodec.INT.optionalFieldOf("chance", 1).forGetter(TwoBlockAnvilPressingRecipe::count),
+            Ingredient.CODEC.optionalFieldOf("item").forGetter(TwoBlockAnvilPressingRecipe::ingredient),
+            Codec.INT.optionalFieldOf("count", 1).forGetter(TwoBlockAnvilPressingRecipe::count),
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("top_block").forGetter(TwoBlockAnvilPressingRecipe::topBlock),
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("bottom_block").forGetter(TwoBlockAnvilPressingRecipe::bottomBlock),
             ItemStackTemplate.CODEC.fieldOf("result").forGetter(TwoBlockAnvilPressingRecipe::result)
@@ -27,7 +30,7 @@ public record TwoBlockAnvilPressingRecipe(Ingredient ingredient, int count, Bloc
 
     public static final StreamCodec<RegistryFriendlyByteBuf, TwoBlockAnvilPressingRecipe> STREAM_CODEC =
             StreamCodec.composite(
-                    Ingredient.CONTENTS_STREAM_CODEC,
+                    ByteBufCodecs.optional(Ingredient.CONTENTS_STREAM_CODEC),
                     TwoBlockAnvilPressingRecipe::ingredient,
 
                     ByteBufCodecs.VAR_INT,
@@ -47,10 +50,11 @@ public record TwoBlockAnvilPressingRecipe(Ingredient ingredient, int count, Bloc
     public boolean matches(TwoBlockAnvilPressingRecipeInput input, Level level) {
         if (!input.topState().is(topBlock)) return false;
         if (!input.bottomState().is(bottomBlock)) return false;
+        if (ingredient.isEmpty()) return true;
 
         int total = 0;
         for (ItemStack stack : input.optionalItems()) {
-            if (ingredient.test(stack)) total += stack.getCount();
+            if (ingredient.get().test(stack)) total += stack.getCount();
         }
         return total >= count;
     }

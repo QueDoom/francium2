@@ -99,6 +99,9 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 recipes.blocksAnvilPressing(ModItems.STACKED_RAW_SLOT, 2, ModBlocks.DRIPSTONE_SPIKES, Blocks.DEEPSLATE, ModBlocks.DEEP_MERGER);
                 recipes.blocksAnvilPressing(ModItems.STEEL_BOWL, 1, ModBlocks.STEEL_WEDGE, Blocks.OBSIDIAN, ModBlocks.OBSIDIAN_MIXER);
 
+                // bedrock processing
+                recipes.itemsBlocksAnvilPressing(ModBlocks.BEDROCK_CHUNK, ModBlocks.OBSIDIAN_CASING, ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS, Blocks.BEDROCK);
+
                 recipes.burning(Blocks.CACTUS, 0.25f, ModBlocks.SMOOTH_CACTUS.defaultBlockState());
 
                 recipes.obsidianMixing(Blocks.OBSIDIAN, Blocks.HONEY_BLOCK, Blocks.HONEY_BLOCK, Blocks.OBSIDIAN, 400, ModItems.OBSIDIAN_PASTE);
@@ -110,17 +113,17 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 recipes.obsidianMixing(ModItems.FIRE_ESSENCE, Items.NETHERRACK, Items.NETHERRACK, ModItems.FIRE_ESSENCE, 60, Items.MAGMA_BLOCK);
                 recipes.obsidianMixing(ModItems.GLASS_SHARDS, Items.MAGMA_CREAM, Items.MAGMA_CREAM, Items.MAGMA_BLOCK, 200, ModItems.NETHER_GLUE, 6);
 
-                registerMetalMixing(recipes,
+                registerMetalMixing(recipes, this,
                         Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE, Items.RAW_IRON, Items.RAW_IRON_BLOCK,
                         ModItems.IRON_ORE_PILE, ModItems.DEEPSLATE_IRON_ORE_PILE, ModItems.IRON_DUST,
                         Items.IRON_INGOT, Items.IRON_BLOCK);
 
-                registerMetalMixing(recipes,
+                registerMetalMixing(recipes, this,
                         Items.GOLD_ORE, Items.DEEPSLATE_GOLD_ORE, Items.RAW_GOLD, Items.RAW_GOLD_BLOCK,
                         ModItems.GOLD_ORE_PILE, ModItems.DEEPSLATE_GOLD_ORE_PILE, ModItems.GOLD_DUST,
                         Items.GOLD_INGOT, ModBlocks.ALLOWED_GOLD_BLOCK.asItem());
 
-                registerMetalMixing(recipes,
+                registerMetalMixing(recipes, this,
                         Items.COPPER_ORE, Items.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER, Items.RAW_COPPER_BLOCK,
                         ModItems.COPPER_ORE_PILE, ModItems.DEEPSLATE_COPPER_ORE_PILE, ModItems.COPPER_DUST,
                         Items.COPPER_INGOT, ModBlocks.ALLOWED_COPPER_BLOCK.asItem());
@@ -159,10 +162,6 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                         ModItems.STEEL_INGOT, 2, 200, "steel_dust");
                 oreBlasting(List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, CookingBookCategory.MISC,
                         ModItems.STEEL_INGOT, 2, 100, "steel_dust");
-                oreSmelting(List.of(ModItems.IRON_ORE_PILE), RecipeCategory.MISC, CookingBookCategory.MISC,
-                        ModItems.IRON_DUST, 2, 200, "iron_dust");
-                oreBlasting(List.of(ModItems.IRON_ORE_PILE), RecipeCategory.MISC, CookingBookCategory.MISC,
-                        ModItems.IRON_DUST, 2, 100, "iron_dust");
 
                 qtRecipe.reversible3x3Compacting(ModItems.STEEL_INGOT, ModBlocks.STEEL_BLOCK);
 
@@ -354,14 +353,24 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
         };
     }
 
-    private static void registerMetalMixing(
-            FranciumRecipeHelper recipes,
+    private void registerMetalMixing(
+            FranciumRecipeHelper recipes, RecipeProvider provider,
             Item ore, Item deepslateOre, Item raw, Item rawBlock,
             Item orePile, Item deepslateOrePile, Item dust,
             Item ingot, Item block) {
 
         String ingotName = GetPath.get(ingot);
         String blockName = GetPath.get(block);
+
+        // Smelting
+        provider.oreSmelting(List.of(orePile), RecipeCategory.MISC, CookingBookCategory.MISC,
+                dust, 2, 200, GetPath.get(dust));
+        provider.oreBlasting(List.of(orePile), RecipeCategory.MISC, CookingBookCategory.MISC,
+                dust, 2, 100, GetPath.get(dust));
+        provider.oreSmelting(List.of(deepslateOrePile), RecipeCategory.MISC, CookingBookCategory.MISC,
+                dust, 2, 200, GetPath.get(dust));
+        provider.oreBlasting(List.of(deepslateOrePile), RecipeCategory.MISC, CookingBookCategory.MISC,
+                dust, 2, 100, GetPath.get(dust));
 
         // Ore
         String orePrefix = GetPath.get(ore) + "_to_" + ingotName;
@@ -389,7 +398,7 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 GetPath.get(dust) + "_to_" + ingotName);
     }
 
-    private static void registerOreMixing(
+    private void registerOreMixing(
             FranciumRecipeHelper recipes,
             Item ore, Item deepslateOre, Item orePile, Item deepslateOrePile, Item dust,
             Item output) {

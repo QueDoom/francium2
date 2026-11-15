@@ -1,5 +1,6 @@
 package net.quedoom.francium.datagen.recipe;
 
+import net.minecraft.advancements.Criterion;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -13,6 +14,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.quet.misc.GetPath;
+
+import java.util.Optional;
 
 public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output) {
     public void anvilCompacting(ItemLike item, int xByX, Block block, ItemLike result) {
@@ -41,13 +44,13 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
     }
 
     public void blocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, ItemLike result) {
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Optional.of(Ingredient.of(item)), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
                 .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
         ;
     }
     public void blocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, ItemLike result, String prefix) {
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
+        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Optional.of(Ingredient.of(item)), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
                 .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
         ;
@@ -65,120 +68,112 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
         blocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, result, prefix);
     }
 
-    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result) {
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem()))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container")
-        ;
-    }
-    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, String prefix) {
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem()))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container_" + prefix)
-        ;
+    private void twoBlockCore(Optional<Ingredient> ingredient, int count,
+                              Block topBlock, Block bottomBlock, Block bottomBlockStorage,
+                              ItemLike result, int countResult,
+                              String unlockName, Criterion<?> criterion, String prefix) {
+        String base = "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem());
+        String suffix = prefix == null ? "" : "_" + prefix;
+
+        TwoBlockPressingRecipeBuilder normal = new TwoBlockPressingRecipeBuilder(
+                RecipeCategory.MISC, ingredient, count, topBlock, bottomBlock,
+                new ItemStackTemplate(result.asItem(), countResult));
+        TwoBlockPressingRecipeBuilder container = new TwoBlockPressingRecipeBuilder(
+                RecipeCategory.MISC, ingredient, count, topBlock, bottomBlockStorage,
+                new ItemStackTemplate(result.asItem(), countResult));
+
+        if (criterion == null) {
+            unlockName = RecipeProvider.getHasName(topBlock);
+            criterion = provider.has(topBlock);
+        }
+        normal.unlockedBy(unlockName, criterion);
+        container.unlockedBy(unlockName, criterion);
+
+        normal.save(output, base + suffix);
+        container.save(output, base + "_container" + suffix);
     }
 
-    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result) {
-        String tagPath = GetPath.get(result.asItem());
-
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem()))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container")
-        ;
-    }
-    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, String prefix) {
-        String tagPath = GetPath.get(result.asItem());
-
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem()))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container_" + prefix)
-        ;
-    }
-    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result) {
-        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock,  bottomBlockStorage, result);
-    }
-    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result) {
-        itemsBlocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, bottomBlockStorage, result);
-    }
-    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, String prefix) {
-        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock, bottomBlockStorage, result, prefix);
-    }
-    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, String prefix) {
-        itemsBlocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, bottomBlockStorage, result, prefix);
+    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
+        twoBlockCore(Optional.of(Ingredient.of(item)), count, topBlock, bottomBlock, bottomBlockStorage,
+                result, countResult, RecipeProvider.getHasName(item), provider.has(item), prefix);
     }
 
-    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container")
-        ;
-    }
-    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container_" + prefix)
-        ;
+    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, int countResult) {
+        itemsBlocksAnvilPressing(item, count, topBlock, bottomBlock, bottomBlockStorage, result, countResult, null);
     }
 
-    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
-        String tagPath = GetPath.get(result.asItem());
+    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, String prefix) {
+        itemsBlocksAnvilPressing(item, count, topBlock, bottomBlock, bottomBlockStorage, result, 1, prefix);
+    }
 
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container")
-        ;
+    public void itemsBlocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result) {
+        itemsBlocksAnvilPressing(item, count, topBlock, bottomBlock, bottomBlockStorage, result, 1, null);
     }
-    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
-        String tagPath = GetPath.get(result.asItem());
 
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
-        ;
-        new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, provider.tag(items), count, topBlock, bottomBlockStorage, new ItemStackTemplate(result.asItem(), countResult))
-                .unlockedBy("has_" + tagPath, provider.has(items))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + "_container_" + prefix)
-        ;
-    }
-    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
-        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock,  bottomBlockStorage, result, countResult);
-    }
-    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult) {
-        itemsBlocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, bottomBlockStorage, result, countResult);
-    }
-    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
+    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
         itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock, bottomBlockStorage, result, countResult, prefix);
     }
-    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
-        itemsBlocksAnvilPressing(ModItems.UNUSED_ITEM_BECAUSE_I_CANT_FIGURE_OUT_HOW_TO_MAKE_OPTIONAL_ITEMS_BECAUSE_IM_STUPID, 1, topBlock, bottomBlock, bottomBlockStorage, result, countResult, prefix);
+
+    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, int countResult) {
+        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock, bottomBlockStorage, result, countResult, null);
+    }
+
+    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, String prefix) {
+        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock, bottomBlockStorage, result, 1, prefix);
+    }
+
+    public void itemsBlocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result) {
+        itemsBlocksAnvilPressing(item, 1, topBlock, bottomBlock, bottomBlockStorage, result, 1, null);
+    }
+
+    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, int countResult, String prefix) {
+        twoBlockCore(Optional.of(provider.tag(items)), count, topBlock, bottomBlock, bottomBlockStorage,
+                result, countResult, "has_" + GetPath.get(result.asItem()), provider.has(items), prefix);
+    }
+
+    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, int countResult) {
+        itemsBlocksAnvilPressing(items, count, topBlock, bottomBlock, bottomBlockStorage, result, countResult, null);
+    }
+
+    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result, String prefix) {
+        itemsBlocksAnvilPressing(items, count, topBlock, bottomBlock, bottomBlockStorage, result, 1, prefix);
+    }
+
+    public void itemsBlocksAnvilPressing(TagKey<Item> items, int count, Block topBlock, Block bottomBlock,
+                                         Block bottomBlockStorage, ItemLike result) {
+        itemsBlocksAnvilPressing(items, count, topBlock, bottomBlock, bottomBlockStorage, result, 1, null);
+    }
+
+    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage,
+                                         ItemLike result, int countResult, String prefix) {
+        twoBlockCore(Optional.empty(), 1, topBlock, bottomBlock, bottomBlockStorage,
+                result, countResult, null, null, prefix);
+    }
+
+    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage,
+                                         ItemLike result, int countResult) {
+        itemsBlocksAnvilPressing(topBlock, bottomBlock, bottomBlockStorage, result, countResult, null);
+    }
+
+    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage,
+                                         ItemLike result, String prefix) {
+        itemsBlocksAnvilPressing(topBlock, bottomBlock, bottomBlockStorage, result, 1, prefix);
+    }
+
+    public void itemsBlocksAnvilPressing(Block topBlock, Block bottomBlock, Block bottomBlockStorage,
+                                         ItemLike result) {
+        itemsBlocksAnvilPressing(topBlock, bottomBlock, bottomBlockStorage, result, 1, null);
     }
 
     public void itemsAnvilPressing(ItemLike item, int count, Block block, Block containerBlock, ItemLike result) {

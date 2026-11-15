@@ -7,6 +7,7 @@ import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AnvilBlock;
@@ -133,14 +134,17 @@ public class AnvilPressingMixin {
 
         TwoBlockAnvilPressingRecipe recipe = found.get().value();
 
-        int left = recipe.count();
-        for (ItemEntity e : tall) {
-            ItemStack s = e.getItem();
-            if (left <= 0 || !recipe.ingredient().test(s)) continue;
-            int take = Math.min(left, s.getCount());
-            left -= take;
-            if (take == s.getCount()) e.discard();
-            else e.setItem(s.copyWithCount(s.getCount() - take));
+        if (recipe.ingredient().isPresent()) {
+            Ingredient ingredient = recipe.ingredient().get();
+            int left = recipe.count();
+            for (ItemEntity entity : tall) {
+                ItemStack stack = entity.getItem();
+                if (left <= 0 || !ingredient.test(stack)) continue;
+                int take = Math.min(left, stack.getCount());
+                left -= take;
+                if (take == stack.getCount()) entity.discard();
+                else entity.setItem(stack.copyWithCount(stack.getCount() - take));
+            }
         }
 
         ItemStack result = recipe.result().create();

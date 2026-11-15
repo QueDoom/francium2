@@ -17,16 +17,19 @@ import net.quedoom.quet.api.rrv.ReliableClientRecipeWithoutTransfer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TwoBlockPressingClientRecipe extends ReliableClientRecipeWithoutTransfer {
     private final SlotContent item, upperBlock, bottomBlock, result;
 
-    public TwoBlockPressingClientRecipe(Ingredient items, int count, Block upperBlock, Block bottomBlock, ItemStackTemplate result) {
-        HolderSet<Item> holderSet = items.values;
-        List<ItemStack> inputItems = new ArrayList<>();
-        for (Holder<Item> itemHolder : holderSet) {
-            inputItems.add(new ItemStack(itemHolder.value(), count));
-        }
+    public TwoBlockPressingClientRecipe(Optional<Ingredient> items, int count, Block upperBlock, Block bottomBlock, ItemStackTemplate result) {
+        final List<ItemStack> inputItems = new ArrayList<>();
+        items.ifPresent(ingredient -> {
+            HolderSet<Item> holderSet = ingredient.values;
+            for (Holder<Item> itemHolder : holderSet) {
+                inputItems.add(new ItemStack(itemHolder.value(), count));
+            }
+        });
 
         this.item = SlotContent.of(inputItems);
         this.upperBlock = SlotContent.of(upperBlock);
@@ -46,7 +49,7 @@ public class TwoBlockPressingClientRecipe extends ReliableClientRecipeWithoutTra
 
     @Override
     public void bindSlots(RecipeViewMenu.SlotFillContext slotFillContext) {
-        slotFillContext.bindSlot(0, this.item);
+        slotFillContext.bindOptionalSlot(0, this.item, RecipeViewMenu.OptionalSlotRenderer.DEFAULT);
         slotFillContext.bindSlot(1, this.upperBlock);
         slotFillContext.bindSlot(2, this.bottomBlock);
         slotFillContext.bindSlot(3, this.result);
