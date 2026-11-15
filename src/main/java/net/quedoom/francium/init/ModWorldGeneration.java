@@ -9,5 +9,10 @@ public class ModWorldGeneration {
     public static void generate() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES,
                 ModPlacedFeatures.BEDROCK_CHUNK);
+
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES,
+                ModPlacedFeatures.TUFF_COAL_ORES);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES,
+                ModPlacedFeatures.TUFF_COPPER_ORES);
     }
 }
