@@ -121,13 +121,13 @@ public class ModBlocks  {
 
     public static final Block SAWED_BLOCK = Q.register("sawed_block", SawedBlock::new, BlockBehaviour.Properties.of().noLootTable().strength(-1).noOcclusion(), false);
 
-    public static final Block THICK_POTATO = Q.register("thick_potato", p -> new EighthsEatableBlockWithStem(1, 0.15F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_POTATO = Q.register("thick_potato", p -> new EighthsEatableBlockWithStem("minecraft:potato", 1, 0.15F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion().pushReaction(PushReaction.BLOCK));
     public static final Block THICK_POTATO_FOLIAGE = Q.register("thick_potato_foliage", p -> new ThickFoliageBlock(THICK_POTATO, Optional.of(Items.POTATO), p), thickFoliage(), false);
-    public static final Block THICK_CARROT = Q.register("thick_carrot", EighthsEatableBlockWithStem::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_CARROT = Q.register("thick_carrot", p -> new EighthsEatableBlockWithStem("minecraft:carrot", p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion().pushReaction(PushReaction.BLOCK));
     public static final Block THICK_CARROT_FOLIAGE = Q.register("thick_carrot_foliage", p -> new ThickFoliageBlock(THICK_CARROT, Optional.of(Items.CARROT), p), thickFoliage(), false);
-    public static final Block THICK_BEETROOT = Q.register("thick_beetroot", p -> new EighthsEatableBlockWithStem(1, 0.05F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_BEETROOT = Q.register("thick_beetroot", p -> new EighthsEatableBlockWithStem("minecraft:beetroot", 1, 0.05F, p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion().pushReaction(PushReaction.BLOCK));
     public static final Block THICK_BEETROOT_FOLIAGE = Q.register("thick_beetroot_foliage", p -> new ThickFoliageBlock(THICK_BEETROOT, Optional.of(Items.BEETROOT_SEEDS), p), thickFoliage(), false);
-    public static final Block THICK_APPLE = Q.register("thick_apple", FallingEighthsEatableBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
+    public static final Block THICK_APPLE = Q.register("thick_apple",  p -> new FallingEighthsEatableBlock("minecraft:apple", p), BlockBehaviour.Properties.ofFullCopy(Blocks.MELON).strength(-1f).noLootTable().noOcclusion());
 
     private static BlockBehaviour.Properties thickFoliage() {
         return BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().strength(-1).noLootTable().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY);

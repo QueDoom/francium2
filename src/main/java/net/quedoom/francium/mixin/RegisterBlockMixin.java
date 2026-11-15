@@ -90,19 +90,36 @@ public class RegisterBlockMixin {
             if (name.contains("pumpkin")) {
                 if (name.contains("carved")) {
                     // carved pumpkin
-                    BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
+                    BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_ORANGE)
+                            .sound(SoundType.WOOD)
+                            .isValidSpawn(Blocks::never)
+                            .pushReaction(PushReaction.BLOCK)
+                            .noOcclusion()
+                            .strength(-1);
                     Function<BlockBehaviour.Properties, Block> newFactory = RotateableEighthsEatableBlock::new;
                     Block block = newFactory.apply(customProperty.setId(id));
                     cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
                 } else {
                     // pumpkin
-                    BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
+                    BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_ORANGE)
+                            .instrument(NoteBlockInstrument.DIDGERIDOO)
+                            .sound(SoundType.WOOD)
+                            .pushReaction(PushReaction.BLOCK)
+                            .noOcclusion()
+                            .strength(-1);
                     Function<BlockBehaviour.Properties, Block> newFactory = p -> new ShearableEightsEatableBlock("minecraft:pumpkin_seeds", Blocks.CARVED_PUMPKIN, p);
                     Block block = newFactory.apply(customProperty.setId(id));
                     cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
                 }
             } else {
-                BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
+                BlockBehaviour.Properties customProperty = BlockBehaviour.Properties.of()
+                        .mapColor(MapColor.COLOR_LIGHT_GREEN)
+                        .sound(SoundType.WOOD)
+                        .pushReaction(PushReaction.BLOCK)
+                        .noOcclusion()
+                        .strength(-1);
                 Function<BlockBehaviour.Properties, Block> newFactory = p -> new EighthsDrinkableBlock("minecraft:melon_slice", 1, 0, 3, 0.5f, p);
                 Block block = newFactory.apply(customProperty.setId(id));
                 cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
