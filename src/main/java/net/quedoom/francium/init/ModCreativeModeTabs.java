@@ -150,6 +150,9 @@ public class  ModCreativeModeTabs {
       output.accept(ModBlocks.COPPER_TUFF_ORE);
       output.accept(ModItems.RAW_COPPER_CLUMP);
       output.accept(ModItems.COAL_LUMP);
+      output.accept(ModItems.OFF_BLUE_DYE);
+      output.accept(ModItems.ANOTHER_OFF_BLUE_DYE);
+      output.accept(ModItems.LAPIS_ESSENCE);
 
       output.accept(ModItems.DIRT_PILE);
       output.accept(ModItems.GRAVEL_PILE);
