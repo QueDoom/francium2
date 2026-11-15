@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.quedoom.thicc_farming.block.thicc_farming.RotateableEighthsEatableBlock;
 
 public class ShearableEightsEatableBlock extends EighthsEatableBlock {
     private final Block sheared;

@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.thicc_farming.block.ModProperties;
+import net.quedoom.francium.init.ModProperties;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Optional;

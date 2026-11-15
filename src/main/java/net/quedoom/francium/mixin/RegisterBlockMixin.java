@@ -55,9 +55,6 @@ public class RegisterBlockMixin {
             }
         }
 
-        reRegister(name.contains("potatoes"), id, cir, ThickablePotatoBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
-        reRegister(name.contains("carrots"), id, cir, ThickableCarrotBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
-        reRegister(name.contains("beetroots"), id, cir, ThickableBeetrootBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
         reRegister(name.contains("stonecutter"), id, cir, RotatableStonecutterBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).noOcclusion());
 
         reRegister(name.equals(string("bedrock")), id, cir, factory, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops());
@@ -85,22 +82,28 @@ public class RegisterBlockMixin {
                         .isRedstoneConductor(Blocks::never)
         );
 
+        reRegister(name.contains("potatoes"), id, cir, ThickablePotatoBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+        reRegister(name.contains("carrots"), id, cir, ThickableCarrotBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+        reRegister(name.contains("beetroots"), id, cir, ThickableBeetrootBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY));
+
         if ((name.contains("melon") || name.contains("pumpkin")) && !name.contains("stem")) {
             if (name.contains("pumpkin")) {
                 if (name.contains("carved")) {
+                    // carved pumpkin
                     BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
                     Function<BlockBehaviour.Properties, Block> newFactory = RotateableEighthsEatableBlock::new;
                     Block block = newFactory.apply(customProperty.setId(id));
                     cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
                 } else {
+                    // pumpkin
                     BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
-                    Function<BlockBehaviour.Properties, Block> newFactory = p -> new ShearableEightsEatableBlock(Blocks.CARVED_PUMPKIN, p);
+                    Function<BlockBehaviour.Properties, Block> newFactory = p -> new ShearableEightsEatableBlock("minecraft:pumpkin_seeds", Blocks.CARVED_PUMPKIN, p);
                     Block block = newFactory.apply(customProperty.setId(id));
                     cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
                 }
             } else {
                 BlockBehaviour.Properties customProperty = properties.noOcclusion().strength(-1);
-                Function<BlockBehaviour.Properties, Block> newFactory = p -> new EighthsDrinkableBlock(1, 0, 3, 0.5f, p);
+                Function<BlockBehaviour.Properties, Block> newFactory = p -> new EighthsDrinkableBlock("minecraft:melon_slice", 1, 0, 3, 0.5f, p);
                 Block block = newFactory.apply(customProperty.setId(id));
                 cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, id, block));
             }

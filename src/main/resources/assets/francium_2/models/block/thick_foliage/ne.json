@@ -1,0 +1,22 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "#foliage"
+	},
+	"elements": [
+		{
+			"from": [8, 0, 8],
+			"to": [16, 16, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 16], "texture": "#foliage"},
+				"east": {"uv": [1, 0, 1, 16], "texture": "#foliage"},
+				"south": {"uv": [8, 0, 16, 16], "texture": "#foliage"},
+				"west": {"uv": [1, 0, 1, 16], "texture": "#foliage"},
+				"up": {"uv": [1, 0, 1, 8], "rotation": 90, "texture": "#foliage"},
+				"down": {"uv": [1, 8, 1, 16], "rotation": 270, "texture": "#foliage"}
+			}
+		}
+	]
+}

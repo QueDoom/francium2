@@ -1,0 +1,12 @@
+{
+  "type": "francium_2:deep_merging",
+  "firstItem": "francium_2:raw_copper_clump",
+  "secondItem": "toughasnails:rain_collector",
+  "thirdItem": "minecraft:copper_ingot",
+  "glue": "francium_2:glue_mix",
+  "wildcard": "francium_2:dripstone_paste",
+  "result": {
+    "id": "toughasnails:water_purifier"
+  }
+
+}

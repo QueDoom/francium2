@@ -13,8 +13,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.thicc_farming.block.thicc_crops.ThickableCropBlock;
-import net.quedoom.thicc_farming.init.ModBlocks;
+import net.quedoom.francium.init.ModBlocks;
 
 import java.util.Optional;
 

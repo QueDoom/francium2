@@ -25,13 +25,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.quedoom.francium.init.ModProperties;
+import net.quedoom.francium.init.ModStats;
+import net.quedoom.francium.init.ModTags;
+import net.quedoom.francium.item.CleaverItem;
+import net.quedoom.francium.util.EighthsEatableOctant;
 import net.quedoom.quet.api.LoadedMods;
-import net.quedoom.thicc_farming.block.ModProperties;
-import net.quedoom.thicc_farming.block.thicc_farming.RotateableEighthsEatableBlock;
-import net.quedoom.thicc_farming.init.ModStats;
-import net.quedoom.thicc_farming.init.ModTags;
-import net.quedoom.thicc_farming.item.CleaverItem;
-import net.quedoom.thicc_farming.util.EighthsEatableOctant;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import toughasnails.api.thirst.IThirst;
@@ -154,6 +153,10 @@ public class EighthsEatableBlock extends Block {
     public Item getItem() {
         Identifier id = Identifier.tryParse(this.item);
         return BuiltInRegistries.ITEM.getValue(id);
+    }
+
+    public ItemStack getStack(BlockState state) {
+        return this.getItem().getDefaultInstance().copyWithCount(8 - getBites(state));
     }
 
     protected InteractionResult extract(final Level level, final BlockPos pos, final BlockState state, final Player player, final BlockHitResult hitResult) {

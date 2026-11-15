@@ -13,11 +13,17 @@ import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class FallingEighthsEatableBlock extends EighthsEatableBlock implements Fallable {
+    public FallingEighthsEatableBlock(String item, int nutrition, float saturation, Properties properties) {
+        super(item, nutrition, saturation, properties);
+    }
     public FallingEighthsEatableBlock(int nutrition, float saturation, Properties properties) {
-        super(nutrition, saturation, properties);
+        super("", nutrition, saturation, properties);
+    }
+    public FallingEighthsEatableBlock(String item, Properties properties) {
+        super(item, properties);
     }
     public FallingEighthsEatableBlock(Properties properties) {
-        super(properties);
+        super("", properties);
     }
 
     @Override

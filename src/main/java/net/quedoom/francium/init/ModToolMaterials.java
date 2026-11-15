@@ -13,4 +13,6 @@ public class ModToolMaterials extends QueTToolMaterial {
     public static final ToolMaterial SHARP_AMETHYST_ROCK = register(BlockTags.INCORRECT_FOR_COPPER_TOOL, 65, 2.2F, 1F, 12, ModTags.Items.AMETHYST_ROCK_MATERIALS);
     public static final ToolMaterial SHARP_OBSIDIAN_ROCK = register(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 127, 3F, 1.25F, 14, ModTags.Items.OBSIDIAN_ROCK_MATERIALS);
     public static final ToolMaterial SHARP_BEDROCK_ROCK = register(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1023, 4F, 5F, 21, ModTags.Items.BEDROCK_ROCK_MATERIALS);
+    public static final ToolMaterial STEEL = register(BlockTags.INCORRECT_FOR_IRON_TOOL, 401, 7F, 4F, 16, ModTags.Items.BEDROCK_ROCK_MATERIALS);
+    public static final ToolMaterial BEDROCK = register(ModTags.Blocks.INCORRECT_FOR_BEDROCK_TOOLS, 1023, 4F, 5F, 21, ModTags.Items.BEDROCK_ROCK_MATERIALS);
 }

@@ -13,7 +13,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.quedoom.thicc_farming.util.EighthsEatableOctant;
+import net.quedoom.francium.util.EighthsEatableOctant;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
