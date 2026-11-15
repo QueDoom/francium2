@@ -2,11 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "minecraft:copper_ingot"
+    "#": "minecraft:copper_ingot",
+    "G": "francium_2:glue_bottle"
   },
   "pattern": [
     " # ",
-    "# #",
+    "#G#",
     " # "
   ],
   "result": {
