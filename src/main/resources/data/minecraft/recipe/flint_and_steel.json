@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "flint_and_steel",
+  "ingredients": [
+    "francium_2:steel_ingot",
+    "minecraft:flint"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:flint_and_steel"
+  }
+}
