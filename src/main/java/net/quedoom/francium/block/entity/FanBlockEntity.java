@@ -19,6 +19,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.quedoom.francium.api.prickle.FranciumConfigManager;
 import net.quedoom.francium.block.FanBlock;
+import net.quedoom.francium.block.StokedFireBlock;
 import net.quedoom.francium.init.ModBlockEntities;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModTags;
@@ -59,7 +60,8 @@ public class FanBlockEntity extends BlockEntity {
         if (entity.tick != 0) return;
 
         for (int i = 1; i <= FranciumConfigManager.CONFIG.fan_max_reach; i++) {
-            BlockState targetState = level.getBlockState(pos.relative(facing, i));
+            BlockPos targetPos = pos.relative(facing, i);
+            BlockState targetState = level.getBlockState(targetPos);
             if (targetState.is(ModTags.Blocks.FAN_BLOWS_THROUGH)) {
                     if (targetState.is(Blocks.FIRE)) {
                         boolean north = targetState.getValue(FireBlock.NORTH);
@@ -70,8 +72,8 @@ public class FanBlockEntity extends BlockEntity {
 
                         if (!north && !east && !south && !west && !up) {
                             if (level.getRandom().nextFloat() <= FranciumConfigManager.CONFIG.stoke_fire_chance)
-                                level.setBlockAndUpdate(pos.relative(facing, i), ModBlocks.STOKED_FIRE.defaultBlockState());
-
+                                level.setBlockAndUpdate(targetPos, ModBlocks.STOKED_FIRE.defaultBlockState()
+                                        .setValue(StokedFireBlock.SHORT, level.getBlockState(targetPos.above()).is(ModBlocks.OBSIDIAN_MIXER)));
                         }
                     }
 

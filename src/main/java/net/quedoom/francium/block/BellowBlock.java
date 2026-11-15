@@ -107,7 +107,8 @@ public class BellowBlock extends BaseEntityBlock {
 
                      if (!north && !east && !south && !west && !up) {
                          if (level.getRandom().nextFloat() <= FranciumConfigManager.CONFIG.stoke_fire_chance)
-                             level.setBlockAndUpdate(targetPos, ModBlocks.STOKED_FIRE.defaultBlockState());
+                             level.setBlockAndUpdate(targetPos, ModBlocks.STOKED_FIRE.defaultBlockState()
+                                     .setValue(StokedFireBlock.SHORT, level.getBlockState(targetPos.above()).is(ModBlocks.OBSIDIAN_MIXER)));
 
                      }
                  }
