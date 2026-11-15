@@ -111,6 +111,8 @@ public class  ModCreativeModeTabs {
       output.accept(Blocks.BAMBOO);
       output.accept(ModBlocks.STRIPPED_BAMBOO_ITEM);
 
+      output.accept(ModItems.STEEL_CLEAVER);
+      output.accept(ModItems.BEDROCK_CLEAVER);
       output.accept(Blocks.MELON);
       output.accept(Blocks.PUMPKIN);
       output.accept(ModBlocks.THICK_POTATO);
