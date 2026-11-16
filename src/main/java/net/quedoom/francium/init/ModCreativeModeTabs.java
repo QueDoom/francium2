@@ -13,6 +13,7 @@ public class  ModCreativeModeTabs {
 
   public static final CreativeModeTab FRANCIUM_TAB = Q.register(ModItems.DIRT_PILE, "francium_tab", (parameters, output) -> {
       output.accept(ModItems.BROKEN_STICK);
+      output.accept(ModItems.SAWDUST);
       output.accept(ModItems.SHARP_STICK);
       output.accept(ModItems.WOODEN_SHEARS);
       output.accept(ModItems.FIRE_STARTER);
