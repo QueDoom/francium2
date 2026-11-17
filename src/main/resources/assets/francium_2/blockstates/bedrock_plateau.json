@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "full=false": {
+      "model": "francium_2:block/bedrock_plateau"
+    },
+    "full=true": {
+      "model": "francium_2:block/bedrock_plateau_landed"
+    }
+  }
+}

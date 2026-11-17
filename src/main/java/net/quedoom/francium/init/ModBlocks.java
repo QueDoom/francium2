@@ -63,6 +63,9 @@ public class ModBlocks  {
     public static final Block WOODEN_CASING_WITH_HEAVY_ANVIL = Q.register("wooden_casing_with_heavy_anvil", WoodenCasingWithHeavyAnvilBlock::new,
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
 
+    public static final Block BEDROCK_PLATEAU = Q.register("bedrock_plateau", BedrockPlateauBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK));
+    public static final Block BEDROCK_CRUSHER = Q.register("bedrock_crusher", BedrockCrusherBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK));
+
     // region slabs
     public static final Block COARSE_DIRT_SLAB = registerFallableSlab("coarse_dirt_slab", "minecraft:coarse_dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.COARSE_DIRT));
     public static final Block DIRT_SLAB = registerFallableSlab("dirt_slab", "minecraft:dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
@@ -99,6 +102,13 @@ public class ModBlocks  {
 
     public static final Block BEDROCK_CHUNK = Q.register("bedrock_chunk", BlockBehaviour.Properties.of()
             .mapColor(MapColor.STONE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .strength(-1.0F, 3600000.0F)
+            .noLootTable()
+            .isValidSpawn(Blocks::never));
+
+    public static final Block INFUSED_BEDROCK_CHUNK = Q.register("infused_bedrock_chunk", BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_BLACK)
             .instrument(NoteBlockInstrument.BASEDRUM)
             .strength(-1.0F, 3600000.0F)
             .noLootTable()

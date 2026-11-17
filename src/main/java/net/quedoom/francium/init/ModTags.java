@@ -1,8 +1,10 @@
 package net.quedoom.francium.init;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.quet.init.QueTTag;
@@ -84,5 +86,14 @@ public class ModTags {
 
         public static final TagKey<EntityType<?>> DOES_NOT_DROP_SLIME = Q.create("does_not_drop_slime");
 
+    }
+
+    public static class Biomes {
+        public static final TagKey<Biome> ROCKS_SPAWN_IN = create("has_structure/rocks");
+
+
+        private static TagKey<Biome> create(String name) {
+            return TagKey.create(Registries.BIOME, Francium.of(name));
+        }
     }
 }

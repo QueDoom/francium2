@@ -14,5 +14,10 @@ public class ModWorldGeneration {
                 ModPlacedFeatures.TUFF_COAL_ORES);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES,
                 ModPlacedFeatures.TUFF_COPPER_ORES);
+
+        BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.ROCKS_SPAWN_IN), GenerationStep.Decoration.SURFACE_STRUCTURES,
+                ModPlacedFeatures.TUFF_COAL_ORES);
+        BiomeModifications.addFeature(BiomeSelectors.tag(ModTags.Biomes.ROCKS_SPAWN_IN), GenerationStep.Decoration.SURFACE_STRUCTURES,
+                ModPlacedFeatures.TUFF_COPPER_ORES);
     }
 }

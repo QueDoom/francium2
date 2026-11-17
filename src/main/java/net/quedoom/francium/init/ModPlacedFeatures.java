@@ -7,6 +7,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -16,10 +17,11 @@ import net.quedoom.francium.Francium;
 import java.util.List;
 
 public class ModPlacedFeatures {
-
     public static ResourceKey<PlacedFeature> BEDROCK_CHUNK = create("bedrock_chunk");
     public static ResourceKey<PlacedFeature> TUFF_COAL_ORES = create("tuff_coal_ores");
     public static ResourceKey<PlacedFeature> TUFF_COPPER_ORES = create("tuff_copper_ores");
+    public static final ResourceKey<PlacedFeature> ROCK = create("rock/selector");
+
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -37,6 +39,17 @@ public class ModPlacedFeatures {
                 OrePlacements.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(64))));
         register(context, TUFF_COPPER_ORES, configuredFeatures.getOrThrow(ModConfiguredFeatures.TUFF_COPPER_ORE),
                 OrePlacements.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(64))));
+
+        register(context, ROCK, configuredFeatures.getOrThrow(ModConfiguredFeatures.ROCK_SELECTOR),
+                List.of(
+                        NoiseBasedCountPlacement.of(1, 64.0D, 0.0D),
+                        CountPlacement.of(3),
+                        RarityFilter.onAverageOnceEvery(12),
+                        InSquarePlacement.spread(),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR),
+                        SurfaceWaterDepthFilter.forMaxDepth(1),
+                        BiomeFilter.biome()
+                ));
     }
 
     public static ResourceKey<PlacedFeature> create(String name) {

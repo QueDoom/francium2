@@ -2,6 +2,7 @@ package net.quedoom.francium.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.phys.Vec3;
 import net.quedoom.francium.block.FallingSlabBlock;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.recipe.AnvilPressing;
@@ -35,8 +37,9 @@ public abstract class FallingBlockEntityMixin extends Entity {
             target = "Lnet/minecraft/world/level/block/state/BlockState;canBeReplaced(Lnet/minecraft/world/item/context/BlockPlaceContext;)Z"))
     private boolean francium$canBeReplaced(boolean original) {
         francium$merge = isFallableSlabAndMatching();
-        return original || pressingMatches() || francium$merge;
+        return original || pressingMatches() || francium$merge || this.level().getBlockState(getBlockPos()).is(ModBlocks.BEDROCK_PLATEAU);
     }
+
 
     @ModifyExpressionValue(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/block/state/BlockState;canSurvive(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z"))
@@ -50,6 +53,13 @@ public abstract class FallingBlockEntityMixin extends Entity {
             ((FallingSlabBlock) this.blockState.getBlock()).makeFull(this.level(), this.blockPosition());
             this.discard();
         }
+    }
+
+    @Unique
+    private BlockPos getBlockPos() {
+        Vec3 vecFloat = position();
+        Vec3i vecInt = new Vec3i(((int) vecFloat.x), ((int) vecFloat.y), ((int) vecFloat.z));
+        return new BlockPos(vecInt);
     }
 
     @Unique
