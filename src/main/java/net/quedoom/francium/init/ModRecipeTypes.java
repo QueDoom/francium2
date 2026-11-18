@@ -172,6 +172,23 @@ public class ModRecipeTypes {
             }
     );
 
+    public static final RecipeType<BedrockCrushingRecipe> BEDROCK_CRUSHING = Registry.register(
+            BuiltInRegistries.RECIPE_TYPE,
+            Francium.of(BedrockCrushingRecipe.Type.ID),
+            new RecipeType<BedrockCrushingRecipe>() {
+                @Override
+                public String toString() {
+                    return BedrockCrushingRecipe.Type.ID;
+                }
+            }
+    );
+
+    public static final RecipeSerializer<BedrockCrushingRecipe> BEDROCK_CRUSHING_SERIALIZER = Registry.register(
+            BuiltInRegistries.RECIPE_SERIALIZER,
+            Francium.of(BedrockCrushingRecipe.Type.ID),
+            new RecipeSerializer<>(BedrockCrushingRecipe.CODEC, BedrockCrushingRecipe.STREAM_CODEC)
+    );
+
     private static <T extends Recipe<?>> RecipeSerializer<T> createSerializer(String name, RecipeSerializer<T> instance) {
         return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, Francium.of(name), instance);
     }

@@ -15,8 +15,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.phys.Vec3;
 import net.quedoom.francium.block.FallingSlabBlock;
+import net.quedoom.francium.block.entity.BedrockPlateauEntity;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.recipe.AnvilPressing;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -24,9 +26,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@Debug(export = true)
 @Mixin(FallingBlockEntity.class)
 public abstract class FallingBlockEntityMixin extends Entity {
     @Shadow private BlockState blockState;
+
+    @Shadow
+    public static FallingBlockEntity fall(Level level, BlockPos pos, BlockState state) {
+        throw new UnsupportedOperationException("Implemented via mixin");
+    }
 
     public FallingBlockEntityMixin(EntityType<?> type, Level level) { super(type, level); }
 
@@ -37,7 +45,7 @@ public abstract class FallingBlockEntityMixin extends Entity {
             target = "Lnet/minecraft/world/level/block/state/BlockState;canBeReplaced(Lnet/minecraft/world/item/context/BlockPlaceContext;)Z"))
     private boolean francium$canBeReplaced(boolean original) {
         francium$merge = isFallableSlabAndMatching();
-        return original || pressingMatches() || francium$merge || this.level().getBlockState(getBlockPos()).is(ModBlocks.BEDROCK_PLATEAU);
+        return original || pressingMatches() || francium$merge;
     }
 
 
@@ -52,6 +60,25 @@ public abstract class FallingBlockEntityMixin extends Entity {
         if (francium$merge) {
             ((FallingSlabBlock) this.blockState.getBlock()).makeFull(this.level(), this.blockPosition());
             this.discard();
+        }
+    }
+
+    @Inject(
+            method = "tick",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/entity/item/FallingBlockEntity;discard()V",
+                    ordinal = 3
+            ),
+            cancellable = true
+    )
+    private void bedrockCrusher(CallbackInfo ci) {
+        Level level = this.level();
+        BlockPos pos = this.blockPosition();
+        if (level.getBlockEntity(pos) instanceof BedrockPlateauEntity plateau
+                && plateau.crush(level, pos, this.fallDistance)) {
+            this.discard();
+            ci.cancel();
         }
     }
 

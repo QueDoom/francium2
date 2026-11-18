@@ -36,7 +36,7 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
         return new RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
-                FranciumRecipeHelper recipes = new FranciumRecipeHelper(this, output);
+                FranciumRecipeHelper recipes = new FranciumRecipeHelper(this, output, Francium.MOD_ID);
                 QTRecipeHelper qtRecipe = new QTRecipeHelper(this, output, Francium.MOD_ID);
                 HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
@@ -101,7 +101,8 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 recipes.blocksAnvilPressing(ModItems.STEEL_BOWL, 1, ModBlocks.STEEL_WEDGE, Blocks.OBSIDIAN, ModBlocks.OBSIDIAN_MIXER);
 
                 // bedrock processing
-                recipes.itemsBlocksAnvilPressing(ModBlocks.BEDROCK_CHUNK, ModBlocks.OBSIDIAN_CASING, ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS, Blocks.BEDROCK);
+                //recipes.itemsBlocksAnvilPressing(ModBlocks.BEDROCK_CHUNK, ModBlocks.OBSIDIAN_CASING, ModBlocks.OBSIDIAN_CASING_CONTAINING_ITEMS, Blocks.BEDROCK);
+                recipes.bedrockCrushing(ModBlocks.BEDROCK_CHUNK, 200, Blocks.BEDROCK);
 
                 recipes.burning(Blocks.CACTUS, 0.25f, ModBlocks.SMOOTH_CACTUS.defaultBlockState());
 

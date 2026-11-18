@@ -40,6 +40,9 @@ public class ModBlockEntities {
     public static final BlockEntityType<FanBlockEntity> FAN =
             Q.register("fan", FanBlockEntity::new, ModBlocks.FAN);
 
+    public static final BlockEntityType<BedrockPlateauEntity> BEDROCK_PLATEAU =
+            Q.register("bedrock_plateau", BedrockPlateauEntity::new, ModBlocks.BEDROCK_PLATEAU);
+
     
     public static void registerBlockEntities() {}
 

@@ -11,23 +11,24 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.quet.misc.GetPath;
 
 import java.util.Optional;
 
-public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output) {
+public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output, String namespace) {
     public void anvilCompacting(ItemLike item, int xByX, Block block, ItemLike result) {
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), xByX * xByX, block, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(block.asItem()), provider.has(block.asItem()))
-                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()))
+                .save(output, namespace + ":anvil_pressing/basic/" + GetPath.get(result.asItem()))
         ;
     }
     public void anvilCompacting(ItemLike item, int xByX, Block block, ItemLike result, String prefix) {
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), xByX * xByX, block, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(block.asItem()), provider.has(block.asItem()))
-                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + '_' + prefix)
+                .save(output, namespace + ":anvil_pressing/basic/" + GetPath.get(result.asItem()) + '_' + prefix)
         ;
     }
     public void anvilWoodenCompacting(ItemLike item, int xByX, ItemLike result) {
@@ -46,13 +47,13 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
     public void blocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, ItemLike result) {
         new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Optional.of(Ingredient.of(item)), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
+                .save(output, namespace + ":anvil_pressing/twoblock/" + GetPath.get(result.asItem()))
         ;
     }
     public void blocksAnvilPressing(ItemLike item, int count, Block topBlock, Block bottomBlock, ItemLike result, String prefix) {
         new TwoBlockPressingRecipeBuilder(RecipeCategory.MISC, Optional.of(Ingredient.of(item)), count, topBlock, bottomBlock, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
+                .save(output, namespace + ":anvil_pressing/twoblock/" + GetPath.get(result.asItem()) + '_' + prefix)
         ;
     }
     public void blocksAnvilPressing(ItemLike item, Block topBlock, Block bottomBlock, ItemLike result) {
@@ -72,7 +73,7 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
                               Block topBlock, Block bottomBlock, Block bottomBlockStorage,
                               ItemLike result, int countResult,
                               String unlockName, Criterion<?> criterion, String prefix) {
-        String base = "francium_2:anvil_pressing/twoblock/" + GetPath.get(result.asItem());
+        String base = namespace + ":anvil_pressing/twoblock/" + GetPath.get(result.asItem());
         String suffix = prefix == null ? "" : "_" + prefix;
 
         TwoBlockPressingRecipeBuilder normal = new TwoBlockPressingRecipeBuilder(
@@ -179,39 +180,39 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
     public void itemsAnvilPressing(ItemLike item, int count, Block block, Block containerBlock, ItemLike result) {
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, block, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()));
+                .save(output, namespace + ":anvil_pressing/basic/" + GetPath.get(result.asItem()));
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, containerBlock, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + "_container");
+                .save(output, namespace + ":anvil_pressing/basic/" + GetPath.get(result.asItem()) + "_container");
     }
 
     public void itemsAnvilPressing(ItemLike item, int count, Block block, Block containerBlock, ItemLike result, String suffix) {
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, block, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + '_' + suffix);
+                .save(output, namespace + ":anvil_pressing/basic/" + GetPath.get(result.asItem()) + '_' + suffix);
         new BasicPressingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(item), count, containerBlock, new ItemStackTemplate(result.asItem()))
                 .unlockedBy(RecipeProvider.getHasName(item), provider.has(item))
-                .save(output, "francium_2:anvil_pressing/basic/" + GetPath.get(result.asItem()) + "_container_" + suffix);
+                .save(output, namespace + ":anvil_pressing/basic/" + GetPath.get(result.asItem()) + "_container_" + suffix);
     }
     public void burning(Block block, float chance, BlockState result, String suffix) {
         new BurningRecipeBuilder(RecipeCategory.MISC, block, chance, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
-                .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()) + '_' + suffix);
+                .save(output, namespace + ":burning/" + GetPath.get(result.getBlock()) + '_' + suffix);
     }
     public void burning(Block block, float chance, BlockState result) {
         new BurningRecipeBuilder(RecipeCategory.MISC, block, chance, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
-                .save(output, "francium_2:burning/" + GetPath.get(result.getBlock()));
+                .save(output, namespace + ":burning/" + GetPath.get(result.getBlock()));
     }
     public void blowing(Block block, BlockState result, String suffix) {
         new BlowingRecipeBuilder(RecipeCategory.MISC, block, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
-                .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()) + '_' + suffix);
+                .save(output, namespace + ":blowing/" + GetPath.get(result.getBlock()) + '_' + suffix);
     }
     public void blowing(Block block, BlockState result) {
         new BlowingRecipeBuilder(RecipeCategory.MISC, block, result)
                 .unlockedBy(RecipeProvider.getHasName(block), provider.has(block))
-                .save(output, "francium_2:blowing/" + GetPath.get(result.getBlock()));
+                .save(output, namespace + ":blowing/" + GetPath.get(result.getBlock()));
     }
     public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, String suffix) {
         obsidianMixing(firstItem, secondItem, thirdItem, fourthItem, time, result, 1, suffix);
@@ -221,13 +222,29 @@ public record FranciumRecipeHelper(RecipeProvider provider, RecipeOutput output)
     }
     public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, int count, String suffix) {
         new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem(), count))
-                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
-                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()) + '_' + suffix);
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, namespace + ":obsidian_mixing/" + GetPath.get(result.asItem()) + '_' + suffix);
     }
     public void obsidianMixing(ItemLike firstItem, ItemLike secondItem, ItemLike thirdItem, ItemLike fourthItem, int time, ItemLike result, int count) {
         new ObsidianMixingRecipeBuilder(RecipeCategory.MISC, Ingredient.of(firstItem), Ingredient.of(secondItem), Ingredient.of(thirdItem), Ingredient.of(fourthItem), time, new ItemStackTemplate(result.asItem(), count))
-                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(secondItem))
-                .save(output, "francium_2:obsidian_mixing/" + GetPath.get(result.asItem()));
+                .unlockedBy(RecipeProvider.getHasName(firstItem), provider.has(firstItem))
+                .save(output, namespace + ":obsidian_mixing/" + GetPath.get(result.asItem()));
     }
 
+    public void bedrockCrushing(Ingredient item, ItemLike name, double fallDistance, ItemLike result) {
+        new BedrockCrushingRecipeBuilder(RecipeCategory.MISC, item, fallDistance, new ItemStackTemplate(result.asItem()))
+                .unlockedBy(GetPath.get(name.asItem()), provider.has(name))
+                .save(output, namespace + ":bedrock_crushing/" + GetPath.get(result.asItem()));
+    }
+    public void bedrockCrushing(Ingredient item, TagKey<Item> name, String has, double fallDistance, ItemLike result) {
+        new BedrockCrushingRecipeBuilder(RecipeCategory.MISC, item, fallDistance, new ItemStackTemplate(result.asItem()))
+                .unlockedBy(has, provider.has(name))
+                .save(output, namespace + ":bedrock_crushing/" + GetPath.get(result.asItem()));
+    }
+    public void bedrockCrushing(ItemLike item, double fallDistance, ItemLike result) {
+        bedrockCrushing(Ingredient.of(item), item, fallDistance, result);
+    }
+    public void bedrockCrushing(TagKey<Item> items, double fallDistance, ItemLike result) {
+        bedrockCrushing(provider.tag(items), items, "has", fallDistance, result);
+    }
 }
