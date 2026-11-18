@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "X": "#francium_2:lever_top",
+    "#": "#francium_2:lever_base"
+  },
+  "pattern": ["X", "#"],
+  "result": {
+    "id": "minecraft:lever"
+  }
+}

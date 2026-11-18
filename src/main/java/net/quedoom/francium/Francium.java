@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.api.LoadedMods;
 import net.quedoom.francium.api.prickle.FranciumConfigManager;
 import net.quedoom.francium.init.*;
+import net.quedoom.francium.util.Packs;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ import org.slf4j.LoggerFactory;
 public class Francium implements ModInitializer {
 	public static final String MOD_ID = "francium_2";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	private static final Packs packs = new Packs(MOD_ID);
 
 	public static Identifier of(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
@@ -34,6 +36,13 @@ public class Francium implements ModInitializer {
 
 	public static String translationString(String prefix, String suffix) {
 		return prefix + '.' + MOD_ID + '.' + suffix;
+	}
+	public static String translationString(String prefix, String suffix, String... suffixes) {
+		StringBuilder builder = new StringBuilder(translationString(prefix, suffix));
+		for (String string : suffixes) {
+			builder.append(".").append(string);
+		}
+		return builder.toString();
 	}
 
 	@Override
@@ -66,13 +75,8 @@ public class Francium implements ModInitializer {
 
 		FlammableBlockRegistry.getDefaultInstance().add(Blocks.CACTUS, 5, 5);
 
-		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(container ->
-				ResourceLoader.registerBuiltinPack(
-						of("overrides"),
-						container,
-						Component.literal("Recipe Overrides"),
-						PackActivationType.ALWAYS_ENABLED
-				)
-		);
+		packs.override("generic");
+		packs.override("tools");
+		packs.override("armor");
 	}
 }

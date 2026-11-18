@@ -242,6 +242,7 @@ public class Models extends QueTModelProvider {
         qtItemModelGenerators.generateGenerated(ModItems.ANOTHER_OFF_BLUE_DYE);
         qtItemModelGenerators.generateGenerated(ModItems.LAPIS_ESSENCE);
         qtItemModelGenerators.generateGenerated(ModItems.EMERALD_SHARD);
+        qtItemModelGenerators.generateGenerated(ModItems.DIAMOND_INGOT);
 
         itemModelGenerators.generateFlatItem(ModItems.SHARP_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.STRENGTHENED_SHAFT, ModelTemplates.FLAT_ITEM);

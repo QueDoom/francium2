@@ -46,6 +46,7 @@ public class ModItems {
     public static Item ANOTHER_OFF_BLUE_DYE = Q.register("another_off_blue_dye", false);
     public static Item LAPIS_ESSENCE = Q.register("lapis_essence");
     public static Item EMERALD_SHARD = Q.register("emerald_shard");
+    public static Item DIAMOND_INGOT = Q.register("diamond_ingot");
 
     public static Item DEEPSLATE_PILE = Q.register("deepslate_pile", false);
     public static Item TUFF_PILE = Q.register("tuff_pile", false);

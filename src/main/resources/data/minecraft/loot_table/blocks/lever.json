@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "francium_2:lever_top",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "francium_2:lever_base",
+          "expand": true
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:block/lever"
+}

@@ -158,6 +158,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.ANOTHER_OFF_BLUE_DYE);
       output.accept(ModItems.LAPIS_ESSENCE);
       output.accept(ModItems.EMERALD_SHARD);
+      output.accept(ModItems.DIAMOND_INGOT);
 
       output.accept(ModItems.DIRT_PILE);
       output.accept(ModItems.GRAVEL_PILE);

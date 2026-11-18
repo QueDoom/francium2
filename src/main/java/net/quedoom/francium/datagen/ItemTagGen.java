@@ -62,6 +62,18 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
 
 
         // endregion conventional
+        valueLookupBuilder(ModTags.Items.LEVER_BASE)
+                .addOptionalTag(ItemTags.STONE_TOOL_MATERIALS);
+        valueLookupBuilder(ModTags.Items.LEVER_TOP)
+                .add(Items.STICK);
+        valueLookupBuilder(ItemTags.STONE_TOOL_MATERIALS)
+                .add(ModBlocks.COBBLED_TUFF.asItem());
+        valueLookupBuilder(ItemTags.REPAIRS_DIAMOND_ARMOR)
+                .remove(Items.DIAMOND)
+                .add(ModItems.DIAMOND_INGOT);
+        valueLookupBuilder(ItemTags.DIAMOND_TOOL_MATERIALS)
+                .remove(Items.DIAMOND)
+                .add(ModItems.DIAMOND_INGOT);
         valueLookupBuilder(ModTags.Items.OFF_BLUE_DYES)
                 .add(
                         ModItems.OFF_BLUE_DYE,

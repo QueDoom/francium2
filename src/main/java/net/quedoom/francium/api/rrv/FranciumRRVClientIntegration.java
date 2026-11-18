@@ -66,7 +66,10 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
                 Ingredient fourthItem = recipe.fourthItem();
                 recipeList.add(new ObsidianMixingClientRecipe(firstItem, secondItem, thirdItem, fourthItem, recipe.time(), recipe.result()));
             });
-
+            ClientRecipeManager.INSTANCE.getRecipesForType(ModRecipeTypes.BEDROCK_CRUSHING).forEach(bedrockCrushingRecipeRecipeHolder -> {
+                BedrockCrushingRecipe recipe = bedrockCrushingRecipeRecipeHolder.value();
+                recipeList.add(new BedrockCrushingClientRecipe(recipe.item(), ((int) recipe.fallDistance()), recipe.result()));
+            });
 
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.DIORITE_COATED_ROCK, ModItems.GRANITE_COATED_ROCK, null, ModBlocks.STONE_CASING));
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.PACKED_DEEPSLATE, ModItems.OBSIDIAN_BOOK, ModItems.OBSIDIAN_BOOK, ModBlocks.OBSIDIAN_CASING));

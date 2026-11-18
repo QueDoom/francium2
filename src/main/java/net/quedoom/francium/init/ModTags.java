@@ -76,6 +76,9 @@ public class ModTags {
 
         public static final TagKey<Item> OFF_BLUE_DYES = Q.create("off_blue_dyes");
 
+        public static final TagKey<Item> LEVER_BASE = Q.create("lever_base");
+        public static final TagKey<Item> LEVER_TOP = Q.create("lever_top");
+
         // rrv
         public static final TagKey<Item> ECHO_ITEMS = Q.create("glue_mixer_rrv_echo_items");
         public static final TagKey<Item> LEAF_ITEMS = Q.create("glue_mixer_rrv_leaf_items");

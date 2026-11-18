@@ -9,6 +9,7 @@ import net.quedoom.francium.api.prickle.FranciumConfigs;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
+import net.quedoom.francium.recipe.BedrockCrushingRecipe;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
 import net.quedoom.quet.datagen.lang.QueTLanguageProvider;
 
@@ -167,6 +168,11 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add(Francium.translationString("rrv", "obsidian_mixing"), "Obsidian Mixing");
         translationBuilder.add(Francium.translationString("rrv", "casing_crafting"), "Casing Crafting");
         translationBuilder.add(Francium.translationString("rrv", "use_in_order"), "Apply the items in-order");
+        translationBuilder.add(Francium.translationString("rrv", BedrockCrushingRecipe.Type.ID), "Bedrock Crushing");
+        translationBuilder.add(Francium.translationString("rrv", BedrockCrushingRecipe.Type.ID, "fall_distance", "line0"), "Minimum");
+        translationBuilder.add(Francium.translationString("rrv", BedrockCrushingRecipe.Type.ID, "fall_distance", "line1"), "fall");
+        translationBuilder.add(Francium.translationString("rrv", BedrockCrushingRecipe.Type.ID, "fall_distance", "line2"), "dist:");
+        translationBuilder.add(Francium.translationString("rrv", BedrockCrushingRecipe.Type.ID, "fall_distance", "value"), "%s bl");
 
         translationBuilder.add(Francium.translationString("stackgroup", "piles"), "Piles");
 

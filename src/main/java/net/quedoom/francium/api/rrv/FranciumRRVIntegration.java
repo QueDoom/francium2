@@ -17,5 +17,6 @@ public class FranciumRRVIntegration implements ReliableRecipeViewerPlugin {
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.BURNING_SERIALIZER, ModRecipeTypes.BURNING);
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.BLOWING_SERIALIZER, ModRecipeTypes.BLOWING);
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.OBSIDIAN_MIXING_SERIALIZER, ModRecipeTypes.OBSIDIAN_MIXING);
+        ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.BEDROCK_CRUSHING_SERIALIZER, ModRecipeTypes.BEDROCK_CRUSHING);
     }
 }
