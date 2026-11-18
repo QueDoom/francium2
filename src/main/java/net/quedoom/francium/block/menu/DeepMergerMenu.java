@@ -123,9 +123,9 @@ public class    DeepMergerMenu extends ItemCombinerMenu {
     @Override
     public void createResult() {
         DeepMergerInput input = this.createRecipeInput();
-        Level var4 = this.level;
+        Level level = this.level;
         Optional<RecipeHolder<DeepMergingRecipe>> foundRecipe;
-        if (var4 instanceof ServerLevel serverLevel) {
+        if (level instanceof ServerLevel serverLevel) {
             foundRecipe = serverLevel.recipeAccess().getRecipeFor(ModRecipeTypes.DEEP_MERGING, input, serverLevel);
         } else {
             foundRecipe = Optional.empty();
