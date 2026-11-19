@@ -49,9 +49,9 @@ public class RegisterBlockMixin {
 
         if (name.contains("concrete") && name.contains("minecraft")) {
             if (name.contains("powder")) {
-                reRegister(true, id, cir, p -> new PowderedConcreteBlock(ColorHelper.dyeColorFromString(name), p), properties);
+                reRegister(id, cir, p -> new PowderedConcreteBlock(ColorHelper.dyeColorFromString(name), p), properties);
             } else {
-                reRegister(true, id, cir, p -> new ConcreteBlock(ColorHelper.dyeColorFromString(name), p), properties);
+                reRegister(id, cir, p -> new ConcreteBlock(ColorHelper.dyeColorFromString(name), p), properties);
             }
         }
 
@@ -59,7 +59,7 @@ public class RegisterBlockMixin {
 
         reRegister(name.equals(string("bedrock")), id, cir, factory, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(10.0F, 3600000.0F).isValidSpawn(Blocks::never).requiresCorrectToolForDrops());
         if (name.equals(string("cactus"))) {
-            reRegister(true, id, cir, factory, properties.ignitedByLava());
+            reRegister(id, cir, factory, properties.ignitedByLava());
         }
         reRegister(name.contains("sugar"), id, cir,
                 SolidSugarCaneBlock::new,
@@ -151,5 +151,11 @@ public class RegisterBlockMixin {
             Block block = newFactory.apply(properties.setId(key));
             cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, key, block));
         }
+    }
+
+    @Unique
+    private static void reRegister(ResourceKey<Block> key, CallbackInfoReturnable<Block> cir, Function<BlockBehaviour.Properties, Block> newFactory, BlockBehaviour.Properties properties) {
+        Block block = newFactory.apply(properties.setId(key));
+        cir.setReturnValue(Registry.register(BuiltInRegistries.BLOCK, key, block));
     }
 }

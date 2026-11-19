@@ -9,14 +9,27 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.quedoom.francium.util.ColorHelper;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractColoredBlock extends Block {
-    protected final DyeColor dyeColor;
+    protected final ColorHelper color;
+
+    public AbstractColoredBlock(ColorHelper color, Properties properties) {
+        super(properties);
+        this.color = color;
+    }
 
     public AbstractColoredBlock(DyeColor color, Properties properties) {
-        super(properties);
-        this.dyeColor = color;
+        this(ColorHelper.parse(color), properties);
+    }
+
+    public ColorHelper getHelper() {
+        return color;
+    }
+
+    public DyeColor getDyeColor() {
+        return color.color();
     }
 
     @Override

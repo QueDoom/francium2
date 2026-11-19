@@ -1,12 +1,9 @@
 package net.quedoom.francium.block;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -23,7 +20,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.util.ColorHelper;
@@ -31,15 +27,19 @@ import net.quedoom.francium.util.ColorHelper;
 public class PowderedConcreteBlock extends AbstractColoredBlock implements Fallable {
     private final Block concrete;
 
-    public PowderedConcreteBlock(DyeColor color, Properties properties) {
+    public PowderedConcreteBlock(ColorHelper color, Properties properties) {
         super(color, properties);
-        this.concrete = ColorHelper.toConcrete(color);
+        this.concrete = color.toConcrete();
+    }
+
+    public PowderedConcreteBlock(DyeColor color, Properties properties) {
+        this(ColorHelper.parse(color), properties);
     }
 
     @Override
     protected void drop(Level level, BlockPos pos, BlockState state, Player player, ItemStack destroyedWith) {
         dropResources(Blocks.WHITE_CONCRETE_POWDER.defaultBlockState(), level, pos, null, player, destroyedWith);
-        Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), ColorHelper.toItem(this.dyeColor).getDefaultInstance());
+        Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), this.color.toItem().getDefaultInstance());
     }
 
     @Override

@@ -186,6 +186,7 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.CALCITE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.AMETHYST_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.DRIPSTONE_PILE, PILE_FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModItems.NETHERRACK_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BLACKSTONE_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SOUL_PILE, PILE_FLAT_ITEM);
@@ -195,6 +196,9 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.NETHER_QUARTZ_DUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ANCIENT_DUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.NETHERITE_DUST, PILE_FLAT_ITEM);
+
+        itemModelGenerators.generateFlatItem(ModItems.END_STONE_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.PURPUR_PILE, PILE_FLAT_ITEM);
 
         qtItemModelGenerators.generateGenerated(ModItems.OBSIDIAN_COATED_LEATHER);
 
