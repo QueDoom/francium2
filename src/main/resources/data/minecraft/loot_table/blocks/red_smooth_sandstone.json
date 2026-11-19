@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "francium_2:sand_pile",
+          "name": "francium_2:red_sand_pile",
           "conditions": [
             {
               "condition": "minecraft:random_chance",

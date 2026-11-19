@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "francium_2:blackstone_dust",
+          "name": "francium_2:blackstone_pile",
           "conditions": [
             {
               "condition": "minecraft:random_chance",

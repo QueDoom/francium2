@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "francium_2:dried_mud",
+          "name": "francium_2:dried_mud_pile",
           "conditions": [
             {
               "condition": "minecraft:random_chance",
@@ -23,7 +23,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 0,
+                "min": 1,
                 "max": 2
               }
             }

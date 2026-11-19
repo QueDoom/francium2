@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "francium_2:tuff_pile",
+          "name": "minecraft:brick",
           "conditions": [
             {
               "condition": "minecraft:random_chance",
@@ -23,8 +23,8 @@
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
+                "min": 2,
+                "max": 4
               }
             }
           ]

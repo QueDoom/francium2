@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "francium_2:end_stone_dust",
+          "name": "francium_2:end_stone_pile",
           "conditions": [
             {
               "condition": "minecraft:random_chance",
