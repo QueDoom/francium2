@@ -203,7 +203,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModBlocks.ANCIENT_BUNS);
       output.accept(ModItems.ANCIENT_BUN);
       output.accept(ModItems.END_STONE_PILE);
-      output.accept(ModItems.END_STONE_PILE);
+      output.accept(ModItems.PURPUR_PILE);
 
       output.accept(ModBlocks.FORBIDDEN_DUST);
       output.accept(ModBlocks.FORBIDDEN_FLAKE);
