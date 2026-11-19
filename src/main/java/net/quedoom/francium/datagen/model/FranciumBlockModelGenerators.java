@@ -1,20 +1,11 @@
 package net.quedoom.francium.datagen.model;
 
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.MultiVariant;
-import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
-import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.init.ModProperties;
 
 import java.util.Optional;
 
-public class CustomBlockModelGenerators {
+public class FranciumBlockModelGenerators {
     public static final ModelTemplate EIGHTHS_EATABLE_OCTANT = block("eighths_eatable_octant", TextureSlot.SIDE, TextureSlot.TOP, TextureSlot.INSIDE);
 
 

@@ -2,29 +2,36 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1,
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "francium_2:tuff_pile",
           "conditions": [
             {
-              "condition": "minecraft:survives_explosion"
+              "condition": "minecraft:random_chance",
+              "chance": 0.165
             }
           ],
-          "name": "francium_2:tuff_pile",
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 0,
-                "max": 1
+                "max": 2
               }
             }
           ]
         }
-      ]
+      ],
+      "rolls": 1
     }
   ],
-  "random_sequence": "francium_2:blocks/tuff_slab"
+  "random_sequence": "minecraft:blocks/tuff_slab"
 }

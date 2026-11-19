@@ -166,6 +166,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.RED_SAND_PILE);
       output.accept(ModItems.CLAY_PILE);
       output.accept(ModItems.MUD_PILE);
+      output.accept(ModItems.DRIED_MUD_PILE);
       output.accept(ModItems.GLASS_SHARDS);
       output.accept(ModItems.ANDESITE_PILE);
       output.accept(ModItems.DIORITE_PILE );
@@ -201,6 +202,8 @@ public class  ModCreativeModeTabs {
       output.accept(ModItems.NETHERITE_DUST);
       output.accept(ModBlocks.ANCIENT_BUNS);
       output.accept(ModItems.ANCIENT_BUN);
+      output.accept(ModItems.END_STONE_PILE);
+      output.accept(ModItems.END_STONE_PILE);
 
       output.accept(ModBlocks.FORBIDDEN_DUST);
       output.accept(ModBlocks.FORBIDDEN_FLAKE);

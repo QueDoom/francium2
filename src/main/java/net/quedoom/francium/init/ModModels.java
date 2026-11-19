@@ -7,6 +7,7 @@ import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
+import net.quedoom.francium.util.sewer.SewerArrowDirection;
 
 import java.util.Optional;
 
@@ -48,6 +49,34 @@ public class ModModels {
     public static final ModelTemplate THICK_STEM_SE = block("thick_apple/se", "_se", TextureSlots.STEM);
     public static final ModelTemplate THICK_STEM_SW = block("thick_apple/sw", "_sw", TextureSlots.STEM);
 
+    public static final ModelTemplate SEWER_ARROW_FORWARD = sewer("arrow_forward","_arrow_forward",  TextureSlots.SEWER_ARROW, TextureSlots.SEWER_ARROW_SMALL);
+    public static final ModelTemplate SEWER_ARROW_LEFT = sewer("arrow_left","_arrow_left",  TextureSlots.SEWER_ARROW_LEFT, TextureSlots.SEWER_ARROW_SMALL);
+    public static final ModelTemplate SEWER_ARROW_RIGHT = sewer("arrow_right","_arrow_right",  TextureSlots.SEWER_ARROW_RIGHT, TextureSlots.SEWER_ARROW_SMALL);
+
+    public static final ModelTemplate SEWER_CENTER = sewer("center","_ce",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_CORNERS = sewer("corners","_co",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_CENTER_EAST = sewer("e_center","_ec",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_CENTER_WEST = sewer("w_center","_wc",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_CENTER_NORTH = sewer("n_center","_nc",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_CENTER_SOUTH = sewer("s_center","_sc",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_UD_NORTH = sewer("n_ud","_nud",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_UD_SOUTH = sewer("s_ud","_sud",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_UD_EAST = sewer("e_ud","_eud",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_UD_WEST = sewer("w_ud","_wud", TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_PILLAR_NE = sewer("ne_pillar","_nep",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_PILLAR_NW = sewer("nw_pillar","_nwp",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_PILLAR_SE = sewer("se_pillar","_sep",  TextureSlots.SEWER);
+    public static final ModelTemplate SEWER_PILLAR_SW = sewer("sw_pillar","_swp", TextureSlots.SEWER);
+
+    public static final ModelTemplate SEWER_ITEM = item("sewer_item", TextureSlots.SEWER, TextureSlots.SEWER_ARROW);
+
+    private static ModelTemplate sewer(String parent, TextureSlot... requiredTextureKeys) {
+        return new ModelTemplate(Optional.of(Francium.of("block/sewer/" + parent)), Optional.empty(), requiredTextureKeys);
+    }
+    private static ModelTemplate sewer(String parent, String variant, TextureSlot... requiredTextureKeys) {
+        return new ModelTemplate(Optional.of(Francium.of("block/sewer/" + parent)), Optional.of(variant), requiredTextureKeys);
+    }
+
     // helper method for creating Models
     private static ModelTemplate block(String parent, TextureSlot... requiredTextureKeys) {
         return new ModelTemplate(Optional.of(Francium.of("block/" + parent)), Optional.empty(), requiredTextureKeys);
@@ -76,6 +105,12 @@ public class ModModels {
         public static final TextureSlot FOLIAGE = TextureSlot.create("foliage");
         public static final TextureSlot STEM = TextureSlot.create("stem");
         public static final TextureSlot FACE = TextureSlot.create("face");
+
+        public static final TextureSlot SEWER = TextureSlot.create("sewer", TextureSlot.ALL);
+        public static final TextureSlot SEWER_ARROW = TextureSlot.create("arrow");
+        public static final TextureSlot SEWER_ARROW_LEFT = TextureSlot.create("left_arrow");
+        public static final TextureSlot SEWER_ARROW_RIGHT = TextureSlot.create("arrow_right");
+        public static final TextureSlot SEWER_ARROW_SMALL = TextureSlot.create("small_arrow");
     }
 
     public static class TextureMappings {
@@ -145,6 +180,20 @@ public class ModModels {
         public static TextureMapping octantFoliage(Block block) {
             return new TextureMapping()
                     .put(TextureSlots.FOLIAGE, new Material(ModelLocationUtils.getModelLocation(block)));
+        }
+
+        public static TextureMapping sewer(Block block, String suffix) {
+            return new TextureMapping()
+                    .put(TextureSlots.SEWER, new Material(ModelLocationUtils.getModelLocation(block, "_" + suffix)));
+        }
+        public static TextureMapping sewerArrow(Block block, SewerArrowDirection arrow) {
+            TextureSlot arrowe = switch (arrow) {
+                case STRAIGHT -> TextureSlots.SEWER_ARROW;
+                case LEFT -> TextureSlots.SEWER_ARROW_LEFT;
+                case RIGHT -> TextureSlots.SEWER_ARROW_RIGHT;
+            };
+            return new TextureMapping()
+                    .put(arrowe, new Material(ModelLocationUtils.getModelLocation(block, "_arrow_" + arrow.getSerializedName())));
         }
     }
 }

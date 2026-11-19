@@ -1,0 +1,31 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "#sewer"
+	},
+	"elements": [
+		{
+			"from": [13, 3, 13],
+			"to": [16, 13, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 13]},
+			"faces": {
+				"north": {"uv": [0, 3, 3, 13], "texture": "#sewer"},
+				"east": {"uv": [0, 3, 3, 13], "texture": "#sewer"},
+				"south": {"uv": [13, 3, 16, 13], "texture": "#sewer"},
+				"west": {"uv": [0, 3, 3, 13], "texture": "#sewer"},
+				"up": {"uv": [13, 0, 16, 3], "texture": "#sewer"},
+				"down": {"uv": [13, 13, 16, 16], "texture": "#sewer"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "se_pillar",
+			"origin": [0, 0, 13],
+			"scope": 0,
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

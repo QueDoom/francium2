@@ -157,6 +157,7 @@ public class Models extends QueTModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.DIRT_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.CLAY_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.MUD_PILE, PILE_FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.DRIED_MUD_PILE, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.SAWDUST, PILE_FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.BROKEN_STICK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.GRAVEL_PILE, PILE_FLAT_ITEM);

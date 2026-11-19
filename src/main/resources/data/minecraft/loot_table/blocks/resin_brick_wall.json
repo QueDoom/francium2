@@ -2,24 +2,25 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1,
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "minecraft:resing_brick",
           "conditions": [
             {
-              "condition": "minecraft:survives_explosion"
-            }
-          ],
-          "name": "minecraft:resin_brick",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 4
+              "condition": "minecraft:random_chance",
+              "chance": 1.0
             }
           ]
         }
-      ]
+      ],
+      "rolls": 1
     }
   ],
   "random_sequence": "minecraft:blocks/resin_brick_wall"

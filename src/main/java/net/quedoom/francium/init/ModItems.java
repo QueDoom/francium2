@@ -17,6 +17,7 @@ public class ModItems {
     public static Item DIRT_PILE = Q.register("dirt_pile", false);
     public static Item CLAY_PILE = Q.register("clay_pile", false);
     public static Item MUD_PILE = Q.register("mud_pile", false);
+    public static Item DRIED_MUD_PILE = Q.register("dried_mud_pile", false);
     public static Item BROKEN_STICK = Q.register("broken_stick");
     public static Item SAWDUST = Q.register("sawdust");
     public static Item GRAVEL_PILE = Q.register("gravel_pile", false);
@@ -25,6 +26,8 @@ public class ModItems {
     public static Item ANDESITE_PILE = Q.register("andesite_pile", false);
     public static Item DIORITE_PILE = Q.register("diorite_pile", false);
     public static Item GRANITE_PILE = Q.register("granite_pile", false);
+    public static Item END_STONE_PILE = Q.register("end_stone_pile", false);
+    public static Item PURPUR_PILE = Q.register("purpur_pile", false);
 
     public static Item GOLD_ORE_PILE = Q.register("gold_ore_pile", false);
     public static Item DEEPSLATE_GOLD_ORE_PILE = Q.register("deepslate_gold_ore_pile", false);

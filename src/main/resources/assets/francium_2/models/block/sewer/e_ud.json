@@ -1,0 +1,46 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+	"particle": "#sewer"
+	},
+	"elements": [
+		{
+			"name": "de",
+			"from": [13, 0, 3],
+			"to": [16, 3, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 3, 0]},
+			"faces": {
+				"north": {"uv": [13, 13, 16, 16], "rotation": 180, "texture": "#sewer"},
+				"east": {"uv": [3, 13, 13, 16], "texture": "#sewer"},
+				"south": {"uv": [13, 0, 16, 3], "texture": "#sewer"},
+				"west": {"uv": [0, 3, 3, 13], "rotation": 90, "texture": "#sewer"},
+				"up": {"uv": [0, 3, 3, 13], "rotation": 180, "texture": "#sewer"},
+				"down": {"uv": [13, 3, 16, 13], "texture": "#sewer"}
+			}
+		},
+		{
+			"name": "ue",
+			"from": [13, 13, 3],
+			"to": [16, 16, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 16, 0]},
+			"faces": {
+				"north": {"uv": [13, 13, 16, 16], "rotation": 180, "texture": "#sewer"},
+				"east": {"uv": [3, 0, 13, 3], "texture": "#sewer"},
+				"south": {"uv": [13, 0, 16, 3], "texture": "#sewer"},
+				"west": {"uv": [0, 3, 3, 13], "rotation": 90, "texture": "#sewer"},
+				"up": {"uv": [13, 3, 16, 13], "texture": "#sewer"},
+				"down": {"uv": [13, 3, 16, 13], "texture": "#sewer"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "east",
+			"origin": [0, 3, -16],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}
