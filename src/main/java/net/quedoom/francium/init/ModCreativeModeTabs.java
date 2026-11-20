@@ -9,9 +9,9 @@ import net.quedoom.quet.init.QueTCreativeTab;
 public class  ModCreativeModeTabs {
     private static final QueTCreativeTab Q = new QueTCreativeTab(Francium.MOD_ID);
 
-    public static final ResourceKey<CreativeModeTab> FRANCIUM_TAB_KEY = Q.create("francium_tab");
+    public static final ResourceKey<CreativeModeTab> FRANCIUM_TAB_KEY = Q.create("francium");
 
-  public static final CreativeModeTab FRANCIUM_TAB = Q.register(ModItems.DIRT_PILE, "francium_tab", (parameters, output) -> {
+  public static final CreativeModeTab FRANCIUM_TAB = Q.register(ModItems.DIRT_PILE, "francium", (parameters, output) -> {
       output.accept(ModItems.BROKEN_STICK);
       output.accept(ModItems.SAWDUST);
       output.accept(ModItems.SHARP_STICK);
