@@ -94,6 +94,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModBlocks.TRADER_BENCH);
       output.accept(ModBlocks.BUNDLE_TABLE);
 
+      output.accept(Blocks.ANVIL);
       output.accept(ModBlocks.HEAVY_ANVIL);
 
       output.accept(ModItems.CRAFTING_TOKEN);
