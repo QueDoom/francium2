@@ -1,5 +1,7 @@
 package net.quedoom.francium.init;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -8,6 +10,9 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.quedoom.francium.Francium;
 import net.quedoom.quet.init.QueTTag;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModTags {
     private static final QueTTag BUILDER = QueTTag.builder(Francium.MOD_ID);
@@ -79,6 +84,8 @@ public class ModTags {
         public static final TagKey<Item> LEVER_BASE = Q.create("lever_base");
         public static final TagKey<Item> LEVER_TOP = Q.create("lever_top");
 
+        public static final TagKey<Item> FORBIDDEN_ITEMS = Q.create("foridden_items");
+
         // rrv
         public static final TagKey<Item> ECHO_ITEMS = Q.create("glue_mixer_rrv_echo_items");
         public static final TagKey<Item> LEAF_ITEMS = Q.create("glue_mixer_rrv_leaf_items");
@@ -99,4 +106,21 @@ public class ModTags {
             return TagKey.create(Registries.BIOME, Francium.of(name));
         }
     }
+
+    public static List<Item> itemsInTag(TagKey<Item> tag) {
+        List<Item> items = new ArrayList<>();
+        for (Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(tag)) {
+            items.add(holder.value());
+        }
+        return items;
+    }
+
+    public static List<Block> blocksInTag(TagKey<Block> tag) {
+        List<Block> blocks = new ArrayList<>();
+        for (Holder<Block> holder : BuiltInRegistries.BLOCK.getTagOrEmpty(tag)) {
+            blocks.add(holder.value());
+        }
+        return blocks;
+    }
+
 }

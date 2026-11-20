@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.quedoom.francium.datagen.*;
 import net.quedoom.francium.init.ModConfiguredFeatures;
 import net.quedoom.francium.init.ModPlacedFeatures;
+import net.quedoom.francium.init.ModTags;
 import net.quedoom.quet.datagen.QTRegistryBuilder;
 import net.quedoom.quet.datagen.QueTDataGeneratorEntrypoint;
 
@@ -12,8 +13,8 @@ public class FranciumDataGenerator extends QueTDataGeneratorEntrypoint {
 	@Override
 	protected void doDatagen(FabricDataGenerator fabricDataGenerator, FabricDataGenerator.Pack pack) {
 		pack.addProvider(ModAdvancements::new);
-		pack.addProvider(BlockTagGen::new);
-		pack.addProvider(ItemTagGen::new);
+		BlockTagGen blockTagGen = pack.addProvider(BlockTagGen::new);
+		pack.addProvider((output, registries) -> new ItemTagGen(output, registries, blockTagGen));
 		pack.addProvider(Francium2LanguageProvider::new);
 		pack.addProvider(Loot::new);
 		pack.addProvider(Models::new);

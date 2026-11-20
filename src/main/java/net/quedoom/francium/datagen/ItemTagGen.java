@@ -4,24 +4,46 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.FranciumConventionalTags;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModTags;
+import net.quedoom.francium.util.TagSet;
+import net.quedoom.francium.util.TagSets;
+import net.quedoom.quet.init.ModRegistrator;
+import net.quedoom.quet.init.QueTTag;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
+    private final BlockTagsProvider blockTags;
 
-    public ItemTagGen(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
-        super(output, registryLookupFuture);
+    public ItemTagGen(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture, BlockTagsProvider blockTags) {
+        super(output, registryLookupFuture, blockTags);
+        this.blockTags = blockTags;
     }
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
+        //block tags
+        generateItemTagsFromBlockTags(getItemTagsFromBlockTags(ModTags.Blocks.class, Francium.MOD_ID));
         // region conventional
+        valueLookupBuilder(ModTags.Items.FORBIDDEN_ITEMS)
+                .add(
+                        ModBlocks.FORBIDDEN_DUST.asItem(),
+                        ModBlocks.FORBIDDEN_FLAKE.asItem()
+                );
         valueLookupBuilder(FranciumConventionalTags.Items.TUFF_COBBLESTONES)
                 .add(
                         ModBlocks.COBBLED_TUFF.asItem()
@@ -199,4 +221,46 @@ public class ItemTagGen extends FabricTagsProvider.ItemTagsProvider {
 
 
     }
+
+    public static TagSets getItemTagsFromBlockTags(Class<?> tagsClass, String namespace) {
+        return getItemTagsFromBlockTags(tagsClass, namespace, false);
+    }
+
+    public static TagSets getItemTagsFromBlockTags(Class<?> tagsClass, String namespace, boolean addToSets) {
+        final ModRegistrator modRegistrator = new ModRegistrator(namespace);
+        final QueTTag.QTItemTags Q = QueTTag.builder(namespace).item();
+        final List<TagKey<Item>> output = new ArrayList<>();
+        final List<TagKey<Block>> blocks = new ArrayList<>();
+        for (Field field : tagsClass.getDeclaredFields()) {
+            if (!Modifier.isStatic(field.getModifiers())) continue;
+            try {
+                field.setAccessible(true);
+                if (field.get(null) instanceof TagKey<?> tag && tag.isFor(Registries.BLOCK)) {
+                    output.add(Q.create(tag.location().getPath()));
+                    blocks.add(((TagKey<Block>) tag));
+                }
+            } catch (IllegalAccessException e) {
+                modRegistrator.LOGGER.error("Could not read tag field {}", field.getName(), e);
+            }
+        }
+        final List<TagSet> sets = new ArrayList<>();
+        int i = 0;
+        for (TagKey<Item> itemTag : output) {
+            sets.add(new TagSet(itemTag, blocks.get(i)));
+            i += 1;
+        }
+        TagSets tagSets = new TagSets(sets, modRegistrator);
+        if (addToSets)
+            TagSets.addTags(tagSets);
+        return tagSets;
+    }
+
+    protected void generateItemTagsFromBlockTags(TagSets sets) {
+        for (TagSet set : sets.sets()) {
+            valueLookupBuilder(set.item())
+                    .addAll(set.toItemArray());
+        }
+    }
+
+
 }

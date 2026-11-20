@@ -1,20 +1,15 @@
 package net.quedoom.francium;
 
-import net.darkhax.pricklemc.common.api.config.ConfigManager;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
-import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
 import net.minecraft.world.level.block.Blocks;
 import net.quedoom.francium.api.LoadedMods;
 import net.quedoom.francium.api.prickle.FranciumConfigManager;
+import net.quedoom.francium.datagen.ItemTagGen;
 import net.quedoom.francium.init.*;
 import net.quedoom.francium.util.Packs;
 import net.quedoom.quet.datagen.lang.QTTranslationBuilder;
@@ -75,8 +70,6 @@ public class Francium implements ModInitializer {
 
 		FlammableBlockRegistry.getDefaultInstance().add(Blocks.CACTUS, 5, 5);
 
-		packs.override("generic");
-		packs.override("tools");
-		packs.override("armor");
+		packs.add("generic", "tools", "armor");
 	}
 }
