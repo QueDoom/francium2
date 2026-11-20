@@ -29,7 +29,12 @@ public class BlockTagGen extends QueTBlockTagProvider {
 
         // endregion conventional
 
-
+        valueLookupBuilder(ModTags.Blocks.OBSIDIAN_CHISEL_CAN_ALSO_BREAK)
+                .add(
+                        ModBlocks.BEDROCK_CHUNK,
+                        ModBlocks.INFUSED_BEDROCK_CHUNK,
+                        ModBlocks.BEDROCK_CRUSHER
+                );
         valueLookupBuilder(ModTags.Blocks.INCORRECT_FOR_BEDROCK_TOOLS);
         valueLookupBuilder(ModTags.Blocks.THICK_CROP_FOLIAGE)
                 .add(

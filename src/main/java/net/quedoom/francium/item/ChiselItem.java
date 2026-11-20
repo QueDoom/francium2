@@ -105,7 +105,7 @@ public class ChiselItem extends Item {
     public boolean canBreak(ServerPlayer player, ServerLevel level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
 
-        if (state.is(ModBlocks.BEDROCK_CHUNK)) return true;
+        if (state.is(ModTags.Blocks.OBSIDIAN_CHISEL_CAN_ALSO_BREAK)) return true;
 
         if (!this.chiselsEverything) {
             if (state.getDestroySpeed(level, pos) < 0) return false;

@@ -51,6 +51,8 @@ public class ModTags {
         public static final TagKey<Block> THICKABLE_CROPS = Q.create("thickable_crops");
         public static final TagKey<Block> THICK_CROPS = Q.create("thick_crops");
         public static final TagKey<Block> THICK_CROP_FOLIAGE = Q.create("thick_crop_foliage");
+
+        public static final TagKey<Block> OBSIDIAN_CHISEL_CAN_ALSO_BREAK = Q.create("obsidian_chisel_can_also_break");
     }
     public static class Items {
         private static final QueTTag.QTItemTags Q = BUILDER.item();
