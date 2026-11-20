@@ -86,7 +86,7 @@ public class ChiselItem extends Item {
 
         if (!drop.isEmpty()) {
             Vec3 center = pos.getCenter();
-            Containers.dropItemStack(level, center.x, center.y, center.z, drop);
+            Containers.dropItemStack(level, center.x + dropXOffset, center.y + dropYOffset, center.z + dropZOffset, drop);
         } else {
             Block.dropResources(state, level, pos);
         }
