@@ -5,6 +5,7 @@ import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.client.recipe.ClientRecipeManager;
 import cc.cassian.rrv.common.ReliableRecipeViewer;
 import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -81,15 +82,6 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
                 BedrockCrushingRecipe recipe = bedrockCrushingRecipeRecipeHolder.value();
                 recipeList.add(new BedrockCrushingClientRecipe(recipe.item(), ((int) recipe.fallDistance()), recipe.result()));
             });
-
-            final List<Item> dust = new ArrayList<>(ModTags.blocksInTag(ModTags.Blocks.DROPS_FORBIDDEN_DUST).stream().map(Block::asItem).toList());
-            final List<Item> flake = ModTags.blocksInTag(ModTags.Blocks.DROPS_FORBIDDEN_FLAKE).stream().map(Block::asItem).toList();
-            final List<Item> small = ModTags.blocksInTag(ModTags.Blocks.SMALL_DROPS_FORBIDDEN_FLAKE).stream().map(Block::asItem).toList();
-            dust.addAll(flake);
-            dust.addAll(small);
-            for (Item item : new LinkedHashSet<>(dust)) {
-                recipeList.add(new ForbiddenClientRecipe(item));
-            }
 
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.DIORITE_COATED_ROCK, ModItems.GRANITE_COATED_ROCK, null, ModBlocks.STONE_CASING));
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.PACKED_DEEPSLATE, ModItems.OBSIDIAN_BOOK, ModItems.OBSIDIAN_BOOK, ModBlocks.OBSIDIAN_CASING));
@@ -254,10 +246,9 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
                     Identifier.withDefaultNamespace("/world_interaction/wax_off_waxed_" + GetPath.get(block))
             );
         }
-
         for (Block block : noWax) {
             ItemView.excludeRecipes(ReliableRecipeViewer.of("world_interaction"),
-                    Identifier.withDefaultNamespace("/world_interaction/" + GetPath.get(block) + "_reverse_oxidizing"),
+                    Identifier.withDefaultNamespace("/world_interaction/" + GetPath.get(block) + "_reverse_oxidizing")
             );
         }
     }

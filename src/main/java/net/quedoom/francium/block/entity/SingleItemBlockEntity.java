@@ -68,15 +68,6 @@ public class SingleItemBlockEntity extends BlockEntity implements ContainerSingl
         setChanged();
     }
 
-    @Override
-    public void preRemoveSideEffects(BlockPos pos, BlockState state) {
-        if (!this.isEmpty()) {
-            if (getTheItem().getItem() instanceof BlockItem blockItem) {
-                this.level.setBlock(pos, blockItem.getBlock().defaultBlockState(), Block.UPDATE_ALL);
-            }
-        }
-    }
-
     // sync
 
     @Override
