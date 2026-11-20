@@ -32,6 +32,15 @@ public class BlockContainingItemsEntity extends BlockEntity implements Container
         super(ModBlockEntities.BLOCK_CONTAINING_ITEMS, worldPosition, blockState);
     }
 
+    public int size() {
+        int size = 0;
+        for (ItemStack stack : container) {
+            if (!stack.isEmpty())
+                size += 1;
+        }
+        return size;
+    }
+
     @Override
     public void preRemoveSideEffects(BlockPos pos, BlockState state) {
         if (!(level instanceof ServerLevel server)) return;

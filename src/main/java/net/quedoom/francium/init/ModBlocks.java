@@ -3,8 +3,10 @@ package net.quedoom.francium.init;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -16,8 +18,11 @@ import net.quedoom.francium.block.thicc_farming.EighthsEatableBlockWithStem;
 import net.quedoom.francium.block.thicc_farming.FallingEighthsEatableBlock;
 import net.quedoom.francium.block.thicc_farming.ThickFoliageBlock;
 import net.quedoom.quet.init.QueTBlock;
+import net.quedoom.quet.init.QueTItem;
+import net.quedoom.quet.item.QTTooltip;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class ModBlocks  {
@@ -46,18 +51,18 @@ public class ModBlocks  {
 
     public static final Block PILE_OF_LEAVES = Q.register("pile_of_leaves", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
 
-    public static final Block WOODEN_CASING_CONTAINING_BLOCK = Q.register("wooden_casing_containing_block", BlockContainingBlock::new,
+    public static final Block WOODEN_CASING_CONTAINING_BLOCK = Q.register("wooden_casing_containing_block", p -> new BlockContainingBlock(WOODEN_CASING, p),
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
-    public static final Block STONE_CASING_CONTAINING_BLOCK = Q.register("stone_casing_containing_block", BlockContainingBlock::new,
+    public static final Block STONE_CASING_CONTAINING_BLOCK = Q.register("stone_casing_containing_block", p -> new BlockContainingBlock(STONE_CASING, p),
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
-    public static final Block OBSIDIAN_CASING_CONTAINING_BLOCK = Q.register("obsidian_casing_containing_block", BlockContainingBlock::new,
+    public static final Block OBSIDIAN_CASING_CONTAINING_BLOCK = Q.register("obsidian_casing_containing_block", p -> new BlockContainingBlock(OBSIDIAN_CASING, p),
             BlockBehaviour.Properties.ofFullCopy(OBSIDIAN_CASING).noOcclusion().requiresCorrectToolForDrops(), false);
 
-    public static final Block WOODEN_CASING_CONTAINING_ITEMS = Q.register("wooden_casing_containing_items", BlockContainingItems::new,
+    public static final Block WOODEN_CASING_CONTAINING_ITEMS = Q.register("wooden_casing_containing_items", p -> new BlockContainingItems(WOODEN_CASING, p),
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noLootTable().noOcclusion(), false);
-    public static final Block STONE_CASING_CONTAINING_ITEMS = Q.register("stone_casing_containing_items", BlockContainingItems::new,
+    public static final Block STONE_CASING_CONTAINING_ITEMS = Q.register("stone_casing_containing_items", p -> new BlockContainingItems(STONE_CASING, p),
             BlockBehaviour.Properties.ofFullCopy(STONE_CASING).noLootTable().noOcclusion().requiresCorrectToolForDrops(), false);
-    public static final Block OBSIDIAN_CASING_CONTAINING_ITEMS = Q.register("obsidian_casing_containing_items", BlockContainingItems::new,
+    public static final Block OBSIDIAN_CASING_CONTAINING_ITEMS = Q.register("obsidian_casing_containing_items", p -> new BlockContainingItems(OBSIDIAN_CASING, p),
             BlockBehaviour.Properties.ofFullCopy(OBSIDIAN_CASING).noLootTable().noOcclusion().requiresCorrectToolForDrops(), false);
     public static final Block HEAVY_ANVIL = Q.register("heavy_anvil", HeavyAnvilBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.ANVIL).noOcclusion());
@@ -93,7 +98,7 @@ public class ModBlocks  {
 
     public static final Block MINERAL_MIX_BLOCK = Q.register("mineral_mix_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ANDESITE));
     public static final Block ECHO_BLOCK = Q.register("echo_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK), false);
-    public static final Block HEAVY_SCULK = Q.register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK).strength(5));
+    public static final Block HEAVY_SCULK = Q.register("heavy_sculk", HeavySculkBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SCULK));
     public static final Block RUBBER_BLOCK = Q.register("rubber_block", BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK));
     public static final Block STEEL_BLOCK = Q.register("steel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
     public static final Block STEEL_WEDGE = Q.register("steel_wedge", SteelWedgeBlock::new, BlockBehaviour.Properties.ofFullCopy(STEEL_BLOCK).noOcclusion());
