@@ -77,6 +77,19 @@ public class ChiselItem extends Item {
             blockContainingItems.removeItem(slot, 64);
             destroy = false;
         }
+        if (state.is(ModBlocks.WOODEN_CASING_WITH_HEAVY_ANVIL)) {
+            WoodenCasingWithHeavyAnvilBlock.spawnAnvilAfterBreak(level, pos, state.getValue(WoodenCasingWithHeavyAnvilBlock.FACING));
+        }
+        if (state.is(ModBlocks.BEDROCK_PLATEAU) && state.getValue(BedrockPlateauBlock.FULL)) {
+            drop = ModBlocks.BEDROCK_CRUSHER.asItem().getDefaultInstance();
+            level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(ModBlocks.BEDROCK_CRUSHER.defaultBlockState()));
+            level.setBlockAndUpdate(pos, ModBlocks.BEDROCK_PLATEAU.defaultBlockState());
+            dropYOffset = 0.25f;
+            particle = false;
+            destroy = false;
+        }
+
+        ChiselItem.mixinPlace();
 
         if (particle)
             level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
@@ -116,5 +129,9 @@ public class ChiselItem extends Item {
         if (!player.mayInteract(level, pos)) return false;
         if (player.blockActionRestricted(level, pos, player.gameMode.getGameModeForPlayer())) return false;
         return true;
+    }
+
+    // Don't mixin into this. Mixin into useOn but you can use this as an anchor with INJECT.
+    private static void mixinPlace() {
     }
 }
