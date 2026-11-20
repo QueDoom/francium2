@@ -1,5 +1,6 @@
 package net.quedoom.francium.item;
 
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,12 +21,12 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.quedoom.francium.Francium;
-import net.quedoom.francium.block.BlockContainingBlock;
-import net.quedoom.francium.block.CasingWithPotentialContainer;
+import net.quedoom.francium.block.*;
 import net.quedoom.francium.block.entity.BlockContainingEntity;
 import net.quedoom.francium.block.entity.BlockContainingItemsEntity;
 import net.quedoom.francium.block.thicc_farming.EighthsEatableBlock;
 import net.quedoom.francium.init.ModBlocks;
+import net.quedoom.francium.init.ModTags;
 import net.quedoom.francium.util.EighthsEatableOctant;
 
 public class ChiselItem extends Item {
@@ -57,6 +58,10 @@ public class ChiselItem extends Item {
         boolean destroy = true;
         boolean particle = true;
 
+        float dropXOffset = 0f;
+        float dropYOffset = 0f;
+        float dropZOffset = 0f;
+
         // Thick crops
         if (state.getBlock() instanceof EighthsEatableBlock eighthsEatableBlock) {
             drop = eighthsEatableBlock.getStack(state);
@@ -67,14 +72,18 @@ public class ChiselItem extends Item {
             Item item = drop.getItem();
             if (item instanceof BlockItem blockItem)
                 level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(blockItem.getBlock().defaultBlockState()));
-            blockContainingEntity.clearContent();
+            level.setBlockAndUpdate(pos, ((BlockContainingBlock) state.getBlock()).getCasingBlock().defaultBlockState());
             particle = false;
             destroy = false;
         }
         if (entity instanceof BlockContainingItemsEntity blockContainingItems && !blockContainingItems.isEmpty()) {
             int slot = blockContainingItems.firstSlotWithItem();
             drop = blockContainingItems.getItem(slot).copyWithCount(1);
-            blockContainingItems.removeItem(slot, 64);
+            if (blockContainingItems.size() == 1) {
+                level.setBlockAndUpdate(pos, ((BlockContainingItems) state.getBlock()).getCasingBlock().defaultBlockState());
+            } else {
+                blockContainingItems.removeItem(slot, 64);
+            }
             destroy = false;
         }
         if (state.is(ModBlocks.WOODEN_CASING_WITH_HEAVY_ANVIL)) {
