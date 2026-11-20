@@ -1,7 +1,10 @@
 package net.quedoom.francium.api.rrv;
 
 import cc.cassian.rrv.api.ReliableRecipeViewerPlugin;
+import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.common.recipe.ServerRecipeManager;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.quedoom.francium.Francium;
 import net.quedoom.francium.init.ModRecipeTypes;
 import net.quedoom.quet.init.ModRegistrator;
@@ -18,5 +21,8 @@ public class FranciumRRVIntegration implements ReliableRecipeViewerPlugin {
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.BLOWING_SERIALIZER, ModRecipeTypes.BLOWING);
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.OBSIDIAN_MIXING_SERIALIZER, ModRecipeTypes.OBSIDIAN_MIXING);
         ServerRecipeManager.INSTANCE.synchronizeRecipeType(ModRecipeTypes.BEDROCK_CRUSHING_SERIALIZER, ModRecipeTypes.BEDROCK_CRUSHING);
+
+
+
     }
 }

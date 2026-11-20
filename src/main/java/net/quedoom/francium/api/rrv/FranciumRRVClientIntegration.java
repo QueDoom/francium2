@@ -3,15 +3,26 @@ package net.quedoom.francium.api.rrv;
 import cc.cassian.rrv.api.ReliableRecipeViewerClientPlugin;
 import cc.cassian.rrv.api.recipe.ItemView;
 import cc.cassian.rrv.client.recipe.ClientRecipeManager;
+import cc.cassian.rrv.common.ReliableRecipeViewer;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.quedoom.francium.api.rrv.recipe.*;
 import net.quedoom.francium.init.ModBlocks;
 import net.quedoom.francium.init.ModItems;
 import net.quedoom.francium.init.ModRecipeTypes;
+import net.quedoom.francium.init.ModTags;
 import net.quedoom.francium.recipe.*;
+import net.quedoom.quet.misc.GetPath;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientPlugin {
     @Override
@@ -71,8 +82,183 @@ public class FranciumRRVClientIntegration implements ReliableRecipeViewerClientP
                 recipeList.add(new BedrockCrushingClientRecipe(recipe.item(), ((int) recipe.fallDistance()), recipe.result()));
             });
 
+            final List<Item> dust = new ArrayList<>(ModTags.blocksInTag(ModTags.Blocks.DROPS_FORBIDDEN_DUST).stream().map(Block::asItem).toList());
+            final List<Item> flake = ModTags.blocksInTag(ModTags.Blocks.DROPS_FORBIDDEN_FLAKE).stream().map(Block::asItem).toList();
+            final List<Item> small = ModTags.blocksInTag(ModTags.Blocks.SMALL_DROPS_FORBIDDEN_FLAKE).stream().map(Block::asItem).toList();
+            dust.addAll(flake);
+            dust.addAll(small);
+            for (Item item : new LinkedHashSet<>(dust)) {
+                recipeList.add(new ForbiddenClientRecipe(item));
+            }
+
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.DIORITE_COATED_ROCK, ModItems.GRANITE_COATED_ROCK, null, ModBlocks.STONE_CASING));
             recipeList.add(new CasingCraftingClientRecipe(ModBlocks.WOODEN_CASING, ModItems.ANDESITE_COATED_ROCK, ModItems.PACKED_DEEPSLATE, ModItems.OBSIDIAN_BOOK, ModItems.OBSIDIAN_BOOK, ModBlocks.OBSIDIAN_CASING));
         });
+
+        // region waxable
+        List<Block> noWax = List.of(
+                // Full blocks
+                Blocks.COPPER_BLOCK,
+                Blocks.EXPOSED_COPPER,
+                Blocks.WEATHERED_COPPER,
+                Blocks.OXIDIZED_COPPER,
+
+                // Cut copper
+                Blocks.CUT_COPPER,
+                Blocks.EXPOSED_CUT_COPPER,
+                Blocks.WEATHERED_CUT_COPPER,
+                Blocks.OXIDIZED_CUT_COPPER,
+
+                // Cut copper stairs
+                Blocks.CUT_COPPER_STAIRS,
+                Blocks.EXPOSED_CUT_COPPER_STAIRS,
+                Blocks.WEATHERED_CUT_COPPER_STAIRS,
+                Blocks.OXIDIZED_CUT_COPPER_STAIRS,
+
+                // Cut copper slabs
+                Blocks.CUT_COPPER_SLAB,
+                Blocks.EXPOSED_CUT_COPPER_SLAB,
+                Blocks.WEATHERED_CUT_COPPER_SLAB,
+                Blocks.OXIDIZED_CUT_COPPER_SLAB,
+
+                // Chiseled copper
+                Blocks.CHISELED_COPPER,
+                Blocks.EXPOSED_CHISELED_COPPER,
+                Blocks.WEATHERED_CHISELED_COPPER,
+                Blocks.OXIDIZED_CHISELED_COPPER,
+
+                // Copper grate
+                Blocks.COPPER_GRATE,
+                Blocks.EXPOSED_COPPER_GRATE,
+                Blocks.WEATHERED_COPPER_GRATE,
+                Blocks.OXIDIZED_COPPER_GRATE,
+
+                // Copper bulb
+                Blocks.COPPER_BULB,
+                Blocks.EXPOSED_COPPER_BULB,
+                Blocks.WEATHERED_COPPER_BULB,
+                Blocks.OXIDIZED_COPPER_BULB,
+
+                // Copper door
+                Blocks.COPPER_DOOR,
+                Blocks.EXPOSED_COPPER_DOOR,
+                Blocks.WEATHERED_COPPER_DOOR,
+                Blocks.OXIDIZED_COPPER_DOOR,
+
+                // Copper trapdoor
+                Blocks.COPPER_TRAPDOOR,
+                Blocks.EXPOSED_COPPER_TRAPDOOR,
+                Blocks.WEATHERED_COPPER_TRAPDOOR,
+                Blocks.OXIDIZED_COPPER_TRAPDOOR,
+
+                // Copper bars
+                Blocks.COPPER_BARS.unaffected(),
+                Blocks.COPPER_BARS.exposed(),
+                Blocks.COPPER_BARS.weathered(),
+                Blocks.COPPER_BARS.oxidized(),
+
+                // Copper chain
+                Blocks.COPPER_CHAIN.unaffected(),
+                Blocks.COPPER_CHAIN.exposed(),
+                Blocks.COPPER_CHAIN.weathered(),
+                Blocks.COPPER_CHAIN.oxidized(),
+
+                // Copper lantern
+                Blocks.COPPER_LANTERN.unaffected(),
+                Blocks.COPPER_LANTERN.exposed(),
+                Blocks.COPPER_LANTERN.weathered(),
+                Blocks.COPPER_LANTERN.oxidized()
+        );
+        // endregion waxable
+        // region reverse oxidizing
+        List<Block> noDeox = List.of(
+                // Full blocks
+                Blocks.COPPER_BLOCK,
+                Blocks.EXPOSED_COPPER,
+                Blocks.WEATHERED_COPPER,
+
+                // Cut copper
+                Blocks.CUT_COPPER,
+                Blocks.EXPOSED_CUT_COPPER,
+                Blocks.WEATHERED_CUT_COPPER,
+
+                // Cut copper stairs
+                Blocks.CUT_COPPER_STAIRS,
+                Blocks.EXPOSED_CUT_COPPER_STAIRS,
+                Blocks.WEATHERED_CUT_COPPER_STAIRS,
+
+                // Cut copper slabs
+                Blocks.CUT_COPPER_SLAB,
+                Blocks.EXPOSED_CUT_COPPER_SLAB,
+                Blocks.WEATHERED_CUT_COPPER_SLAB,
+
+                // Chiseled copper
+                Blocks.CHISELED_COPPER,
+                Blocks.EXPOSED_CHISELED_COPPER,
+                Blocks.WEATHERED_CHISELED_COPPER,
+
+                // Copper grate
+                Blocks.COPPER_GRATE,
+                Blocks.EXPOSED_COPPER_GRATE,
+                Blocks.WEATHERED_COPPER_GRATE,
+
+                // Copper bulb
+                Blocks.COPPER_BULB,
+                Blocks.EXPOSED_COPPER_BULB,
+                Blocks.WEATHERED_COPPER_BULB,
+
+                // Copper door
+                Blocks.COPPER_DOOR,
+                Blocks.EXPOSED_COPPER_DOOR,
+                Blocks.WEATHERED_COPPER_DOOR,
+
+                // Copper trapdoor
+                Blocks.COPPER_TRAPDOOR,
+                Blocks.EXPOSED_COPPER_TRAPDOOR,
+                Blocks.WEATHERED_COPPER_TRAPDOOR,
+
+                // Copper bars
+                Blocks.COPPER_BARS.unaffected(),
+                Blocks.COPPER_BARS.exposed(),
+                Blocks.COPPER_BARS.weathered(),
+
+                // Copper chain
+                Blocks.COPPER_CHAIN.unaffected(),
+                Blocks.COPPER_CHAIN.exposed(),
+                Blocks.COPPER_CHAIN.weathered(),
+
+                // Copper lantern
+                Blocks.COPPER_LANTERN.unaffected(),
+                Blocks.COPPER_LANTERN.exposed(),
+                Blocks.COPPER_LANTERN.weathered(),
+
+                // Lightning rod
+                Blocks.LIGHTNING_ROD,
+                Blocks.EXPOSED_LIGHTNING_ROD,
+                Blocks.WEATHERED_LIGHTNING_ROD,
+
+                // Copper chest
+                Blocks.COPPER_CHEST,
+                Blocks.EXPOSED_COPPER_CHEST,
+                Blocks.WEATHERED_COPPER_CHEST,
+
+                // Copper golem statue
+                Blocks.COPPER_GOLEM_STATUE,
+                Blocks.EXPOSED_COPPER_GOLEM_STATUE,
+                Blocks.WEATHERED_COPPER_GOLEM_STATUE
+        );
+        // endregion reverse oxidizin
+
+        for (Block block : noWax) {
+            ItemView.excludeRecipes(ReliableRecipeViewer.of("world_interaction"),
+                    Identifier.withDefaultNamespace("/world_interaction/wax_off_waxed_" + GetPath.get(block))
+            );
+        }
+
+        for (Block block : noWax) {
+            ItemView.excludeRecipes(ReliableRecipeViewer.of("world_interaction"),
+                    Identifier.withDefaultNamespace("/world_interaction/" + GetPath.get(block) + "_reverse_oxidizing"),
+            );
+        }
     }
 }
