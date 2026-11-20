@@ -234,6 +234,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         // API
         qtTranslationBuilder.builder().add(Francium.MOD_ID + ".options", "Options");
         translateOptions(qtTranslationBuilder);
+        qtTranslationBuilder.addTooltip(ModBlocks.BEDROCK_PLATEAU_ITEM, "To hard to be broken with Obsidian.");
         //qtTranslationBuilder.autoTranslatePrickleConfigs("francium", FranciumConfigs.class);
     }
 

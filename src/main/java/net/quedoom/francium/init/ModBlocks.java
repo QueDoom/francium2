@@ -22,6 +22,7 @@ import java.util.function.Function;
 
 public class ModBlocks  {
     private static final QueTBlock Q = new QueTBlock(Francium.MOD_ID);
+    private static final QueTItem ITEMS = new QueTItem(Francium.MOD_ID);
 
     public static final Block GLUE_MIXER = Q.register("glue_mixer", WoodenMixerBlock::new, BlockBehaviour.Properties.of()
             .ignitedByLava().mapColor(Blocks.OAK_PLANKS.defaultMapColor()).instrument(NoteBlockInstrument.BASS).noOcclusion()
@@ -63,7 +64,14 @@ public class ModBlocks  {
     public static final Block WOODEN_CASING_WITH_HEAVY_ANVIL = Q.register("wooden_casing_with_heavy_anvil", WoodenCasingWithHeavyAnvilBlock::new,
             BlockBehaviour.Properties.ofFullCopy(WOODEN_CASING).noOcclusion(), false);
 
-    public static final Block BEDROCK_PLATEAU = Q.register("bedrock_plateau", BedrockPlateauBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK));
+    public static final Block BEDROCK_PLATEAU = Q.register("bedrock_plateau", BedrockPlateauBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK), false);
+    public static final Item BEDROCK_PLATEAU_ITEM = ITEMS.register(ITEMS.create("bedrock_plateau"), p -> new BlockItem(BEDROCK_PLATEAU, p) {
+        @Override
+        public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+            super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
+            QTTooltip.of(builder, this, Francium.MOD_ID).addStatic();
+        }
+    }, new Item.Properties());
     public static final Block BEDROCK_CRUSHER = Q.register("bedrock_crusher", BedrockCrusherBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK));
 
     // region slabs

@@ -210,7 +210,7 @@ public class  ModCreativeModeTabs {
       output.accept(ModBlocks.FORBIDDEN_FLAKE);
       output.accept(ModItems.CORRUPTED_MODEL);
 
-      output.accept(ModBlocks.BEDROCK_PLATEAU);
+      output.accept(ModBlocks.BEDROCK_PLATEAU_ITEM);
       output.accept(ModBlocks.BEDROCK_CRUSHER);
       output.accept(ModBlocks.BEDROCK_CHUNK);
       output.accept(ModBlocks.INFUSED_BEDROCK_CHUNK);
