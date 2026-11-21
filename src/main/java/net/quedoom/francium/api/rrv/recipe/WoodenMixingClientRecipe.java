@@ -5,6 +5,7 @@ import cc.cassian.rrv.common.recipe.inventory.RecipeViewMenu;
 import cc.cassian.rrv.common.recipe.inventory.SlotContent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -28,8 +29,8 @@ public class WoodenMixingClientRecipe extends ReliableClientRecipeWithoutTransfe
         this.glueBottle = SlotContent.of(ModItems.GLUE_BOTTLE);
         this.result = SlotContent.of(result);
     }
-    public WoodenMixingClientRecipe(List<Item> typeItems, ItemStackTemplate result, Item... subTypes) {
-        this.typeItem = SlotContent.ofItemList(typeItems);
+    public WoodenMixingClientRecipe(List<ItemStack> typeItems, ItemStackTemplate result, Item... subTypes) {
+        this.typeItem = SlotContent.of(typeItems);
         this.subType = SlotContent.of(subTypes);
         this.glueBottle = SlotContent.of(ModItems.GLUE_BOTTLE);
         this.result = SlotContent.of(result);
@@ -67,7 +68,7 @@ public class WoodenMixingClientRecipe extends ReliableClientRecipeWithoutTransfe
                     ModItems.HUSK,
                     ModItems.GRASS
             );
-            case STEEL -> new WoodenMixingClientRecipe(List.of(Items.SLIME_BLOCK, Items.ECHO_SHARD), result,
+            case STEEL -> new WoodenMixingClientRecipe(List.of(Items.SLIME_BLOCK.getDefaultInstance(), ModItems.LEAF.getDefaultInstance().copyWithCount(2)), result,
                         ModItems.IRON_DUST,
                         ModItems.COAL_DUST
                     );

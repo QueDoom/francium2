@@ -109,7 +109,7 @@ public class WoodenMixerBlock extends BaseEntityBlock {
                 3, Items.HONEY_BLOCK.getDefaultInstance(),
                 4, Items.COAL.getDefaultInstance()
         );
-        if (strength == 1 && stack.is(ModItems.GLUE_BOTTLE) && gType == 2 && (steel == 6 || steel == 5)) {
+        if (strength == 2 && stack.is(ModItems.GLUE_BOTTLE) && gType == 1 && (steel == 6 || steel == 5)) {
             Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), ModItems.STEEL_IN_A_BOTTLE.getDefaultInstance().copyWithCount(2));
             level.setBlockAndUpdate(pos, this.defaultBlockState());
             if (!player.hasInfiniteMaterials()) stack.shrink(1);
@@ -170,7 +170,7 @@ public class WoodenMixerBlock extends BaseEntityBlock {
                 level.setBlockAndUpdate(pos, onState.setValue(ECHO, 4));
                 itemEntity.getItem().shrink(1);
             } else if (itemEntity.getItem().is(ModItems.IRON_DUST) && glueState == WoodenMixerState.SLIME  &&
-                    echo == 1 && veg == 0) {
+                    echo == 0 && veg == 2) {
                 if (steel == 0) {
                     level.setBlockAndUpdate(pos, onState.setValue(STEEL, 1));
                     itemEntity.getItem().shrink(1);
@@ -179,7 +179,7 @@ public class WoodenMixerBlock extends BaseEntityBlock {
                     itemEntity.getItem().shrink(1);
                 }
             } else if (itemEntity.getItem().is(ModItems.COAL_DUST) && glueState == WoodenMixerState.SLIME  &&
-                    echo == 1 && veg == 0) {
+                    echo == 0 && veg == 2) {
                 if (steel == 2) {
                     level.setBlockAndUpdate(pos, onState.setValue(STEEL, 3));
                     itemEntity.getItem().shrink(1);

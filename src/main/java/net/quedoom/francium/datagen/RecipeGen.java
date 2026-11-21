@@ -163,6 +163,7 @@ public class RecipeGen extends QueTRecipeProvider implements LocalizedGetPath {
                 qtRecipe.irreversible3x3Compacting(ModItems.SOUL_PILE, Blocks.SOUL_SAND);
 
                 campfireSmelting(ModItems.SAND_PILE, ModItems.GLASS_SHARDS, RecipeCategory.MISC, 400, this, output);
+                campfireSmelting(ModItems.STEEL_DUST, ModItems.STEEL_INGOT, RecipeCategory.MISC, 800, this, output);
 
                 oreSmelting(List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, CookingBookCategory.MISC,
                         ModItems.STEEL_INGOT, 2, 200, "steel_dust");

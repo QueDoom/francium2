@@ -170,6 +170,7 @@ public class Francium2LanguageProvider extends QueTLanguageProvider {
         translationBuilder.add(Francium.translationString("rrv", "obsidian_mixing.time"), "Time: %ss");
         translationBuilder.add(Francium.translationString("rrv", "obsidian_mixing"), "Obsidian Mixing");
         translationBuilder.add(Francium.translationString("rrv", "casing_crafting"), "Casing Crafting");
+        translationBuilder.add(Francium.translationString("rrv", "forbidden"), "Forbidden");
         translationBuilder.add(Francium.translationString("rrv", "use_in_order"), "Apply the items in-order");
         translationBuilder.add(Francium.translationString("rrv", BedrockCrushingRecipe.Type.ID), "Bedrock Crushing");
         translationBuilder.add(Francium.translationString("rrv", BedrockCrushingRecipe.Type.ID, "fall_distance", "line0"), "Minimum");
