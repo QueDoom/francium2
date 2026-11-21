@@ -96,7 +96,8 @@ public abstract class FallingBlockEntityMixin extends Entity {
             this.discard();
             ci.cancel();
         } else {
-            level.playSound(null, getBlockPos(), SoundEvents.ANVIL_LAND, SoundSource.BLOCKS, 1, 0.6f);
+            if (this.blockState.is(ModBlocks.HEAVY_ANVIL))
+                level.playSound(null, getBlockPos(), SoundEvents.ANVIL_LAND, SoundSource.BLOCKS, 1, 0.6f);
         }
     }
 
